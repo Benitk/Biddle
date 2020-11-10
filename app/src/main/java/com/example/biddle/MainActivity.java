@@ -1,4 +1,4 @@
-ipackage com.example.biddle;
+package com.example.biddle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
