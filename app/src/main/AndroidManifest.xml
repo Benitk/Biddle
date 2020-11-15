@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle">
         <activity
+            android:name=".Activites.LandingPageActivity"
+            android:label="@string/title_activity_landing_page"
+            android:theme="@style/Theme.Biddle.NoActionBar"></activity>
+        <activity
             android:name=".Activites.SignupActivity"
             android:label="@string/title_activity_signup"
-            android:theme="@style/Theme.Biddle.NoActionBar"></activity>
+            android:theme="@style/Theme.Biddle.NoActionBar" />
         <activity android:name=".Activites.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -10,5 +10,9 @@
     <string name="confirmpassword">אימות סיסמה</string>
     <string name="Signup">הרשמה</string>
     <string name="HasAccount">כבר רשום/ה? לחץ/י כאן והתחבר/י</string>
+    <string name="Choose">בחר/י בתור מה את/ה רוצה להיכנס לאפליקציה</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_landing_page">LandingPageActivity</string>
 </resources>

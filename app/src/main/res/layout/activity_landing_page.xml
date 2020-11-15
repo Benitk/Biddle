@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/purple_200">
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Choose"
+        android:textSize="32dp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:id="@+id/customer_btn"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:text="לקוח/ה"
+        android:textSize="15sp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:id="@+id/seller_btn"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:text="סוחר/ת"
+        android:textSize="15sp" />
+
+</LinearLayout>
