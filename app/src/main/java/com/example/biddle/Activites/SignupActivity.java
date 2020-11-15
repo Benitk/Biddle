@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import Utils.InputValidator;
+
 public class SignupActivity extends AppCompatActivity {
 
     private TextView tv_login_btn;
@@ -45,16 +47,31 @@ public class SignupActivity extends AppCompatActivity {
         tv_signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 et_email = (EditText)findViewById(R.id.email);
                 et_password = (EditText)findViewById(R.id.password);
                 et_confirmPassword = (EditText)findViewById(R.id.confirm_password);
 
-                if(TextUtils.isEmpty(et_email.getText().toString())){
-                    et_email.setError("Email is REqure");
-                }
+                InputValidator validator = new InputValidator();
+
+                if(!validator.isValidEmail(et_email.getText().toString()))
+                    et_email.setError("מייל בפורמט לא תקין.");
+
+                if(!validator.isValidPassword(et_password.getText().toString()))
+                    et_password.setError("סיסמה לא תקינה, נסה להצמד להוראות הבאות: " +
+                                         "לפחות אות אחת קטנה [a-z] " +
+                                         "לפחות אות אחת גדולה [A-Z] " +
+                                         "מינימום אורך 8 תווים, מקסימום 20 תווים ");
+
+
+                if(!validator.isEqual(et_password.getText().toString(), et_confirmPassword.getText().toString()))
+                    et_confirmPassword.setError("הסיסמה לא תואמת לקודמת.");
+
+
+                // input is valid send in to firebase
+
             }
         });
-
 
         /* login button listener - on click return to login page
          */

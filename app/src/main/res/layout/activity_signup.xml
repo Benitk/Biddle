@@ -39,6 +39,8 @@
 
                 <EditText
                     android:id="@+id/email"
+                    android:gravity="right"
+                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -70,12 +72,14 @@
 
                 <EditText
                     android:id="@+id/password"
+                    android:gravity="right"
+                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
                     android:hint="@string/password"
-                    android:inputType="text"
+                    android:inputType="textPassword"
                     android:letterSpacing="0.1"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -101,6 +105,8 @@
 
                 <EditText
                     android:id="@+id/confirm_password"
+                    android:gravity="right"
+                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"

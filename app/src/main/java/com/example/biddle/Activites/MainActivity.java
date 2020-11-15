@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.biddle.R;
 
+import Utils.InputValidator;
+
 public class MainActivity extends AppCompatActivity {
     private EditText et_email;
     private EditText et_password;
@@ -39,8 +41,20 @@ public class MainActivity extends AppCompatActivity {
                 et_email = (EditText)findViewById(R.id.email);
                 et_password = (EditText)findViewById(R.id.password);
 
-                Toast.makeText(MainActivity.this,
-                        "username: " + et_email.getText().toString(), Toast.LENGTH_SHORT).show();
+                InputValidator validator = new InputValidator();
+
+                if(!validator.isValidEmail(et_email.getText().toString()))
+                    et_email.setError("מייל בפורמט לא תקין.");
+
+                if(!validator.isValidPassword(et_password.getText().toString()))
+                    et_password.setError("סיסמא שגויה, נסה שנית");
+
+
+                // input is valid check if exist in firebase
+
+
+//                Toast.makeText(MainActivity.this,
+//                        "username: " + et_email.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 

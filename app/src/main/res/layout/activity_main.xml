@@ -74,6 +74,8 @@
                     android:layout_gravity="center"/>
                 <EditText
                     android:id="@+id/email"
+                    android:gravity="right"
+                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
@@ -102,6 +104,8 @@
                     android:layout_gravity="center"/>
                 <EditText
                     android:id="@+id/password"
+                    android:gravity="right"
+                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
