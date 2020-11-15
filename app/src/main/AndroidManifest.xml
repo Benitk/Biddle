@@ -10,16 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle">
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.Biddle.NoActionBar">
+            android:name=".Activites.SignupActivity"
+            android:label="@string/title_activity_signup"
+            android:theme="@style/Theme.Biddle.NoActionBar"></activity>
+        <activity android:name=".Activites.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
         </activity>
     </application>
 
