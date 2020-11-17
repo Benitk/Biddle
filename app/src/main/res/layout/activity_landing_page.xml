@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/purple_200">
+    android:background="@drawable/background">
     >
     <TextView
         android:layout_width="match_parent"
@@ -19,8 +19,9 @@
         android:layout_width="250dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
+        android:background="@drawable/btn_back"
         android:text="לקוח/ה"
-        android:textSize="15sp"
+        android:textSize="30sp"
         android:layout_marginBottom="30dp"
         />
 
@@ -29,7 +30,9 @@
         android:layout_width="250dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
+        android:background="@drawable/btn_back"
         android:text="סוחר/ת"
-        android:textSize="15sp" />
+        android:textSize="30sp"
+        />
 
 </LinearLayout>
