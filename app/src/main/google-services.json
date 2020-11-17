@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "275108360491",
+    "firebase_url": "https://biddle-2c4a1.firebaseio.com",
+    "project_id": "biddle-2c4a1",
+    "storage_bucket": "biddle-2c4a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275108360491:android:721a1af3273b542f4a556e",
+        "android_client_info": {
+          "package_name": "com.example.biddle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275108360491-sb5qj5g2qj6lul032l75f9r694lhsh1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO3dIub-ltDenosle6spF6oXfNgfWoOsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275108360491-sb5qj5g2qj6lul032l75f9r694lhsh1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

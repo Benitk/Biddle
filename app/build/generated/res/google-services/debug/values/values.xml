@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">275108360491-sb5qj5g2qj6lul032l75f9r694lhsh1g.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://biddle-2c4a1.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">275108360491</string>
+    <string name="google_api_key" translatable="false">AIzaSyDO3dIub-ltDenosle6spF6oXfNgfWoOsY</string>
+    <string name="google_app_id" translatable="false">1:275108360491:android:721a1af3273b542f4a556e</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDO3dIub-ltDenosle6spF6oXfNgfWoOsY</string>
+    <string name="google_storage_bucket" translatable="false">biddle-2c4a1.appspot.com</string>
+    <string name="project_id" translatable="false">biddle-2c4a1</string>
+</resources>
