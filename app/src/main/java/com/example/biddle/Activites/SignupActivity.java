@@ -59,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
                 et_confirmPassword = (EditText)findViewById(R.id.confirm_password);
                 String user_email = et_email.getText().toString().trim();
                 String user_password = et_password.getText().toString().trim();
-                String user_confirmPassword = et_confirmPassword.getText().toString().trim();
+             //   String user_confirmPassword = et_confirmPassword.getText().toString().trim();
                 InputValidator validator = new InputValidator();
 
                 if(!validator.isValidEmail(et_email.getText().toString()))
@@ -80,10 +80,10 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(SignupActivity.this,"Signed up successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this,"ההרשמה בוצעה בהצלחה",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(SignupActivity.this,"Sign up failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this,"הרישום נכשל",Toast.LENGTH_SHORT).show();
                         }
 
                     }
