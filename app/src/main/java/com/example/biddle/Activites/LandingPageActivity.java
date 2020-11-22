@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.example.biddle.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,29 +15,46 @@ import android.widget.Button;
 
 public class LandingPageActivity extends AppCompatActivity {
 
-    private Button customer_btn;
-    private Button seller_btn;
+    private Button b_customer_btn;
+    private Button b_seller_btn;
+    private Button b_logout_btn;
+    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
 
-        customer_btn = (Button) findViewById(R.id.customer_btn);
-        seller_btn = (Button) findViewById(R.id.seller_btn);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        customer_btn.setOnClickListener(new View.OnClickListener() {
+
+        b_logout_btn = (Button) findViewById(R.id.logout_btn);
+        b_customer_btn = (Button) findViewById(R.id.customer_btn);
+        b_seller_btn = (Button) findViewById(R.id.seller_btn);
+
+        b_customer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //startActivity(new Intent(LandingActivity.this, CustomerActivity.class));
             }
         });
 
-        seller_btn.setOnClickListener(new View.OnClickListener() {
+        b_seller_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //startActivity(new Intent(LandingActivity.this, SellerActivity.class));
             }
         });
+
+        b_logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                firebaseAuth.signOut();
+                finish();
+            }
+        });
+
     }
 }

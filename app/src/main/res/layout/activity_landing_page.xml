@@ -33,6 +33,16 @@
         android:background="@drawable/btn_back"
         android:text="סוחר/ת"
         android:textSize="30sp"
+        android:layout_marginBottom="30dp"
         />
+
+    <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_back"
+        android:text="@string/Logout"
+        android:textSize="30sp" />
 
 </LinearLayout>

@@ -13,6 +13,7 @@
         />
 
     <LinearLayout
+        android:id="@+id/processBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
@@ -39,15 +40,15 @@
 
                 <EditText
                     android:id="@+id/email"
-                    android:gravity="right"
-                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:gravity="right"
                     android:hint="@string/email"
                     android:inputType="text"
                     android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
@@ -72,15 +73,15 @@
 
                 <EditText
                     android:id="@+id/password"
-                    android:gravity="right"
-                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:gravity="right"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
@@ -105,15 +106,15 @@
 
                 <EditText
                     android:id="@+id/confirm_password"
-                    android:gravity="right"
-                    android:textAlignment="gravity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:gravity="right"
                     android:hint="@string/confirmpassword"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
@@ -124,6 +125,7 @@
                 android:layout_height="0.5dp"
                 android:background="@color/offwhite"></LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -135,7 +137,7 @@
         >
         <TextView
             android:id="@+id/signup_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/Signup"
             android:textColor="@color/white"
@@ -156,4 +158,17 @@
         android:gravity="center"
         android:text="@string/HasAccount"
         android:textColor="@color/white" />
+
+
+    <ProgressBar
+        android:layout_marginTop="630dp"
+        android:gravity="center"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:indeterminateTint="@color/purple_700"
+    android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+
 </RelativeLayout>

@@ -15,4 +15,5 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_landing_page">LandingPageActivity</string>
+    <string name="Logout">יציאה</string>
 </resources>

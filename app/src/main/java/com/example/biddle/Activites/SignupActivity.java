@@ -12,14 +12,17 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +32,8 @@ import Utils.InputValidator;
 
 public class SignupActivity extends AppCompatActivity {
 
+
+    private ProgressBar progressb;
     private TextView tv_login_btn;
     private TextView tv_signup_btn;
     private EditText et_email;
@@ -42,9 +47,16 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        // if already logged in
+        if(firebaseAuth.getCurrentUser() != null)
+            finish();
+
+        progressb = (ProgressBar)findViewById(R.id.progressBar);
         tv_signup_btn = (TextView)findViewById(R.id.signup_btn);
         tv_login_btn = (TextView)findViewById(R.id.to_loginPage_Btn);
 
+        progressb.setVisibility(View.GONE);
 
         /* sign up button listener - on click getting user input
          * call validate function to confirm valid input
@@ -54,6 +66,9 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                progressb.setVisibility(View.VISIBLE);
+
+
                 et_email = (EditText)findViewById(R.id.email);
                 et_password = (EditText)findViewById(R.id.password);
                 et_confirmPassword = (EditText)findViewById(R.id.confirm_password);
@@ -62,17 +77,17 @@ public class SignupActivity extends AppCompatActivity {
                 String user_confirmPassword = et_confirmPassword.getText().toString().trim();
                 InputValidator validator = new InputValidator();
 
-                if(!validator.isValidEmail(et_email.getText().toString()))
+                if(!validator.isValidEmail(user_email))
                     et_email.setError("מייל בפורמט לא תקין.");
 
-                if(!validator.isValidPassword(et_password.getText().toString()))
+                if(!validator.isValidPassword(user_password))
                     et_password.setError("סיסמה לא תקינה, נסה להצמד להוראות הבאות: " +
                             "לפחות אות אחת קטנה [a-z] " +
                             "לפחות אות אחת גדולה [A-Z] " +
                             "מינימום אורך 8 תווים, מקסימום 20 תווים ");
 
 
-                if(!validator.isEqual(et_password.getText().toString(), et_confirmPassword.getText().toString()))
+                if(!validator.isEqual(user_password, user_confirmPassword))
                     et_confirmPassword.setError("הסיסמה לא תואמת לקודמת.");
 
                 // input is valid send in to firebase
@@ -80,10 +95,17 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(SignupActivity.this,"Signed up successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignupActivity.this,"ההרשמה בוצעה בהצלחה!",Toast.LENGTH_SHORT).show();
+                            progressb.setVisibility(View.GONE);
+
+                            // move to login
+                            finish();
                         }
                         else {
-                            Toast.makeText(SignupActivity.this,"Sign up failed",Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(SignupActivity.this, "failed",Toast.LENGTH_SHORT).show();
+                            progressb.setVisibility(View.GONE);
+
                         }
 
                     }

@@ -1586,6 +1586,7 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable background
 drawable border
+drawable btn_back
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1870,6 +1871,7 @@ id listMode
 id list_item
 id lnrlyout
 id login_btn
+id logout_btn
 id masked
 id message
 id middle
@@ -1931,6 +1933,8 @@ id percent
 id pin
 id position
 id postLayout
+id processBar
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
@@ -2194,6 +2198,7 @@ plurals mtrl_badge_content_description
 string Choose
 string HasAccount
 string Login
+string Logout
 string Signup
 string abc_action_bar_home_description
 string abc_action_bar_up_description
