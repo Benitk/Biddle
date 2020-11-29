@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+    >
+
+    <Button
+        android:id="@+id/menu_seller_btn"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_back"
+        android:text="@string/menu"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_seller"
+        android:textSize="36dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:id="@+id/product_publication_btn"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_back"
+        android:text="פרסום מוצר חדש"
+        android:textSize="22sp"
+        android:layout_marginBottom="30dp"
+        />
+
+    <Button
+        android:id="@+id/show_my_products_btn"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_back"
+        android:text="הראה את המוצרים שלי"
+        android:textSize="22sp"
+        android:layout_marginBottom="30dp"
+        />
+
+</LinearLayout>

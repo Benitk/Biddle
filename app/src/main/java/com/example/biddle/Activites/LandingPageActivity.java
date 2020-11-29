@@ -1,5 +1,6 @@
 package com.example.biddle.Activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.biddle.R;
@@ -43,7 +44,7 @@ public class LandingPageActivity extends AppCompatActivity {
         b_seller_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(LandingActivity.this, SellerActivity.class));
+                startActivity(new Intent(LandingPageActivity.this, SellerActivity.class));
             }
         });
 

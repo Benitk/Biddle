@@ -16,4 +16,6 @@
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_landing_page">LandingPageActivity</string>
     <string name="Logout">יציאה</string>
+    <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
+    <string name="menu">תפריט</string>
 </resources>

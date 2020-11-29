@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle">
+        <activity android:name=".Activites.SellerActivity"></activity>
         <activity
             android:name=".Activites.LandingPageActivity"
             android:label="@string/title_activity_landing_page"
-            android:theme="@style/Theme.Biddle.NoActionBar"></activity>
+            android:theme="@style/Theme.Biddle.NoActionBar" />
         <activity
             android:name=".Activites.SignupActivity"
             android:label="@string/title_activity_signup"
