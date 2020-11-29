@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background">
-    >
 
-    <Button
-        android:id="@+id/menu_seller_btn"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_back"
-        android:text="@string/menu"
-        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_width="407dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/menu_seller_btn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            android:layout_marginHorizontal="23dp"
+            android:text="@string/menu"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/product_publication_btn"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:layout_marginBottom="30dp"
+            android:text="פרסום מוצר חדש"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,26 +42,11 @@
         android:textColor="@color/white"
         />
 
-    <Button
-        android:id="@+id/product_publication_btn"
-        android:layout_width="280dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_back"
-        android:text="פרסום מוצר חדש"
-        android:textSize="22sp"
-        android:layout_marginBottom="30dp"
-        />
 
-    <Button
-        android:id="@+id/show_my_products_btn"
-        android:layout_width="280dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_back"
-        android:text="הראה את המוצרים שלי"
-        android:textSize="22sp"
-        android:layout_marginBottom="30dp"
-        />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
