@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Beni\\AndroidStudioProjects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
+            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\3d4510e059f78d671f03cee612b3d655\\navigation-ui-2.3.1\\res\\values-en-rGB\\values-en-rGB.xml",

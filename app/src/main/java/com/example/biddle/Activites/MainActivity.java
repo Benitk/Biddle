@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    Toast.makeText(MainActivity.this, "הכניסה הושלמה." + user, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "הכניסה הושלמה.", Toast.LENGTH_SHORT).show();
                                     progressb.setVisibility(View.GONE);
 
                                     startActivity(new Intent(MainActivity.this, LandingPageActivity.class));

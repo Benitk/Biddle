@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Beni\\AndroidStudioProjects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kk\\values-kk.xml",
+            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-kk\\values-kk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-kk\\values-kk.xml",

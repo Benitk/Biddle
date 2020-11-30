@@ -3,6 +3,10 @@ com/example/biddle/Activites/LandingPageActivity.java
  com.example.biddle.Activites.LandingPageActivity$1
  com.example.biddle.Activites.LandingPageActivity$2
  com.example.biddle.Activites.LandingPageActivity$3
+com/example/biddle/Activites/SellerActivity.java
+ com.example.biddle.Activites.SellerActivity
+ com.example.biddle.Activites.SellerActivity$1
+ com.example.biddle.Activites.SellerActivity$2
 com/example/biddle/BuildConfig.java
  com.example.biddle.BuildConfig
 Utils/InputValidator.java

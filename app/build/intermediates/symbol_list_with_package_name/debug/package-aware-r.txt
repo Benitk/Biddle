@@ -1869,10 +1869,12 @@ id line3
 id linear
 id listMode
 id list_item
+id list_view
 id lnrlyout
 id login_btn
 id logout_btn
 id masked
+id menu_seller_btn
 id message
 id middle
 id mini
@@ -1934,6 +1936,7 @@ id pin
 id position
 id postLayout
 id processBar
+id product_publication_btn
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -2123,6 +2126,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_landing_page
 layout activity_main
+layout activity_seller
 layout activity_signup
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -2273,6 +2277,7 @@ string icon_content_description
 string item_view_role_description
 string material_slider_range_end
 string material_slider_range_start
+string menu
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -2324,6 +2329,7 @@ string status_bar_notification_info_overflow
 string title_activity_landing_page
 string title_activity_login
 string title_activity_signup
+string welcome_seller
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow

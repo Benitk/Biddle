@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Beni\\AndroidStudioProjects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\c7b744b41780b023cb1bc54e238b5549\\core-1.3.1\\res\\values-v16\\values-v16.xml",

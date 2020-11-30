@@ -43,36 +43,36 @@ public class SellerActivity extends AppCompatActivity {
                 //want to open the menu from the left side
             }
         });
-        class MyAdapter extends BaseAdapter {
-
-            // override other abstract methods here
-
-            @Override
-            public int getCount() {
-                return 0;
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return position;
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return 0;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup container) {
-                if (convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_item, container, false);
-                }
-
-                ((TextView) convertView.findViewById(android.R.id.text1))
-                        .setText(getItem(position));
-                return convertView;
-            }
-        }
+//        class MyAdapter extends BaseAdapter {
+//
+//            // override other abstract methods here
+//
+//            @Override
+//            public int getCount() {
+//                return 0;
+//            }
+//
+//            @Override
+//            public Object getItem(int position) {
+//                return position;
+//            }
+//
+//            @Override
+//            public long getItemId(int position) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public View getView(int position, View convertView, ViewGroup container) {
+//                if (convertView == null) {
+//                    convertView = getLayoutInflater().inflate(R.layout.list_item, container, false);
+//                }
+//
+//                ((TextView) convertView.findViewById(android.R.id.text1))
+//                        .setText(getItem(position));
+//                return convertView;
+//            }
+//        }
 
 
 

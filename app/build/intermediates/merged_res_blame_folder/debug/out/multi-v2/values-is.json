@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Beni\\AndroidStudioProjects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
+            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\61c884a7f74cc0f598291471a70ba823\\jetified-play-services-base-17.1.0\\res\\values-is\\values.xml",
