@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/fillDetails"
+        android:gravity="center"
+        android:textSize="20dp"
+
+        >
+
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/processBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
+        <LinearLayout
+            android:layout_marginBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductName"
+                    android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductPrice"
+                    android:inputType="numberDecimal"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductTTL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductTTL"
+                    android:inputType="datetime"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/offwhite"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+
+                <EditText
+                    android:id="@+id/ProductCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductCategory"
+                    android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/offwhite"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductDescription"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:layout_marginBottom="50dp"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/offwhite"></LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="80dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        >
+        <TextView
+            android:id="@+id/newProduct_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/AddProduct"
+            android:textColor="@color/white"
+
+            android:background="@drawable/border"
+            android:padding="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:layout_marginTop="630dp"
+        android:gravity="center"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:indeterminateTint="@color/purple_700"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+
+</RelativeLayout>

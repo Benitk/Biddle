@@ -23,6 +23,10 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
+        <activity
+            android:name="com.example.biddle.Activites.ProductFormActivity"
+            android:label="@string/title_activity_product_form"
+            android:theme="@style/Theme.Biddle.NoActionBar" />
         <activity android:name="com.example.biddle.Activites.SellerActivity" />
         <activity
             android:name="com.example.biddle.Activites.LandingPageActivity"
@@ -92,6 +96,9 @@
             android:exported="false" >
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"

@@ -1666,12 +1666,18 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable user
 id ALT
+id AddProduct_btn
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
 id META
 id NO_DEBUG
+id ProductCategory
+id ProductDescription
+id ProductName
+id ProductPrice
+id ProductTTL
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -1911,6 +1917,7 @@ id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_header_container
 id never
+id newProduct_btn
 id noScroll
 id none
 id normal
@@ -1936,7 +1943,6 @@ id pin
 id position
 id postLayout
 id processBar
-id product_publication_btn
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -2126,6 +2132,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_landing_page
 layout activity_main
+layout activity_product_form
 layout activity_seller
 layout activity_signup
 layout custom_dialog
@@ -2181,6 +2188,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout simple_list
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -2199,10 +2207,16 @@ layout text_view_without_line_height
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+string AddProduct
 string Choose
 string HasAccount
 string Login
 string Logout
+string ProductCategory
+string ProductDescription
+string ProductName
+string ProductPrice
+string ProductTTL
 string Signup
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2264,6 +2278,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fillDetails
 string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
@@ -2328,6 +2343,7 @@ string search_menu_title
 string status_bar_notification_info_overflow
 string title_activity_landing_page
 string title_activity_login
+string title_activity_product_form
 string title_activity_signup
 string welcome_seller
 style AlertDialog_AppCompat

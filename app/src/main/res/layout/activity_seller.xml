@@ -22,7 +22,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/product_publication_btn"
+            android:id="@+id/AddProduct_btn"
             android:layout_width="240dp"
             android:layout_height="60dp"
             android:layout_gravity="right"

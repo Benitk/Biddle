@@ -32,6 +32,10 @@
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_form.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_product_form.xml"
+    },
+    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_background.jpg.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\background.jpg"
     },
@@ -70,6 +74,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_border.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\border.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_simple_list.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\simple_list.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_seller.xml.flat",
