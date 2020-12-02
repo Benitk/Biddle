@@ -18,13 +18,13 @@ com/example/biddle/Activites/DummyActivity.java
  com.example.biddle.Activites.DummyActivity
 Utils/InputValidator.java
  Utils.InputValidator
+Models/Products.java
+ Models.Products
 com/example/biddle/Activites/SignupActivity.java
  com.example.biddle.Activites.SignupActivity
  com.example.biddle.Activites.SignupActivity$1
  com.example.biddle.Activites.SignupActivity$1$1
  com.example.biddle.Activites.SignupActivity$2
-Models/Products.java
- Models.Products
 com/example/biddle/Activites/MainActivity.java
  com.example.biddle.Activites.MainActivity
  com.example.biddle.Activites.MainActivity$1

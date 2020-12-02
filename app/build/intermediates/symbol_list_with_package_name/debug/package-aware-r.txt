@@ -1229,6 +1229,9 @@ dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen action_bar_size
+dimen activity_horizontal_margin
+dimen activity_vertical_margin
+dimen app_bar_height
 dimen appcompat_dialog_background_inset
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
@@ -1488,6 +1491,7 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 dimen test_mtrl_calendar_day_cornerSize
+dimen text_margin
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -1624,12 +1628,15 @@ drawable email
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ib
+drawable ic_dashboard_black_24dp
+drawable ic_home_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_notifications_black_24dp
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
 drawable material_ic_edit_black_24dp
@@ -2143,6 +2150,7 @@ layout activity_main
 layout activity_product_form
 layout activity_seller
 layout activity_signup
+layout content_scrolling
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2256,6 +2264,7 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string action_settings
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
@@ -2301,6 +2310,7 @@ string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
+string large_text
 string material_slider_range_end
 string material_slider_range_start
 string menu
@@ -2352,10 +2362,15 @@ string previous
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string title_activity_costumer
 string title_activity_landing_page
 string title_activity_login
 string title_activity_product_form
+string title_activity_scrolling
 string title_activity_signup
+string title_dashboard
+string title_home
+string title_notifications
 string welcome_seller
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light

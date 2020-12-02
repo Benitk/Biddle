@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle">
-        <activity android:name=".Activites.DummyActivity"></activity>
+        <activity android:name=".Activites.DummyActivity" />
         <activity
             android:name=".Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"
@@ -27,9 +27,8 @@
             android:theme="@style/Theme.Biddle.NoActionBar" />
         <activity android:name=".Activites.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
     </application>
