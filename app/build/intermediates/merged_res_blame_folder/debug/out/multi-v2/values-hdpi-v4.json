@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "outputFile": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
+        <activity android:name="com.example.biddle.Activites.DummyActivity" />
         <activity
             android:name="com.example.biddle.Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"

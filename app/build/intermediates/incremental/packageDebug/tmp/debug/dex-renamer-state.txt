@@ -1,4 +1,4 @@
-#Wed Dec 02 09:48:25 PST 2020
-base.0=D\:\\android projects\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Wed Dec 02 21:28:09 IST 2020
+base.0=C\:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

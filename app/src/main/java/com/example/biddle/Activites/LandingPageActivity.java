@@ -37,7 +37,7 @@ public class LandingPageActivity extends AppCompatActivity {
         b_customer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(LandingActivity.this, CustomerActivity.class));
+                startActivity(new Intent(LandingPageActivity.this, DummyActivity.class));
             }
         });
 

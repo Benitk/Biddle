@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homePage"
+        android:title="דף הבית"/>
+    <item
+        android:id="@+id/starProducts"
+        android:title="מוצרים שסימנתי בכוכב"/>
+    <item
+        android:id="@+id/priceOfferedProducts"
+        android:title="מוצרים שהצעתי עליהם מחיר"/>
+    <item
+        android:id="@+id/purchasedProducts"
+        android:title="מוצרים שרכשתי"/>
+    <item
+        android:id="@+id/waitForPickUpProducts"
+        android:title="מוצרים שממתינים לאיסוף"/>
+    <item
+        android:id="@+id/editProfile"
+        android:title="עריכת הפרופיל שלי"/>
+    <item
+        android:id="@+id/logOut"
+        android:title="התנתקות מהמערכת"/>
+</menu>

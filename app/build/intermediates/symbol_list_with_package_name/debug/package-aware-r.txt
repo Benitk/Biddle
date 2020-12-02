@@ -1820,6 +1820,7 @@ id dropdown_menu
 id easeIn
 id easeInOut
 id easeOut
+id editProfile
 id edit_query
 id email
 id end
@@ -1850,6 +1851,7 @@ id groups
 id hideable
 id home
 id homeAsUp
+id homePage
 id honorRequest
 id icon
 id icon_group
@@ -1877,6 +1879,7 @@ id listMode
 id list_item
 id list_view
 id lnrlyout
+id logOut
 id login_btn
 id logout_btn
 id masked
@@ -1942,10 +1945,12 @@ id percent
 id pin
 id position
 id postLayout
+id priceOfferedProducts
 id processBar
 id progressBar
 id progress_circular
 id progress_horizontal
+id purchasedProducts
 id radio
 id ratio
 id rectangles
@@ -2001,6 +2006,7 @@ id src_atop
 id src_in
 id src_over
 id standard
+id starProducts
 id start
 id startHorizontal
 id startVertical
@@ -2062,6 +2068,7 @@ id useLogo
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
+id waitForPickUpProducts
 id wide
 id withText
 id withinBounds
@@ -2130,6 +2137,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_dummy
 layout activity_landing_page
 layout activity_main
 layout activity_product_form
@@ -2205,6 +2213,8 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu customer_menu
+menu seller_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
