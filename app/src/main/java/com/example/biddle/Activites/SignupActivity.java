@@ -66,9 +66,6 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressb.setVisibility(View.VISIBLE);
-
-
                 et_email = (EditText)findViewById(R.id.email);
                 et_password = (EditText)findViewById(R.id.password);
                 et_confirmPassword = (EditText)findViewById(R.id.confirm_password);
@@ -76,9 +73,6 @@ public class SignupActivity extends AppCompatActivity {
                 String user_password = et_password.getText().toString().trim();
                 String user_confirmPassword = et_confirmPassword.getText().toString().trim();
                 InputValidator validator = new InputValidator();
-
-                if(!validator.isValidEmail(user_email))
-                    et_email.setError("מייל בפורמט לא תקין.");
 
                 if(!validator.isValidPassword(user_password))
                     et_password.setError("סיסמה לא תקינה, נסה להצמד להוראות הבאות: " +
@@ -90,26 +84,31 @@ public class SignupActivity extends AppCompatActivity {
                 if(!validator.isEqual(user_password, user_confirmPassword))
                     et_confirmPassword.setError("הסיסמה לא תואמת לקודמת.");
 
-                // input is valid send in to firebase
-                firebaseAuth.createUserWithEmailAndPassword(user_email,user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(SignupActivity.this,"ההרשמה בוצעה בהצלחה!",Toast.LENGTH_SHORT).show();
-                            progressb.setVisibility(View.GONE);
+                if(!validator.isValidEmail(user_email))
+                    et_email.setError("מייל בפורמט לא תקין.");
 
-                            // move to login
-                            finish();
+                else {
+
+                    progressb.setVisibility(View.VISIBLE);
+                    // input is valid send in to firebase
+                    firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_SHORT).show();
+                                progressb.setVisibility(View.GONE);
+
+                                // move to login
+                                finish();
+                            } else {
+                                Toast.makeText(SignupActivity.this, "ההרשמה נכשלה", Toast.LENGTH_SHORT).show();
+                                progressb.setVisibility(View.GONE);
+
+                            }
+
                         }
-                        else {
-
-                            Toast.makeText(SignupActivity.this, "failed",Toast.LENGTH_SHORT).show();
-                            progressb.setVisibility(View.GONE);
-
-                        }
-
-                    }
-                });
+                    });
+                }
             }
         });
 

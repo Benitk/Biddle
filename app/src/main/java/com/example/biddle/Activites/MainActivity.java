@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressb.setVisibility(View.VISIBLE);
-
-
                 et_email = (EditText)findViewById(R.id.email);
                 et_password = (EditText)findViewById(R.id.password);
                 String user_email = et_email.getText().toString().trim();
@@ -76,25 +73,29 @@ public class MainActivity extends AppCompatActivity {
                 if(!validator.isValidPassword(user_password))
                     et_password.setError("סיסמא שגויה, נסה שנית");
 
-                firebaseAuth.signInWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    Toast.makeText(MainActivity.this, "הכניסה הושלמה.", Toast.LENGTH_SHORT).show();
-                                    progressb.setVisibility(View.GONE);
+                else {
+                    progressb.setVisibility(View.VISIBLE);
 
-                                    startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
+                    firebaseAuth.signInWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                Toast.makeText(MainActivity.this, "הכניסה הושלמה.", Toast.LENGTH_SHORT).show();
+                                progressb.setVisibility(View.GONE);
+
+                                startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
 
 
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(MainActivity.this, "הכניסה נכשלה.", Toast.LENGTH_SHORT).show();
-                                    progressb.setVisibility(View.GONE);
-                                }
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(MainActivity.this, "הכניסה נכשלה.", Toast.LENGTH_SHORT).show();
+                                progressb.setVisibility(View.GONE);
                             }
-                        });
+                        }
+                    });
+                }
                     }
                  });
 
