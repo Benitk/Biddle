@@ -160,15 +160,13 @@
         android:textColor="@color/white" />
 
 
-    <ProgressBar
-        android:layout_marginTop="630dp"
-        android:gravity="center"
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <include
         android:layout_width="match_parent"
-        android:indeterminateTint="@color/purple_700"
-    android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="640dp"
+        layout="@layout/processbar">
+        >
+    </include>
 
 
 </RelativeLayout>

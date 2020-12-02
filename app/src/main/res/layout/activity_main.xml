@@ -125,15 +125,11 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="610dp"
-        android:indeterminateTint="@color/purple_700"
-        android:layout_weight="1"
-        android:gravity="center" />
-
+        layout="@layout/processbar">
+    </include>
 
 </RelativeLayout>
