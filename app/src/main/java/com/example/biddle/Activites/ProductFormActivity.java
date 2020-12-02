@@ -51,10 +51,12 @@ public class ProductFormActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         String userId = firebaseAuth.getCurrentUser().getUid();
+
         DatabaseReference ref = database.getReference().child("Products").child(userId);
 
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
+
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
 
@@ -76,7 +78,12 @@ public class ProductFormActivity extends AppCompatActivity {
                 // write new product to firebase
 
                 String productID = UUID.randomUUID().toString(); // genreate unique product id
+
                 Products p = new Products(productID, productName, productPrice, productCategory, productTTL, productDescription);
+
+
+                // insert new product to firebase
+
                 ref.child(productID).setValue(p, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {

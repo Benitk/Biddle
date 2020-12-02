@@ -92,6 +92,9 @@ public class SellerActivity extends AppCompatActivity {
     // print products of current user to list
 
     private void showData(DataSnapshot dataSnapshot) {
+        ArrayList<String> array  = new ArrayList<>();
+
+
         for(DataSnapshot ds : dataSnapshot.getChildren()){
 
             Products p = new Products();
@@ -100,12 +103,12 @@ public class SellerActivity extends AppCompatActivity {
             p.setPrice(ds.getValue(Products.class).getPrice());
             p.setEndingDate(ds.getValue(Products.class).getEndingDate());
 
-            ArrayList<String> array  = new ArrayList<>();
             array.add(p.getName());
             array.add(Double.toString(p.getPrice()));
             array.add(p.getEndingDate().toString());
-            ArrayAdapter adapter = new ArrayAdapter(this, R.layout.simple_list,array);
-            lv_list.setAdapter(adapter);
         }
+
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.simple_list,array);
+        lv_list.setAdapter(adapter);
     }
 }
