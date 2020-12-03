@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mobile.png.flat",
-        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\mobile.png"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_notifications_black_24dp.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_notifications_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mobile.png.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\mobile.png"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
@@ -48,12 +48,12 @@
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
-        "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_home_black_24dp.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -94,6 +94,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_layout.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\card_layout.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dummy.xml.flat",

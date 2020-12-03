@@ -24,6 +24,8 @@
     <string name="ProductTTL">סיום המכירה - יום/חודש/שנה</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
     <string name="menu">תפריט</string>
+    <string name="noProduct">אין מוצרים</string>
+
     <string name="fillDetails">אנא מלא/י את פרטי המוצר</string>
     <string name="title_activity_product_form">ProductFormActivity</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>

@@ -1770,6 +1770,11 @@ id bounce
 id buttonPanel
 id cache_measures
 id cancel_button
+id card_currentPrice
+id card_endingDate
+id card_image
+id card_name
+id card_view
 id center
 id center_horizontal
 id center_vertical
@@ -1884,7 +1889,6 @@ id line3
 id linear
 id listMode
 id list_item
-id list_view
 id lnrlyout
 id logOut
 id login_btn
@@ -1928,6 +1932,7 @@ id nav_host_fragment_container
 id navigation_header_container
 id never
 id newProduct_btn
+id noProducts_seller
 id noScroll
 id none
 id normal
@@ -1961,6 +1966,7 @@ id purchasedProducts
 id radio
 id ratio
 id rectangles
+id recyclerView
 id reverseSawtooth
 id right
 id right_icon
@@ -1990,6 +1996,7 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id seller_btn
+id seller_layout
 id shortcut
 id showCustom
 id showHome
@@ -2150,6 +2157,7 @@ layout activity_main
 layout activity_product_form
 layout activity_seller
 layout activity_signup
+layout card_layout
 layout content_scrolling
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -2352,6 +2360,7 @@ string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string next
+string noProduct
 string password
 string password_toggle_content_description
 string path_password_eye

@@ -16,6 +16,7 @@ MERGED from [com.google.firebase:firebase-database:19.5.1] C:\Users\Beni\.gradle
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\24c3c524db31cbdef156d88d0cb46c26\jetified-appcompat-resources-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\95ce229980a45a6f1bee5dbdb47b1ea6\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\59eddee56637c0c66bd0c50fae7e7954\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\34e58b66e1f8f1009a39258e43120faa\jetified-lifecycle-livedata-ktx-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\6f8d20892e19e5b84d66b50b5ae1e466\jetified-lifecycle-viewmodel-ktx-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\bff2c7d1759d968a8907be47e7d13379\jetified-firebase-auth-interop-19.0.0\AndroidManifest.xml:2:1-10:12
@@ -23,7 +24,6 @@ MERGED from [com.google.android.gms:play-services-measurement-api:18.0.0] C:\Use
 MERGED from [com.google.firebase:firebase-installations:16.3.4] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\51a28cce37c4c60638e606fbd1c65278\jetified-firebase-installations-16.3.4\AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.firebase:firebase-common:19.4.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\6ba1a5836285e4062bb0d3511a2683ea\jetified-firebase-common-19.4.0\AndroidManifest.xml:15:1-40:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\e39f1bef35c2d9ad36d6e97c540d4014\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\9286d0b0add46d496957e2198dab58f1\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\1a6c3f966c16ab61a63b7ade64975ba9\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\2306e7a19ff0135bb69e961069ba04df\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
@@ -240,6 +240,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Ben
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\95ce229980a45a6f1bee5dbdb47b1ea6\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\59eddee56637c0c66bd0c50fae7e7954\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\59eddee56637c0c66bd0c50fae7e7954\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\34e58b66e1f8f1009a39258e43120faa\jetified-lifecycle-livedata-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\34e58b66e1f8f1009a39258e43120faa\jetified-lifecycle-livedata-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\6f8d20892e19e5b84d66b50b5ae1e466\jetified-lifecycle-viewmodel-ktx-2.2.0\AndroidManifest.xml:20:5-22:41
@@ -254,8 +256,6 @@ MERGED from [com.google.firebase:firebase-common:19.4.0] C:\Users\Beni\.gradle\c
 MERGED from [com.google.firebase:firebase-common:19.4.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\6ba1a5836285e4062bb0d3511a2683ea\jetified-firebase-common-19.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\e39f1bef35c2d9ad36d6e97c540d4014\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\e39f1bef35c2d9ad36d6e97c540d4014\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\ee6be7bea86eae752bb417adac5c9fe6\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\9286d0b0add46d496957e2198dab58f1\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\9286d0b0add46d496957e2198dab58f1\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Beni\.gradle\caches\transforms-2\files-2.1\1a6c3f966c16ab61a63b7ade64975ba9\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41

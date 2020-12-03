@@ -1,16 +1,23 @@
 package com.example.biddle.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Cards;
 import Models.Products;
+import Utils.Adapter;
 
 
 public class SellerActivity extends AppCompatActivity {
@@ -35,6 +44,14 @@ public class SellerActivity extends AppCompatActivity {
     private ListView lv_list;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
+    private RecyclerView recyclerView;
+    private ArrayList<Cards> cards;
+    private Adapter adapter;
+    private TextView tv_noProductText;
+
+    private ProgressBar progressb;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +64,14 @@ public class SellerActivity extends AppCompatActivity {
 
         String userId = firebaseAuth.getCurrentUser().getUid();
 
-        lv_list = (ListView)findViewById(R.id.list_view);
+        cards = new ArrayList<Cards>();
+
+        progressb = (ProgressBar)findViewById(R.id.progressBar);
+        progressb.setVisibility(View.GONE);
+
+
+        tv_noProductText = (TextView) findViewById(R.id.noProducts_seller);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         menu_seller_btn = (Button) findViewById(R.id.menu_seller_btn);
         AddProduct_btn = (Button) findViewById(R.id.AddProduct_btn);
 
@@ -62,26 +86,25 @@ public class SellerActivity extends AppCompatActivity {
         menu_seller_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //want to open the menu from the left side
             }
         });
 
-            ref.child(userId).addValueEventListener(new ValueEventListener() {
+        progressb.setVisibility(View.VISIBLE);
+
+        ref.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.exists()) {
                     showData(dataSnapshot);
+                    progressb.setVisibility(View.GONE);
+
                 }
                 else{
-                    ArrayList<String> array  = new ArrayList<>();
-                    array.add("אין מוצרים");
-
-                    ArrayAdapter adapter = new ArrayAdapter(SellerActivity.this, R.layout.simple_list ,array);
-                    lv_list.setAdapter(adapter);
+                    tv_noProductText.setText(R.string.noProduct);
+                    progressb.setVisibility(View.GONE);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
@@ -92,23 +115,22 @@ public class SellerActivity extends AppCompatActivity {
     // print products of current user to list
 
     private void showData(DataSnapshot dataSnapshot) {
-        ArrayList<String> array  = new ArrayList<>();
 
+        cards.clear();
 
         for(DataSnapshot ds : dataSnapshot.getChildren()){
 
-            Products p = new Products();
+            Cards card = new Cards();
 
-            p.setName(ds.getValue(Products.class).getName());
-            p.setPrice(ds.getValue(Products.class).getPrice());
-            p.setEndingDate(ds.getValue(Products.class).getEndingDate());
+            card.setProductName(ds.getValue(Products.class).getName());
+            card.setCurrentPrice(Double.toString(ds.getValue(Products.class).getPrice()));
+            card.setEndingDate(ds.getValue(Products.class).getEndingDate().toString());
 
-            array.add(p.getName());
-            array.add(Double.toString(p.getPrice()));
-            array.add(p.getEndingDate().toString());
+            cards.add(card);
         }
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.simple_list,array);
-        lv_list.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this,cards);
+        recyclerView.setAdapter(adapter);
     }
 }
