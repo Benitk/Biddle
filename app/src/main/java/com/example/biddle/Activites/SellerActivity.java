@@ -41,7 +41,6 @@ public class SellerActivity extends AppCompatActivity {
 
     private Button menu_seller_btn;
     private Button AddProduct_btn;
-    private ListView lv_list;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private RecyclerView recyclerView;
@@ -70,7 +69,7 @@ public class SellerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
 
 
-        tv_noProductText = (TextView) findViewById(R.id.noProducts_seller);
+        tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         menu_seller_btn = (Button) findViewById(R.id.menu_seller_btn);
         AddProduct_btn = (Button) findViewById(R.id.AddProduct_btn);
@@ -125,12 +124,14 @@ public class SellerActivity extends AppCompatActivity {
             card.setProductName(ds.getValue(Products.class).getName());
             card.setCurrentPrice(Double.toString(ds.getValue(Products.class).getPrice()));
             card.setEndingDate(ds.getValue(Products.class).getEndingDate().toString());
+            card.setProductId(ds.getValue(Products.class).getId());
 
             cards.add(card);
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this,cards);
+        String user_type = getIntent().getStringExtra("user_type");
+        adapter = new Adapter(this,cards, user_type);
         recyclerView.setAdapter(adapter);
     }
 }

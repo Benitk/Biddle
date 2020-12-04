@@ -24,6 +24,10 @@
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
     },
     {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
+    },
+    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
@@ -74,6 +78,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_details.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_product_details.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_processbar.xml.flat",
@@ -198,6 +206,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_home_black_24dp.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_home_black_24dp.png"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_customer.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_customer.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",

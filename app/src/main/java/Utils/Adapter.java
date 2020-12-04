@@ -3,6 +3,7 @@ package Utils;
 import android.content.Context;
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +23,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private List<Cards> data;
+    private String user_type;
 
 
-    public Adapter(Context context, List<Cards> data){
+    public Adapter(Context context, List<Cards> data, String type){
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
+        this.user_type = type;
     }
 
     @NonNull
@@ -43,14 +46,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         // bind the textview with data received
 
         Cards c = data.get(i);
-        String productname = c.getProductName();
+        String product_name = c.getProductName();
         String product_endingDate = c.getEndingDate();
         String productPrice = c.getCurrentPrice();
+        String productid = c.getProductId();
 
 
-        viewHolder.getProductName().setText(productname);
+        viewHolder.getProductName().setText(product_name);
         viewHolder.getProduct_endingDate().setText(product_endingDate);
         viewHolder.getProductPrice().setText(productPrice);
+
+        viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("check",user_type);
+                Log.d("check",productid);
+            }
+            });
 
 
         // similarly you can set new image for each card and descriptions
@@ -64,9 +76,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView productPrice,product_endingDate, productName;
+        private View myView;
+
+        public View getmyView() {return myView;}
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            myView = itemView;
 
             productName = itemView.findViewById(R.id.card_name);
             //textTitle = itemView.findViewById(R.id.card_image);

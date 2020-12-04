@@ -23,6 +23,8 @@
     <string name="AddProduct">הוסף מוצר</string>
     <string name="ProductTTL">סיום המכירה - יום/חודש/שנה</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
+    <string name="welcome_customer">ברוך/ה הבא/ה, לקוח/ה!</string>
+
     <string name="menu">תפריט</string>
     <string name="noProduct">אין מוצרים</string>
 
@@ -123,5 +125,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_customer">CustomerActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
 
 </resources>
