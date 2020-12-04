@@ -1,32 +1,23 @@
 package com.example.biddle.Activites;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import Utils.InputValidator;
 
@@ -95,17 +86,25 @@ public class SignupActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_LONG).show();
                                 progressb.setVisibility(View.GONE);
 
                                 // move to login
                                 finish();
                             } else {
-                                Toast.makeText(SignupActivity.this, "ההרשמה נכשלה", Toast.LENGTH_SHORT).show();
                                 progressb.setVisibility(View.GONE);
 
-                            }
+                                try {
+                                    throw task.getException();
+                                } catch(FirebaseAuthUserCollisionException e) {
+                                    et_email.setError("המייל כבר קיים במערכת!");
 
+                                } catch(Exception e) {
+                                    Toast.makeText(SignupActivity.this, "ההרשמה נכשלה", Toast.LENGTH_LONG).show();
+                                }
+
+
+                            }
                         }
                     });
                 }

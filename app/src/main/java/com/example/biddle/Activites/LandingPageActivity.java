@@ -29,6 +29,9 @@ public class LandingPageActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        if(firebaseAuth.getCurrentUser() == null)
+            finish();
+
 
         b_logout_btn = (Button) findViewById(R.id.logout_btn);
         b_customer_btn = (Button) findViewById(R.id.customer_btn);

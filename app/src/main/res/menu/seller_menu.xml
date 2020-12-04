@@ -4,7 +4,7 @@
         android:id="@+id/homePage"
         android:title="דף הבית"/>
     <item
-        android:id="@+id/starProducts"
+        android:id="@+id/unofferedProducts"
         android:title="מוצרים שלא הוצע אף מחיר עליהם"/>
     <item
         android:id="@+id/priceOfferedProducts"

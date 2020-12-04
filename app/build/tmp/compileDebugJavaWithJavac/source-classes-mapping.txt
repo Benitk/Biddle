@@ -1,17 +1,14 @@
-com/example/biddle/Activites/LandingPageActivity.java
- com.example.biddle.Activites.LandingPageActivity
- com.example.biddle.Activites.LandingPageActivity$1
- com.example.biddle.Activites.LandingPageActivity$2
- com.example.biddle.Activites.LandingPageActivity$3
+Utils/Adapter.java
+ Utils.Adapter
+ Utils.Adapter$ViewHolder
+Models/Cards.java
+ Models.Cards
 com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity
  com.example.biddle.Activites.ProductFormActivity$1
  com.example.biddle.Activites.ProductFormActivity$1$1
-com/example/biddle/Activites/SellerActivity.java
- com.example.biddle.Activites.SellerActivity
- com.example.biddle.Activites.SellerActivity$1
- com.example.biddle.Activites.SellerActivity$2
- com.example.biddle.Activites.SellerActivity$3
+Models/Products.java
+ Models.Products
 com/example/biddle/BuildConfig.java
  com.example.biddle.BuildConfig
 com/example/biddle/Activites/DummyActivity.java
@@ -23,10 +20,17 @@ com/example/biddle/Activites/SignupActivity.java
  com.example.biddle.Activites.SignupActivity$1
  com.example.biddle.Activites.SignupActivity$1$1
  com.example.biddle.Activites.SignupActivity$2
-Models/Products.java
- Models.Products
 com/example/biddle/Activites/MainActivity.java
  com.example.biddle.Activites.MainActivity
  com.example.biddle.Activites.MainActivity$1
  com.example.biddle.Activites.MainActivity$1$1
  com.example.biddle.Activites.MainActivity$2
+com/example/biddle/Activites/LandingPageActivity.java
+ com.example.biddle.Activites.LandingPageActivity
+ com.example.biddle.Activites.LandingPageActivity$1
+ com.example.biddle.Activites.LandingPageActivity$2
+ com.example.biddle.Activites.LandingPageActivity$3
+com/example/biddle/Activites/SellerActivity.java
+ com.example.biddle.Activites.SellerActivity
+ com.example.biddle.Activites.SellerActivity$1
+ com.example.biddle.Activites.SellerActivity$2
