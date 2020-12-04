@@ -14,7 +14,7 @@
         android:layout_marginBottom="30dp"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/customer_btn"
         android:layout_width="250dp"
         android:layout_height="120dp"
@@ -22,10 +22,11 @@
         android:background="@drawable/btn_back"
         android:text="לקוח/ה"
         android:textSize="30sp"
+        android:textColor="@color/white"
         android:layout_marginBottom="30dp"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/seller_btn"
         android:layout_width="250dp"
         android:layout_height="120dp"
@@ -33,16 +34,19 @@
         android:background="@drawable/btn_back"
         android:text="סוחר/ת"
         android:textSize="30sp"
+        android:textColor="@color/white"
         android:layout_marginBottom="30dp"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout_btn"
         android:layout_width="250dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:background="@drawable/btn_back"
         android:text="@string/Logout"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        />
 
 </LinearLayout>

@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -39,17 +42,15 @@ import Utils.Adapter;
 
 public class SellerActivity extends AppCompatActivity {
 
-    private Button menu_seller_btn;
-    private Button AddProduct_btn;
+
+    private TextView AddProduct_tv;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private RecyclerView recyclerView;
     private ArrayList<Cards> cards;
     private Adapter adapter;
     private TextView tv_noProductText;
-
     private ProgressBar progressb;
-
 
 
     @Override
@@ -70,21 +71,14 @@ public class SellerActivity extends AppCompatActivity {
 
 
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        menu_seller_btn = (Button) findViewById(R.id.menu_seller_btn);
-        AddProduct_btn = (Button) findViewById(R.id.AddProduct_btn);
+        AddProduct_tv = (TextView) findViewById(R.id.AddProduct_tv);
 
-
-        AddProduct_btn.setOnClickListener(new View.OnClickListener() {
+        AddProduct_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
-            }
-        });
-
-        menu_seller_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
             }
         });
 
@@ -111,6 +105,16 @@ public class SellerActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+//
+//        Log.d("ben", "here");
+//        finish();
+        // put your code here...
+
+    }
+
     // print products of current user to list
 
     private void showData(DataSnapshot dataSnapshot) {
@@ -133,5 +137,37 @@ public class SellerActivity extends AppCompatActivity {
         String user_type = getIntent().getStringExtra("user_type");
         adapter = new Adapter(this,cards, user_type);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.seller_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.homePage:
+                finish();
+                return true;
+            case R.id.unofferedProducts:
+                return true;
+            case R.id.priceOfferedProducts:
+                return true;
+            case R.id.purchasedProducts:
+                return true;
+            case R.id.waitForPickUpProducts:
+                return true;
+            case R.id.editProfile:
+                return true;
+            case R.id.logOut:
+                firebaseAuth.signOut();
+                startActivity(new Intent(SellerActivity.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
