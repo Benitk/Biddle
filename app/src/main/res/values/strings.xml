@@ -22,6 +22,8 @@
     <string name="ProductDescription">תיאור</string>
     <string name="AddProduct">הוסף מוצר</string>
     <string name="ProductTTL">סיום המכירה - יום/חודש/שנה</string>
+    <string name="ProductTTLDate">תאריך סיום המכירה</string>
+    <string name="ProductTTLTime">שעת סיום המכירה</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
     <string name="menu">תפריט</string>
     <string name="noProduct">אין מוצרים</string>

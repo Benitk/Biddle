@@ -1686,7 +1686,8 @@ id ProductCategory
 id ProductDescription
 id ProductName
 id ProductPrice
-id ProductTTL
+id ProductTTLDate
+id ProductTTLTime
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -2246,6 +2247,8 @@ string ProductDescription
 string ProductName
 string ProductPrice
 string ProductTTL
+string ProductTTLDate
+string ProductTTLTime
 string Signup
 string abc_action_bar_home_description
 string abc_action_bar_up_description

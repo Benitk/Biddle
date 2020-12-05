@@ -8,13 +8,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="45dp"
         android:text="@string/fillDetails"
         android:gravity="center"
-        android:textSize="20dp"
-        >
-
-
+        android:textSize="20dp">
     </TextView>
 
     <LinearLayout
@@ -76,21 +73,43 @@
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-
                 <EditText
-                    android:id="@+id/ProductTTL"
+                    android:id="@+id/ProductTTLDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
                     android:gravity="right"
-                    android:hint="@string/ProductTTL"
+                    android:hint="@string/ProductTTLDate"
+                    android:inputType="datetime"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/ProductTTLTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="@string/ProductTTLTime"
                     android:inputType="datetime"
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
@@ -191,10 +210,6 @@
             />
     </LinearLayout>
 
-
-
-
-
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -202,7 +217,5 @@
         layout="@layout/processbar">
         >
     </include>
-
-
 
 </RelativeLayout>
