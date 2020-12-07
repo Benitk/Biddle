@@ -1,4 +1,4 @@
-#Mon Dec 07 17:34:28 GMT+02:00 2020
+#Mon Dec 07 19:23:23 GMT+02:00 2020
 base.0=C\:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

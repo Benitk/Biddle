@@ -101,9 +101,8 @@ public class ProductFormActivity extends AppCompatActivity {
         productTTLDate = (EditText) findViewById(R.id.ProductTTLDate);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
-        set_date = new SetDate();
-        set_time = new SetYourTime();
-
+        set_date = new SetDate(productTTLDate);
+        set_time = new SetYourTime(productTTLTime);
 
 
 
@@ -151,16 +150,15 @@ public class ProductFormActivity extends AppCompatActivity {
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
                 //get the user price input string then convert it to double
                 productPrice = Double.parseDouble(((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim());
-                //productTTLDate = ((EditText) findViewById(R.id.ProductTTLDate)).getText().toString().trim();
-                //productTTLTime = ((EditText) findViewById(R.id.ProductTTLTime)).getText().toString().trim();
                 productCategory = ((EditText) findViewById(R.id.ProductCategory)).getText().toString().trim();
 
 
-                // write new product to firebase
 
 
                 // date format is adding 1900 for year
                 Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
+
+
                 Products p = new Products(productID, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
 
@@ -211,9 +209,9 @@ public class ProductFormActivity extends AppCompatActivity {
 
         imgPath = userId + "/" + productID + "/" + UUID.randomUUID().toString();
 
-        StorageReference riversRef = storageref.child(imgPath);
+        StorageReference Ref = storageref.child(imgPath);
 
-        riversRef.putFile(imageUri).
+        Ref.putFile(imageUri).
                 addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
