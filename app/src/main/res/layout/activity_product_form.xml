@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,9 +25,9 @@
         android:paddingRight="60dp">
 
         <LinearLayout
-            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="395dp"
+            android:layout_marginBottom="50dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -51,6 +52,7 @@
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:focusable="false"
                     android:gravity="right"
                     android:hint="@string/ProductTTLDate"
                     android:inputType="datetime"
@@ -108,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:focusable="false"
                     android:gravity="right"
                     android:hint="@string/ProductTTLTime"
                     android:inputType="datetime"
@@ -128,7 +132,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="16dp">
-
 
 
                 <EditText
@@ -154,7 +157,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
@@ -162,25 +165,33 @@
                 <EditText
                     android:id="@+id/ProductDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="50dp"
                     android:background="#00000000"
                     android:gravity="right"
                     android:hint="@string/ProductDescription"
                     android:inputType="textMultiLine"
-                    android:lines="5"
-                    android:layout_marginBottom="50dp"
                     android:letterSpacing="0.1"
+                    android:lines="5"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
                     android:textSize="16dp" />
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/offwhite"></LinearLayout>
+
+            <ImageView
+                android:id="@+id/productImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
         </LinearLayout>
 
     </LinearLayout>

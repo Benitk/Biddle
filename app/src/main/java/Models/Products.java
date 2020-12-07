@@ -11,17 +11,19 @@ public class Products {
     private String category;
     private String description;
     private Date endingDate;
+    private String imgPath;
 
     public Products(){
     }
 
-    public Products(String id ,String name, double price, String category, Date endingdate, String description){
+    public Products(String id ,String name, double price, String category, Date endingdate, String description, String imgPath){
         this.id = id;
         this.name = name;
         this.price = price;
         this.category = category;
         this.description = description;
         this.endingDate = endingdate;
+        this.imgPath = imgPath;
     }
 
     public String getId() {
@@ -50,6 +52,18 @@ public class Products {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public String getDescription() {

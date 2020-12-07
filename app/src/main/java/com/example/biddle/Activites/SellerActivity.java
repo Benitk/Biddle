@@ -38,6 +38,7 @@ import java.util.List;
 import Models.Cards;
 import Models.Products;
 import Utils.Adapter;
+import Utils.AlgoLibrary;
 
 
 public class SellerActivity extends AppCompatActivity {
@@ -127,7 +128,7 @@ public class SellerActivity extends AppCompatActivity {
 
             card.setProductName(ds.getValue(Products.class).getName());
             card.setCurrentPrice(Double.toString(ds.getValue(Products.class).getPrice()));
-            card.setEndingDate(ds.getValue(Products.class).getEndingDate().toString());
+            card.setEndingDate(AlgoLibrary.DateFormating(ds.getValue(Products.class).getEndingDate()));
             card.setProductId(ds.getValue(Products.class).getId());
 
             cards.add(card);

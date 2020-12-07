@@ -40,10 +40,6 @@
         "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\activity_dummy.xml"
     },
     {
-        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_scrolling.xml.flat",
-        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\content_scrolling.xml"
-    },
-    {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
