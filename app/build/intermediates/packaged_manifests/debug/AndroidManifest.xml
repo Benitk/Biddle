@@ -22,6 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle" >
+        <activity android:name="com.example.biddle.Activites.ProductDetailsActivity" />
+        <activity
+            android:name="com.example.biddle.Activites.CustomerActivity"
+            android:label="@string/title_activity_customer"
+            android:theme="@style/Theme.Biddle.NoActionBar" />
         <activity android:name="com.example.biddle.Activites.DummyActivity" />
         <activity
             android:name="com.example.biddle.Activites.ProductFormActivity"

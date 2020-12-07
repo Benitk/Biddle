@@ -36,25 +36,27 @@ public class LandingPageActivity extends AppCompatActivity {
         b_logout_btn = (Button) findViewById(R.id.logout_btn);
         b_customer_btn = (Button) findViewById(R.id.customer_btn);
         b_seller_btn = (Button) findViewById(R.id.seller_btn);
-
         b_customer_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LandingPageActivity.this, DummyActivity.class));
+                Intent intent = new Intent(LandingPageActivity.this, CustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
             }
         });
 
         b_seller_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LandingPageActivity.this, SellerActivity.class));
+                Intent intent = new Intent(LandingPageActivity.this, SellerActivity.class);
+                intent.putExtra("user_type", "seller");
+                startActivity(intent);
             }
         });
 
         b_logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 firebaseAuth.signOut();
                 finish();
             }

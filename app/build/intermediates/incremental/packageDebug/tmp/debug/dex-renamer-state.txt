@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Mon Dec 07 12:57:08 IST 2020
 base.0=C\:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+=======
+#Fri Dec 04 15:59:19 PST 2020
+base.0=D\:\\android projects\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+>>>>>>> edddcbe7914829cec520eedccb0840342c0899ee
 path.0=classes.dex
 renamed.0=classes.dex

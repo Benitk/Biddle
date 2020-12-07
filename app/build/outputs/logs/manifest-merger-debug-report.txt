@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.navigation:navigation-ui:2.3.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\3d4510e059f78d671f03cee612b3d655\navigation-ui-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\59556ad8b9d4e87f44c01d9cded7d96d\material-1.2.1\AndroidManifest.xml:17:1-24:12
@@ -69,20 +69,20 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\cac
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\0b05226724115b16f3d07c8234c42488\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\d024aebceca4f3b4a1a405307c3c8d80\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\fac48056d11ea2d220eb63709cfa492d\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
-INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
 	package
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-36:12
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:1-42:12
 		INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:2:11-69
@@ -105,7 +105,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.0] C:
 	android:name
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:7:5-34:19
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:7:5-40:19
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\59556ad8b9d4e87f44c01d9cded7d96d\material-1.2.1\AndroidManifest.xml:22:5-20
@@ -166,23 +166,23 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\us
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:13:9-44
-activity#com.example.biddle.Activites.DummyActivity
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:9-61
+activity#com.example.biddle.Activites.ProductDetailsActivity
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:9-79
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:19-58
-activity#com.example.biddle.Activites.ProductFormActivity
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:19-67
+activity#com.example.biddle.Activites.CustomerActivity
 ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:15:9-18:63
 	android:label
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:13-64
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:13-60
 	android:theme
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:18:13-60
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:13-58
-activity#com.example.biddle.Activites.SellerActivity
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:19:9-62
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:13-55
+activity#com.example.biddle.Activites.DummyActivity
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:19:9-61
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:19:19-59
-activity#com.example.biddle.Activites.LandingPageActivity
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:19:19-58
+activity#com.example.biddle.Activites.ProductFormActivity
 ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:20:9-23:63
 	android:label
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:22:13-64
@@ -190,28 +190,40 @@ ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדס
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:23:13-60
 	android:name
 		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:21:13-58
-activity#com.example.biddle.Activites.SignupActivity
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:24:9-27:63
+activity#com.example.biddle.Activites.SellerActivity
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:24:9-62
+	android:name
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:24:19-59
+activity#com.example.biddle.Activites.LandingPageActivity
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:25:9-28:63
 	android:label
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:26:13-58
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:27:13-64
 	android:theme
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:27:13-60
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:28:13-60
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:25:13-53
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:26:13-58
+activity#com.example.biddle.Activites.SignupActivity
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:29:9-32:63
+	android:label
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:31:13-58
+	android:theme
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:32:13-60
+	android:name
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:30:13-53
 activity#com.example.biddle.Activites.MainActivity
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:28:9-33:20
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:33:9-39:20
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:28:19-57
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:33:19-57
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:29:13-32:29
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:34:13-38:29
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:30:17-76
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:30:27-74
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:35:27-74
 action#android.intent.action.MAIN
-ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:31:17-68
+ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:37:17-69
 	android:name
-		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:31:25-66
+		ADDED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:37:25-66
 uses-sdk
 INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml
