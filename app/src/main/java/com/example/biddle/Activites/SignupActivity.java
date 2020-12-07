@@ -64,50 +64,29 @@ public class SignupActivity extends AppCompatActivity {
                 String user_password = et_password.getText().toString().trim();
                 String user_confirmPassword = et_confirmPassword.getText().toString().trim();
                 InputValidator validator = new InputValidator();
+                boolean flag = true;
 
-                if(!validator.isValidPassword(user_password))
+                if(!validator.isValidPassword(user_password)) {
                     et_password.setError("סיסמה לא תקינה, נסה להצמד להוראות הבאות: " +
                             "לפחות אות אחת קטנה [a-z] " +
                             "לפחות אות אחת גדולה [A-Z] " +
                             "מינימום אורך 8 תווים, מקסימום 20 תווים ");
-
-
-                if(!validator.isEqual(user_password, user_confirmPassword))
-                    et_confirmPassword.setError("הסיסמה לא תואמת לקודמת.");
-
-                if(!validator.isValidEmail(user_email))
-                    et_email.setError("מייל בפורמט לא תקין.");
-
-                else {
-
-                    progressb.setVisibility(View.VISIBLE);
-                    // input is valid send in to firebase
-                    firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_LONG).show();
-                                progressb.setVisibility(View.GONE);
-
-                                // move to login
-                                finish();
-                            } else {
-                                progressb.setVisibility(View.GONE);
-
-                                try {
-                                    throw task.getException();
-                                } catch(FirebaseAuthUserCollisionException e) {
-                                    et_email.setError("המייל כבר קיים במערכת!");
-
-                                } catch(Exception e) {
-                                    Toast.makeText(SignupActivity.this, "ההרשמה נכשלה", Toast.LENGTH_LONG).show();
-                                }
-
-
-                            }
-                        }
-                    });
+                    flag = false;
                 }
+
+
+                if(!validator.isEqual(user_password, user_confirmPassword)){
+                    et_confirmPassword.setError("הסיסמה לא תואמת לקודמת.");
+                    flag = false;
+                }
+
+                if(!validator.isValidEmail(user_email)) {
+                    et_email.setError("מייל בפורמט לא תקין.");
+                    flag = false;
+                }
+
+                if(flag)
+                    SignUpDB(user_email, user_password);
             }
         });
 
@@ -121,5 +100,34 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    private void SignUpDB(String user_email, String user_password){
+        progressb.setVisibility(View.VISIBLE);
+        // input is valid send in to firebase
+        firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_LONG).show();
+                    progressb.setVisibility(View.GONE);
+
+                    // move to login
+                    finish();
+                } else {
+                    progressb.setVisibility(View.GONE);
+
+                    try {
+                        throw task.getException();
+                    } catch(FirebaseAuthUserCollisionException e) {
+                        et_email.setError("המייל כבר קיים במערכת!");
+
+                    } catch(Exception e) {
+                        Toast.makeText(SignupActivity.this, "ההרשמה נכשלה", Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            }
+        });
+
     }
 }

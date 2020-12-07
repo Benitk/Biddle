@@ -66,38 +66,23 @@ public class MainActivity extends AppCompatActivity {
                 String user_password = et_password.getText().toString().trim();
 
                 InputValidator validator = new InputValidator();
+                boolean flag = true;
 
-                if(!validator.isValidEmail(user_email))
+                if(!validator.isValidEmail(user_email)) {
                     et_email.setError("מייל בפורמט לא תקין.");
-
-                if(!validator.isValidPassword(user_password))
-                    et_password.setError("סיסמא שגויה, נסה שנית");
-
-                else {
-                    progressb.setVisibility(View.VISIBLE);
-
-                    firebaseAuth.signInWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
-                                Toast.makeText(MainActivity.this, "הכניסה הושלמה.", Toast.LENGTH_SHORT).show();
-                                progressb.setVisibility(View.GONE);
-
-                                startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
-
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(MainActivity.this, "הכניסה נכשלה.", Toast.LENGTH_SHORT).show();
-                                progressb.setVisibility(View.GONE);
-                            }
-                        }
-                    });
+                    flag = false;
                 }
-                    }
-                 });
+
+                if(!validator.isValidPassword(user_password)) {
+                    et_password.setError("סיסמא שגויה, נסה שנית");
+                    flag = false;
+                }
+
+                if(flag)
+                    LoginDB(user_email, user_password);
+
+            }
+        });
 
 
         /* signup button listener - on click return to login page
@@ -112,6 +97,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void LoginDB(String user_email, String user_password){
+        progressb.setVisibility(View.VISIBLE);
+
+        firebaseAuth.signInWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    // Sign in success, update UI with the signed-in user's information
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    Toast.makeText(MainActivity.this, "הכניסה הושלמה.", Toast.LENGTH_SHORT).show();
+                    progressb.setVisibility(View.GONE);
+
+                    startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
+
+
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(MainActivity.this, "הכניסה נכשלה.", Toast.LENGTH_SHORT).show();
+                    progressb.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
 
 
 }

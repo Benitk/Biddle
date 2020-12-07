@@ -8,10 +8,10 @@ public class SetYourTime implements TimePickerDialog.OnTimeSetListener {
 
     private int hour ;
     private int minute ;
-    private EditText edittext;
+    private EditText editText;
 
     public SetYourTime(EditText ed){
-        this.edittext = ed;
+        this.editText = ed;
     }
 
     @Override
@@ -25,7 +25,8 @@ public class SetYourTime implements TimePickerDialog.OnTimeSetListener {
         this.hour = hourOfDay;
         this.minute = minute;
 
-        this.edittext.setText(time);
+        this.editText.setError(null);
+        this.editText.setText(time);
     }
 
     public int getHour() {

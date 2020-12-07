@@ -2,19 +2,21 @@ Models/Cards.java
  Models.Cards
 Utils/AlgoLibrary.java
  Utils.AlgoLibrary
-com/example/biddle/BuildConfig.java
- com.example.biddle.BuildConfig
-com/example/biddle/Activites/DummyActivity.java
- com.example.biddle.Activites.DummyActivity
-Utils/InputValidator.java
- Utils.InputValidator
-Models/Products.java
- Models.Products
 com/example/biddle/Activites/MainActivity.java
  com.example.biddle.Activites.MainActivity
  com.example.biddle.Activites.MainActivity$1
- com.example.biddle.Activites.MainActivity$1$1
  com.example.biddle.Activites.MainActivity$2
+ com.example.biddle.Activites.MainActivity$3
+com/example/biddle/Activites/DummyActivity.java
+ com.example.biddle.Activites.DummyActivity
+com/example/biddle/Activites/SellerActivity.java
+ com.example.biddle.Activites.SellerActivity
+ com.example.biddle.Activites.SellerActivity$1
+ com.example.biddle.Activites.SellerActivity$2
+Models/Products.java
+ Models.Products
+com/example/biddle/BuildConfig.java
+ com.example.biddle.BuildConfig
 Utils/Adapter.java
  Utils.Adapter
  Utils.Adapter$1
@@ -27,17 +29,15 @@ com/example/biddle/Activites/LandingPageActivity.java
  com.example.biddle.Activites.LandingPageActivity$1
  com.example.biddle.Activites.LandingPageActivity$2
  com.example.biddle.Activites.LandingPageActivity$3
+Utils/InputValidator.java
+ Utils.InputValidator
+com/example/biddle/Activites/ProductDetailsActivity.java
+ com.example.biddle.Activites.ProductDetailsActivity
 com/example/biddle/Activites/SignupActivity.java
  com.example.biddle.Activites.SignupActivity
  com.example.biddle.Activites.SignupActivity$1
- com.example.biddle.Activites.SignupActivity$1$1
  com.example.biddle.Activites.SignupActivity$2
-com/example/biddle/Activites/ProductDetailsActivity.java
- com.example.biddle.Activites.ProductDetailsActivity
-com/example/biddle/Activites/SellerActivity.java
- com.example.biddle.Activites.SellerActivity
- com.example.biddle.Activites.SellerActivity$1
- com.example.biddle.Activites.SellerActivity$2
+ com.example.biddle.Activites.SignupActivity$3
 Utils/SetDate.java
  Utils.SetDate
 com/example/biddle/Activites/ProductFormActivity.java
@@ -46,9 +46,9 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$2
  com.example.biddle.Activites.ProductFormActivity$3
  com.example.biddle.Activites.ProductFormActivity$4
- com.example.biddle.Activites.ProductFormActivity$4$1
  com.example.biddle.Activites.ProductFormActivity$5
  com.example.biddle.Activites.ProductFormActivity$6
  com.example.biddle.Activites.ProductFormActivity$7
+ com.example.biddle.Activites.ProductFormActivity$8
 Utils/SetYourTime.java
  Utils.SetYourTime

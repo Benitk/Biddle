@@ -35,6 +35,7 @@ public class SetDate implements DatePickerDialog.OnDateSetListener {
         this.month = monthOfYear;
         this.day = dayOfMonth;
 
+        this.editText.setError(null);
         this.editText.setText(date);
 
     }

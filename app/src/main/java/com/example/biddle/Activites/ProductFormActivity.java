@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,16 +52,13 @@ import Utils.SetYourTime;
 public class ProductFormActivity extends AppCompatActivity {
 
     private TextView newProduct_btn;
-    private String productName;
-    private String productDescription;
+    private String productName, productDescription, productCategory;
     private double productPrice;
     // will convert to date type
-    private EditText productTTLDate;
-    private EditText productTTLTime;
+    private EditText productTTLDate ,productTTLTime;
     private ImageView productImg;
     private String userId;
 
-    private String productCategory;
     private Uri imageUri;
     private String imgPath;
 
@@ -74,6 +72,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseStorage storage;
     private StorageReference storageref;
+    private DatabaseReference ref;
 
 
     @Override
@@ -89,7 +88,7 @@ public class ProductFormActivity extends AppCompatActivity {
         userId = firebaseAuth.getCurrentUser().getUid();
         productID = UUID.randomUUID().toString(); // genreate unique product id
 
-        DatabaseReference ref = database.getReference().child("Products").child(userId);
+        ref = database.getReference().child("Products").child(userId);
 
 
 
@@ -98,7 +97,7 @@ public class ProductFormActivity extends AppCompatActivity {
         productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
 
         productImg = (ImageView)findViewById(R.id.productImg);
-        productTTLDate = (EditText) findViewById(R.id.ProductTTLDate);
+        productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
         set_date = new SetDate(productTTLDate);
@@ -144,46 +143,87 @@ public class ProductFormActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressb.setVisibility(View.VISIBLE);
-
                 productName = ((EditText)findViewById(R.id.ProductName)).getText().toString().trim();
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
                 //get the user price input string then convert it to double
-                productPrice = Double.parseDouble(((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim());
                 productCategory = ((EditText) findViewById(R.id.ProductCategory)).getText().toString().trim();
 
+                String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
 
 
-
-                // date format is adding 1900 for year
-                Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
-
-
-                Products p = new Products(productID, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
+                // validtate input
+                boolean flag = true;
 
 
-                // insert new product to firebase
+                if(TextUtils.isEmpty(prodPrice)) {
+                    ((EditText) findViewById(R.id.ProductPrice)).setError("חובה למלא");
+                    flag = false;
+                }
+                else
+                    productPrice = Double.parseDouble(prodPrice);
 
-                ref.child(productID).setValue(p, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        if (databaseError != null) {
-                            progressb.setVisibility(View.GONE);
-                            Toast.makeText(ProductFormActivity.this, "המוצר לא התווסף", Toast.LENGTH_SHORT).show();
-                            System.out.println("Data could not be saved " + databaseError.getMessage());
-                            //finish();
-                        } else {
-                            progressb.setVisibility(View.GONE);
-                            Toast.makeText(ProductFormActivity.this, "המוצר התווסף בהצלחה", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
-                });
+                if(TextUtils.isEmpty(productName)) {
+                    ((EditText) findViewById(R.id.ProductName)).setError("חובה למלא");
+                    flag = false;
+                }
+
+                if(TextUtils.isEmpty(productDescription)) {
+                    ((EditText) findViewById(R.id.ProductDescription)).setError("חובה למלא");
+                    flag = false;
+                }
+
+                if(TextUtils.isEmpty(productCategory)){
+                    ((EditText) findViewById(R.id.ProductCategory)).setError("חובה למלא");
+                    flag = false;
+                }
+
+                if(TextUtils.isEmpty(productTTLTime.getText().toString().trim())) {
+                    ((EditText) findViewById(R.id.ProductTTLTime)).setError("חובה למלא");
+                    flag = false;
+                }
+
+                if(TextUtils.isEmpty(productTTLDate.getText().toString().trim())) {
+                    ((EditText) findViewById(R.id.ProductTTLDate)).setError("חובה למלא");
+                    flag = false;
+                }
+
+
+                // should check for img too
+
+                if(flag){
+
+                    progressb.setVisibility(View.VISIBLE);
+
+                    // jave date class  is adding 1900 for year, month range(0,11)
+                    Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
+                    Products p = new Products(productID, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
+
+                    // insert new product to firebase
+                    WriteToDB(p);
+
+                }
 
             }
         });
     }
 
+    private void WriteToDB(Object value){
+        ref.child(productID).setValue(value, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                if (databaseError != null) {
+                    progressb.setVisibility(View.GONE);
+                    Toast.makeText(ProductFormActivity.this, "המוצר לא התווסף", Toast.LENGTH_SHORT).show();
+                    System.out.println("Data could not be saved " + databaseError.getMessage());
+                    //finish();
+                } else {
+                    progressb.setVisibility(View.GONE);
+                    Toast.makeText(ProductFormActivity.this, "המוצר התווסף בהצלחה", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
+    }
 
 
     private void ChoosePic() {
@@ -198,11 +238,11 @@ public class ProductFormActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageUri = data.getData();
-            uploadPic();
+            uploadPicToDB();
         }
     }
 
-    private void uploadPic() {
+    private void uploadPicToDB() {
         ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("העלאה מתבצעת...");
         pd.show();
