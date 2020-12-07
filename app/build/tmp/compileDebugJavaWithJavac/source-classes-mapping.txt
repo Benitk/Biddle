@@ -1,16 +1,11 @@
 Models/Cards.java
  Models.Cards
-<<<<<<< HEAD
 Utils/SetDate.java
  Utils.SetDate
 com/example/biddle/Activites/DummyActivity.java
  com.example.biddle.Activites.DummyActivity
 Utils/SetYourTime.java
  Utils.SetYourTime
-=======
-com/example/biddle/Activites/DummyActivity.java
- com.example.biddle.Activites.DummyActivity
->>>>>>> edddcbe7914829cec520eedccb0840342c0899ee
 Models/Products.java
  Models.Products
 com/example/biddle/Activites/MainActivity.java
@@ -20,44 +15,24 @@ com/example/biddle/Activites/MainActivity.java
  com.example.biddle.Activites.MainActivity$2
 Utils/Adapter.java
  Utils.Adapter
-<<<<<<< HEAD
- Utils.Adapter$ViewHolder
-=======
  Utils.Adapter$1
  Utils.Adapter$ViewHolder
 com/example/biddle/Activites/CustomerActivity.java
  com.example.biddle.Activites.CustomerActivity
  com.example.biddle.Activites.CustomerActivity$1
->>>>>>> edddcbe7914829cec520eedccb0840342c0899ee
 com/example/biddle/Activites/LandingPageActivity.java
  com.example.biddle.Activites.LandingPageActivity
  com.example.biddle.Activites.LandingPageActivity$1
  com.example.biddle.Activites.LandingPageActivity$2
  com.example.biddle.Activites.LandingPageActivity$3
-<<<<<<< HEAD
-com/example/biddle/Activites/SignupActivity.java
- com.example.biddle.Activites.SignupActivity
- com.example.biddle.Activites.SignupActivity$1
- com.example.biddle.Activites.SignupActivity$1$1
- com.example.biddle.Activites.SignupActivity$2
-Utils/InputValidator.java
- Utils.InputValidator
-com/example/biddle/BuildConfig.java
- com.example.biddle.BuildConfig
 com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity
  com.example.biddle.Activites.ProductFormActivity$1
  com.example.biddle.Activites.ProductFormActivity$2
  com.example.biddle.Activites.ProductFormActivity$3
  com.example.biddle.Activites.ProductFormActivity$3$1
-=======
-com/example/biddle/Activites/ProductFormActivity.java
- com.example.biddle.Activites.ProductFormActivity
- com.example.biddle.Activites.ProductFormActivity$1
- com.example.biddle.Activites.ProductFormActivity$1$1
 com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity
->>>>>>> edddcbe7914829cec520eedccb0840342c0899ee
 com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
