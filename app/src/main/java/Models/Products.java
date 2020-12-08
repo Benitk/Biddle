@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class Products {
     private String id;
+    private String customerID;
+    private String sellerID;
     private String name;
     private double price;
     private String category;
@@ -16,7 +18,8 @@ public class Products {
     public Products(){
     }
 
-    public Products(String id ,String name, double price, String category, Date endingdate, String description, String imgPath){
+
+    public Products(String id , String sellerID,String customerID, String name, double price, String category, Date endingdate, String description, String imgPath){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -24,6 +27,24 @@ public class Products {
         this.description = description;
         this.endingDate = endingdate;
         this.imgPath = imgPath;
+        this.sellerID = sellerID;
+        this.customerID = customerID;
+    }
+
+    public String getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
+
+    public String getSellerID() {
+        return sellerID;
+    }
+
+    public void setSellerID(String sellerID) {
+        this.sellerID = sellerID;
     }
 
     public String getId() {

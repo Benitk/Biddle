@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 import Models.Cards;
 import Models.Products;
-import Utils.Adapter;
+import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
 
 
@@ -33,10 +33,12 @@ public class CustomerActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private RecyclerView recyclerView;
     private ArrayList<Cards> cards;
-    private Adapter adapter;
+    private CardsAdapter cardsAdapter;
     private TextView tv_noProductText;
     private String userId;
     private ProgressBar progressb;
+
+    private DatabaseReference refProducts;
 
 
 
@@ -47,7 +49,7 @@ public class CustomerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference().child("Products");
+         refProducts = database.getReference().child("Products");
 
          userId = firebaseAuth.getCurrentUser().getUid();
 
@@ -62,60 +64,80 @@ public class CustomerActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
 
+        initRecyclerAdapter();
+        ReadFromDB();
+    }
 
+
+
+    // read all product from
+    private void ReadFromDB(){
         progressb.setVisibility(View.VISIBLE);
 
-        ref.addValueEventListener(new ValueEventListener() {
+        refProducts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                cards.clear();
+                tv_noProductText.setText("");
 
-                if(dataSnapshot.exists()) {
-                    showData(dataSnapshot);
-                    progressb.setVisibility(View.GONE);
-                }
-                else{
+                if (dataSnapshot.exists())
+                    addNewCard(dataSnapshot);
+
+                else {
                     tv_noProductText.setText(R.string.noProduct);
                     progressb.setVisibility(View.GONE);
                 }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+                // would change to toast
                 System.out.println("The read failed: " + databaseError.getCode());
+                progressb.setVisibility(View.GONE);
             }
         });
+
     }
 
 
 
+    // create new card from given snapshot
+    private void addNewCard(DataSnapshot ds){
 
-        // print products of current user to list
+        Cards card = null;
 
-    private void showData(DataSnapshot dataSnapshot) {
-
-        cards.clear();
-
-        // get each user that created products
-        for(DataSnapshot Userds : dataSnapshot.getChildren()){
+        for(DataSnapshot product : ds.getChildren()){
 
             // user cant bid on his own product
-            if(!userId.equals(Userds.getKey())) {
-                // get each product in each user
-                for (DataSnapshot ds : Userds.getChildren()) {
+            if(!userId.equals(product.getValue(Products.class).getSellerID())) {
+                card = new Cards();
 
-                    Cards card = new Cards();
-                    card.setProductName(ds.getValue(Products.class).getName());
-                    card.setCurrentPrice(Double.toString(ds.getValue(Products.class).getPrice()));
-                    card.setEndingDate(AlgoLibrary.DateFormating(ds.getValue(Products.class).getEndingDate()));
-                    card.setProductId(ds.getValue(Products.class).getId());
+                card.setProductName(product.getValue(Products.class).getName());
+                card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
+                card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+                card.setProductId(product.getValue(Products.class).getId());
 
-                    cards.add(card);
-                }
+                cards.add(card);
             }
         }
+        if(cards.isEmpty())
+            tv_noProductText.setText(R.string.noProduct);
+
+        cardsAdapter.notifyDataSetChanged();
+        progressb.setVisibility(View.GONE);
+    }
+
+
+    // print the cards arrays on the current activity recyclerView
+    private void initRecyclerAdapter() {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String user_type = getIntent().getStringExtra("user_type");
-        adapter = new Adapter(this,cards, user_type);
-        recyclerView.setAdapter(adapter);
+        cardsAdapter = new CardsAdapter(this,cards, user_type);
+        recyclerView.setAdapter(cardsAdapter);
+
     }
+
+
 }

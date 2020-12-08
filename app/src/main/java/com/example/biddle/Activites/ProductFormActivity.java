@@ -72,7 +72,9 @@ public class ProductFormActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseStorage storage;
     private StorageReference storageref;
-    private DatabaseReference ref;
+    private DatabaseReference refUser;
+    private DatabaseReference refProduct;
+    private DatabaseReference refCategory;
 
 
     @Override
@@ -88,7 +90,11 @@ public class ProductFormActivity extends AppCompatActivity {
         userId = firebaseAuth.getCurrentUser().getUid();
         productID = UUID.randomUUID().toString(); // genreate unique product id
 
-        ref = database.getReference().child("Products").child(userId);
+        refUser = database.getReference().child("Users").child(userId).child("sellerProducts");
+        refProduct = database.getReference().child("Products");
+        refCategory = database.getReference().child("Categories");
+
+
 
 
 
@@ -192,23 +198,29 @@ public class ProductFormActivity extends AppCompatActivity {
 
                 if(flag){
 
-                    progressb.setVisibility(View.VISIBLE);
-
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
-                    Products p = new Products(productID, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
-                    // insert new product to firebase
-                    WriteToDB(p);
+                    // there is no bidder so customerID set to null at the start
+                    Products p = new Products(productID,userId,null, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
+                    // insert new product to product root
+                    WriteToDB(p, refProduct.child(productID));
+
+                    //insert new Product as Category prime key
+                    WriteToDB(p, refCategory.child(productCategory).child(productID));
+
+                    // insert new product id refrence to user root
+                    WriteToDB(p, refUser.child(productID));
                 }
-
             }
         });
     }
 
-    private void WriteToDB(Object value){
-        ref.child(productID).setValue(value, new DatabaseReference.CompletionListener() {
+    private void WriteToDB(Object value, DatabaseReference ref){
+        progressb.setVisibility(View.VISIBLE);
+
+        ref.setValue(value, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {

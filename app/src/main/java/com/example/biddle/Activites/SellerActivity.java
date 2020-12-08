@@ -1,28 +1,18 @@
 package com.example.biddle.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.biddle.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,11 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Models.Cards;
 import Models.Products;
-import Utils.Adapter;
+import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
 
 
@@ -45,13 +34,17 @@ public class SellerActivity extends AppCompatActivity {
 
 
     private TextView AddProduct_tv;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase database;
+
     private RecyclerView recyclerView;
     private ArrayList<Cards> cards;
-    private Adapter adapter;
+    private CardsAdapter cardsAdapter;
     private TextView tv_noProductText;
     private ProgressBar progressb;
+
+    private DatabaseReference refProducts;
+    private DatabaseReference refUser;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase database;
 
 
     @Override
@@ -61,9 +54,11 @@ public class SellerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference().child("Products");
 
         String userId = firebaseAuth.getCurrentUser().getUid();
+
+        // root to user
+        refUser = database.getReference().child("Users").child(userId).child("sellerProducts");
 
         cards = new ArrayList<Cards>();
 
@@ -82,62 +77,80 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
             }
         });
+        initRecyclerAdapter();
+        ReadFromDB();
 
+    }
+
+
+    // this method is getting all sellers product keys from user root and retrive all of them from product root
+    private void ReadFromDB(){
         progressb.setVisibility(View.VISIBLE);
 
-        ref.child(userId).addValueEventListener(new ValueEventListener() {
+
+        refUser.addValueEventListener(new ValueEventListener() {
+
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot){
+                cards.clear();
+                tv_noProductText.setText("");
 
-                if(dataSnapshot.exists()) {
-                    showData(dataSnapshot);
-                    progressb.setVisibility(View.GONE);
 
-                }
-                else{
+                if (dataSnapshot.exists())
+                    addNewCard(dataSnapshot);
+
+                else {
                     tv_noProductText.setText(R.string.noProduct);
                     progressb.setVisibility(View.GONE);
+
                 }
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                // would change to toast
+
+                Log.d("dbCanceled: ", databaseError.getMessage());
+                progressb.setVisibility(View.GONE);
+
             }
+
+
         });
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-//
-//        Log.d("ben", "here");
-//        finish();
-        // put your code here...
+    // create new card from given snapshot of seller products
+    private void addNewCard(DataSnapshot ds){
 
-    }
+        Cards card = null;
 
-    // print products of current user to list
+        for(DataSnapshot product : ds.getChildren()){
+            card = new Cards();
 
-    private void showData(DataSnapshot dataSnapshot) {
+            card.setProductName(product.getValue(Products.class).getName());
 
-        cards.clear();
+            card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
 
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
+            card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
-            Cards card = new Cards();
-
-            card.setProductName(ds.getValue(Products.class).getName());
-            card.setCurrentPrice(Double.toString(ds.getValue(Products.class).getPrice()));
-            card.setEndingDate(AlgoLibrary.DateFormating(ds.getValue(Products.class).getEndingDate()));
-            card.setProductId(ds.getValue(Products.class).getId());
+            card.setProductId(product.getValue(Products.class).getId());
 
             cards.add(card);
+
         }
+        cardsAdapter.notifyDataSetChanged();
+        progressb.setVisibility(View.GONE);
+    }
+
+
+    // print the cards arrays on the current activity recyclerView
+    private void initRecyclerAdapter() {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String user_type = getIntent().getStringExtra("user_type");
-        adapter = new Adapter(this,cards, user_type);
-        recyclerView.setAdapter(adapter);
+        cardsAdapter = new CardsAdapter(this,cards, user_type);
+        recyclerView.setAdapter(cardsAdapter);
+
     }
 
     @Override
