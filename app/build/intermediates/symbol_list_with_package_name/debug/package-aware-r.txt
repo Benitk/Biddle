@@ -2253,6 +2253,7 @@ layout text_view_without_line_height
 menu customer_menu
 menu seller_menu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string AddProduct

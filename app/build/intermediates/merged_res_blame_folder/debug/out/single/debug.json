@@ -1,7 +1,16 @@
 [
     {
+<<<<<<< Updated upstream
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_mobile.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\mobile.png"
+=======
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+>>>>>>> Stashed changes
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -20,12 +29,29 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\btn_back.jpg"
     },
     {
+<<<<<<< Updated upstream
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_landing_page.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_landing_page.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_bid_dialog.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\bid_dialog.xml"
+=======
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_notifications_black_24dp.xml.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\ic_notifications_black_24dp.xml"
+>>>>>>> Stashed changes
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_form.xml.flat",
@@ -76,8 +102,21 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+<<<<<<< Updated upstream
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_border.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\border.xml"
+=======
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\activity_main.xml"
+>>>>>>> Stashed changes
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_seller.xml.flat",

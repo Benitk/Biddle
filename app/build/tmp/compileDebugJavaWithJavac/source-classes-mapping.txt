@@ -34,18 +34,24 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$5
  com.example.biddle.Activites.ProductFormActivity$6
  com.example.biddle.Activites.ProductFormActivity$7
+<<<<<<< Updated upstream
  com.example.biddle.Activites.ProductFormActivity$8
 com/example/biddle/Activites/SignupActivity.java
  com.example.biddle.Activites.SignupActivity
  com.example.biddle.Activites.SignupActivity$1
  com.example.biddle.Activites.SignupActivity$2
  com.example.biddle.Activites.SignupActivity$3
+=======
+com/example/biddle/Activites/ProductDetailsActivity.java
+ com.example.biddle.Activites.ProductDetailsActivity
+>>>>>>> Stashed changes
 com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
  com.example.biddle.Activites.SellerActivity$2
 com/example/biddle/BuildConfig.java
  com.example.biddle.BuildConfig
+<<<<<<< Updated upstream
 com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity
  com.example.biddle.Activites.ProductDetailsActivity$1
@@ -56,3 +62,12 @@ Utils/CardsAdapter.java
  Utils.CardsAdapter
  Utils.CardsAdapter$1
  Utils.CardsAdapter$ViewHolder
+=======
+Utils/InputValidator.java
+ Utils.InputValidator
+com/example/biddle/Activites/SignupActivity.java
+ com.example.biddle.Activites.SignupActivity
+ com.example.biddle.Activites.SignupActivity$1
+ com.example.biddle.Activites.SignupActivity$1$1
+ com.example.biddle.Activites.SignupActivity$2
+>>>>>>> Stashed changes
