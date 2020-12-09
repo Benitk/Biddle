@@ -39,7 +39,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = layoutInflater.inflate(R.layout.card_layout,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.card2_layout,viewGroup,false);
         return new ViewHolder(view);
     }
 
@@ -51,14 +51,14 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
         Cards c = data.get(i);
         String product_name = c.getProductName();
-        String product_endingDate = c.getEndingDate();
+       // String product_endingDate = c.getEndingDate();
         String productPrice = c.getCurrentPrice();
         String productid = c.getProductId();
 
 
         viewHolder.getProductName().setText(product_name);
-        viewHolder.getProduct_endingDate().setText(product_endingDate);
-        viewHolder.getProductPrice().setText(productPrice);
+       // viewHolder.getProduct_endingDate().setText(product_endingDate);
+        viewHolder.getProductPrice().setText("₪ "+productPrice);
 
         viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,8 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView productPrice,product_endingDate, productName;
+        private TextView productPrice,  productName;//product_endingDate,
+
         private View myView;
 
         public View getmyView() {return myView;}
@@ -95,11 +96,11 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
             productName = itemView.findViewById(R.id.card_name);
             //textTitle = itemView.findViewById(R.id.card_image);
-            product_endingDate = itemView.findViewById(R.id.card_endingDate);
+          //  product_endingDate = itemView.findViewById(R.id.card_endingDate);
             productPrice = itemView.findViewById(R.id.card_currentPrice);
         }
         public TextView getProductPrice() { return productPrice; }
-        public TextView getProduct_endingDate() { return product_endingDate; }
+        //public TextView getProduct_endingDate() { return product_endingDate; }
         public TextView getProductName() { return productName;}
     }
 }

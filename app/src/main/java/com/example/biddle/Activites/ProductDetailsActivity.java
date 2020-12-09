@@ -135,7 +135,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             productCategory.setText(product.getValue(Products.class).getCategory());
             productDescrption.setText(product.getValue(Products.class).getDescription());
             currentPrice = product.getValue(Products.class).getPrice();
-            productPrice.setText("₪ " + Double.toString(currentPrice));
+            productPrice.setText(Double.toString(currentPrice)+" ₪");
             ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));;
         }
 
@@ -205,7 +205,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     if(newBid <= p.getPrice()) {
                         // update current price from DB
                         Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
-                        productPrice.setText(Double.toString(p.getPrice()));
+                        productPrice.setText(Double.toString(p.getPrice())+" ₪");
                         return Transaction.abort();
                     }
                     else {
@@ -225,7 +225,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                 if(databaseError == null){
                     // update new Bid Price
-                    productPrice.setText(Double.toString(newBid));
+                    productPrice.setText(Double.toString(newBid)+" ₪");
                     Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
                 }
             }

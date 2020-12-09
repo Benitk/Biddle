@@ -1778,10 +1778,14 @@ id bounce
 id buttonPanel
 id cache_measures
 id cancel_button
+id cardView
 id card_currentPrice
+id card_currentPrice1
 id card_endingDate
 id card_image
+id card_image1
 id card_name
+id card_name1
 id card_view
 id center
 id center_horizontal
@@ -2178,6 +2182,7 @@ layout activity_product_form
 layout activity_seller
 layout activity_signup
 layout bid_dialog
+layout card2_layout
 layout card_layout
 layout content_customer
 layout custom_dialog
@@ -2302,9 +2307,9 @@ string app_name
 string appbar_scrolling_view_behavior
 string bidDialogMsg
 string bidFailed
+string bidNoExist
 string bidProduct
 string bidSucsses
-string bidTooLow
 string bottom_sheet_behavior
 string cancel
 string character_counter_content_description
