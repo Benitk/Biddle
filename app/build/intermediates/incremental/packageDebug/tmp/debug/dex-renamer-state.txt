@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-#Wed Dec 09 09:34:28 PST 2020
+#Wed Dec 09 12:57:48 PST 2020
 base.0=D\:\\android projects\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-=======
-#Mon Dec 07 20:09:22 GMT+02:00 2020
-base.0=C\:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
->>>>>>> Stashed changes
 path.0=classes.dex
 renamed.0=classes.dex

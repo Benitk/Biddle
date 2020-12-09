@@ -1880,7 +1880,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
 id img_logo
 id info
 id invisible
@@ -1975,6 +1974,7 @@ id productDescription
 id productImg
 id productName
 id productPrice
+id productpic
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -1983,7 +1983,6 @@ id radio
 id ratio
 id rectangles
 id recyclerView
-id returnBtn
 id reverseSawtooth
 id right
 id right_icon
@@ -2302,7 +2301,9 @@ string action_settings
 string app_name
 string appbar_scrolling_view_behavior
 string bidDialogMsg
+string bidFailed
 string bidProduct
+string bidSucsses
 string bidTooLow
 string bottom_sheet_behavior
 string cancel

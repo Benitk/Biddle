@@ -8,6 +8,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import android.annotation.SuppressLint;
@@ -25,9 +27,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import Models.Cards;
 import Models.Products;
 import Utils.AlgoLibrary;
 
@@ -37,12 +36,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private TextView productName, productCategory, productDescrption, productPrice, ProductEndingDate;
     private Button typeBtn;
-    private ImageView Productimg, retrunBtn;
+    private ImageView Productimg;
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
     private Double currentPrice;
+    private String userId;
+    private double newBid;
 
+    private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private DatabaseReference refProduct;
 
@@ -54,8 +56,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_product_details);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         refProduct = database.getReference().child("Products");
+
+        userId = firebaseAuth.getCurrentUser().getUid();
+
 
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
@@ -82,8 +88,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         }
 
 
-        Productimg = (ImageView) findViewById(id.productImg);
-        retrunBtn = (ImageView) findViewById(id.returnBtn);
+        Productimg = (ImageView) findViewById(id.productpic);
 
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
@@ -159,7 +164,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 // set dialog message
                 alertDialogBuilder.setCancelable(false)
                         .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
+                            public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
@@ -167,13 +172,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                                 String userBid = userInput.getText().toString().trim();
                                 Log.d("dialog",userBid);
-                                double newBid = userBid.length() > 0 ? Double.parseDouble(userBid) : -1;
+                                newBid = userBid.length() > 0 ? Double.parseDouble(userBid) : -1;
 
-                                 if(newBid <= currentPrice) {
+                                if(newBid > -1)
+                                    TransactionDB();
+                                else
                                     Toast.makeText(ProductDetailsActivity.this, string.bidTooLow, Toast.LENGTH_LONG).show();
-                                     Log.d("dialog",""+(newBid <= currentPrice));
-
-                                 }
                             }
                         });
 
@@ -185,4 +189,46 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void TransactionDB(){
+        refProduct.child(ProductID).runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Products p = mutableData.getValue(Products.class);
+                if (p == null)
+                    // change nothing
+                    return Transaction.success(mutableData);
+
+                else {
+                    // bid is too low, will not set
+                    if(newBid <= p.getPrice()) {
+                        // update current price from DB
+                        productPrice.setText(Double.toString(p.getPrice()));
+                        return Transaction.abort();
+                    }
+                    else {
+                        p.setCustomerID(userId);
+                        p.setPrice(newBid);
+                    }
+                }
+
+                mutableData.setValue(p);
+                return Transaction.success(mutableData);
+
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+
+
+                if(databaseError == null){
+                    // update new Bid Price
+                    productPrice.setText(Double.toString(newBid));
+                    Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
+                }else
+                    Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }

@@ -32,7 +32,11 @@
     <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
     <string name="accpet">אשר</string>
     <string name="cancel">בטל</string>
-    <string name="bidTooLow">ההצעה חייבת להיות גדולה יותר מהמחיר הקיים!</string>
+    <string name="bidTooLow">ההצעה חייבת להיות גדולה יותר מהמחיר העדכני!</string>
+    <string name="bidSucsses">ההצעה התעדכנה בהצלחה!</string>
+    <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
+
+
 
 
 
