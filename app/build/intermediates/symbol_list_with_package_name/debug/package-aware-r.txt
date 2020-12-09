@@ -1697,6 +1697,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id TimeLeft
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1769,6 +1770,8 @@ id barrier
 id baseline
 id beginOnFirstDraw
 id beginning
+id bidDialogMsg
+id bid_DialogUserInput
 id blocking
 id bottom
 id bounce
@@ -1888,6 +1891,7 @@ id jumpToStart
 id labeled
 id largeLabel
 id layout
+id layout_root
 id left
 id light
 id line1
@@ -2174,6 +2178,7 @@ layout activity_product_details
 layout activity_product_form
 layout activity_seller
 layout activity_signup
+layout bid_dialog
 layout card_layout
 layout content_customer
 layout custom_dialog
@@ -2263,6 +2268,7 @@ string ProductTTL
 string ProductTTLDate
 string ProductTTLTime
 string Signup
+string TimeLeft
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2290,10 +2296,15 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string accpet
 string action_settings
 string app_name
 string appbar_scrolling_view_behavior
+string bidDialogMsg
+string bidProduct
+string bidTooLow
 string bottom_sheet_behavior
+string cancel
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
@@ -2319,6 +2330,7 @@ string common_signin_button_text
 string common_signin_button_text_long
 string confirmpassword
 string default_web_client_id
+string deleteProduct
 string email
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
