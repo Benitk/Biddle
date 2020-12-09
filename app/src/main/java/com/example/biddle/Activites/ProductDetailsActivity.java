@@ -177,7 +177,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 if(newBid > -1)
                                     TransactionDB();
                                 else
-                                    Toast.makeText(ProductDetailsActivity.this, string.bidTooLow, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ProductDetailsActivity.this, string.bidFailed, Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -195,14 +195,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
                 Products p = mutableData.getValue(Products.class);
-                if (p == null)
+                if (p == null) {
                     // change nothing
+                    Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
                     return Transaction.success(mutableData);
-
+                }
                 else {
                     // bid is too low, will not set
                     if(newBid <= p.getPrice()) {
                         // update current price from DB
+                        Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
                         productPrice.setText(Double.toString(p.getPrice()));
                         return Transaction.abort();
                     }
@@ -225,8 +227,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     // update new Bid Price
                     productPrice.setText(Double.toString(newBid));
                     Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
-                }else
-                    Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
