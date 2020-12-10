@@ -31,7 +31,8 @@
     <string name="TimeLeft">המכירה תסתיים ב..</string>
     <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
     <string name="accpet">אשר</string>
-    <string name="cancel">בטל</string>
+    <string name="cancel">ביטול</string>
+    <string name="ok">בסדר</string>
     <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
     <string name="bidSucsses">ההצעה התעדכנה בהצלחה!</string>
     <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
@@ -55,5 +56,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
 
 </resources>

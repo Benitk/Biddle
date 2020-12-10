@@ -1,9 +1,13 @@
 package com.example.biddle.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.biddle.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Models.Cards;
 import Models.Products;
@@ -31,7 +37,6 @@ import Utils.AlgoLibrary;
 
 
 public class CustomerActivity extends AppCompatActivity {
-
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
@@ -45,8 +50,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     private DatabaseReference refProducts;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +58,10 @@ public class CustomerActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         refProducts = database.getReference().child("Products");
-
         userId = firebaseAuth.getCurrentUser().getUid();
-
-
         cards = new ArrayList<Cards>();
-
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
-
-
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         sort_tv = (TextView) findViewById(R.id.sort_tv);
@@ -72,7 +69,28 @@ public class CustomerActivity extends AppCompatActivity {
         sort_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*if(view == sort_tv) {}*/
+                final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
+                builder.setTitle(R.string.pick_sort);
+                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר"};
+                builder.setSingleChoiceItems(options, -1,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedItem = Arrays.asList(options).get(i);
+                                Snackbar.make(sort_tv, selectedItem, Snackbar.LENGTH_INDEFINITE).show();
+                            }
+                        });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Just dismiss the alert dialog after selection
+                        // Or do something now
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -119,8 +137,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     }
 
-
-
     // create new card from given snapshot
     private void addNewCard(DataSnapshot ds){
 
@@ -149,7 +165,6 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
     }
 
-
     // print the cards arrays on the current activity recyclerView
     private void initRecyclerAdapter() {
 
@@ -158,8 +173,6 @@ public class CustomerActivity extends AppCompatActivity {
         cardsAdapter = new CardsAdapter(this,cards, user_type);
         recyclerView.setAdapter(cardsAdapter);
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

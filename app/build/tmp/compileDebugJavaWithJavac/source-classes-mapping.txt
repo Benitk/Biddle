@@ -72,4 +72,6 @@ com/example/biddle/Activites/LandingPageActivity.java
 com/example/biddle/Activites/CustomerActivity.java
  com.example.biddle.Activites.CustomerActivity
  com.example.biddle.Activites.CustomerActivity$1
+ com.example.biddle.Activites.CustomerActivity$1$1
+ com.example.biddle.Activites.CustomerActivity$1$2
  com.example.biddle.Activites.CustomerActivity$2
