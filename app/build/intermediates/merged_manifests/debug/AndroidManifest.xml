@@ -23,12 +23,17 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
+        <activity android:name="com.example.biddle.Activites.UnofferedProductsSellerActivity" />
+        <activity android:name="com.example.biddle.Activites.PurchasedProductsSellerActivity" />
+        <activity android:name="com.example.biddle.Activites.PurchasedProductsCustomerActivity" />
+        <activity android:name="com.example.biddle.Activites.PriceOfferedProductsSellerActivity" />
+        <activity android:name="com.example.biddle.Activites.PriceOfferedProductsCustomerActivity" />
+        <activity android:name="com.example.biddle.Activites.StarProductsCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.ProductDetailsActivity" />
         <activity
             android:name="com.example.biddle.Activites.CustomerActivity"
             android:label="@string/title_activity_customer"
             android:theme="@style/Theme.Biddle.NoActionBar" />
-        <activity android:name="com.example.biddle.Activites.DummyActivity" />
         <activity
             android:name="com.example.biddle.Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"

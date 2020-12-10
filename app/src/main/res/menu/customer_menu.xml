@@ -13,9 +13,6 @@
         android:id="@+id/purchasedProducts"
         android:title="מוצרים שרכשתי"/>
     <item
-        android:id="@+id/waitForPickUpProducts"
-        android:title="מוצרים שממתינים לאיסוף"/>
-    <item
         android:id="@+id/editProfile"
         android:title="עריכת הפרופיל שלי"/>
     <item

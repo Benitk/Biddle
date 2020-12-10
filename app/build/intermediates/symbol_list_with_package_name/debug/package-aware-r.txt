@@ -1907,7 +1907,6 @@ id logOut
 id login_btn
 id logout_btn
 id masked
-id menu_seller_btn
 id message
 id middle
 id mini
@@ -2104,7 +2103,6 @@ id useLogo
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
-id waitForPickUpProducts
 id wide
 id withText
 id withinBounds
@@ -2174,13 +2172,18 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_customer
-layout activity_dummy
 layout activity_landing_page
 layout activity_main
+layout activity_price_offered_products_customer
+layout activity_price_offered_products_seller
 layout activity_product_details
 layout activity_product_form
+layout activity_purchased_products_customer
+layout activity_purchased_products_seller
 layout activity_seller
 layout activity_signup
+layout activity_star_products_customer
+layout activity_unoffered_products_seller
 layout bid_dialog
 layout card2_layout
 layout card_layout

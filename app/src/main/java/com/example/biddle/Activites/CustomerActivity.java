@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,6 +41,7 @@ public class CustomerActivity extends AppCompatActivity {
     private TextView tv_noProductText;
     private String userId;
     private ProgressBar progressb;
+    private TextView sort_tv;
 
     private DatabaseReference refProducts;
 
@@ -49,9 +54,9 @@ public class CustomerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-         refProducts = database.getReference().child("Products");
+        refProducts = database.getReference().child("Products");
 
-         userId = firebaseAuth.getCurrentUser().getUid();
+        userId = firebaseAuth.getCurrentUser().getUid();
 
 
         cards = new ArrayList<Cards>();
@@ -62,7 +67,14 @@ public class CustomerActivity extends AppCompatActivity {
 
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        sort_tv = (TextView) findViewById(R.id.sort_tv);
 
+        sort_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*if(view == sort_tv) {}*/
+            }
+        });
 
         initRecyclerAdapter();
         ReadFromDB();
@@ -136,8 +148,40 @@ public class CustomerActivity extends AppCompatActivity {
         String user_type = getIntent().getStringExtra("user_type");
         cardsAdapter = new CardsAdapter(this,cards, user_type);
         recyclerView.setAdapter(cardsAdapter);
-
     }
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.customer_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.homePage:
+                finish();
+                return true;
+            case R.id.starProducts:
+                startActivity(new Intent(CustomerActivity.this, StarProductsCustomerActivity.class));
+                return true;
+            case R.id.priceOfferedProducts:
+                startActivity(new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class));
+                return true;
+            case R.id.purchasedProducts:
+                startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));
+                return true;
+            case R.id.editProfile:
+                return true;
+            case R.id.logOut:
+                firebaseAuth.signOut();
+                startActivity(new Intent(CustomerActivity.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
