@@ -83,6 +83,13 @@ public class SellerActivity extends AppCompatActivity {
 
     }
 
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        recreate();
+//
+//    }
+
 
     // this method is getting all sellers product keys from user root and retrive all of them from product root
     private void ReadFromDB(){

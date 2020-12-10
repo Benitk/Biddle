@@ -68,6 +68,13 @@ public class CustomerActivity extends AppCompatActivity {
         ReadFromDB();
     }
 
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        recreate();
+//
+//    }
+
 
 
     // read all product from

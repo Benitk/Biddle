@@ -199,7 +199,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 Products p = mutableData.getValue(Products.class);
                 if (p == null) {
                     // change nothing
-                    Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                    ProductDetailsActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                        }
+                    });
                     return Transaction.success(mutableData);
                 }
                 else {
