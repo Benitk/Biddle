@@ -80,6 +80,13 @@ public class CustomerActivity extends AppCompatActivity {
         ReadFromDB();
     }
 
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        recreate();
+//
+//    }
+
 
 
     // read all product from
@@ -121,12 +128,14 @@ public class CustomerActivity extends AppCompatActivity {
 
         for(DataSnapshot product : ds.getChildren()){
 
+            Log.d("hiss",product.toString());
+
             // user cant bid on his own product
             if(!userId.equals(product.getValue(Products.class).getSellerID())) {
                 card = new Cards();
 
                 card.setProductName(product.getValue(Products.class).getName());
-                card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
+                card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
                 card.setProductId(product.getValue(Products.class).getId());
 

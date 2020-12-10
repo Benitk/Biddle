@@ -27,6 +27,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import Models.Products;
 import Utils.AlgoLibrary;
 
@@ -40,9 +42,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
-    private Double currentPrice;
+    private Integer currentPrice;
     private String userId;
-    private double newBid;
+    private Integer newBid;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
@@ -135,7 +137,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             productCategory.setText(product.getValue(Products.class).getCategory());
             productDescrption.setText(product.getValue(Products.class).getDescription());
             currentPrice = product.getValue(Products.class).getPrice();
-            productPrice.setText(Double.toString(currentPrice)+" ₪");
+            productPrice.setText(Integer.toString(currentPrice)+" ₪");
             ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));;
         }
 
@@ -172,7 +174,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                                 String userBid = userInput.getText().toString().trim();
                                 Log.d("dialog",userBid);
-                                newBid = userBid.length() > 0 ? Double.parseDouble(userBid) : -1;
+                                newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
 
                                 if(newBid > -1)
                                     TransactionDB();
@@ -197,36 +199,59 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 Products p = mutableData.getValue(Products.class);
                 if (p == null) {
                     // change nothing
-                    Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                    ProductDetailsActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                        }
+                    });
                     return Transaction.success(mutableData);
                 }
                 else {
+                    // time of bid
+                    Date currentDate = new Date(System.currentTimeMillis());
+
                     // bid is too low, will not set
                     if(newBid <= p.getPrice()) {
                         // update current price from DB
-                        Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
-                        productPrice.setText(Double.toString(p.getPrice())+" ₪");
+                        ProductDetailsActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        productPrice.setText(Integer.toString(p.getPrice())+" ₪");
+                        return Transaction.abort();
+                    }
+
+                    // product time already ended
+                   else if(p.getEndingDate().compareTo(currentDate) < 0){
+                        ProductDetailsActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(ProductDetailsActivity.this, string.bidTimeEnded, Toast.LENGTH_LONG).show();
+                            }
+                        });
                         return Transaction.abort();
                     }
                     else {
                         p.setCustomerID(userId);
                         p.setPrice(newBid);
+                        mutableData.setValue(p);
+                        return Transaction.success(mutableData);
                     }
                 }
-
-                mutableData.setValue(p);
-                return Transaction.success(mutableData);
-
             }
 
             @Override
-            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+            public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
 
 
-                if(databaseError == null){
+                if(databaseError == null && comitted){
                     // update new Bid Price
-                    productPrice.setText(Double.toString(newBid)+" ₪");
-                    Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
+                    productPrice.setText(Integer.toString(newBid)+" ₪");
+                    ProductDetailsActivity.this.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });
