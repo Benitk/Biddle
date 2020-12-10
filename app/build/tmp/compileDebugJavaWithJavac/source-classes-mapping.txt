@@ -8,17 +8,13 @@ Utils/SetDate.java
  Utils.SetDate
 Utils/SetYourTime.java
  Utils.SetYourTime
-com/example/biddle/Activites/SignupActivity.java
- com.example.biddle.Activites.SignupActivity
- com.example.biddle.Activites.SignupActivity$1
- com.example.biddle.Activites.SignupActivity$2
- com.example.biddle.Activites.SignupActivity$3
+Models/Products.java
+ Models.Products
 com/example/biddle/Activites/MainActivity.java
  com.example.biddle.Activites.MainActivity
  com.example.biddle.Activites.MainActivity$1
  com.example.biddle.Activites.MainActivity$2
  com.example.biddle.Activites.MainActivity$3
-<<<<<<< HEAD
 com/example/biddle/Activites/StarProductsCustomerActivity.java
  com.example.biddle.Activites.StarProductsCustomerActivity
 com/example/biddle/Activites/UnofferedProductsSellerActivity.java
@@ -28,35 +24,14 @@ com/example/biddle/Activites/SignupActivity.java
  com.example.biddle.Activites.SignupActivity$1
  com.example.biddle.Activites.SignupActivity$2
  com.example.biddle.Activites.SignupActivity$3
-=======
-Utils/InputValidator.java
- Utils.InputValidator
-com/example/biddle/BuildConfig.java
- com.example.biddle.BuildConfig
->>>>>>> 9057435cd3c4970e98463e3f9f428bc0aeb81816
 Utils/CardsAdapter.java
  Utils.CardsAdapter
  Utils.CardsAdapter$1
  Utils.CardsAdapter$ViewHolder
-<<<<<<< HEAD
 com/example/biddle/Activites/PriceOfferedProductsCustomerActivity.java
  com.example.biddle.Activites.PriceOfferedProductsCustomerActivity
 com/example/biddle/Activites/PurchasedProductsSellerActivity.java
  com.example.biddle.Activites.PurchasedProductsSellerActivity
-=======
-Models/Products.java
- Models.Products
-com/example/biddle/Activites/ProductDetailsActivity.java
- com.example.biddle.Activites.ProductDetailsActivity
- com.example.biddle.Activites.ProductDetailsActivity$1
- com.example.biddle.Activites.ProductDetailsActivity$2
- com.example.biddle.Activites.ProductDetailsActivity$2$1
- com.example.biddle.Activites.ProductDetailsActivity$2$2
- com.example.biddle.Activites.ProductDetailsActivity$3
- com.example.biddle.Activites.ProductDetailsActivity$3$1
- com.example.biddle.Activites.ProductDetailsActivity$3$2
- com.example.biddle.Activites.ProductDetailsActivity$3$3
->>>>>>> 9057435cd3c4970e98463e3f9f428bc0aeb81816
 com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity
  com.example.biddle.Activites.ProductFormActivity$1
@@ -67,7 +42,7 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$6
  com.example.biddle.Activites.ProductFormActivity$7
  com.example.biddle.Activites.ProductFormActivity$8
-<<<<<<< HEAD
+ com.example.biddle.Activites.ProductFormActivity$9
 com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity
  com.example.biddle.Activites.ProductDetailsActivity$1
@@ -75,13 +50,10 @@ com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity$2$1
  com.example.biddle.Activites.ProductDetailsActivity$2$2
  com.example.biddle.Activites.ProductDetailsActivity$3
-=======
-com/example/biddle/Activites/LandingPageActivity.java
- com.example.biddle.Activites.LandingPageActivity
- com.example.biddle.Activites.LandingPageActivity$1
- com.example.biddle.Activites.LandingPageActivity$2
- com.example.biddle.Activites.LandingPageActivity$3
->>>>>>> 9057435cd3c4970e98463e3f9f428bc0aeb81816
+ com.example.biddle.Activites.ProductDetailsActivity$3$1
+ com.example.biddle.Activites.ProductDetailsActivity$3$2
+ com.example.biddle.Activites.ProductDetailsActivity$3$3
+ com.example.biddle.Activites.ProductDetailsActivity$3$4
 com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
@@ -100,3 +72,4 @@ com/example/biddle/Activites/LandingPageActivity.java
 com/example/biddle/Activites/CustomerActivity.java
  com.example.biddle.Activites.CustomerActivity
  com.example.biddle.Activites.CustomerActivity$1
+ com.example.biddle.Activites.CustomerActivity$2

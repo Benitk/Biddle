@@ -20,13 +20,14 @@
         <activity android:name=".Activites.ProductDetailsActivity" />
         <activity
             android:name=".Activites.CustomerActivity"
-            android:label="@string/title_activity_customer"
-            android:theme="@style/Theme.Biddle.NoActionBar" />
+            android:label="@string/title_activity_customer" />
         <activity
             android:name=".Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"
             android:theme="@style/Theme.Biddle.NoActionBar" />
+
         <activity android:name=".Activites.SellerActivity" />
+
         <activity
             android:name=".Activites.LandingPageActivity"
             android:label="@string/title_activity_landing_page"

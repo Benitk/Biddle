@@ -275,7 +275,7 @@ public class ProductFormActivity extends AppCompatActivity {
             String sellerID_To_Mail = ds.getValue(Products.class).getSellerID();
             String customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
 
-            // send only to seller because no one bidd on this product
+            // send only to seller because no one bid on this product
             if(sellerID_To_Mail.equals(customerID_To_Mail)){
 
             }
