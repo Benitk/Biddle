@@ -53,7 +53,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
     private TextView newProduct_btn;
     private String productName, productDescription, productCategory;
-    private double productPrice;
+    private int productPrice;
     // will convert to date type
     private EditText productTTLDate ,productTTLTime;
     private ImageView productImg;
@@ -151,7 +151,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
                 productName = ((EditText)findViewById(R.id.ProductName)).getText().toString().trim();
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
-                //get the user price input string then convert it to double
+                //get the user price input string then convert it to int
                 productCategory = ((EditText) findViewById(R.id.ProductCategory)).getText().toString().trim();
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
@@ -166,7 +166,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
                 else
-                    productPrice = Double.parseDouble(prodPrice);
+                    productPrice = Integer.parseInt(prodPrice);
 
                 if(TextUtils.isEmpty(productName)) {
                     ((EditText) findViewById(R.id.ProductName)).setError("חובה למלא");

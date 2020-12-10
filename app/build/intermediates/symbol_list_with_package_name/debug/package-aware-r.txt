@@ -2310,6 +2310,7 @@ string bidFailed
 string bidNoExist
 string bidProduct
 string bidSucsses
+string bidTimeEnded
 string bottom_sheet_behavior
 string cancel
 string character_counter_content_description

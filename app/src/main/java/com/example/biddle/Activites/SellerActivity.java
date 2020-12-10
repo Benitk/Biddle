@@ -77,6 +77,7 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
             }
         });
+
         initRecyclerAdapter();
         ReadFromDB();
 
@@ -129,7 +130,7 @@ public class SellerActivity extends AppCompatActivity {
 
             card.setProductName(product.getValue(Products.class).getName());
 
-            card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
+            card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
 
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 

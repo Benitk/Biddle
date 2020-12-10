@@ -9,7 +9,7 @@ public class Products {
     private String customerID;
     private String sellerID;
     private String name;
-    private double price;
+    private int price;
     private String category;
     private String description;
     private Date endingDate;
@@ -19,7 +19,7 @@ public class Products {
     }
 
 
-    public Products(String id , String sellerID,String customerID, String name, double price, String category, Date endingdate, String description, String imgPath){
+    public Products(String id , String sellerID,String customerID, String name, int price, String category, Date endingdate, String description, String imgPath){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -59,11 +59,11 @@ public class Products {
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
