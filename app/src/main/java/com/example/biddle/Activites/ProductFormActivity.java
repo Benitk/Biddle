@@ -69,9 +69,6 @@ public class ProductFormActivity extends AppCompatActivity {
     private SetDate set_date;
     private SetYourTime set_time;
     private String productID;
-    private String sellerID_To_Mail;
-    private String customerID_To_Mail;
-
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
@@ -252,11 +249,9 @@ public class ProductFormActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // should be only once child
                 if (dataSnapshot.exists()){
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
-                        sellerID_To_Mail = ds.getValue(Products.class).getSellerID();
-                        customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
-                    }
+                    sendMail(dataSnapshot);
                 }
+
                 else {
                     Toast.makeText(ProductFormActivity.this, "המוצר לא קיים", Toast.LENGTH_LONG).show();
                     Log.d("FaildReadDB","didnt find product");
@@ -273,6 +268,24 @@ public class ProductFormActivity extends AppCompatActivity {
                 progressb.setVisibility(View.GONE);
             }
         });
+    }
+
+    private void sendMail(DataSnapshot dataSnapshot){
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+            String sellerID_To_Mail = ds.getValue(Products.class).getSellerID();
+            String customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
+
+            // send only to seller because no one bidd on this product
+            if(sellerID_To_Mail.equals(customerID_To_Mail)){
+
+            }
+            // send both of them
+            else{
+
+
+            }
+
+        }
     }
 
 
