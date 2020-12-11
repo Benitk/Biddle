@@ -18,7 +18,33 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import Utils.GMailSender;
 import Utils.InputValidator;
+import android.os.AsyncTask;
+
+import android.os.Build;
+
+import android.os.Bundle;
+
+import android.os.StrictMode;
+
+import android.annotation.SuppressLint;
+
+import android.annotation.TargetApi;
+
+import android.app.Activity;
+
+import android.app.ProgressDialog;
+
+import android.view.Menu;
+
+import android.view.View;
+
+import android.view.View.OnClickListener;
+
+import android.widget.Button;
+
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,19 +55,27 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressb;
 
+    Button button;
+
+    GMailSender sender;
+
+    @SuppressLint("NewApi")
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sender = new GMailSender("Biddle2021@gmail.com", "2021bidd");
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         tv_signup_btn = (TextView)findViewById(R.id.signup_btn);
         tv_login_btn = (TextView)findViewById(R.id.login_btn);
 
         progressb.setVisibility(View.GONE);
 
+       // button = (Button) findViewById(R.id.mybtn);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -49,7 +83,22 @@ public class MainActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser() != null)
             startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        button.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                try {
+                    new MyAsyncClass().execute();
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         /* login button listener - on click getting user input
          * call validate function to confirm valid input
@@ -83,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         /* signup button listener - on click return to login page
          */
@@ -122,4 +170,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it //     is present.
+     //   getMenuInflater().inflate(R.menu.main, menu);
+       return true;
+    }
+
+    class MyAsyncClass extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(MainActivity.this);
+            pDialog.setMessage("Please wait...");
+            pDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... mApi) {
+            try {
+                // Add subject, Body, your mail Id, and receiver mail Id.
+                sender.sendMail("Subject", " body", "from Mail", "to mail");
+            }
+            catch (Exception ex) {
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            pDialog.cancel();
+            Toast.makeText(getApplicationContext(), "Email send", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
