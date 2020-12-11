@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.biddle.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,6 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import Models.Cards;
 import Models.Products;
@@ -47,6 +50,8 @@ public class CustomerActivity extends AppCompatActivity {
     private String userId;
     private ProgressBar progressb;
     private TextView sort_tv;
+
+    private boolean sortByPrice = false;
 
     private DatabaseReference refProducts;
 
@@ -77,16 +82,15 @@ public class CustomerActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String selectedItem = Arrays.asList(options).get(i);
-                                Snackbar.make(sort_tv, selectedItem, Snackbar.LENGTH_INDEFINITE).show();
+                                if(i == 1) sortByPrice = true;
+                                sort_cards();
+                                initRecyclerAdapter();
                             }
                         });
 
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.accpet, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        // Just dismiss the alert dialog after selection
-                        // Or do something now
-                    }
+                    public void onClick(DialogInterface dialogInterface, int i) {}
                 });
 
                 AlertDialog dialog = builder.create();
@@ -98,14 +102,31 @@ public class CustomerActivity extends AppCompatActivity {
         ReadFromDB();
     }
 
+    private void sort_cards() {
+        Toast.makeText(CustomerActivity.this, "im sorting", Toast.LENGTH_SHORT).show();
+        if(sortByPrice) {
+            Collections.sort(cards, new Comparator<Cards>() {
+                @Override
+                public int compare(Cards c1, Cards c2) {
+                    return c1.getCurrentPrice().compareTo(c2.getCurrentPrice());
+                }
+            });
+        } else {  // sortByDate
+            Collections.sort(cards, new Comparator<Cards>() {
+                @Override
+                public int compare(Cards c1, Cards c2) {
+                    return c1.getDateType().compareTo(c2.getDateType());
+                }
+            });
+        }
+    }
+
 //    @Override
 //    public void onResume(){
 //        super.onResume();
 //        recreate();
 //
 //    }
-
-
 
     // read all product from
     private void ReadFromDB(){
@@ -116,34 +137,26 @@ public class CustomerActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 cards.clear();
                 tv_noProductText.setText("");
-
                 if (dataSnapshot.exists())
                     addNewCard(dataSnapshot);
-
                 else {
                     tv_noProductText.setText(R.string.noProduct);
                     progressb.setVisibility(View.GONE);
                 }
-
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
                 // would change to toast
                 System.out.println("The read failed: " + databaseError.getCode());
                 progressb.setVisibility(View.GONE);
             }
         });
-
     }
 
     // create new card from given snapshot
     private void addNewCard(DataSnapshot ds){
-
         Cards card = null;
-
         for(DataSnapshot product : ds.getChildren()){
-
             Log.d("hiss",product.toString());
 
             // user cant bid on his own product
@@ -160,6 +173,7 @@ public class CustomerActivity extends AppCompatActivity {
                 cards.add(card);
             }
         }
+
         if(cards.isEmpty())
             tv_noProductText.setText(R.string.noProduct);
 
@@ -169,7 +183,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     // print the cards arrays on the current activity recyclerView
     private void initRecyclerAdapter() {
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String user_type = getIntent().getStringExtra("user_type");
         cardsAdapter = new CardsAdapter(this,cards, user_type);

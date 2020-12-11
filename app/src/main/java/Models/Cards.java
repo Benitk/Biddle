@@ -1,5 +1,7 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -57,33 +59,24 @@ public class Cards {
         this.dateType = dateType;
     }
 
-   /* static final Comparator<Cards> ORDER =
-            new Comparator<Cards>() {
-                public int compare(Cards c1, Cards c2) {
-                    int priceCmp = c2.currentPrice.compareTo(c1.currentPrice);
-                    if (priceCmp != 0)
-                        return priceCmp;
-                    return c1.dateType.compareTo(c2.dateType);
-                }
-            };*/
-
-    public static Comparator<Cards> compareByPrice() {
-        return new Comparator<Cards>() {
+    /*public static Comparator<Cards> compareByPrice = new Comparator<Cards>() {
             @Override
             public int compare(Cards c1, Cards c2) {
                 return c1.currentPrice.compareTo(c2.currentPrice);
             }
         };
-    }
 
-    public static Comparator<Cards> compareByDate() {
-        return new Comparator<Cards>() {
+    public static Comparator<Cards> compareByDate = new Comparator<Cards>() {
             @Override
             public int compare(Cards c1, Cards c2) {
                 return c1.dateType.compareTo(c2.dateType);
             }
         };
-    }
 
+    public static ArrayList<Cards> sort(ArrayList<Cards> cards_list, boolean sortByPrice) {
+        if(sortByPrice) Collections.sort(cards_list, compareByPrice);
+        else Collections.sort(cards_list, compareByDate);
+        return cards_list;
+    }*/
 
 }
