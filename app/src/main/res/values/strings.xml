@@ -30,7 +30,7 @@
     <string name="deleteProduct">מחיקת מוצר</string>
     <string name="TimeLeft">המכירה תסתיים ב..</string>
     <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
-    <string name="accpet">אשר</string>
+    <string name="accpet">אישור</string>
     <string name="cancel">ביטול</string>
     <string name="ok">בסדר</string>
     <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
@@ -58,5 +58,6 @@
     <string name="second_fragment_label">Second Fragment</string>
 
     <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
+    <string name="pick_category">בחר/י את הקטגוריה אליה משתייך המוצר</string>
 
 </resources>

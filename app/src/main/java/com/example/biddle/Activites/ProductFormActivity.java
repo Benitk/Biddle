@@ -1,8 +1,10 @@
 package com.example.biddle.Activites;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -65,7 +68,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private String productName, productDescription, productCategory;
     private int productPrice;
     // will convert to date type
-    private EditText productTTLDate ,productTTLTime;
+    private EditText et_productTTLDate ,et_productTTLTime, et_productCategory;
     private ImageView productImg;
     private String userId;
     private Timer timer;
@@ -104,18 +107,26 @@ public class ProductFormActivity extends AppCompatActivity {
         refProduct = database.getReference().child("Products");
         refCategory = database.getReference().child("Categories");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
-        productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
-
+        et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
+        et_productCategory = (EditText) findViewById(R.id.ProductCategory);
         productImg = (ImageView)findViewById(R.id.productImg);
-        productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
+        et_productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
+<<<<<<< HEAD
         set_date = new SetDate(productTTLDate);
         set_time = new SetYourTime(productTTLTime);
 
+=======
+        set_date = new SetDate(et_productTTLDate);
+        set_time = new SetYourTime(et_productTTLTime);
+>>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
 
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,10 +135,10 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
-        productTTLDate.setOnClickListener(new View.OnClickListener() {
+        et_productTTLDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(view == productTTLDate) {
+                if(view == et_productTTLDate) {
                     Calendar systemCalender = Calendar.getInstance();
                     int year = systemCalender.get(Calendar.YEAR);
                     int month = systemCalender.get(Calendar.MONTH);
@@ -138,10 +149,10 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
-        productTTLTime.setOnClickListener(new View.OnClickListener() {
+        et_productTTLTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(view == productTTLTime) {
+                if(view == et_productTTLTime) {
                     Calendar systemCalendar = Calendar.getInstance();
                     int hour = systemCalendar.get(Calendar.HOUR_OF_DAY);
                     int minute = systemCalendar.get(Calendar.MINUTE);
@@ -151,28 +162,53 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
+        et_productCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ProductFormActivity.this);
+                builder.setTitle(R.string.pick_category);
+                final String[] options = new String[]
+                        {"ריהוט","ביגוד","הנעלה","אקססוריז","כלי נגינה","ספרות","אומנות","ציוד משרדי","רכבים","אחר"};
+                builder.setSingleChoiceItems(options, -1,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedItem = Arrays.asList(options).get(i);
+                                et_productCategory.setText(selectedItem);
+                            }
+                        });
+
+                builder.setPositiveButton(R.string.accpet, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         newProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                productCategory = et_productCategory.getText().toString().trim();
+
                 productName = ((EditText)findViewById(R.id.ProductName)).getText().toString().trim();
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
                 //get the user price input string then convert it to int
-                productCategory = ((EditText) findViewById(R.id.ProductCategory)).getText().toString().trim();
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
 
-
                 // validtate input
                 boolean flag = true;
-
 
                 if(TextUtils.isEmpty(prodPrice)) {
                     ((EditText) findViewById(R.id.ProductPrice)).setError("חובה למלא");
                     flag = false;
                 }
-                else
-                    productPrice = Integer.parseInt(prodPrice);
+                else productPrice = Integer.parseInt(prodPrice);
 
                 if(TextUtils.isEmpty(productName)) {
                     ((EditText) findViewById(R.id.ProductName)).setError("חובה למלא");
@@ -184,21 +220,20 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
 
-                if(TextUtils.isEmpty(productCategory)){
+                if(TextUtils.isEmpty(productCategory)) {
                     ((EditText) findViewById(R.id.ProductCategory)).setError("חובה למלא");
                     flag = false;
                 }
 
-                if(TextUtils.isEmpty(productTTLTime.getText().toString().trim())) {
+                if(TextUtils.isEmpty(et_productTTLTime.getText().toString().trim())) {
                     ((EditText) findViewById(R.id.ProductTTLTime)).setError("חובה למלא");
                     flag = false;
                 }
 
-                if(TextUtils.isEmpty(productTTLDate.getText().toString().trim())) {
+                if(TextUtils.isEmpty(et_productTTLDate.getText().toString().trim())) {
                     ((EditText) findViewById(R.id.ProductTTLDate)).setError("חובה למלא");
                     flag = false;
                 }
-
 
                 // should check for img too
 
@@ -316,15 +351,9 @@ public class ProductFormActivity extends AppCompatActivity {
 
             }
             // send both of them
-            else{
-
-
-            }
-
+            else { }
         }
     }
-
-
 
     private void ChoosePic() {
         Intent intent = new Intent();
@@ -372,9 +401,5 @@ public class ProductFormActivity extends AppCompatActivity {
                 pd.setMessage((int) progressPrecent + "%" );
             }
         });
-
-
-
-
     }
 }

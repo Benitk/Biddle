@@ -140,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
+                    android:focusable="false"
                     android:gravity="right"
                     android:hint="@string/ProductCategory"
                     android:inputType="text"
