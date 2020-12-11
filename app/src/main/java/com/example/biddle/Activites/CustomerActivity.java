@@ -155,6 +155,8 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
                 card.setProductId(product.getValue(Products.class).getId());
 
+                card.setDateType(product.getValue(Products.class).getEndingDate());
+
                 cards.add(card);
             }
         }
