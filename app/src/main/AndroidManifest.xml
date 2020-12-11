@@ -11,17 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Biddle">
-        <activity android:name=".Activites.ProductDetailsActivity"></activity>
+        <activity android:name=".Activites.UnofferedProductsSellerActivity"></activity>
+        <activity android:name=".Activites.PurchasedProductsSellerActivity" />
+        <activity android:name=".Activites.PurchasedProductsCustomerActivity" />
+        <activity android:name=".Activites.PriceOfferedProductsSellerActivity" />
+        <activity android:name=".Activites.PriceOfferedProductsCustomerActivity" />
+        <activity android:name=".Activites.StarProductsCustomerActivity" />
+        <activity android:name=".Activites.ProductDetailsActivity" />
         <activity
             android:name=".Activites.CustomerActivity"
-            android:label="@string/title_activity_customer"
-            android:theme="@style/Theme.Biddle.NoActionBar" />
-        <activity android:name=".Activites.DummyActivity" />
+            android:label="@string/title_activity_customer" />
         <activity
             android:name=".Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"
             android:theme="@style/Theme.Biddle.NoActionBar" />
+
         <activity android:name=".Activites.SellerActivity" />
+
         <activity
             android:name=".Activites.LandingPageActivity"
             android:label="@string/title_activity_landing_page"

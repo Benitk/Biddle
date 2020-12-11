@@ -77,10 +77,18 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
             }
         });
+
         initRecyclerAdapter();
         ReadFromDB();
 
     }
+
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        recreate();
+//
+//    }
 
 
     // this method is getting all sellers product keys from user root and retrive all of them from product root
@@ -129,7 +137,7 @@ public class SellerActivity extends AppCompatActivity {
 
             card.setProductName(product.getValue(Products.class).getName());
 
-            card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
+            card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
 
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
@@ -167,12 +175,13 @@ public class SellerActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.unofferedProducts:
+                startActivity(new Intent(SellerActivity.this, UnofferedProductsSellerActivity.class));
                 return true;
             case R.id.priceOfferedProducts:
+                startActivity(new Intent(SellerActivity.this, PriceOfferedProductsSellerActivity.class));
                 return true;
             case R.id.purchasedProducts:
-                return true;
-            case R.id.waitForPickUpProducts:
+                startActivity(new Intent(SellerActivity.this, PurchasedProductsSellerActivity.class));
                 return true;
             case R.id.editProfile:
                 return true;

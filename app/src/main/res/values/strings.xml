@@ -26,6 +26,19 @@
     <string name="ProductTTLTime">שעת סיום המכירה</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
     <string name="welcome_customer">ברוך/ה הבא/ה, לקוח/ה!</string>
+    <string name="bidProduct">הצעת מחיר</string>
+    <string name="deleteProduct">מחיקת מוצר</string>
+    <string name="TimeLeft">המכירה תסתיים ב..</string>
+    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
+    <string name="accpet">אשר</string>
+    <string name="cancel">ביטול</string>
+    <string name="ok">בסדר</string>
+    <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
+    <string name="bidSucsses">ההצעה התעדכנה בהצלחה!</string>
+    <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
+    <string name="bidTimeEnded">זמן מכירת המוצר כבר הסתיים!</string>
+
+
 
     <string name="menu">תפריט</string>
     <string name="noProduct">אין מוצרים</string>
@@ -43,5 +56,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
 
 </resources>

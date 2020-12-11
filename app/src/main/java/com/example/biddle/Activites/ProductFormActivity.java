@@ -14,9 +14,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -61,7 +63,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
     private TextView newProduct_btn;
     private String productName, productDescription, productCategory;
-    private double productPrice;
+    private int productPrice;
     // will convert to date type
     private EditText productTTLDate ,productTTLTime;
     private ImageView productImg;
@@ -155,7 +157,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
                 productName = ((EditText)findViewById(R.id.ProductName)).getText().toString().trim();
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
-                //get the user price input string then convert it to double
+                //get the user price input string then convert it to int
                 productCategory = ((EditText) findViewById(R.id.ProductCategory)).getText().toString().trim();
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
@@ -170,7 +172,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
                 else
-                    productPrice = Double.parseDouble(prodPrice);
+                    productPrice = Integer.parseInt(prodPrice);
 
                 if(TextUtils.isEmpty(productName)) {
                     ((EditText) findViewById(R.id.ProductName)).setError("חובה למלא");
@@ -204,6 +206,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
+
                     timer = new Timer();
                     if(firebaseAuth.getCurrentUser().getEmail().equals("maccavi2@gmail.com"))
                     timer.schedule(new TimerTask() {
@@ -212,8 +215,10 @@ public class ProductFormActivity extends AppCompatActivity {
                             sendEmail("maccavi2@gmail.com", firebaseAuth.getCurrentUser().getEmail());
                         }
                     }, dateTime);
-                    // there is no bidder so customerID set to null at the start
-                    Products p = new Products(productID,userId,null, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
+
+                    // there is no bidder so customerID set to userId from start at the start
+                    Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
+
 
                     // insert new product to product root
                     WriteToDB(p, refProduct.child(productID));
@@ -269,6 +274,56 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
     }
+
+    // fetch single product from firebase that equal productID
+    private void ReadProductFromDB(){
+
+        progressb.setVisibility(View.VISIBLE);
+
+        refProduct.orderByKey().equalTo(productID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // should be only once child
+                if (dataSnapshot.exists()){
+                    sendMail(dataSnapshot);
+                }
+
+                else {
+                    Toast.makeText(ProductFormActivity.this, "המוצר לא קיים", Toast.LENGTH_LONG).show();
+                    Log.d("FaildReadDB","didnt find product");
+                    // back one page
+                    progressb.setVisibility(View.GONE);
+                    finish();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                // would change to toast
+                Log.d("FaildReadDB","databaseError.getCode()");
+                progressb.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void sendMail(DataSnapshot dataSnapshot){
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+            String sellerID_To_Mail = ds.getValue(Products.class).getSellerID();
+            String customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
+
+            // send only to seller because no one bid on this product
+            if(sellerID_To_Mail.equals(customerID_To_Mail)){
+
+            }
+            // send both of them
+            else{
+
+
+            }
+
+        }
+    }
+
 
 
     private void ChoosePic() {

@@ -1,16 +1,25 @@
 package com.example.biddle.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.biddle.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Models.Cards;
 import Models.Products;
@@ -28,7 +38,6 @@ import Utils.AlgoLibrary;
 
 public class CustomerActivity extends AppCompatActivity {
 
-
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private RecyclerView recyclerView;
@@ -37,10 +46,9 @@ public class CustomerActivity extends AppCompatActivity {
     private TextView tv_noProductText;
     private String userId;
     private ProgressBar progressb;
+    private TextView sort_tv;
 
     private DatabaseReference refProducts;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +57,53 @@ public class CustomerActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-         refProducts = database.getReference().child("Products");
-
-         userId = firebaseAuth.getCurrentUser().getUid();
-
-
+        refProducts = database.getReference().child("Products");
+        userId = firebaseAuth.getCurrentUser().getUid();
         cards = new ArrayList<Cards>();
-
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
-
-
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        sort_tv = (TextView) findViewById(R.id.sort_tv);
 
+        sort_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
+                builder.setTitle(R.string.pick_sort);
+                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר"};
+                builder.setSingleChoiceItems(options, -1,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedItem = Arrays.asList(options).get(i);
+                                Snackbar.make(sort_tv, selectedItem, Snackbar.LENGTH_INDEFINITE).show();
+                            }
+                        });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Just dismiss the alert dialog after selection
+                        // Or do something now
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         initRecyclerAdapter();
         ReadFromDB();
     }
+
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        recreate();
+//
+//    }
 
 
 
@@ -100,8 +137,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     }
 
-
-
     // create new card from given snapshot
     private void addNewCard(DataSnapshot ds){
 
@@ -109,14 +144,18 @@ public class CustomerActivity extends AppCompatActivity {
 
         for(DataSnapshot product : ds.getChildren()){
 
+            Log.d("hiss",product.toString());
+
             // user cant bid on his own product
             if(!userId.equals(product.getValue(Products.class).getSellerID())) {
                 card = new Cards();
 
                 card.setProductName(product.getValue(Products.class).getName());
-                card.setCurrentPrice(Double.toString(product.getValue(Products.class).getPrice()));
+                card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
                 card.setProductId(product.getValue(Products.class).getId());
+
+                card.setDateType(product.getValue(Products.class).getEndingDate());
 
                 cards.add(card);
             }
@@ -128,7 +167,6 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
     }
 
-
     // print the cards arrays on the current activity recyclerView
     private void initRecyclerAdapter() {
 
@@ -136,8 +174,38 @@ public class CustomerActivity extends AppCompatActivity {
         String user_type = getIntent().getStringExtra("user_type");
         cardsAdapter = new CardsAdapter(this,cards, user_type);
         recyclerView.setAdapter(cardsAdapter);
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.customer_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.homePage:
+                finish();
+                return true;
+            case R.id.starProducts:
+                startActivity(new Intent(CustomerActivity.this, StarProductsCustomerActivity.class));
+                return true;
+            case R.id.priceOfferedProducts:
+                startActivity(new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class));
+                return true;
+            case R.id.purchasedProducts:
+                startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));
+                return true;
+            case R.id.editProfile:
+                return true;
+            case R.id.logOut:
+                firebaseAuth.signOut();
+                startActivity(new Intent(CustomerActivity.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

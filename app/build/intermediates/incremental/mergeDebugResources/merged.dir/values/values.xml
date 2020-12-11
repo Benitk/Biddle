@@ -985,6 +985,10 @@
     <string name="ProductTTLDate">תאריך סיום המכירה</string>
     <string name="ProductTTLTime">שעת סיום המכירה</string>
     <string name="Signup">הרשמה</string>
+<<<<<<< HEAD
+=======
+    <string name="TimeLeft">המכירה תסתיים ב..</string>
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -1012,10 +1016,25 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+<<<<<<< HEAD
     <string name="action_settings">Settings</string>
     <string name="app_name">Biddle</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+=======
+    <string name="accpet">אשר</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Biddle</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
+    <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
+    <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
+    <string name="bidProduct">הצעת מחיר</string>
+    <string name="bidSucsses">ההצעה התעדכנה בהצלחה!</string>
+    <string name="bidTimeEnded">זמן מכירת המוצר כבר הסתיים!</string>
+    <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="cancel">ביטול</string>
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
     <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
     <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
@@ -1041,6 +1060,10 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="confirmpassword">אימות סיסמה</string>
     <string name="default_web_client_id" translatable="false">420298979980-2pk25hbnpp66sjmjvnlg5c3c5hga62ee.apps.googleusercontent.com</string>
+<<<<<<< HEAD
+=======
+    <string name="deleteProduct">מחיקת מוצר</string>
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
     <string name="email">דואר אלקטרוני</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
@@ -1101,12 +1124,20 @@
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="next">Next</string>
     <string name="noProduct">אין מוצרים</string>
+<<<<<<< HEAD
+=======
+    <string name="ok">בסדר</string>
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
     <string name="password">סיסמה</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+<<<<<<< HEAD
+=======
+    <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
     <string name="previous">Previous</string>
     <string name="project_id" translatable="false">biddle-c5332</string>
     <string name="search_menu_title">Search</string>
