@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
+            "outputFile": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\avi\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-watch-v20\\values-watch-v20.xml",
+=======
             "outputFile": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תכנה\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-watch-v20\\values-watch-v20.xml",
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",
@@ -23,7 +30,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
+                    "source": "C:\\Users\\avi\\.gradle\\caches\\transforms-2\\files-2.1\\468007acadc08469e9adb4a81aab7dd0\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",
+=======
                     "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\468007acadc08469e9adb4a81aab7dd0\\jetified-play-services-auth-19.0.0\\res\\values-watch-v20\\values.xml",
+>>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

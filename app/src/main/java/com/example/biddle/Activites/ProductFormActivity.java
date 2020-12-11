@@ -8,7 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +55,12 @@ import java.util.UUID;
 import Models.Products;
 import Utils.SetDate;
 import Utils.SetYourTime;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class ProductFormActivity extends AppCompatActivity {
 
@@ -63,7 +71,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private EditText et_productTTLDate ,et_productTTLTime, et_productCategory;
     private ImageView productImg;
     private String userId;
-
+    private Timer timer;
     private Uri imageUri;
     private String imgPath;
 
@@ -99,6 +107,10 @@ public class ProductFormActivity extends AppCompatActivity {
         refProduct = database.getReference().child("Products");
         refCategory = database.getReference().child("Categories");
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
         et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
@@ -107,8 +119,14 @@ public class ProductFormActivity extends AppCompatActivity {
         et_productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
+<<<<<<< HEAD
+        set_date = new SetDate(productTTLDate);
+        set_time = new SetYourTime(productTTLTime);
+
+=======
         set_date = new SetDate(et_productTTLDate);
         set_time = new SetYourTime(et_productTTLTime);
+>>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
 
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,8 +242,18 @@ public class ProductFormActivity extends AppCompatActivity {
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
 
+                    timer = new Timer();
+                    if(firebaseAuth.getCurrentUser().getEmail().equals("maccavi2@gmail.com"))
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            sendEmail("maccavi2@gmail.com", firebaseAuth.getCurrentUser().getEmail());
+                        }
+                    }, dateTime);
+
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
+
 
                     // insert new product to product root
                     WriteToDB(p, refProduct.child(productID));
@@ -240,6 +268,28 @@ public class ProductFormActivity extends AppCompatActivity {
         });
     }
 
+    public void sendEmail(String CustomerMail,String SellerMail) {
+        Log.i("Send email", "");
+
+        String[] TO = {CustomerMail};
+        String[] CC = {SellerMail} ;
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject: Avi");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here: King");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send an email to your customer"));
+            finish();
+            Log.i("Finished", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(ProductFormActivity.this, "There was no customer'.", Toast.LENGTH_SHORT).show();
+        }
+    }
     private void WriteToDB(Object value, DatabaseReference ref){
         progressb.setVisibility(View.VISIBLE);
 
