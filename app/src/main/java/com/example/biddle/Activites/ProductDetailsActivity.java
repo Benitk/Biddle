@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -39,7 +40,8 @@ import static com.example.biddle.R.*;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private TextView productName, productCategory, productDescrption, productPrice, timer, ProductEndingDate;
+    private TextView productName, productCategory, productDescrption, productPrice,
+            timer, ProductEndingDate, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
     private ProgressBar processbar;
@@ -79,6 +81,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
         typeBtn = (Button) findViewById(id.typeBtn);
 
+        star_tv = (TextView)findViewById(id.star);
         timer = (TextView)findViewById(id.timer);
 
         if(user_type.equals("customer")) {
@@ -267,6 +270,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean isfavorite;
+
+    public void onToggleStar(View view){
+        star_tv = (TextView) view;
+        if(!isfavorite) {  // star didn't selected before
+            isfavorite = true;
+            star_tv.setTextColor(Color.parseColor("#FFD600"));
+        } else {  // wants to cancel the choice
+            isfavorite = false;
+            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
+        }
     }
 
 }

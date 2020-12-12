@@ -2045,8 +2045,8 @@ id src_atop
 id src_in
 id src_over
 id standard
+id star
 id starProducts
-id star_btn
 id start
 id startHorizontal
 id startVertical
