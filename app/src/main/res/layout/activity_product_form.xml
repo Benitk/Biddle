@@ -193,6 +193,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <TextView
+                android:id="@+id/edit_pic_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="הוספת תמונה"
+                android:textColor="@color/white"
+                tools:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/nikeIcon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@android:drawable/checkbox_on_background"
+                tools:visibility="gone" />
+
+
         </LinearLayout>
 
     </LinearLayout>

@@ -54,7 +54,7 @@ import Models.Products;
 import Utils.SetDate;
 import Utils.SetYourTime;
 
-public class ProductFormActivity extends AppCompatActivity {
+public class ProductFormActivity<nikeIcon> extends AppCompatActivity {
 
     private TextView newProduct_btn;
     private String productName, productDescription, productCategory;
@@ -62,6 +62,8 @@ public class ProductFormActivity extends AppCompatActivity {
     // will convert to date type
     private EditText et_productTTLDate ,et_productTTLTime, et_productCategory;
     private ImageView productImg;
+    private ImageView nikeIcon;
+    private TextView edit_pic_bt;
     private String userId;
 
     private Uri imageUri;
@@ -103,8 +105,9 @@ public class ProductFormActivity extends AppCompatActivity {
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
         et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
-
+        nikeIcon = (ImageView)findViewById(R.id.nikeIcon);
         productImg = (ImageView)findViewById(R.id.productImg);
+        edit_pic_bt = (TextView)findViewById(R.id.edit_pic_bt ) ;
         et_productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
         et_productCategory =(EditText)findViewById(R.id.ProductCategory);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
@@ -351,6 +354,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
                         Toast.makeText(ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                       setImageBotton();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -371,4 +375,19 @@ public class ProductFormActivity extends AppCompatActivity {
 
 
     }
+
+    private void setImageBotton() {
+        productImg.setVisibility(View.GONE);
+        nikeIcon.setVisibility(View.VISIBLE);
+        edit_pic_bt.setVisibility(View.VISIBLE);
+        edit_pic_bt.setText("החלף את תמונה");
+        edit_pic_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChoosePic();
+            }
+        });
+    }
+
+
 }

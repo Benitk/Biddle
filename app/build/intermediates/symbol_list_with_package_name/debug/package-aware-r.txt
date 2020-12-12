@@ -1847,6 +1847,7 @@ id easeIn
 id easeInOut
 id easeOut
 id editProfile
+id edit_pic_bt
 id edit_query
 id email
 id end
@@ -1946,6 +1947,7 @@ id nav_host_fragment_container
 id navigation_header_container
 id never
 id newProduct_btn
+id nikeIcon
 id noProducts
 id noScroll
 id none
