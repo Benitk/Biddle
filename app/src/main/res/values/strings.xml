@@ -37,6 +37,8 @@
     <string name="bidSucsses">ההצעה התעדכנה בהצלחה!</string>
     <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
     <string name="bidTimeEnded">זמן מכירת המוצר כבר הסתיים!</string>
+    <string name="mustFill">חובה למלא!</string>
+
 
 
 

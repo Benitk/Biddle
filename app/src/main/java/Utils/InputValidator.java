@@ -20,7 +20,7 @@ public class InputValidator {
 
      */
     public boolean isValidEmail(String s){
-        final String email_pattern = "[_a-zA-Z1-9]+(\\.[A-Za-z0-9]*)*@[A-Za-z0-9]+\\.[A-Za-z0-9]+(\\.[A-Za-z0-9]*)*";
+        final String email_pattern = "[_a-zA-Z0-9]+(\\.[A-Za-z0-9]*)*@[A-Za-z0-9]+\\.[A-Za-z0-9]+(\\.[A-Za-z0-9]*)*";
         Pattern pattern = Pattern.compile(email_pattern);
         Matcher matcher = pattern.matcher(s);
         return matcher.matches();

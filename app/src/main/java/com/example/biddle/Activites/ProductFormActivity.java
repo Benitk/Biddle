@@ -8,8 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import java.util.Timer;
-import java.util.TimerTask;
+
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,7 +31,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.TextUtils;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -55,12 +53,6 @@ import java.util.UUID;
 import Models.Products;
 import Utils.SetDate;
 import Utils.SetYourTime;
-//import java.util.*;
-//import javax.mail.*;
-//import javax.mail.internet.InternetAddress;
-//import javax.mail.internet.MimeBodyPart;
-//import javax.mail.internet.MimeMessage;
-//import javax.mail.internet.MimeMultipart;
 
 public class ProductFormActivity extends AppCompatActivity {
 
@@ -71,7 +63,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private EditText et_productTTLDate ,et_productTTLTime, et_productCategory;
     private ImageView productImg;
     private String userId;
-    private Timer timer;
+
     private Uri imageUri;
     private String imgPath;
 
@@ -108,17 +100,22 @@ public class ProductFormActivity extends AppCompatActivity {
         refCategory = database.getReference().child("Categories");
 
 
+
+
+
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
         et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
-        et_productCategory = (EditText) findViewById(R.id.ProductCategory);
+
         productImg = (ImageView)findViewById(R.id.productImg);
         et_productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
+        et_productCategory =(EditText)findViewById(R.id.ProductCategory);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
-
 
         set_date = new SetDate(et_productTTLDate);
         set_time = new SetYourTime(et_productTTLTime);
+
+
 
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,6 +152,7 @@ public class ProductFormActivity extends AppCompatActivity {
         });
 
         et_productCategory.setOnClickListener(new View.OnClickListener() {
+            String selectedItem = "";
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ProductFormActivity.this);
@@ -165,15 +163,14 @@ public class ProductFormActivity extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                String selectedItem = Arrays.asList(options).get(i);
-                                et_productCategory.setText(selectedItem);
+                                selectedItem = Arrays.asList(options).get(i);
                             }
                         });
 
                 builder.setPositiveButton(R.string.accpet, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //dialogInterface.dismiss();
+                        et_productCategory.setText(selectedItem);
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -181,51 +178,56 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
+
+
         newProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                productCategory = et_productCategory.getText().toString().trim();
-
                 productName = ((EditText)findViewById(R.id.ProductName)).getText().toString().trim();
                 productDescription = ((EditText) findViewById(R.id.ProductDescription)).getText().toString().trim();
                 //get the user price input string then convert it to int
+                productCategory = et_productCategory.getText().toString().trim();
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
+
 
                 // validtate input
                 boolean flag = true;
 
+
                 if(TextUtils.isEmpty(prodPrice)) {
-                    ((EditText) findViewById(R.id.ProductPrice)).setError("חובה למלא");
+                    ((EditText) findViewById(R.id.ProductPrice)).setError(R.string.mustFill+"");
                     flag = false;
                 }
-                else productPrice = Integer.parseInt(prodPrice);
+                else
+                    productPrice = Integer.parseInt(prodPrice);
 
                 if(TextUtils.isEmpty(productName)) {
-                    ((EditText) findViewById(R.id.ProductName)).setError("חובה למלא");
+                    ((EditText) findViewById(R.id.ProductName)).setError(R.string.mustFill+"");
                     flag = false;
                 }
 
                 if(TextUtils.isEmpty(productDescription)) {
-                    ((EditText) findViewById(R.id.ProductDescription)).setError("חובה למלא");
+                    ((EditText) findViewById(R.id.ProductDescription)).setError(R.string.mustFill+"");
                     flag = false;
                 }
 
-                if(TextUtils.isEmpty(productCategory)) {
-                    ((EditText) findViewById(R.id.ProductCategory)).setError("חובה למלא");
+                if(TextUtils.isEmpty(productCategory)){
+                    ((EditText) findViewById(R.id.ProductCategory)).setError(R.string.mustFill+"");
                     flag = false;
                 }
 
                 if(TextUtils.isEmpty(et_productTTLTime.getText().toString().trim())) {
-                    ((EditText) findViewById(R.id.ProductTTLTime)).setError("חובה למלא");
+                    ((EditText) findViewById(R.id.ProductTTLTime)).setError(R.string.mustFill+"");
                     flag = false;
                 }
 
                 if(TextUtils.isEmpty(et_productTTLDate.getText().toString().trim())) {
-                    ((EditText) findViewById(R.id.ProductTTLDate)).setError("חובה למלא");
+                    ((EditText) findViewById(R.id.ProductTTLDate)).setError(R.string.mustFill+"");
                     flag = false;
                 }
+
 
                 // should check for img too
 
@@ -234,18 +236,8 @@ public class ProductFormActivity extends AppCompatActivity {
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
 
-                    timer = new Timer();
-                    if(firebaseAuth.getCurrentUser().getEmail().equals("maccavi2@gmail.com"))
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            sendEmail("maccavi2@gmail.com", firebaseAuth.getCurrentUser().getEmail());
-                        }
-                    }, dateTime);
-
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
-
 
                     // insert new product to product root
                     WriteToDB(p, refProduct.child(productID));
@@ -260,28 +252,6 @@ public class ProductFormActivity extends AppCompatActivity {
         });
     }
 
-    public void sendEmail(String CustomerMail,String SellerMail) {
-        Log.i("Send email", "");
-
-        String[] TO = {CustomerMail};
-        String[] CC = {SellerMail} ;
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject: Avi");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here: King");
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send an email to your customer"));
-            finish();
-            Log.i("Finished", "");
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(ProductFormActivity.this, "There was no customer'.", Toast.LENGTH_SHORT).show();
-        }
-    }
     private void WriteToDB(Object value, DatabaseReference ref){
         progressb.setVisibility(View.VISIBLE);
 
@@ -343,9 +313,15 @@ public class ProductFormActivity extends AppCompatActivity {
 
             }
             // send both of them
-            else { }
+            else{
+
+
+            }
+
         }
     }
+
+
 
     private void ChoosePic() {
         Intent intent = new Intent();
@@ -393,5 +369,9 @@ public class ProductFormActivity extends AppCompatActivity {
                 pd.setMessage((int) progressPrecent + "%" );
             }
         });
+
+
+
+
     }
 }

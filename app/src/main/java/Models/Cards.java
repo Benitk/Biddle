@@ -11,14 +11,14 @@ public class Cards {
     private String productName;
     private String currentPrice;
     private String endingDate;
-
     private Date dateType;
 
-    public Cards(String productName, String currentPrice, String endingDate, String id) {
+    public Cards(String productName, String currentPrice, String endingDate, String id, Date date) {
         this.productName = productName;
         this.currentPrice = currentPrice;
         this.endingDate = endingDate;
         this.productId = id;
+        this.dateType = date;
     }
 
     public Cards(){}
@@ -58,25 +58,5 @@ public class Cards {
     public void setDateType(Date dateType) {
         this.dateType = dateType;
     }
-
-    /*public static Comparator<Cards> compareByPrice = new Comparator<Cards>() {
-            @Override
-            public int compare(Cards c1, Cards c2) {
-                return c1.currentPrice.compareTo(c2.currentPrice);
-            }
-        };
-
-    public static Comparator<Cards> compareByDate = new Comparator<Cards>() {
-            @Override
-            public int compare(Cards c1, Cards c2) {
-                return c1.dateType.compareTo(c2.dateType);
-            }
-        };
-
-    public static ArrayList<Cards> sort(ArrayList<Cards> cards_list, boolean sortByPrice) {
-        if(sortByPrice) Collections.sort(cards_list, compareByPrice);
-        else Collections.sort(cards_list, compareByDate);
-        return cards_list;
-    }*/
 
 }

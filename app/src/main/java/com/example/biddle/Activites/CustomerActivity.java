@@ -69,7 +69,6 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sort_tv = (TextView) findViewById(R.id.sort_tv);
 
         sort_tv.setOnClickListener(new View.OnClickListener() {
@@ -84,14 +83,19 @@ public class CustomerActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String selectedItem = Arrays.asList(options).get(i);
                                 if(i == 1) sortByPrice = true;
-                                sort_cards();
-                                initRecyclerAdapter();
                             }
                         });
 
                 builder.setPositiveButton(R.string.accpet, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {}
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        sort_cards();
+                        // reset boolean
+                        sortByPrice = false;
+                       // initRecyclerAdapter();
+                        cardsAdapter.notifyDataSetChanged();
+
+                    }
                 });
 
                 AlertDialog dialog = builder.create();
@@ -109,7 +113,7 @@ public class CustomerActivity extends AppCompatActivity {
             Collections.sort(cards, new Comparator<Cards>() {
                 @Override
                 public int compare(Cards c1, Cards c2) {
-                    return c1.getCurrentPrice().compareTo(c2.getCurrentPrice());
+                    return Integer.parseInt(c1.getCurrentPrice()) - Integer.parseInt(c2.getCurrentPrice());
                 }
             });
         } else {  // sortByDate
@@ -122,12 +126,7 @@ public class CustomerActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        recreate();
-//
-//    }
+
 
     // read all product from
     private void ReadFromDB(){
@@ -158,7 +157,6 @@ public class CustomerActivity extends AppCompatActivity {
     private void addNewCard(DataSnapshot ds){
         Cards card = null;
         for(DataSnapshot product : ds.getChildren()){
-            Log.d("hiss",product.toString());
 
             // user cant bid on his own product
             if(!userId.equals(product.getValue(Products.class).getSellerID())) {
@@ -184,6 +182,7 @@ public class CustomerActivity extends AppCompatActivity {
 
     // print the cards arrays on the current activity recyclerView
     private void initRecyclerAdapter() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String user_type = getIntent().getStringExtra("user_type");
         cardsAdapter = new CardsAdapter(this,cards, user_type);
         recyclerView.setAdapter(cardsAdapter);
