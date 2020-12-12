@@ -1,6 +1,8 @@
 <div dir='rtl' lang='he'>
 
 # Biddle
+
+![biddle_logo](https://ibb.co/s6DdjDp)
  
 אפליקציה המאפשרת לכם להשתתף במכירה פומבית כלקוחות או כסוחרים.
 
