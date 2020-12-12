@@ -24,6 +24,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -247,6 +248,7 @@ public class ProductFormActivity<nikeIcon> extends AppCompatActivity {
 
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
+                    uploadPicToDB();
                 }
             }
         });
@@ -335,7 +337,8 @@ public class ProductFormActivity<nikeIcon> extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageUri = data.getData();
-            uploadPicToDB();
+            Picasso.with(this).load(imageUri).into(productImg);
+//            uploadPicToDB();
         }
     }
 
