@@ -39,6 +39,19 @@
     <string name="bidTimeEnded">זמן מכירת המוצר כבר הסתיים!</string>
     <string name="mustFill">חובה למלא!</string>
 
+    <string-array name="CategoriesArray">
+        <item>ריהוט</item>
+        <item>ביגוד</item>
+        <item>הנעלה</item>
+        <item>אקססוריז</item>
+        <item>כלי נגינה</item>
+        <item>ספרות</item>
+        <item>אומנות</item>
+        <item>ציוד משרדי</item>
+        <item>רכבים</item>
+        <item>אחר</item>
+    </string-array>
+
 
 
 
