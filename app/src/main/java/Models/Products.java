@@ -18,7 +18,6 @@ public class Products {
     public Products(){
     }
 
-
     public Products(String id , String sellerID,String customerID, String name, int price, String category, Date endingdate, String description, String imgPath){
         this.id = id;
         this.name = name;
@@ -101,5 +100,12 @@ public class Products {
 
     public void setEndingDate(Date endingDate) {
         this.endingDate = endingDate;
+    }
+
+    public long millisUntilFinished() {
+        Date date = new Date();  // Getting the current date
+        long timeMilli_now = date.getTime();  // returns the time in millis
+        long timeMilli_end = this.endingDate.getTime();
+        return timeMilli_end - timeMilli_now;
     }
 }

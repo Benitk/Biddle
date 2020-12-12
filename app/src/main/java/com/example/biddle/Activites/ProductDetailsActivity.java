@@ -17,6 +17,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 
 import Models.Products;
@@ -36,7 +39,7 @@ import static com.example.biddle.R.*;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private TextView productName, productCategory, productDescrption, productPrice, ProductEndingDate;
+    private TextView productName, productCategory, productDescrption, productPrice, timer;
     private Button typeBtn;
     private ImageView Productimg;
     private ProgressBar processbar;
@@ -45,6 +48,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Integer currentPrice;
     private String userId;
     private Integer newBid;
+
+    private long millisUntilFinished;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
@@ -64,39 +69,33 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         userId = firebaseAuth.getCurrentUser().getUid();
 
-
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
-
         ProductID = getIntent().getStringExtra("productId");
-
         productName = (TextView)findViewById(id.productName);
         productCategory = (TextView)findViewById(id.productCategory);
         productDescrption = (TextView)findViewById(id.productDescription);
         productPrice = (TextView)findViewById(id.productPrice);
-        ProductEndingDate = (TextView)findViewById(id.productDate);
-
+        // ProductEndingDate = (TextView)findViewById(id.productDate);
         typeBtn = (Button) findViewById(id.typeBtn);
 
+        timer = (TextView)findViewById(id.timer);
 
-        if(user_type.equals("customer")){
+        if(user_type.equals("customer")) {
             typeBtn.setText(string.bidProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.green));
             SetbidBtn();
         }
-        else{
+        else {
             typeBtn.setText(string.deleteProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.red));
         }
 
-
         Productimg = (ImageView) findViewById(id.productpic);
-
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
 
         ReadFromDB();
-
     }
 
     // fetch single product from firebase that equal productID
@@ -138,16 +137,29 @@ public class ProductDetailsActivity extends AppCompatActivity {
             productDescrption.setText(product.getValue(Products.class).getDescription());
             currentPrice = product.getValue(Products.class).getPrice();
             productPrice.setText(Integer.toString(currentPrice)+" ₪");
-            ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));;
+            // ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
         }
-
+        // each second has 1000 millisecond
+        // countdown Interveal is 1sec = 1000 I have used
+        new CountDownTimer(this.millisUntilFinished, 1000) {
+            public void onTick(long millis) {
+                NumberFormat f = new DecimalFormat("00");
+                long day = (millis / 86400000) % 7;
+                long hour = (millis / 3600000) % 24;
+                long min = (millis / 60000) % 60;
+                long sec = (millis / 1000) % 60;
+                timer.setText(f.format(day) + "d:" + f.format(hour) + "h:" + f.format(min) + "m:" + f.format(sec) + "s");
+            }
+            // When the task is over it will print 00:00:00 there
+            public void onFinish() {
+                timer.setText("00d:00h:00m:00s");
+            }
+        }.start();
         processbar.setVisibility(View.GONE);
     }
 
-    private void SetDeleteBtn(){
-
-
-    }
+    private void SetDeleteBtn() {}
 
     private void SetbidBtn() {
         typeBtn.setOnClickListener(new View.OnClickListener() {
