@@ -136,4 +136,18 @@
         app:layout_constraintStart_toEndOf="@+id/productCategory"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/star_btn"
+        android:onClick="onToggleStar"
+        android:layout_width="47dp"
+        android:layout_height="37dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="216dp"
+        android:background="#00ffffff"
+        android:src="@drawable/star"
+        app:layout_constraintEnd_toStartOf="@+id/productPrice"
+        tools:ignore="MissingConstraints,OnClick"
+        tools:layout_editor_absoluteY="108dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

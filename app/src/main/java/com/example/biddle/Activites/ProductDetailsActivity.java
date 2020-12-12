@@ -145,7 +145,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         new CountDownTimer(this.millisUntilFinished, 1000) {
             public void onTick(long millis) {
                 NumberFormat f = new DecimalFormat("00");
-                long day = (millis / 86400000) % 7;
+                long day = (millis / 86400000);
                 long hour = (millis / 3600000) % 24;
                 long min = (millis / 60000) % 60;
                 long sec = (millis / 1000) % 60;

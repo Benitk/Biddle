@@ -1673,6 +1673,9 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable password
+drawable star
+drawable star_normal
+drawable star_pressed
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -2043,6 +2046,7 @@ id src_in
 id src_over
 id standard
 id starProducts
+id star_btn
 id start
 id startHorizontal
 id startVertical
