@@ -39,7 +39,7 @@ import static com.example.biddle.R.*;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private TextView productName, productCategory, productDescrption, productPrice, timer;
+    private TextView productName, productCategory, productDescrption, productPrice, timer, ProductEndingDate;
     private Button typeBtn;
     private ImageView Productimg;
     private ProgressBar processbar;
@@ -76,7 +76,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productCategory = (TextView)findViewById(id.productCategory);
         productDescrption = (TextView)findViewById(id.productDescription);
         productPrice = (TextView)findViewById(id.productPrice);
-        // ProductEndingDate = (TextView)findViewById(id.productDate);
+        ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
         typeBtn = (Button) findViewById(id.typeBtn);
 
         timer = (TextView)findViewById(id.timer);
@@ -137,7 +137,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             productDescrption.setText(product.getValue(Products.class).getDescription());
             currentPrice = product.getValue(Products.class).getPrice();
             productPrice.setText(Integer.toString(currentPrice)+" ₪");
-            // ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
         }
         // each second has 1000 millisecond

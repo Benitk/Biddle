@@ -100,9 +100,6 @@ public class ProductFormActivity extends AppCompatActivity {
         refCategory = database.getReference().child("Categories");
 
 
-
-
-
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
         et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);

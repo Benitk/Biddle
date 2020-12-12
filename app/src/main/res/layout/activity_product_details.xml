@@ -7,6 +7,19 @@
     tools:context=".Activites.ProductDetailsActivity">
 
     <TextView
+        android:id="@+id/Product_endingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/timer"
+        app:layout_constraintEnd_toStartOf="@+id/TimeLeft"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productDescription"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
         android:id="@+id/TimeLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,10 +28,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productDescription"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/typeBtn"
@@ -36,19 +49,19 @@
 
     <TextView
         android:id="@+id/timer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="TextView"
-        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="?android:attr/detailsElementBackground"
-        android:textSize="30sp"
+        android:text="TextView"
+        android:textColor="@color/purple_500"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/typeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TimeLeft"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.341" />
 
     <include
         layout="@layout/processbar"
@@ -114,7 +127,7 @@
         android:id="@+id/productPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
         android:text="TextView"
         android:textColor="@color/green"
         android:textSize="20dp"
