@@ -2,7 +2,7 @@
 
 # Biddle
 
-![biddle_logo](https://ibb.co/s6DdjDp.png)
+![alt text](https://github.com/Benitk/Biddle/blob/main/biddle_logo.png?raw=true)
  
 אפליקציה המאפשרת לכם להשתתף במכירה פומבית כלקוחות או כסוחרים.
 
