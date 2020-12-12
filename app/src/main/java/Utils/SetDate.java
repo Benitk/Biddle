@@ -1,8 +1,18 @@
 package Utils;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.biddle.Activites.MainActivity;
+import com.example.biddle.R;
+
+import static com.example.biddle.R.*;
 
 public class SetDate implements DatePickerDialog.OnDateSetListener {
 

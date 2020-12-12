@@ -8,22 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,15 +25,32 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.io.File;
+import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.UUID;
 
 import Models.Products;
-import Utils.JavaMailAPI;
 import Utils.SetDate;
 import Utils.SetYourTime;
 
@@ -226,14 +233,6 @@ public class ProductFormActivity extends AppCompatActivity {
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
 
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            ReadProductFromDB();
-                        }
-                    }, dateTime);
-
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
@@ -248,29 +247,6 @@ public class ProductFormActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void sendEmail(String CustomerMail,String SellerMail) {
-        Log.i("Send email", "");
-
-        String[] TO = {CustomerMail};
-        String[] CC = {SellerMail} ;
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject: Avi");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here: King");
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send an email to your customer"));
-            finish();
-            Log.i("Finished", "");
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(ProductFormActivity.this, "There was no customer'.", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void WriteToDB(Object value, DatabaseReference ref){
@@ -330,29 +306,15 @@ public class ProductFormActivity extends AppCompatActivity {
             String customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
 
             // send only to seller because no one bid on this product
-            if(!sellerID_To_Mail.equals(customerID_To_Mail)){
-                sendEmail( "Maccavi3@gmail.com", firebaseAuth.getCurrentUser().getEmail());
-                try {
-                    JavaMailAPI javaMailAPI = new JavaMailAPI(this, firebaseAuth.getCurrentUser().getEmail().toString(), "לא נמצאו קונים", "לצערינו לא נמצאו לקוחות המעונינים במוצר זה");
-                    javaMailAPI.execute();
-                } catch (Exception e) {
-                    Log.e("SendMail", e.getMessage(), e);
-                }
+            if(sellerID_To_Mail.equals(customerID_To_Mail)){
+
             }
             // send both of them
-            else {
-                sendEmail("Ben - here ya hazarzir2", firebaseAuth.getCurrentUser().getEmail());
-                try {
-                    JavaMailAPI javaMailAPISeller = new JavaMailAPI(this, firebaseAuth.getCurrentUser().getEmail().toString(), "מכירה בוצעה בהצלחה", "ברכותינו, המוצר נמכר בהצלחה.");
-                    javaMailAPISeller.execute();
-                    //to add customer email here:
-                    JavaMailAPI JavaMailAPIBuyer = new JavaMailAPI(this, "Maccavi2@gmail.com", "המוצר בדרך אליך!", "ברכותינו, זכית במכרז. המוצר בדרך אליך והסוחר יצור איתך קשר בשעות הקרובות");
-                    JavaMailAPIBuyer.execute();
+            else{
 
-                } catch (Exception e) {
-                    Log.e("SendMail", e.getMessage(), e);
-                }
+
             }
+
         }
     }
 

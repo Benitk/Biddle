@@ -1,5 +1,7 @@
 package Models;
 
+import android.util.Log;
+
 import java.util.Date;
 
 public class Products {
