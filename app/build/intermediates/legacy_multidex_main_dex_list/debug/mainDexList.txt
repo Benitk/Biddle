@@ -260,6 +260,9 @@ com/google/firebase/database/annotations/Nullable.class
 com/google/firebase/platforminfo/AutoValue_LibraryVersion.class
 com/google/firebase/platforminfo/LibraryVersion.class
 com/google/firebase/storage/StorageException$ErrorCode.class
+com/sun/mail/util/DefaultProvider.class
+javax/mail/MailSessionDefinition.class
+javax/mail/MailSessionDefinitions.class
 kotlin/BuilderInference.class
 kotlin/Deprecated.class
 kotlin/DeprecationLevel.class

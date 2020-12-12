@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressBar progressb;
 
-    Button button;
+   // Button button;
 
     GMailSender sender;
 
@@ -83,22 +83,22 @@ public class MainActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser() != null)
             startActivity(new Intent(MainActivity.this, LandingPageActivity.class));
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        button.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                try {
-                    new MyAsyncClass().execute();
-                }
-                catch (Exception ex)
-                {
-                    Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//        button.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                try {
+//                    new MyAsyncClass().execute();
+//                }
+//                catch (Exception ex)
+//                {
+//                    Toast.makeText(getApplicationContext(), ex.toString(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
         /* login button listener - on click getting user input
          * call validate function to confirm valid input

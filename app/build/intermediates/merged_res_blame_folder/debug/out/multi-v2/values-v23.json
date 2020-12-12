@@ -1,32 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "D:\\android projects\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\avi\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
-=======
-            "outputFile": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תכנה\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
->>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
-                    "from": {
-                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1371,2267,2386,2513,2735,2959,3074,3181,3294",
-                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
-                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1366,2262,2381,2508,2730,2954,3069,3176,3289,3519"
-                    }
-                },
-                {
-<<<<<<< HEAD
-                    "source": "C:\\Users\\avi\\.gradle\\caches\\transforms-2\\files-2.1\\ee6be7bea86eae752bb417adac5c9fe6\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
-=======
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\ee6be7bea86eae752bb417adac5c9fe6\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
->>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
+                    "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\ee6be7bea86eae752bb417adac5c9fe6\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -45,11 +23,18 @@
                     }
                 },
                 {
-<<<<<<< HEAD
-                    "source": "C:\\Users\\avi\\.gradle\\caches\\transforms-2\\files-2.1\\59556ad8b9d4e87f44c01d9cded7d96d\\material-1.2.1\\res\\values-v23\\values-v23.xml",
-=======
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\59556ad8b9d4e87f44c01d9cded7d96d\\material-1.2.1\\res\\values-v23\\values-v23.xml",
->>>>>>> d5faa3c016f7baff4e8b47d9d19674396d5ef24c
+                    "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\3b01a1d4133f15f0007928c104c33ad4\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1371,2267,2386,2513,2735,2959,3074,3181,3294",
+                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
+                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
+                        "endOffsets": "185,320,395,482,1366,2262,2381,2508,2730,2954,3069,3176,3289,3519"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Beni\\.gradle\\caches\\transforms-2\\files-2.1\\59556ad8b9d4e87f44c01d9cded7d96d\\material-1.2.1\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",

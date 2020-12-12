@@ -69,6 +69,7 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         sort_tv = (TextView) findViewById(R.id.sort_tv);
 
         sort_tv.setOnClickListener(new View.OnClickListener() {
@@ -183,7 +184,6 @@ public class CustomerActivity extends AppCompatActivity {
 
     // print the cards arrays on the current activity recyclerView
     private void initRecyclerAdapter() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         String user_type = getIntent().getStringExtra("user_type");
         cardsAdapter = new CardsAdapter(this,cards, user_type);
         recyclerView.setAdapter(cardsAdapter);

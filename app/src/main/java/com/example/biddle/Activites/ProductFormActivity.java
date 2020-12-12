@@ -55,12 +55,12 @@ import java.util.UUID;
 import Models.Products;
 import Utils.SetDate;
 import Utils.SetYourTime;
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+//import java.util.*;
+//import javax.mail.*;
+//import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.MimeBodyPart;
+//import javax.mail.internet.MimeMessage;
+//import javax.mail.internet.MimeMultipart;
 
 public class ProductFormActivity extends AppCompatActivity {
 
@@ -107,10 +107,7 @@ public class ProductFormActivity extends AppCompatActivity {
         refProduct = database.getReference().child("Products");
         refCategory = database.getReference().child("Categories");
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);
         et_productTTLTime = (EditText) findViewById(R.id.ProductTTLTime);
@@ -119,14 +116,9 @@ public class ProductFormActivity extends AppCompatActivity {
         et_productTTLDate = (EditText)findViewById(R.id.ProductTTLDate);
         newProduct_btn = (TextView)findViewById(R.id.newProduct_btn);
 
-<<<<<<< HEAD
-        set_date = new SetDate(productTTLDate);
-        set_time = new SetYourTime(productTTLTime);
 
-=======
         set_date = new SetDate(et_productTTLDate);
         set_time = new SetYourTime(et_productTTLTime);
->>>>>>> 622759d08fe44be45e3e49231e7fa38b2db82d17
 
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
