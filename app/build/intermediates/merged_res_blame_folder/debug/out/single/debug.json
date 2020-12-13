@@ -24,12 +24,12 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
-        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_border.xml.flat",

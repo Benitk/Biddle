@@ -65,7 +65,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private String userId;
 
     private Uri imageUri;
-    private String imgPath;
+    private String imgPath = "";
 
     private ProgressBar progressb;
 
@@ -244,6 +244,12 @@ public class ProductFormActivity extends AppCompatActivity {
 
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
+
+                    if(imgPath.length() > 0 && imageUri != null) {
+                        uploadPicToDB();
+                    }
+
+
                 }
             }
         });
@@ -332,7 +338,7 @@ public class ProductFormActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageUri = data.getData();
-            uploadPicToDB();
+
         }
     }
 
