@@ -73,4 +73,6 @@
     <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
     <string name="pick_category">בחר/י את הקטגוריה אליה משתייך המוצר</string>
 
+    <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
+
 </resources>

@@ -1037,6 +1037,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gray
 color green
 color highlighted_text_material_dark
 color highlighted_text_material_light
@@ -1154,6 +1155,7 @@ color test_mtrl_calendar_day_selected
 color tooltip_background_dark
 color tooltip_background_light
 color white
+color yellow
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -2435,6 +2437,7 @@ string title_activity_signup
 string title_dashboard
 string title_home
 string title_notifications
+string tryAgain
 string welcome_customer
 string welcome_seller
 style AlertDialog_AppCompat

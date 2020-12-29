@@ -85,6 +85,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         typeBtn = (Button) findViewById(id.typeBtn);
 
         star_tv = (TextView)findViewById(id.star);
+        setStarColor();
+
         timer = (TextView)findViewById(id.timer);
 
         if(user_type.equals("customer")) {
@@ -103,6 +105,21 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
 
         ReadFromDB();
+    }
+
+    private void setStarColor() {
+        DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists())  // star pressed before
+                    star_tv.setTextColor(Color.parseColor("#FFD600"));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     // fetch single product from firebase that equal productID
@@ -221,6 +238,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
                         processbar.setVisibility(View.GONE);
                     }
                 });
