@@ -174,12 +174,6 @@ public class SellerActivity extends AppCompatActivity {
             case R.id.homePage:
                 finish();
                 return true;
-            case R.id.unofferedProducts:
-                startActivity(new Intent(SellerActivity.this, UnofferedProductsSellerActivity.class));
-                return true;
-            case R.id.priceOfferedProducts:
-                startActivity(new Intent(SellerActivity.this, PriceOfferedProductsSellerActivity.class));
-                return true;
             case R.id.purchasedProducts:
                 startActivity(new Intent(SellerActivity.this, PurchasedProductsSellerActivity.class));
                 return true;
