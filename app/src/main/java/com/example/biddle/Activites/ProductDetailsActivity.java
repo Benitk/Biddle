@@ -1,5 +1,6 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.biddle.R;
@@ -56,7 +57,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private DatabaseReference refProduct;
+    private DatabaseReference refCurrUser;
 
+    private boolean isfavorite;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ResourceAsColor")
@@ -70,6 +73,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         refProduct = database.getReference().child("Products");
 
         userId = firebaseAuth.getCurrentUser().getUid();
+        refCurrUser = database.getReference().child("Users").child(userId);
 
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
@@ -92,6 +96,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         else {
             typeBtn.setText(string.deleteProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.red));
+            star_tv.setVisibility(View.INVISIBLE);
         }
 
         Productimg = (ImageView) findViewById(id.productpic);
@@ -165,19 +170,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void SetDeleteBtn() {}
 
     private void SetbidBtn() {
+
         typeBtn.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
                 View promptsView = li.inflate(layout.bid_dialog, null);
-
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
-
                 alertDialogBuilder.setView(promptsView);
-
                 final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
-
                 // set dialog message
                 alertDialogBuilder.setCancelable(false)
                         .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
@@ -186,23 +186,43 @@ public class ProductDetailsActivity extends AppCompatActivity {
                             }
                         }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog ,int id) {
-
                                 String userBid = userInput.getText().toString().trim();
                                 Log.d("dialog",userBid);
                                 newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
-
                                 if(newBid > -1)
                                     TransactionDB();
                                 else
                                     Toast.makeText(ProductDetailsActivity.this, string.bidFailed, Toast.LENGTH_LONG).show();
                             }
                         });
-
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
-
                 // show it
                 alertDialog.show();
+            }
+        });
+
+        star_tv.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.getValue() == null) {  // the child doesn't exist, should add it to DB
+                            refCurrUser.child("favoriteProducts").child(ProductID);
+                            isfavorite = true;
+                        } else {  // star pressed already, remove product from the favorite products of this customer
+                            refCurrUser.child("favoriteProducts").child(ProductID).removeValue();
+                            isfavorite = false;
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
     }
@@ -257,8 +277,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
-
-
                 if(databaseError == null && comitted){
                     // update new Bid Price
                     productPrice.setText(Integer.toString(newBid)+" ₪");
@@ -271,8 +289,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
-
-    private boolean isfavorite;
 
     public void onToggleStar(View view){
         star_tv = (TextView) view;

@@ -175,8 +175,6 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
-
-
         newProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,10 +186,8 @@ public class ProductFormActivity extends AppCompatActivity {
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
 
-
                 // validtate input
                 boolean flag = true;
-
 
                 if(TextUtils.isEmpty(prodPrice)) {
                     ((EditText) findViewById(R.id.ProductPrice)).setError(R.string.mustFill+"");
@@ -225,7 +221,6 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
 
-
                 // should check for img too
 
                 if(flag){
@@ -248,7 +243,6 @@ public class ProductFormActivity extends AppCompatActivity {
                     if(imgPath.length() > 0 && imageUri != null) {
                         uploadPicToDB();
                     }
-
 
                 }
             }
