@@ -1676,6 +1676,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable password
+drawable search_icon
 drawable star
 drawable star_normal
 drawable star_pressed
@@ -2012,6 +2013,7 @@ id scrollView
 id scrollable
 id search_badge
 id search_bar
+id search_btn
 id search_button
 id search_close_btn
 id search_edit_frame
@@ -2267,6 +2269,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu customer_category_search
 menu customer_menu
 menu seller_menu
 mipmap ic_launcher
@@ -2326,6 +2329,7 @@ string bidSucsses
 string bidTimeEnded
 string bottom_sheet_behavior
 string cancel
+string category_sort
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern

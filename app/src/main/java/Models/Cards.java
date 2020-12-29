@@ -12,13 +12,15 @@ public class Cards {
     private String currentPrice;
     private String endingDate;
     private Date dateType;
+    private String productCategory;
 
-    public Cards(String productName, String currentPrice, String endingDate, String id, Date date) {
+    public Cards(String productName, String currentPrice, String endingDate, String id, Date date, String category) {
         this.productName = productName;
         this.currentPrice = currentPrice;
         this.endingDate = endingDate;
         this.productId = id;
         this.dateType = date;
+        this.productCategory = category;
     }
 
     public Cards(){}
@@ -59,4 +61,11 @@ public class Cards {
         this.dateType = dateType;
     }
 
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
 }

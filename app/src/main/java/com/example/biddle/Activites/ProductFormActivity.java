@@ -155,7 +155,6 @@ public class ProductFormActivity extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ProductFormActivity.this);
                 builder.setTitle(R.string.pick_category);
                 final String[] options = getResources().getStringArray(R.array.CategoriesArray);
-                //final String[] options = new String[]{"ריהוט","ביגוד","הנעלה","אקססוריז","כלי נגינה","ספרות","אומנות","ציוד משרדי","רכבים","אחר"};
                 builder.setSingleChoiceItems(options, -1,
                         new DialogInterface.OnClickListener() {
                             @Override
