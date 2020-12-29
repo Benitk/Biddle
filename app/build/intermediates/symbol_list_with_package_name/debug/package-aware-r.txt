@@ -2106,7 +2106,6 @@ id typeBtn
 id unchecked
 id uniform
 id unlabeled
-id unofferedProducts
 id up
 id useLogo
 id view_offset_helper
@@ -2181,10 +2180,11 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_customer
+layout activity_edit_profile_customer
+layout activity_edit_profile_seller
 layout activity_landing_page
 layout activity_main
 layout activity_price_offered_products_customer
-layout activity_price_offered_products_seller
 layout activity_product_details
 layout activity_product_form
 layout activity_purchased_products_customer
@@ -2192,7 +2192,6 @@ layout activity_purchased_products_seller
 layout activity_seller
 layout activity_signup
 layout activity_star_products_customer
-layout activity_unoffered_products_seller
 layout bid_dialog
 layout card2_layout
 layout card_layout

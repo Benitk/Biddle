@@ -59,7 +59,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private DatabaseReference refProduct;
     private DatabaseReference refCurrUser;
 
-    private boolean isfavorite;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ResourceAsColor")
@@ -204,23 +203,25 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         star_tv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                processbar.setVisibility(View.VISIBLE);
 
                 DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
 
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.getValue() == null) {  // the child doesn't exist, should add it to DB
-                            refCurrUser.child("favoriteProducts").child(ProductID);
-                            isfavorite = true;
-                        } else {  // star pressed already, remove product from the favorite products of this customer
+                        if (snapshot.exists()) {  // star pressed already, remove product from the favorite products of this customer
                             refCurrUser.child("favoriteProducts").child(ProductID).removeValue();
-                            isfavorite = false;
+                            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
+                        } else {  // the child doesn't exist, should add it to DB
+                            refCurrUser.child("favoriteProducts").child(ProductID).setValue(true);
+                            star_tv.setTextColor(Color.parseColor("#FFD600"));
                         }
+                        processbar.setVisibility(View.GONE);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
+                        processbar.setVisibility(View.GONE);
                     }
                 });
             }
@@ -288,17 +289,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void onToggleStar(View view){
-        star_tv = (TextView) view;
-        if(!isfavorite) {  // star didn't selected before
-            isfavorite = true;
-            star_tv.setTextColor(Color.parseColor("#FFD600"));
-        } else {  // wants to cancel the choice
-            isfavorite = false;
-            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
-        }
     }
 
 }

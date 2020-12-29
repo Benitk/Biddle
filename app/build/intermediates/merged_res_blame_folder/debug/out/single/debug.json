@@ -12,10 +12,6 @@
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_price_offered_products_seller.xml.flat",
-        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\activity_price_offered_products_seller.xml"
-    },
-    {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
@@ -44,12 +40,12 @@
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
-        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
-    },
-    {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ib.png.flat",
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\drawable-v24\\ib.png"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_star_normal.png.flat",
@@ -66,10 +62,6 @@
     {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_layout.xml.flat",
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\card_layout.xml"
-    },
-    {
-        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_unoffered_products_seller.xml.flat",
-        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\activity_unoffered_products_seller.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_email.png.flat",
@@ -154,6 +146,14 @@
     {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
         "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_profile_seller.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\activity_edit_profile_seller.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_profile_customer.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\src\\main\\res\\layout\\activity_edit_profile_customer.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\menu_customer_menu.xml.flat",

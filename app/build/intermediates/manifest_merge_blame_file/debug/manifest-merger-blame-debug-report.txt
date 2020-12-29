@@ -24,7 +24,7 @@
 14-->[com.google.android.gms:play-services-measurement:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\6418bedc19e04193018e12db0be81997\jetified-play-services-measurement-18.0.0\AndroidManifest.xml:26:22-107
 15
 16    <application
-16-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:7:5-46:19
+16-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:7:5-44:19
 17        android:name="androidx.multidex.MultiDexApplication"
 18        android:allowBackup="true"
 18-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:8:9-35
@@ -42,18 +42,18 @@
 25        android:testOnly="true"
 26        android:theme="@style/Theme.Biddle" >
 26-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:13:9-44
-27        <activity android:name="com.example.biddle.Activites.UnofferedProductsSellerActivity" />
-27-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:9-88
-27-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:19-76
-28        <activity android:name="com.example.biddle.Activites.PurchasedProductsSellerActivity" />
-28-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:15:9-79
-28-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:15:19-76
-29        <activity android:name="com.example.biddle.Activites.PurchasedProductsCustomerActivity" />
-29-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:9-81
-29-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:19-78
-30        <activity android:name="com.example.biddle.Activites.PriceOfferedProductsSellerActivity" />
-30-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:9-82
-30-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:19-79
+27        <activity android:name="com.example.biddle.Activites.EditProfileCustomerActivity" />
+27-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:9-84
+27-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:14:19-72
+28        <activity android:name="com.example.biddle.Activites.EditProfileSellerActivity" />
+28-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:15:9-73
+28-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:15:19-70
+29        <activity android:name="com.example.biddle.Activites.PurchasedProductsSellerActivity" />
+29-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:9-79
+29-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:16:19-76
+30        <activity android:name="com.example.biddle.Activites.PurchasedProductsCustomerActivity" />
+30-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:9-81
+30-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:17:19-78
 31        <activity android:name="com.example.biddle.Activites.PriceOfferedProductsCustomerActivity" />
 31-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:18:9-84
 31-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:18:19-81
@@ -78,36 +78,36 @@
 40            android:theme="@style/Theme.Biddle.NoActionBar" />
 40-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:27:13-60
 41        <activity android:name="com.example.biddle.Activites.SellerActivity" />
-41-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:29:9-62
-41-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:29:19-59
+41-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:28:9-62
+41-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:28:19-59
 42        <activity
-42-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:31:9-34:63
+42-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:29:9-32:63
 43            android:name="com.example.biddle.Activites.LandingPageActivity"
-43-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:32:13-58
+43-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:30:13-58
 44            android:label="@string/title_activity_landing_page"
-44-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:33:13-64
+44-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:31:13-64
 45            android:theme="@style/Theme.Biddle.NoActionBar" />
-45-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:34:13-60
+45-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:32:13-60
 46        <activity
-46-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:35:9-38:63
+46-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:33:9-36:63
 47            android:name="com.example.biddle.Activites.SignupActivity"
-47-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:36:13-53
+47-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:34:13-53
 48            android:label="@string/title_activity_signup"
-48-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:37:13-58
+48-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:35:13-58
 49            android:theme="@style/Theme.Biddle.NoActionBar" />
-49-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:38:13-60
+49-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:36:13-60
 50        <activity android:name="com.example.biddle.Activites.MainActivity" >
-50-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:39:9-45:20
-50-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:39:19-57
+50-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:37:9-43:20
+50-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:37:19-57
 51            <intent-filter>
-51-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:40:13-44:29
+51-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:38:13-42:29
 52                <category android:name="android.intent.category.LAUNCHER" />
-52-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:41:17-77
-52-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:41:27-74
+52-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:39:17-77
+52-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:39:27-74
 53
 54                <action android:name="android.intent.action.MAIN" />
-54-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:43:17-69
-54-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:43:25-66
+54-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:41:17-69
+54-->C:\Users\user\Documents\סמסטר א שנה ג - מקוון\הנדסת תוכנה\Biddle\app\src\main\AndroidManifest.xml:41:25-66
 55            </intent-filter>
 56        </activity>
 57        <activity
