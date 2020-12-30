@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 #Wed Dec 30 14:19:39 PST 2020
 base.0=D\:\\android projects\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+=======
+#Wed Dec 30 10:53:17 IST 2020
+base.0=C\:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+>>>>>>> c9f6f0ec688bef01bc76014811f76ef511d47c6a
 path.1=classes2.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
+<<<<<<< HEAD
 base.1=D\:\\android projects\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+=======
+base.1=C\:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
+>>>>>>> c9f6f0ec688bef01bc76014811f76ef511d47c6a

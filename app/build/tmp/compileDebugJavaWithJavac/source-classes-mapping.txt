@@ -75,11 +75,20 @@ com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity$5
  com.example.biddle.Activites.ProductDetailsActivity$6
  com.example.biddle.Activites.ProductDetailsActivity$7
+<<<<<<< HEAD
  com.example.biddle.Activites.ProductDetailsActivity$7$1
  com.example.biddle.Activites.ProductDetailsActivity$8
  com.example.biddle.Activites.ProductDetailsActivity$8$1
  com.example.biddle.Activites.ProductDetailsActivity$8$2
  com.example.biddle.Activites.ProductDetailsActivity$9
+=======
+ com.example.biddle.Activites.ProductDetailsActivity$8
+ com.example.biddle.Activites.ProductDetailsActivity$9
+ com.example.biddle.Activites.ProductDetailsActivity$9$1
+ com.example.biddle.Activites.ProductDetailsActivity$9$2
+ com.example.biddle.Activites.ProductDetailsActivity$9$3
+ com.example.biddle.Activites.ProductDetailsActivity$9$4
+>>>>>>> c9f6f0ec688bef01bc76014811f76ef511d47c6a
 com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
