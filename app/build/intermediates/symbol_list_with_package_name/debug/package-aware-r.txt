@@ -1592,8 +1592,10 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable auction_icon
 drawable avd_hide_password
 drawable avd_show_password
+drawable back
 drawable background
 drawable biddle_logo
 drawable border
@@ -1787,6 +1789,7 @@ id bounce
 id buttonPanel
 id cache_measures
 id cancel_button
+id cancel_sort
 id cardView
 id card_currentPrice
 id card_currentPrice1
@@ -2372,6 +2375,10 @@ string google_storage_bucket
 string hello_first_fragment
 string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior
+string higherPriceChanel
+string higherPriceName
+string higherPriceText
+string higherPriceTitle
 string icon_content_description
 string item_view_role_description
 string material_slider_range_end
@@ -2427,6 +2434,10 @@ string path_password_strike_through
 string pick_category
 string pick_sort
 string previous
+string productSoldToYouChanel
+string productSoldToYouName
+string productSoldToYouText
+string productSoldToYouTitle
 string project_id
 string search_menu_title
 string second_fragment_label
@@ -2444,6 +2455,10 @@ string title_notifications
 string tryAgain
 string welcome_customer
 string welcome_seller
+string yourProductChanel
+string yourProductName
+string yourProductText
+string yourProductTitle
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
