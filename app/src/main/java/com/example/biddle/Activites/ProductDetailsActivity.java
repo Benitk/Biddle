@@ -64,6 +64,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private DatabaseReference refProduct;
+    private DatabaseReference refCurrUser;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -78,6 +79,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         refProduct = database.getReference().child("Products");
 
         userId = firebaseAuth.getCurrentUser().getUid();
+        refCurrUser = database.getReference().child("Users").child(userId);
 
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
@@ -91,6 +93,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         typeBtn = (Button) findViewById(id.typeBtn);
 
         star_tv = (TextView)findViewById(id.star);
+        setStarColor();
+
         timer = (TextView)findViewById(id.timer);
 
         if(user_type.equals("customer")) {
@@ -101,6 +105,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         else {
             typeBtn.setText(string.deleteProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.red));
+            star_tv.setVisibility(View.INVISIBLE);
         }
 
         Productimg = (ImageView) findViewById(id.productpic);
@@ -108,6 +113,21 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
 
         ReadFromDB();
+    }
+
+    private void setStarColor() {
+        DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists())  // star pressed before
+                    star_tv.setTextColor(Color.parseColor("#FFD600"));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     // fetch single product from firebase that equal productID
@@ -176,19 +196,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void SetDeleteBtn() {}
 
     private void SetbidBtn() {
+
         typeBtn.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
                 View promptsView = li.inflate(layout.bid_dialog, null);
-
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
-
                 alertDialogBuilder.setView(promptsView);
-
                 final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
-
                 // set dialog message
                 alertDialogBuilder.setCancelable(false)
                         .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
@@ -197,7 +212,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                             }
                         }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog ,int id) {
-
                                 String userBid = userInput.getText().toString().trim();
                                 Log.d("dialog",userBid);
                                 newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
@@ -207,12 +221,37 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                             }
                         });
-
                 // create alert dialog
                 AlertDialog alertDialog = alertDialogBuilder.create();
-
                 // show it
                 alertDialog.show();
+            }
+        });
+
+        star_tv.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                processbar.setVisibility(View.VISIBLE);
+
+                DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()) {  // star pressed already, remove product from the favorite products of this customer
+                            refCurrUser.child("favoriteProducts").child(ProductID).removeValue();
+                            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
+                        } else {  // the child doesn't exist, should add it to DB
+                            refCurrUser.child("favoriteProducts").child(ProductID).setValue(true);
+                            star_tv.setTextColor(Color.parseColor("#FFD600"));
+                        }
+                        processbar.setVisibility(View.GONE);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
+                        processbar.setVisibility(View.GONE);
+                    }
+                });
             }
         });
     }
@@ -347,8 +386,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
-
-
                 if(databaseError == null && comitted){
                     // update new Bid Price
                     productPrice.setText(Integer.toString(newBid)+" ₪");
@@ -360,19 +397,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private boolean isfavorite;
-
-    public void onToggleStar(View view){
-        star_tv = (TextView) view;
-        if(!isfavorite) {  // star didn't selected before
-            isfavorite = true;
-            star_tv.setTextColor(Color.parseColor("#FFD600"));
-        } else {  // wants to cancel the choice
-            isfavorite = false;
-            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
-        }
     }
 
 }

@@ -53,8 +53,6 @@
     </string-array>
 
 
-
-
     <string name="menu">תפריט</string>
     <string name="noProduct">אין מוצרים</string>
 
@@ -74,5 +72,8 @@
 
     <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
     <string name="pick_category">בחר/י את הקטגוריה אליה משתייך המוצר</string>
+    <string name="category_sort">רוצה לראות מוצרים מקטגוריית ...</string>
+
+    <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
 
 </resources>

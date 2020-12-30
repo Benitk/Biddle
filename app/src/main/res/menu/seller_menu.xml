@@ -4,12 +4,6 @@
         android:id="@+id/homePage"
         android:title="דף הבית"/>
     <item
-        android:id="@+id/unofferedProducts"
-        android:title="מוצרים שלא הוצע אף מחיר עליהם"/>
-    <item
-        android:id="@+id/priceOfferedProducts"
-        android:title="מוצרים שהוצעו עליהם מחיר"/>
-    <item
         android:id="@+id/purchasedProducts"
         android:title="מוצרים שנרכשו"/>
     <item

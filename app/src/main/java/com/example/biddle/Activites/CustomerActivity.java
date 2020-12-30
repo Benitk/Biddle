@@ -1,5 +1,6 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +10,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 
 import Models.Cards;
 import Models.Products;
@@ -50,8 +55,11 @@ public class CustomerActivity extends AppCompatActivity {
     private String userId;
     private ProgressBar progressb;
     private TextView sort_tv;
+    // private ImageView search_icon;
 
     private boolean sortByPrice = false;
+    private boolean sortByDate = false;
+    private String selected_category = "";
 
     private DatabaseReference refProducts;
 
@@ -59,6 +67,9 @@ public class CustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+
+        /*search_icon = (ImageView) findViewById(R.id.search_btn);
+        registerForContextMenu(search_icon);*/
 
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -76,13 +87,15 @@ public class CustomerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
                 builder.setTitle(R.string.pick_sort);
-                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר"};
+                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר", "לפי קטגוריה"};
                 builder.setSingleChoiceItems(options, -1,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String selectedItem = Arrays.asList(options).get(i);
-                                if(i == 1) sortByPrice = true;
+                                if(i == 0) sortByDate = true;
+                                else if(i == 1) sortByPrice = true;
+                                else categorySort();  // i == 2, sort by category
                             }
                         });
 
@@ -90,11 +103,10 @@ public class CustomerActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         sort_cards();
-                        // reset boolean
-                        sortByPrice = false;
+                        sortByPrice = sortByDate = false;  // reset
+                        selected_category = "";
                        // initRecyclerAdapter();
                         cardsAdapter.notifyDataSetChanged();
-
                     }
                 });
 
@@ -107,8 +119,28 @@ public class CustomerActivity extends AppCompatActivity {
         ReadFromDB();
     }
 
+    private void categorySort() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
+        builder.setTitle(R.string.category_sort);
+        final String[] options = getResources().getStringArray(R.array.CategoriesArray);
+        builder.setSingleChoiceItems(options, -1,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selected_category = Arrays.asList(options).get(i);
+                    }
+                });
+        builder.setPositiveButton(R.string.accpet, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void sort_cards() {
-        Toast.makeText(CustomerActivity.this, "im sorting", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CustomerActivity.this, "sorting...", Toast.LENGTH_SHORT).show();
         if(sortByPrice) {
             Collections.sort(cards, new Comparator<Cards>() {
                 @Override
@@ -116,7 +148,7 @@ public class CustomerActivity extends AppCompatActivity {
                     return Integer.parseInt(c1.getCurrentPrice()) - Integer.parseInt(c2.getCurrentPrice());
                 }
             });
-        } else {  // sortByDate
+        } else if (sortByDate) {
             Collections.sort(cards, new Comparator<Cards>() {
                 @Override
                 public int compare(Cards c1, Cards c2) {
@@ -124,8 +156,15 @@ public class CustomerActivity extends AppCompatActivity {
                 }
             });
         }
+        else {  // sortByCategory
+            Toast.makeText(CustomerActivity.this, "sortByCategory", Toast.LENGTH_SHORT).show();
+            // cards.removeIf(c -> (c.getProductCategory() != selected_category));
+            for (Iterator<Cards> it = cards.iterator(); it.hasNext();) {
+                if (it.next().getProductCategory() != selected_category)
+                    it.remove();
+            }
+        }
     }
-
 
 
     // read all product from
@@ -166,7 +205,7 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
                 card.setProductId(product.getValue(Products.class).getId());
-
+                card.setProductCategory(product.getValue(Products.class).getCategory());
                 card.setDateType(product.getValue(Products.class).getEndingDate());
 
                 cards.add(card);
@@ -220,4 +259,23 @@ public class CustomerActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /*@Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.customer_category_search, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search_btn:
+                Toast.makeText(this, "search btn",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }*/
+
 }

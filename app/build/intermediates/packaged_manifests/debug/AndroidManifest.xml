@@ -24,10 +24,10 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
-        <activity android:name="com.example.biddle.Activites.UnofferedProductsSellerActivity" />
+        <activity android:name="com.example.biddle.Activites.EditProfileCustomerActivity" />
+        <activity android:name="com.example.biddle.Activites.EditProfileSellerActivity" />
         <activity android:name="com.example.biddle.Activites.PurchasedProductsSellerActivity" />
         <activity android:name="com.example.biddle.Activites.PurchasedProductsCustomerActivity" />
-        <activity android:name="com.example.biddle.Activites.PriceOfferedProductsSellerActivity" />
         <activity android:name="com.example.biddle.Activites.PriceOfferedProductsCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.StarProductsCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.ProductDetailsActivity" />

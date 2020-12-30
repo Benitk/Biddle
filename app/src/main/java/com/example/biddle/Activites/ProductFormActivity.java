@@ -155,7 +155,6 @@ public class ProductFormActivity extends AppCompatActivity {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ProductFormActivity.this);
                 builder.setTitle(R.string.pick_category);
                 final String[] options = getResources().getStringArray(R.array.CategoriesArray);
-                //final String[] options = new String[]{"ריהוט","ביגוד","הנעלה","אקססוריז","כלי נגינה","ספרות","אומנות","ציוד משרדי","רכבים","אחר"};
                 builder.setSingleChoiceItems(options, -1,
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -175,8 +174,6 @@ public class ProductFormActivity extends AppCompatActivity {
             }
         });
 
-
-
         newProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,10 +185,8 @@ public class ProductFormActivity extends AppCompatActivity {
 
                 String prodPrice = ((EditText) findViewById(R.id.ProductPrice)).getText().toString().trim();
 
-
                 // validtate input
                 boolean flag = true;
-
 
                 if(TextUtils.isEmpty(prodPrice)) {
                     ((EditText) findViewById(R.id.ProductPrice)).setError(R.string.mustFill+"");
@@ -225,7 +220,6 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
 
-
                 // should check for img too
 
                 if(flag){
@@ -248,7 +242,6 @@ public class ProductFormActivity extends AppCompatActivity {
                     if(imgPath.length() > 0 && imageUri != null) {
                         uploadPicToDB();
                     }
-
 
                 }
             }
