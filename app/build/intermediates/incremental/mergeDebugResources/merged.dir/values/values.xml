@@ -988,6 +988,7 @@
   </plurals>
     <string name="AddProduct">הוסף מוצר</string>
     <string name="Choose">בחר/י בתור מה את/ה רוצה להיכנס לאפליקציה</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
     <string name="HasAccount">כבר רשום/ה? לחץ/י כאן והתחבר/י</string>
     <string name="Login">התחברות</string>
     <string name="Logout">יציאה</string>
@@ -1065,7 +1066,9 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="confirmpassword">אימות סיסמה</string>
     <string name="default_web_client_id" translatable="false">420298979980-2pk25hbnpp66sjmjvnlg5c3c5hga62ee.apps.googleusercontent.com</string>
+    <string name="deleteFailed">מחיקת המוצר נכשלה!, נסה/י שנית</string>
     <string name="deleteProduct">מחיקת מוצר</string>
+    <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
     <string name="email">דואר אלקטרוני</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
@@ -1137,9 +1140,13 @@
     <string name="pick_category">בחר/י את הקטגוריה אליה משתייך המוצר</string>
     <string name="pick_sort">בחר/י לפי מה למיין את המוצרים</string>
     <string name="previous">Previous</string>
+    <string name="productFail">המוצר לא התווסף</string>
+    <string name="productNotExist">המוצר כבר לא קיים</string>
+    <string name="productSucsess">המוצר התווסף בהצלחה</string>
     <string name="project_id" translatable="false">biddle-c5332</string>
     <string name="search_menu_title">Search</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="sorting">מיון מתבצע..</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_costumer">MainActivity</string>
     <string name="title_activity_customer">CustomerActivity</string>

@@ -2278,6 +2278,7 @@ mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string AddProduct
 string Choose
+string DatePast
 string HasAccount
 string Login
 string Logout
@@ -2355,7 +2356,9 @@ string common_signin_button_text
 string common_signin_button_text_long
 string confirmpassword
 string default_web_client_id
+string deleteFailed
 string deleteProduct
+string deleteSucsses
 string email
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -2427,9 +2430,13 @@ string path_password_strike_through
 string pick_category
 string pick_sort
 string previous
+string productFail
+string productNotExist
+string productSucsess
 string project_id
 string search_menu_title
 string second_fragment_label
+string sorting
 string status_bar_notification_info_overflow
 string title_activity_costumer
 string title_activity_customer

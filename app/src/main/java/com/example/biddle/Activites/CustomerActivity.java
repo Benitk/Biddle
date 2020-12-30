@@ -119,6 +119,16 @@ public class CustomerActivity extends AppCompatActivity {
         ReadFromDB();
     }
 
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
+
     private void categorySort() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
         builder.setTitle(R.string.category_sort);
@@ -140,7 +150,7 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     private void sort_cards() {
-        Toast.makeText(CustomerActivity.this, "sorting...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(CustomerActivity.this, R.string.sorting, Toast.LENGTH_SHORT).show();
         if(sortByPrice) {
             Collections.sort(cards, new Comparator<Cards>() {
                 @Override
@@ -186,7 +196,7 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // would change to toast
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.d("FaildReadDB",databaseError.toString());
                 progressb.setVisibility(View.GONE);
             }
         });
