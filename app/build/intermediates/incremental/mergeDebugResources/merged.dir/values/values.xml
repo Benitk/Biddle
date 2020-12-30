@@ -1085,6 +1085,10 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="higherPriceChanel">צליל וחלונות קופצים במסך כאשר הוצע מחיר גבוה משלך</string>
+    <string name="higherPriceName">notify when higher price is offered</string>
+    <string name="higherPriceText">מישהו הציע מחיר גבוה משלך! מהר/י לשמור על המוצר בידיים שלך</string>
+    <string name="higherPriceTitle">התראת מחיר גבוה</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
     <string description="Content description for the thumb with the maximum value in a Range slider. [CHAR_LIMIT=NONE]" name="material_slider_range_end">Range end, </string>
@@ -1142,6 +1146,10 @@
     <string name="previous">Previous</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
+    <string name="productSoldToYouChanel">צליל וחלונות קופצים במסך כאשר מוצר נמכר לך</string>
+    <string name="productSoldToYouName">notify when the product has sold to you</string>
+    <string name="productSoldToYouText">ברכות! את/ה הצעת את המחיר הגבוה ביותר וזכית במוצר! לחצ/י כאן לפרטים</string>
+    <string name="productSoldToYouTitle">התראת מוצר שנמכר לך</string>
     <string name="productSucsess">המוצר התווסף בהצלחה</string>
     <string name="project_id" translatable="false">biddle-c5332</string>
     <string name="search_menu_title">Search</string>
@@ -1161,6 +1169,10 @@
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
     <string name="welcome_customer">ברוך/ה הבא/ה, לקוח/ה!</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
+    <string name="yourProductChanel">צליל וחלונות קופצים במסך כאשר מוצר שלך נמכר</string>
+    <string name="yourProductName">notify when your product has sold</string>
+    <string name="yourProductText">ברכות! הצלחת למכור את המוצר! לחצ/י כאן לפרטים</string>
+    <string name="yourProductTitle">התראת מוצר שלך שנמכר</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="AndroidThemeColorAccentYellow" ns2:ignore="NewApi">

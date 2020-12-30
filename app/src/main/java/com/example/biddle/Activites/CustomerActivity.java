@@ -120,7 +120,9 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(0, 0);
                 startActivity(getIntent());  // refresh activity
+                overridePendingTransition(0, 0);
             }
         });
 
