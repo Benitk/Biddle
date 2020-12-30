@@ -83,12 +83,14 @@ public class SellerActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        recreate();
-//
-//    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+    }
 
 
     // this method is getting all sellers product keys from user root and retrive all of them from product root

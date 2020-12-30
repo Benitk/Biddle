@@ -38,6 +38,19 @@
     <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
     <string name="bidTimeEnded">זמן מכירת המוצר כבר הסתיים!</string>
     <string name="mustFill">חובה למלא!</string>
+    <string name="deleteFailed">מחיקת המוצר נכשלה!, נסה/י שנית</string>
+    <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
+    <string name="sorting">מיון מתבצע..</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
+
+    <string name="productSucsess">המוצר התווסף בהצלחה</string>
+    <string name="productFail">המוצר לא התווסף</string>
+    <string name="productNotExist">המוצר כבר לא קיים</string>
+
+
+
+
+
 
     <string-array name="CategoriesArray">
         <item>ריהוט</item>

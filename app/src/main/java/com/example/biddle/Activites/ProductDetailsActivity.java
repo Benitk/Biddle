@@ -1,6 +1,7 @@
 package com.example.biddle.Activites;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.biddle.R;
@@ -8,6 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -106,12 +108,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             typeBtn.setText(string.deleteProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.red));
             star_tv.setVisibility(View.INVISIBLE);
+            SetDeleteBtn();
         }
 
         Productimg = (ImageView) findViewById(id.productpic);
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
 
+        starBtn();
         ReadFromDB();
     }
 
@@ -143,7 +147,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     setProductData(dataSnapshot);
                 }
                 else {
-                    Toast.makeText(ProductDetailsActivity.this, "המוצר לא קיים", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductDetailsActivity.this, R.string.productNotExist, Toast.LENGTH_LONG).show();
                     Log.d("FaildReadDB","didnt find product");
                     // back one page
                     processbar.setVisibility(View.GONE);
@@ -154,7 +158,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
                 // would change to toast
-                Log.d("FaildReadDB","databaseError.getCode()");
+                Log.d("FaildReadDB",databaseError.toString());
                 processbar.setVisibility(View.GONE);
             }
         });
@@ -193,7 +197,123 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
     }
 
-    private void SetDeleteBtn() {}
+
+
+// delete product from db on each node
+    private void SetDeleteBtn() {
+        typeBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                processbar.setVisibility(View.VISIBLE);
+
+                Map<String, Object> childUpdates = new HashMap<>();
+
+
+                // retrive all favorite products in each user that equal ProductID
+                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                        if (dataSnapshot.exists()){
+                            for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                if(ds.getKey().equals("favoriteProducts")) {
+                                    for (DataSnapshot favorites : ds.getChildren()) {
+                                        if(favorites.getKey().equals(ProductID)) {
+
+                                            // sub string from index 35 because is prefix equal to getReference()
+                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
+                                        }
+                                    }
+                                }
+                            }
+                            DeleteProduct(childUpdates);
+                        }
+                        else {
+                            // quit method
+                            processbar.setVisibility(View.GONE);
+                            Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                    }
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("FaildReadDB",databaseError.toString());
+                        processbar.setVisibility(View.GONE);
+                        Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                });
+            }
+        });
+    }
+
+    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
+
+    private void DeleteProduct(Map<String, Object> childUpdates){
+
+        String Category = productCategory.getText().toString().trim();
+        childUpdates.put("/Products/" + ProductID, null);
+        childUpdates.put("/Categories/" + Category + "/" + ProductID, null);
+        childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID, null);
+
+        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(ProductDetailsActivity.this, string.deleteSucsses, Toast.LENGTH_LONG).show();
+                childUpdates.clear(); // prevent array to cost alot of memory
+                processbar.setVisibility(View.GONE);
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
+                Log.d("UpdatePrice", "onFailure: " + e.toString());
+                childUpdates.clear(); //prevent array to cost alot of memory
+                processbar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+
+
+    private void starBtn(){
+        star_tv.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                processbar.setVisibility(View.VISIBLE);
+
+                DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
+
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()) {  // star pressed already, remove product from the favorite products of this customer
+                            refCurrUser.child("favoriteProducts").child(ProductID).removeValue();
+                            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
+                        } else {  // the child doesn't exist, should add it to DB
+                            refCurrUser.child("favoriteProducts").child(ProductID).setValue(true);
+                            star_tv.setTextColor(Color.parseColor("#FFD600"));
+                        }
+                        processbar.setVisibility(View.GONE);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
+                        processbar.setVisibility(View.GONE);
+                    }
+                });
+            }
+        });
+
+    }
+
 
     private void SetbidBtn() {
 
@@ -225,33 +345,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 // show it
                 alertDialog.show();
-            }
-        });
-
-        star_tv.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                processbar.setVisibility(View.VISIBLE);
-
-                DatabaseReference ref = refCurrUser.child("favoriteProducts").child(ProductID);
-
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.exists()) {  // star pressed already, remove product from the favorite products of this customer
-                            refCurrUser.child("favoriteProducts").child(ProductID).removeValue();
-                            star_tv.setTextColor(Color.parseColor("#9E9E9E"));
-                        } else {  // the child doesn't exist, should add it to DB
-                            refCurrUser.child("favoriteProducts").child(ProductID).setValue(true);
-                            star_tv.setTextColor(Color.parseColor("#FFD600"));
-                        }
-                        processbar.setVisibility(View.GONE);
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(ProductDetailsActivity.this, string.tryAgain, Toast.LENGTH_LONG).show();
-                        processbar.setVisibility(View.GONE);
-                    }
-                });
             }
         });
     }

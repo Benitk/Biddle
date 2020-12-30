@@ -1592,10 +1592,8 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable auction_icon
 drawable avd_hide_password
 drawable avd_show_password
-drawable back
 drawable background
 drawable biddle_logo
 drawable border
@@ -1789,7 +1787,6 @@ id bounce
 id buttonPanel
 id cache_measures
 id cancel_button
-id cancel_sort
 id cardView
 id card_currentPrice
 id card_currentPrice1
@@ -2281,6 +2278,7 @@ mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string AddProduct
 string Choose
+string DatePast
 string HasAccount
 string Login
 string Logout
@@ -2358,7 +2356,9 @@ string common_signin_button_text
 string common_signin_button_text_long
 string confirmpassword
 string default_web_client_id
+string deleteFailed
 string deleteProduct
+string deleteSucsses
 string email
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -2375,10 +2375,6 @@ string google_storage_bucket
 string hello_first_fragment
 string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior
-string higherPriceChanel
-string higherPriceName
-string higherPriceText
-string higherPriceTitle
 string icon_content_description
 string item_view_role_description
 string material_slider_range_end
@@ -2434,13 +2430,13 @@ string path_password_strike_through
 string pick_category
 string pick_sort
 string previous
-string productSoldToYouChanel
-string productSoldToYouName
-string productSoldToYouText
-string productSoldToYouTitle
+string productFail
+string productNotExist
+string productSucsess
 string project_id
 string search_menu_title
 string second_fragment_label
+string sorting
 string status_bar_notification_info_overflow
 string title_activity_costumer
 string title_activity_customer
@@ -2455,10 +2451,6 @@ string title_notifications
 string tryAgain
 string welcome_customer
 string welcome_seller
-string yourProductChanel
-string yourProductName
-string yourProductText
-string yourProductTitle
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow

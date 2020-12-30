@@ -10,11 +10,14 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +33,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +52,10 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 import Models.Products;
@@ -227,6 +235,15 @@ public class ProductFormActivity extends AppCompatActivity {
                     // jave date class  is adding 1900 for year, month range(0,11)
                     Date dateTime = new Date(set_date.getYear()-1900, set_date.getMonth()-1, set_date.getDay(), set_time.getHour(), set_time.getMinute());
 
+                    Date currentDate = new Date(System.currentTimeMillis());
+
+                    if(dateTime != null && dateTime.compareTo(currentDate) < 0) {
+                        ((EditText) findViewById(R.id.ProductTTLTime)).setError("");
+                        ((EditText) findViewById(R.id.ProductTTLDate)).setError("");
+                        Toast.makeText(ProductFormActivity.this, R.string.DatePast, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
@@ -248,25 +265,102 @@ public class ProductFormActivity extends AppCompatActivity {
         });
     }
 
-    private void WriteToDB(Object value, DatabaseReference ref){
+    private void WriteToDB(Products product, DatabaseReference ref){
         progressb.setVisibility(View.VISIBLE);
 
-        ref.setValue(value, new DatabaseReference.CompletionListener() {
+        ref.setValue(product, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
                     progressb.setVisibility(View.GONE);
-                    Toast.makeText(ProductFormActivity.this, "המוצר לא התווסף", Toast.LENGTH_SHORT).show();
-                    System.out.println("Data could not be saved " + databaseError.getMessage());
-                    //finish();
+                    Toast.makeText(ProductFormActivity.this, R.string.productFail, Toast.LENGTH_SHORT).show();
                 } else {
                     progressb.setVisibility(View.GONE);
-                    Toast.makeText(ProductFormActivity.this, "המוצר התווסף בהצלחה", Toast.LENGTH_SHORT).show();
+
+                    Date productDate = product.getEndingDate();
+
+                    Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
+
+                    // create timer to product ending time for deletion
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                DeleteOnTimer();
+                            }
+                        }, productDate);
+
                     finish();
                 }
             }
         });
     }
+
+
+    // delete product from db on each node
+    // this is working on backend not visable to user with toast
+    private void DeleteOnTimer() {
+
+                Map<String, Object> childUpdates = new HashMap<>();
+
+                // retrive all favorite products in each user that equal ProductID
+                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                        if (dataSnapshot.exists()){
+                            for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                if(ds.getKey().equals("favoriteProducts")) {
+                                    for (DataSnapshot favorites : ds.getChildren()) {
+                                        if(favorites.getKey().equals(productID)) {
+                                            // sub string from index 35 because is prefix equal to getReference()
+                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
+                                        }
+                                    }
+                                }
+                            }
+                            DeleteProduct(childUpdates);
+                        }
+                    }
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.d("FaildReadDB",databaseError.toString());
+                    }
+                });
+    }
+
+
+    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
+    // this is working on backend not visable to user with toast
+
+    private void DeleteProduct(Map<String, Object> childUpdates){
+
+        childUpdates.put("/Products/" + productID, null);
+        childUpdates.put("/Categories/" + productCategory + "/" + productID, null);
+        childUpdates.put("/Users/" + userId + "/sellerProducts/" + productID, null);
+
+        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                childUpdates.clear(); // prevent array to cost alot of memory
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("UpdatePrice", "onFailure: " + e.toString());
+                childUpdates.clear(); //prevent array to cost alot of memory
+            }
+        });
+    }
+
 
     // fetch single product from firebase that equal productID
     private void ReadProductFromDB(){
