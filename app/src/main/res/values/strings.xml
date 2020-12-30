@@ -76,4 +76,21 @@
 
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
 
+    <!-- Notifications strings -->
+
+    <string name="higherPriceName">notify when higher price is offered</string>
+    <string name="higherPriceChanel">צליל וחלונות קופצים במסך כאשר הוצע מחיר גבוה משלך</string>
+    <string name="higherPriceTitle">התראת מחיר גבוה</string>
+    <string name="higherPriceText">מישהו הציע מחיר גבוה משלך! מהר/י לשמור על המוצר בידיים שלך</string>
+
+    <string name="productSoldToYouName">notify when the product has sold to you</string>
+    <string name="productSoldToYouChanel">צליל וחלונות קופצים במסך כאשר מוצר נמכר לך</string>
+    <string name="productSoldToYouTitle">התראת מוצר שנמכר לך</string>
+    <string name="productSoldToYouText">ברכות! את/ה הצעת את המחיר הגבוה ביותר וזכית במוצר! לחצ/י כאן לפרטים</string>
+
+    <string name="yourProductName">notify when your product has sold</string>
+    <string name="yourProductChanel">צליל וחלונות קופצים במסך כאשר מוצר שלך נמכר</string>
+    <string name="yourProductTitle">התראת מוצר שלך שנמכר</string>
+    <string name="yourProductText">ברכות! הצלחת למכור את המוצר! לחצ/י כאן לפרטים</string>
+
 </resources>
