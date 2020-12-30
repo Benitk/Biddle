@@ -93,6 +93,7 @@ public class SellerActivity extends AppCompatActivity {
 
     // this method is getting all sellers product keys from user root and retrive all of them from product root
     private void ReadFromDB(){
+
         progressb.setVisibility(View.VISIBLE);
 
 
@@ -102,7 +103,6 @@ public class SellerActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot){
                 cards.clear();
                 tv_noProductText.setText("");
-
 
                 if (dataSnapshot.exists())
                     addNewCard(dataSnapshot);

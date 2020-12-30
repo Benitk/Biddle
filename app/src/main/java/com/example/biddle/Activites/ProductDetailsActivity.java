@@ -1,8 +1,12 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +36,8 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import Models.Products;
 import Utils.AlgoLibrary;
@@ -41,7 +47,7 @@ import static com.example.biddle.R.*;
 public class ProductDetailsActivity extends AppCompatActivity {
 
     private TextView productName, productCategory, productDescrption, productPrice,
-            timer, ProductEndingDate, star_tv;
+            timer, tv_ProductEndingDate, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
     private ProgressBar processbar;
@@ -49,6 +55,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String ProductID;
     private Integer currentPrice;
     private String userId;
+    private String ProductSellerId;
+    private Date ProductEndingDate;
     private Integer newBid;
 
     private long millisUntilFinished;
@@ -78,7 +86,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productCategory = (TextView)findViewById(id.productCategory);
         productDescrption = (TextView)findViewById(id.productDescription);
         productPrice = (TextView)findViewById(id.productPrice);
-        ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
+        tv_ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
+
         typeBtn = (Button) findViewById(id.typeBtn);
 
         star_tv = (TextView)findViewById(id.star);
@@ -129,7 +138,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 processbar.setVisibility(View.GONE);
             }
         });
-
     }
 
     private void setProductData(DataSnapshot ds){
@@ -140,8 +148,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
             productDescrption.setText(product.getValue(Products.class).getDescription());
             currentPrice = product.getValue(Products.class).getPrice();
             productPrice.setText(Integer.toString(currentPrice)+" ₪");
-            ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            tv_ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            ProductEndingDate = product.getValue(Products.class).getEndingDate();
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
+            // used when customer bid on this product
+            ProductSellerId = product.getValue(Products.class).getSellerID();
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -191,10 +202,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 Log.d("dialog",userBid);
                                 newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
 
-                                if(newBid > -1)
-                                    TransactionDB();
-                                else
-                                    Toast.makeText(ProductDetailsActivity.this, string.bidFailed, Toast.LENGTH_LONG).show();
+                                // set new bid
+                                voidFetchProduct(newBid);
+
                             }
                         });
 
@@ -206,6 +216,86 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
+    // fetch product to check if exist before set new bid
+    private void voidFetchProduct(int newBid){
+        processbar.setVisibility(View.VISIBLE);
+
+        refProduct.orderByKey().equalTo(ProductID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists()){
+                    UpdatePrice(newBid);
+                }
+                else {
+                    Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                    Log.d("FaildReadDB","didnt find product");
+                    // back one page
+                }
+                processbar.setVisibility(View.GONE);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                // would change to toast
+                Log.d("FaildReadDB","databaseError.getCode()");
+                processbar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    // update the price in all db roots
+    private void UpdatePrice(int newBid){
+        boolean flag = true;
+        // input validation
+        // bid too low
+        if(newBid <= currentPrice) {
+            Toast.makeText(ProductDetailsActivity.this, string.bidFailed, Toast.LENGTH_LONG).show();
+            flag = false;
+        }
+        Date currentDate = new Date(System.currentTimeMillis());
+        // product timer is over
+        if(ProductEndingDate != null && ProductEndingDate.compareTo(currentDate) < 0){
+            Toast.makeText(ProductDetailsActivity.this, string.bidTimeEnded, Toast.LENGTH_LONG).show();
+            flag = false;
+        }
+
+
+        if(flag) {
+            processbar.setVisibility(View.VISIBLE);
+
+
+            Map<String, Object> childUpdates = new HashMap<>();
+
+            String Category = productCategory.getText().toString().trim();
+            childUpdates.put("/Products/" + ProductID + "/price", newBid);
+            childUpdates.put("/Products/" + ProductID + "/customerID", userId);
+            childUpdates.put("/Categories/" + Category + "/" + ProductID + "/price", newBid);
+            childUpdates.put("/Categories/" + Category + "/" + ProductID + "/customerID", userId);
+            childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/price", newBid);
+            childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/customerID", userId);
+
+
+            database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    productPrice.setText(Integer.toString(newBid) + " ₪");
+                    Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
+                    processbar.setVisibility(View.GONE);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
+                    Log.d("UpdatePrice", "onFailure: " + e.toString());
+                    processbar.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
 
     private void TransactionDB(){
         refProduct.child(ProductID).runTransaction(new Transaction.Handler() {
