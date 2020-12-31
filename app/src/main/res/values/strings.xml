@@ -29,7 +29,7 @@
     <string name="bidProduct">הצעת מחיר</string>
     <string name="deleteProduct">מחיקת מוצר</string>
     <string name="TimeLeft">המכירה תסתיים ב..</string>
-    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
+    <string name="bidDialogMsg">כמה את/ה מעוניין/ת להציע?</string>
     <string name="accpet">אישור</string>
     <string name="cancel">ביטול</string>
     <string name="ok">בסדר</string>
@@ -41,15 +41,11 @@
     <string name="deleteFailed">מחיקת המוצר נכשלה!, נסה/י שנית</string>
     <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
     <string name="sorting">מיון מתבצע..</string>
-    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עברו</string>
 
     <string name="productSucsess">המוצר התווסף בהצלחה</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
-
-
-
-
 
 
     <string-array name="CategoriesArray">

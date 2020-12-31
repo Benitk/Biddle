@@ -394,12 +394,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
             flag = false;
         }
 
-
         if(flag) {
             processbar.setVisibility(View.VISIBLE);
 
-
             Map<String, Object> childUpdates = new HashMap<>();
+
+            // String prevCustomer = database.getReference().child("Products").child(ProductID).child("customerID");
 
             String Category = productCategory.getText().toString().trim();
             childUpdates.put("/Products/" + ProductID + "/price", newBid);
@@ -408,7 +408,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             childUpdates.put("/Categories/" + Category + "/" + ProductID + "/customerID", userId);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/price", newBid);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/customerID", userId);
-
 
             database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
