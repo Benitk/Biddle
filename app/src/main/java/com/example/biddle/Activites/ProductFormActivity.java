@@ -8,7 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import com.squareup.picasso.Picasso;
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -425,6 +425,7 @@ public class ProductFormActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageUri = data.getData();
+            Picasso.with(this).load(imageUri).into(productImg);
 
         }
     }
@@ -433,7 +434,6 @@ public class ProductFormActivity extends AppCompatActivity {
         ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("העלאה מתבצעת...");
         pd.show();
-
         imgPath = userId + "/" + productID + "/" + UUID.randomUUID().toString();
 
         StorageReference Ref = storageref.child(imgPath);
