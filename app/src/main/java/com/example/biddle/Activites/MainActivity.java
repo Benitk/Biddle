@@ -28,9 +28,9 @@ import Utils.InputValidator;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CHANNEL1 = "higherPrice";
-    private static final String CHANNEL2 = "productSoldToYou";
-    private static final String CHANNEL3 = "yourProductSold";
+    public static final String CHANNEL1 = "higherPrice";
+    public static final String CHANNEL2 = "productSoldToYou";
+    public static final String CHANNEL3 = "yourProductSold";
 
     private EditText et_email;
     private EditText et_password;
@@ -137,32 +137,32 @@ public class MainActivity extends AppCompatActivity {
         String id2 = CHANNEL2;
         String id3 = CHANNEL3;
 
-        CharSequence name1 = getString(R.string.higherPriceName);
-        CharSequence name2 = getString(R.string.productSoldToYouName);
-        CharSequence name3 = getString(R.string.yourProductName);
+        CharSequence name1 = getString(R.string.higherPriceChanel);
+        CharSequence name2 = getString(R.string.productSoldToYouChanel);
+        CharSequence name3 = getString(R.string.yourProductChanel);
 
-        String description1 = getString(R.string.higherPriceChanel);
-        String description2 = getString(R.string.productSoldToYouChanel);
-        String description3 = getString(R.string.yourProductChanel);
+//        String description1 = getString(R.string.higherPriceChanel);
+//        String description2 = getString(R.string.productSoldToYouChanel);
+//        String description3 = getString(R.string.yourProductChanel);
 
         int importance = NotificationManager.IMPORTANCE_HIGH;
         NotificationChannel mChannel1, mChannel2, mChannel3 = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mChannel1 = new NotificationChannel(id1, name1, importance);
-            mChannel1.setDescription(description1);
+//            mChannel1.setDescription(description1);
             mNotificationManager.createNotificationChannel(mChannel1);
 
             mChannel2 = new NotificationChannel(id2, name2, importance);
-            mChannel2.setDescription(description2);
+//            mChannel2.setDescription(description2);
             mNotificationManager.createNotificationChannel(mChannel2);
 
             mChannel3 = new NotificationChannel(id3, name3, importance);
-            mChannel3.setDescription(description3);
+//            mChannel3.setDescription(description3);
             mNotificationManager.createNotificationChannel(mChannel3);
         }
     }
 
-    public void addNotification(String channel) {
+    public void addNotifications(String channel) {
         Notification.Builder notificationBuilder;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)

@@ -120,8 +120,6 @@ public class ProductFormActivity extends AppCompatActivity {
         set_date = new SetDate(et_productTTLDate);
         set_time = new SetYourTime(et_productTTLTime);
 
-
-
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

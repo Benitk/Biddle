@@ -20,7 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -197,8 +201,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
     }
 
-
-
 // delete product from db on each node
     private void SetDeleteBtn() {
         typeBtn.setOnClickListener(new View.OnClickListener() {
@@ -206,7 +208,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 processbar.setVisibility(View.VISIBLE);
 
                 Map<String, Object> childUpdates = new HashMap<>();
-
 
                 // retrive all favorite products in each user that equal ProductID
                 database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
@@ -282,8 +283,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void starBtn(){
         star_tv.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -358,7 +357,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()){
-                    UpdatePrice(newBid);
+                    UpdatePrice(newBid, dataSnapshot);
                 }
                 else {
                     Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
@@ -379,7 +378,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     // update the price in all db roots
-    private void UpdatePrice(int newBid){
+    private void UpdatePrice(int newBid, DataSnapshot dataSnapshot){
         boolean flag = true;
         // input validation
         // bid too low
@@ -399,7 +398,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             Map<String, Object> childUpdates = new HashMap<>();
 
-            // String prevCustomer = database.getReference().child("Products").child(ProductID).child("customerID");
+            String prevCustomer = dataSnapshot.getValue(Products.class).getCustomerID();
+            if(prevCustomer != this.userId) {  // only if its not the same customer
+                higherPriceNotification();  // send higher price notification to prevCustomer only!!!
+            }
 
             String Category = productCategory.getText().toString().trim();
             childUpdates.put("/Products/" + ProductID + "/price", newBid);
@@ -425,6 +427,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void higherPriceNotification() {
+        Notification.Builder notificationBuilder;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            notificationBuilder = new Notification.Builder(this, MainActivity.CHANNEL1);
+        else  //noinspection deprecation
+            notificationBuilder = new Notification.Builder(this);
+
+        Intent landingIntent = new Intent(this, PriceOfferedProductsCustomerActivity.class);
+        PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0, landingIntent,0);
+        Notification notification = notificationBuilder
+                .setContentTitle(getString(R.string.higherPriceTitle))
+                .setSmallIcon(R.drawable.auction_icon)
+                .setContentText(getString(R.string.higherPriceText))
+                .setContentIntent(pendingLandingIntent)
+                .setAutoCancel(true).build();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify((int) System.currentTimeMillis(), notification);
     }
 
 
