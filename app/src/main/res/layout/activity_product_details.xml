@@ -86,8 +86,19 @@
         app:layout_constraintTop_toBottomOf="@+id/productpic"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/productpic"
+<!--    <ImageView-->
+<!--        android:id="@+id/productpic"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="48dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/productCategory"-->
+<!--        app:srcCompat="@drawable/biddle_logo" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productpics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -95,7 +106,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productCategory"
-        app:srcCompat="@drawable/btn_back" />
+        app:srcCompat="@drawable/biddle_logo" />
+
+
 
     <TextView
         android:id="@+id/productCategory"

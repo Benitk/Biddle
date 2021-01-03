@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,8 +40,10 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Models.Products;
@@ -52,6 +57,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
             timer, tv_ProductEndingDate, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
+
+    private List<UplouadImg> uplouadImgs;
+    private RecyclerView Productimgs;
+   private ImagAdapter imagAdapter;
+
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
@@ -110,10 +120,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             star_tv.setVisibility(View.INVISIBLE);
             SetDeleteBtn();
         }
-
+        Productimgs = (RecyclerView) findViewById(id.productpics);
+        Productimgs.setHasFixedSize(true);
+        Productimgs.setLayoutManager(new LinearLayoutManager(this));
         Productimg = (ImageView) findViewById(id.productpic);
+        uplouadImgs = new ArrayList<>();
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
+
+
+
+
 
         starBtn();
         ReadFromDB();
@@ -167,6 +184,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void setProductData(DataSnapshot ds){
         // will be only one product
         for(DataSnapshot product : ds.getChildren()){
+
             productName.setText(product.getValue(Products.class).getName());
             productCategory.setText(product.getValue(Products.class).getCategory());
             productDescrption.setText(product.getValue(Products.class).getDescription());
@@ -177,6 +195,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
             // used when customer bid on this product
             ProductSellerId = product.getValue(Products.class).getSellerID();
+        if(product.hasChild("gallery")){
+            for (DataSnapshot ps   : product.child("gallery").getChildren() ){
+                UplouadImg uplouadImg = ps.getValue(UplouadImg.class);
+                uplouadImgs.add(uplouadImg);
+            }
+            imagAdapter = new ImagAdapter( ProductDetailsActivity.this,uplouadImgs);
+            Productimgs.setAdapter(imagAdapter);
+        }
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used

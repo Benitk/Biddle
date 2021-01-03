@@ -41,6 +41,11 @@ com/example/biddle/Activites/LandingPageActivity.java
  com.example.biddle.Activites.LandingPageActivity$1
  com.example.biddle.Activites.LandingPageActivity$2
  com.example.biddle.Activites.LandingPageActivity$3
+com/example/biddle/Activites/UplouadImg.java
+ com.example.biddle.Activites.UplouadImg
+com/example/biddle/Activites/ImagAdapter.java
+ com.example.biddle.Activites.ImagAdapter
+ com.example.biddle.Activites.ImagAdapter$ImagViewHolder
 com/example/biddle/Activites/PurchasedProductsSellerActivity.java
  com.example.biddle.Activites.PurchasedProductsSellerActivity
 com/example/biddle/Activites/ProductDetailsActivity.java
@@ -83,6 +88,7 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$11
  com.example.biddle.Activites.ProductFormActivity$12
  com.example.biddle.Activites.ProductFormActivity$13
+ com.example.biddle.Activites.ProductFormActivity$13$1
  com.example.biddle.Activites.ProductFormActivity$2
  com.example.biddle.Activites.ProductFormActivity$3
  com.example.biddle.Activites.ProductFormActivity$4
