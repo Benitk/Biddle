@@ -223,7 +223,7 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setProductId(product.getValue(Products.class).getId());
                 card.setProductCategory(product.getValue(Products.class).getCategory());
                 card.setDateType(product.getValue(Products.class).getEndingDate());
-
+                card.setImgPath(product.getValue(Products.class).getImgPath());
                 cards.add(card);
             }
         }

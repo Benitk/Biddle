@@ -1,5 +1,8 @@
-Models/Cards.java
- Models.Cards
+com/example/biddle/Activites/SignupActivity.java
+ com.example.biddle.Activites.SignupActivity
+ com.example.biddle.Activites.SignupActivity$1
+ com.example.biddle.Activites.SignupActivity$2
+ com.example.biddle.Activites.SignupActivity$3
 Utils/AlgoLibrary.java
  Utils.AlgoLibrary
 Utils/SetDate.java
@@ -17,30 +20,16 @@ com/example/biddle/Activites/StarProductsCustomerActivity.java
  com.example.biddle.Activites.StarProductsCustomerActivity
 com/example/biddle/Activites/EditProfileCustomerActivity.java
  com.example.biddle.Activites.EditProfileCustomerActivity
-com/example/biddle/Activites/CustomerActivity.java
- com.example.biddle.Activites.CustomerActivity
- com.example.biddle.Activites.CustomerActivity$1
- com.example.biddle.Activites.CustomerActivity$1$1
- com.example.biddle.Activites.CustomerActivity$1$2
- com.example.biddle.Activites.CustomerActivity$2
- com.example.biddle.Activites.CustomerActivity$3
- com.example.biddle.Activites.CustomerActivity$4
- com.example.biddle.Activites.CustomerActivity$5
- com.example.biddle.Activites.CustomerActivity$6
- com.example.biddle.Activites.CustomerActivity$7
-Utils/CardsAdapter.java
- Utils.CardsAdapter
- Utils.CardsAdapter$1
- Utils.CardsAdapter$ViewHolder
+com/example/biddle/BuildConfig.java
+ com.example.biddle.BuildConfig
+com/example/biddle/Activites/PurchasedProductsCustomerActivity.java
+ com.example.biddle.Activites.PurchasedProductsCustomerActivity
 com/example/biddle/Activites/PriceOfferedProductsCustomerActivity.java
  com.example.biddle.Activites.PriceOfferedProductsCustomerActivity
 com/example/biddle/Activites/EditProfileSellerActivity.java
  com.example.biddle.Activites.EditProfileSellerActivity
-com/example/biddle/Activites/LandingPageActivity.java
- com.example.biddle.Activites.LandingPageActivity
- com.example.biddle.Activites.LandingPageActivity$1
- com.example.biddle.Activites.LandingPageActivity$2
- com.example.biddle.Activites.LandingPageActivity$3
+com/example/biddle/Activites/PurchasedProductsSellerActivity.java
+ com.example.biddle.Activites.PurchasedProductsSellerActivity
 com/example/biddle/Activites/UplouadImg.java
  com.example.biddle.Activites.UplouadImg
 com/example/biddle/Activites/ImagAdapter.java
@@ -64,6 +53,15 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$7
  com.example.biddle.Activites.ProductFormActivity$8
  com.example.biddle.Activites.ProductFormActivity$9
+Utils/InputValidator.java
+ Utils.InputValidator
+com/example/biddle/Activites/LandingPageActivity.java
+ com.example.biddle.Activites.LandingPageActivity
+ com.example.biddle.Activites.LandingPageActivity$1
+ com.example.biddle.Activites.LandingPageActivity$2
+ com.example.biddle.Activites.LandingPageActivity$3
+Models/Cards.java
+ Models.Cards
 com/example/biddle/Activites/ProductDetailsActivity.java
  com.example.biddle.Activites.ProductDetailsActivity
  com.example.biddle.Activites.ProductDetailsActivity$1
@@ -93,16 +91,21 @@ com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
  com.example.biddle.Activites.SellerActivity$2
-com/example/biddle/BuildConfig.java
- com.example.biddle.BuildConfig
-com/example/biddle/Activites/PurchasedProductsCustomerActivity.java
- com.example.biddle.Activites.PurchasedProductsCustomerActivity
-Utils/InputValidator.java
- Utils.InputValidator
-com/example/biddle/Activites/SignupActivity.java
- com.example.biddle.Activites.SignupActivity
- com.example.biddle.Activites.SignupActivity$1
- com.example.biddle.Activites.SignupActivity$2
- com.example.biddle.Activites.SignupActivity$3
-com/example/biddle/Activites/PurchasedProductsSellerActivity.java
- com.example.biddle.Activites.PurchasedProductsSellerActivity
+com/example/biddle/Activites/CustomerActivity.java
+ com.example.biddle.Activites.CustomerActivity
+ com.example.biddle.Activites.CustomerActivity$1
+ com.example.biddle.Activites.CustomerActivity$1$1
+ com.example.biddle.Activites.CustomerActivity$1$2
+ com.example.biddle.Activites.CustomerActivity$2
+ com.example.biddle.Activites.CustomerActivity$3
+ com.example.biddle.Activites.CustomerActivity$4
+ com.example.biddle.Activites.CustomerActivity$5
+ com.example.biddle.Activites.CustomerActivity$6
+ com.example.biddle.Activites.CustomerActivity$7
+Utils/CardsAdapter.java
+ Utils.CardsAdapter
+ Utils.CardsAdapter$1
+ Utils.CardsAdapter$2
+ Utils.CardsAdapter$2$1
+ Utils.CardsAdapter$2$2
+ Utils.CardsAdapter$ViewHolder

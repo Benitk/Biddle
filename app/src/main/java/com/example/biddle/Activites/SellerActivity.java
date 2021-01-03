@@ -144,6 +144,7 @@ public class SellerActivity extends AppCompatActivity {
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
             card.setProductId(product.getValue(Products.class).getId());
+            card.setImgPath(product.getValue(Products.class).getImgPath());
 
             cards.add(card);
 

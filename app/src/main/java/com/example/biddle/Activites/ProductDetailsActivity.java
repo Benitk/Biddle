@@ -235,8 +235,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
 public void  UploadPic(String imagPath){
-    Toast.makeText( ProductDetailsActivity.this, imagPath, Toast.LENGTH_LONG).show();
-    //Productimg.setColorFilter(bl);
     final StorageReference mImageRef =
             FirebaseStorage.getInstance().getReference(imagPath);
     final long ONE_MEGABYTE = 1024 * 1024;
