@@ -20,14 +20,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +56,8 @@ import Models.Products;
 import Utils.AlgoLibrary;
 
 import static com.example.biddle.R.*;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.UploadTask;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -120,9 +128,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
             star_tv.setVisibility(View.INVISIBLE);
             SetDeleteBtn();
         }
-        Productimgs = (RecyclerView) findViewById(id.productpics);
-        Productimgs.setHasFixedSize(true);
-        Productimgs.setLayoutManager(new LinearLayoutManager(this));
+       // Productimg = (ImageView) findViewById(id.productpic);
+        //Productimgs.setHasFixedSize(true);
+        //Productimgs.setLayoutManager(new LinearLayoutManager(this));
         Productimg = (ImageView) findViewById(id.productpic);
         uplouadImgs = new ArrayList<>();
         processbar = (ProgressBar)findViewById(id.progressBar);
@@ -195,14 +203,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
             // used when customer bid on this product
             ProductSellerId = product.getValue(Products.class).getSellerID();
-        if(product.hasChild("gallery")){
-            for (DataSnapshot ps   : product.child("gallery").getChildren() ){
-                UplouadImg uplouadImg = ps.getValue(UplouadImg.class);
-                uplouadImgs.add(uplouadImg);
-            }
-            imagAdapter = new ImagAdapter( ProductDetailsActivity.this,uplouadImgs);
-            Productimgs.setAdapter(imagAdapter);
-        }
+
+            String imagPath = product.getValue(Products.class).getImgPath();;
+            UploadPic(imagPath);
+//        if(product.hasChild("gallery")){
+//            for (DataSnapshot ps   : product.child("gallery").getChildren() ){
+//                UplouadImg uplouadImg = ps.getValue(UplouadImg.class);
+//                uplouadImgs.add(uplouadImg);
+//            }
+//            imagAdapter = new ImagAdapter( ProductDetailsActivity.this,uplouadImgs);
+//            Productimgs.setAdapter(imagAdapter);
+//        }
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -223,7 +234,44 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
     }
 
+public void  UploadPic(String imagPath){
+    Toast.makeText( ProductDetailsActivity.this, imagPath, Toast.LENGTH_LONG).show();
+    //Productimg.setColorFilter(bl);
+    final StorageReference mImageRef =
+            FirebaseStorage.getInstance().getReference(imagPath);
+    final long ONE_MEGABYTE = 1024 * 1024;
 
+    mImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+
+            mImageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+
+                    Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    DisplayMetrics dm = new DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                    Productimg.setMinimumHeight(dm.heightPixels);
+                    Productimg.setMinimumWidth(dm.widthPixels);
+                    Productimg.setImageBitmap(bm);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+
+                    Toast.makeText(ProductDetailsActivity.this, "Error with image" , Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+        }
+    });
+
+}
 
 // delete product from db on each node
     private void SetDeleteBtn() {

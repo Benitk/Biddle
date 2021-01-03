@@ -1990,7 +1990,6 @@ id productImg
 id productName
 id productPrice
 id productpic
-id productpics
 id progressBar
 id progress_circular
 id progress_horizontal

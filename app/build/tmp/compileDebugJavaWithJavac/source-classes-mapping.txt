@@ -46,41 +46,6 @@ com/example/biddle/Activites/UplouadImg.java
 com/example/biddle/Activites/ImagAdapter.java
  com.example.biddle.Activites.ImagAdapter
  com.example.biddle.Activites.ImagAdapter$ImagViewHolder
-com/example/biddle/Activites/PurchasedProductsSellerActivity.java
- com.example.biddle.Activites.PurchasedProductsSellerActivity
-com/example/biddle/Activites/ProductDetailsActivity.java
- com.example.biddle.Activites.ProductDetailsActivity
- com.example.biddle.Activites.ProductDetailsActivity$1
- com.example.biddle.Activites.ProductDetailsActivity$10
- com.example.biddle.Activites.ProductDetailsActivity$11
- com.example.biddle.Activites.ProductDetailsActivity$12
- com.example.biddle.Activites.ProductDetailsActivity$12$1
- com.example.biddle.Activites.ProductDetailsActivity$12$2
- com.example.biddle.Activites.ProductDetailsActivity$12$3
- com.example.biddle.Activites.ProductDetailsActivity$12$4
- com.example.biddle.Activites.ProductDetailsActivity$2
- com.example.biddle.Activites.ProductDetailsActivity$3
- com.example.biddle.Activites.ProductDetailsActivity$4
- com.example.biddle.Activites.ProductDetailsActivity$4$1
- com.example.biddle.Activites.ProductDetailsActivity$5
- com.example.biddle.Activites.ProductDetailsActivity$6
- com.example.biddle.Activites.ProductDetailsActivity$7
- com.example.biddle.Activites.ProductDetailsActivity$7$1
- com.example.biddle.Activites.ProductDetailsActivity$8
- com.example.biddle.Activites.ProductDetailsActivity$8$1
- com.example.biddle.Activites.ProductDetailsActivity$8$2
- com.example.biddle.Activites.ProductDetailsActivity$9
-com/example/biddle/Activites/SignupActivity.java
- com.example.biddle.Activites.SignupActivity
- com.example.biddle.Activites.SignupActivity$1
- com.example.biddle.Activites.SignupActivity$2
- com.example.biddle.Activites.SignupActivity$3
-com/example/biddle/BuildConfig.java
- com.example.biddle.BuildConfig
-com/example/biddle/Activites/PurchasedProductsCustomerActivity.java
- com.example.biddle.Activites.PurchasedProductsCustomerActivity
-Utils/InputValidator.java
- Utils.InputValidator
 com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity
  com.example.biddle.Activites.ProductFormActivity$1
@@ -88,7 +53,6 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$11
  com.example.biddle.Activites.ProductFormActivity$12
  com.example.biddle.Activites.ProductFormActivity$13
- com.example.biddle.Activites.ProductFormActivity$13$1
  com.example.biddle.Activites.ProductFormActivity$2
  com.example.biddle.Activites.ProductFormActivity$3
  com.example.biddle.Activites.ProductFormActivity$4
@@ -100,7 +64,45 @@ com/example/biddle/Activites/ProductFormActivity.java
  com.example.biddle.Activites.ProductFormActivity$7
  com.example.biddle.Activites.ProductFormActivity$8
  com.example.biddle.Activites.ProductFormActivity$9
+com/example/biddle/Activites/ProductDetailsActivity.java
+ com.example.biddle.Activites.ProductDetailsActivity
+ com.example.biddle.Activites.ProductDetailsActivity$1
+ com.example.biddle.Activites.ProductDetailsActivity$10
+ com.example.biddle.Activites.ProductDetailsActivity$11
+ com.example.biddle.Activites.ProductDetailsActivity$12
+ com.example.biddle.Activites.ProductDetailsActivity$13
+ com.example.biddle.Activites.ProductDetailsActivity$13$1
+ com.example.biddle.Activites.ProductDetailsActivity$13$2
+ com.example.biddle.Activites.ProductDetailsActivity$13$3
+ com.example.biddle.Activites.ProductDetailsActivity$13$4
+ com.example.biddle.Activites.ProductDetailsActivity$2
+ com.example.biddle.Activites.ProductDetailsActivity$3
+ com.example.biddle.Activites.ProductDetailsActivity$4
+ com.example.biddle.Activites.ProductDetailsActivity$4$1
+ com.example.biddle.Activites.ProductDetailsActivity$4$2
+ com.example.biddle.Activites.ProductDetailsActivity$5
+ com.example.biddle.Activites.ProductDetailsActivity$5$1
+ com.example.biddle.Activites.ProductDetailsActivity$6
+ com.example.biddle.Activites.ProductDetailsActivity$7
+ com.example.biddle.Activites.ProductDetailsActivity$8
+ com.example.biddle.Activites.ProductDetailsActivity$8$1
+ com.example.biddle.Activites.ProductDetailsActivity$9
+ com.example.biddle.Activites.ProductDetailsActivity$9$1
+ com.example.biddle.Activites.ProductDetailsActivity$9$2
 com/example/biddle/Activites/SellerActivity.java
  com.example.biddle.Activites.SellerActivity
  com.example.biddle.Activites.SellerActivity$1
  com.example.biddle.Activites.SellerActivity$2
+com/example/biddle/BuildConfig.java
+ com.example.biddle.BuildConfig
+com/example/biddle/Activites/PurchasedProductsCustomerActivity.java
+ com.example.biddle.Activites.PurchasedProductsCustomerActivity
+Utils/InputValidator.java
+ Utils.InputValidator
+com/example/biddle/Activites/SignupActivity.java
+ com.example.biddle.Activites.SignupActivity
+ com.example.biddle.Activites.SignupActivity$1
+ com.example.biddle.Activites.SignupActivity$2
+ com.example.biddle.Activites.SignupActivity$3
+com/example/biddle/Activites/PurchasedProductsSellerActivity.java
+ com.example.biddle.Activites.PurchasedProductsSellerActivity

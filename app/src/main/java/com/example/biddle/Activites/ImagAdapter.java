@@ -53,7 +53,7 @@ holder.textView.setText(current.getName());
 
         public  ImagViewHolder(View itemView){
             super(itemView);
-            imagView = itemView.findViewById(R.id.productpics);
+            imagView = itemView.findViewById(R.id.productpic);
             textView =  itemView.findViewById(R.id.productName);
 
         }

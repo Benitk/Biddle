@@ -264,7 +264,7 @@ public String imgPath2 = "";
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
 
-                    database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
+                  //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
 
                     uploadPicToDB();
 
