@@ -36,12 +36,12 @@
         "source": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\bid_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_home_black_24dp.xml.flat",
         "source": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\avi\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
