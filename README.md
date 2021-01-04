@@ -48,3 +48,5 @@
 
 </div>
 
+קרדיטים:
+https://www.freepik.com
