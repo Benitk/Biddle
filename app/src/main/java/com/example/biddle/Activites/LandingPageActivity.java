@@ -13,12 +13,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LandingPageActivity extends AppCompatActivity {
 
     private Button b_customer_btn;
     private Button b_seller_btn;
-    private Button b_logout_btn;
+    private TextView b_logout_btn;
     private FirebaseAuth firebaseAuth;
 
 
@@ -33,7 +34,7 @@ public class LandingPageActivity extends AppCompatActivity {
             finish();
 
 
-        b_logout_btn = (Button) findViewById(R.id.logout_btn);
+        b_logout_btn = (TextView) findViewById(R.id.logout_btn);
         b_customer_btn = (Button) findViewById(R.id.customer_btn);
         b_seller_btn = (Button) findViewById(R.id.seller_btn);
         b_customer_btn.setOnClickListener(new View.OnClickListener() {

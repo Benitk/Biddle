@@ -4,6 +4,10 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\mobile.png"
     },
     {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_landingpage.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\background_landingpage.xml"
+    },
+    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
@@ -20,16 +24,20 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_form_background.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\form_background.xml"
+    },
+    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_home_black_24dp.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
-        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_profile_customer.xml.flat",
@@ -86,6 +94,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_processbar.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\processbar.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_sell_hand.png.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\sell_hand.png"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
@@ -164,6 +176,10 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\star_normal.png"
     },
     {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_img.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\background_img.xml"
+    },
+    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
@@ -214,6 +230,10 @@
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_customer.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_customer.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_removebg.png.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\logo_removebg.png"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",

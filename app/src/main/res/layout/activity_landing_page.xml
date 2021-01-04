@@ -1,52 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background">
-    >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_landingpage">
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Choose"
-        android:textSize="32dp"
-        android:layout_marginBottom="30dp"
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/customer_btn"
-        android:layout_width="250dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_back"
-        android:text="לקוח/ה"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:layout_marginBottom="30dp"
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/seller_btn"
-        android:layout_width="250dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_back"
-        android:text="סוחר/ת"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:layout_marginBottom="30dp"
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout_btn"
-        android:layout_width="250dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_back"
-        android:text="@string/Logout"
-        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
         android:textColor="@color/white"
-        />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customer_btn"
+        app:layout_constraintVertical_bias="0.692" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/logo_img"
+        android:layout_width="134dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/landingpage_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.265"
+        app:srcCompat="@drawable/auction_icon" />
+
+    <TextView
+        android:id="@+id/welcome_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="@string/welcome_txt"
+        android:textColor="@color/material_on_background_emphasis_high_type"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toEndOf="@+id/logo_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/landingpage_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="110dp"
+        android:text="@string/landingpage_txt"
+        android:textColor="@color/material_on_background_emphasis_high_type"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/seller_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_txt"
+        app:layout_constraintVertical_bias="0.918" />
+
+    <View
+        android:id="@+id/left_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:background="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/customer_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/or_text"
+        app:layout_constraintTop_toBottomOf="@+id/seller_btn"
+        app:layout_constraintVertical_bias="0.54" />
+
+    <TextView
+        android:id="@+id/or_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/or"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/customer_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seller_btn"
+        app:layout_constraintVertical_bias="0.533" />
+
+    <Button
+        android:id="@+id/customer_btn"
+        android:layout_width="396dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="168dp"
+        android:text="@string/customer"
+        android:textSize="18sp"
+        app:backgroundTint="@color/pink"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seller_btn"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/right_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/customer_btn"
+        app:layout_constraintEnd_toStartOf="@+id/or_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seller_btn"
+        app:layout_constraintVertical_bias="0.54" />
+
+    <Button
+        android:id="@+id/seller_btn"
+        android:layout_width="396dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="280dp"
+        android:text="@string/seller"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:backgroundTint="@color/metalBlue"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

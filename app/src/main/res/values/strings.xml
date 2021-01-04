@@ -17,7 +17,7 @@
     <string name="title_activity_landing_page">LandingPageActivity</string>
     <string name="Logout">יציאה</string>
     <string name="ProductCategory">קטגוריה</string>
-    <string name="ProductName">שם</string>
+    <string name="ProductName">שם המוצר</string>
     <string name="ProductPrice">מחיר התחלתי</string>
     <string name="ProductDescription">תיאור</string>
     <string name="AddProduct">הוסף מוצר</string>
@@ -42,6 +42,16 @@
     <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
     <string name="sorting">מיון מתבצע..</string>
     <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
+
+    <string name="customer">לקוח/ה</string>
+    <string name="seller">סוחר/ת</string>
+    <string name="welcome_txt">ברוכים הבאים </string>
+    <string name="landingpage_txt">Buy it Cheap, Watch Them Weep.</string>
+    <string name="exit">יציאה</string>
+
+
+
+    <string name="or">או</string>
 
     <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
     <string name="productFail">המוצר לא התווסף</string>
