@@ -31,7 +31,7 @@ public class SellerDetailsActivity extends AppCompatActivity {
 
     private TextView City_tv,Adress_tv,zip_tv, Bank_tv, Branch_tv,Acount_tv,Update_btn;
     private String City,Adress,zip, Bank, Branch,Acount;
-private  int ZipNumber,AcountNumber;
+    private  int ZipNumber,AcountNumber;
     private String userId;
     private ProgressBar progressb;
 
