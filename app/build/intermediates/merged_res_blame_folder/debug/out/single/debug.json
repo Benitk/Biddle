@@ -208,6 +208,10 @@
         "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\btn_back.jpg"
     },
     {
+        "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_seller_details.xml.flat",
+        "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\activity_seller_details.xml"
+    },
+    {
         "merged": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_hammer_icon.jpg.flat",
         "source": "C:\\Users\\USER\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable-v24\\hammer_icon.jpg"
     },

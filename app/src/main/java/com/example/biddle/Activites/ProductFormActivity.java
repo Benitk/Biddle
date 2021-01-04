@@ -82,7 +82,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private SetDate set_date;
     private SetYourTime set_time;
     private String productID;
-    public String imgPath2 = "";
+public String imgPath2 = "";
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private FirebaseStorage storage;
@@ -264,6 +264,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
 
+                  //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
 
                     uploadPicToDB();
 

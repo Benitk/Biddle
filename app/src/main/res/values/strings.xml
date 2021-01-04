@@ -43,7 +43,7 @@
     <string name="sorting">מיון מתבצע..</string>
     <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
 
-    <string name="productSucsess">המוצר התווסף בהצלחה</string>
+    <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
 
@@ -88,6 +88,7 @@
     <string name="category_sort">רוצה לראות מוצרים מקטגוריית ...</string>
 
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
+    <string name="MustUploadPic">לא נבחר תמונה!</string>
 
     <!-- Notifications strings -->
 

@@ -128,13 +128,13 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
     public void  UploadPic(String imagPath, ImageView imView){
         final StorageReference mImageRef =
                 FirebaseStorage.getInstance().getReference(imagPath);
-        final long ONE_MEGABYTE = 1024 * 1024;
+        final long FIVE_MEGABYTE = 1024 * 1024 * 5;
 
         mImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
 
-                mImageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                mImageRef.getBytes(FIVE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
                     public void onSuccess(byte[] bytes) {
 
