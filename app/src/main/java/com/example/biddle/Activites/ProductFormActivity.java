@@ -4,28 +4,19 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.squareup.picasso.Picasso;
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +29,28 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import java.io.File;
+import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,19 +76,21 @@ public class ProductFormActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private String imgPath = "";
-
+    public Task<Uri> downloadUrl ;
     private ProgressBar progressb;
 
     private SetDate set_date;
     private SetYourTime set_time;
     private String productID;
-
+public String imgPath2 = "";
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private FirebaseStorage storage;
     private StorageReference storageref;
     private DatabaseReference refUser;
     private DatabaseReference refProduct;
+    private DatabaseReference refgallery;
+
     private DatabaseReference refCategory;
 
 
@@ -94,6 +109,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
         refUser = database.getReference().child("Users").child(userId).child("sellerProducts");
         refProduct = database.getReference().child("Products");
+
         refCategory = database.getReference().child("Categories");
 
 
@@ -217,6 +233,11 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
 
+                if(TextUtils.isEmpty(imgPath)){
+                    Toast.makeText(ProductFormActivity.this, R.string.MustUploadPic, Toast.LENGTH_SHORT).show();
+                    flag = false;
+                }
+
                 // should check for img too
 
                 if(flag){
@@ -233,6 +254,9 @@ public class ProductFormActivity extends AppCompatActivity {
                         return;
                     }
 
+                    //if(imgPath.length() > 0 && imageUri != null) {
+
+                    //}
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
@@ -245,9 +269,9 @@ public class ProductFormActivity extends AppCompatActivity {
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
 
-                    if(imgPath.length() > 0 && imageUri != null) {
-                        uploadPicToDB();
-                    }
+                  //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
+                    uploadPicToDB();
+
 
                 }
             }
@@ -266,9 +290,12 @@ public class ProductFormActivity extends AppCompatActivity {
                 } else {
                     progressb.setVisibility(View.GONE);
 
-                    Date productDate = product.getEndingDate();
 
                     Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
+
+
+                    Date productDate = product.getEndingDate();
+
 
                     // create timer to product ending time for deletion
                     Timer timer = new Timer();
@@ -279,7 +306,6 @@ public class ProductFormActivity extends AppCompatActivity {
                             }
                         }, productDate);
 
-                    finish();
                 }
             }
         });
@@ -400,6 +426,11 @@ public class ProductFormActivity extends AppCompatActivity {
         }
     }
 
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return  mime.getExtensionFromMimeType(cR.getType(uri));
+    }
 
 
     private void ChoosePic() {
@@ -413,26 +444,47 @@ public class ProductFormActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
+            progressb.setVisibility(View.VISIBLE);
             imageUri = data.getData();
+            Picasso.with(this).load(imageUri).into(productImg);
+            imgPath = userId + "/" + productID + "/" +"gallery/"+ UUID.randomUUID().toString()+".jpg"; //getFileExtension(imageUri);
+            progressb.setVisibility(View.GONE);
 
         }
     }
+//databaseReference.setValue(registerInformationSend.getIdImageSend() + 1);
+//                riversRef.putFile(uriImage)
+//                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//
+//                                        saveDatabase(uri.toString(), "");
 
     private void uploadPicToDB() {
-        ProgressDialog pd = new ProgressDialog(this);
+        ProgressDialog pd = new ProgressDialog(ProductFormActivity.this);
         pd.setTitle("העלאה מתבצעת...");
         pd.show();
-
-        imgPath = userId + "/" + productID + "/" + UUID.randomUUID().toString();
-
-        StorageReference Ref = storageref.child(imgPath);
-
+        StorageReference Ref = storageref.child(imgPath) ;
+                //getFileExtension(imageUri));
         Ref.putFile(imageUri).
                 addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
-                        Toast.makeText(ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                        Toast.makeText( ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+
+//                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//                                         imgPath2 = uri.toString();
+//                                        database.getReference().child("Products").child(productID).child("imgPath").setValue(imgPath2);
+//                                    }
+//                                }) ;
+                        finish();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -453,4 +505,5 @@ public class ProductFormActivity extends AppCompatActivity {
 
 
     }
+
 }

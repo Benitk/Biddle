@@ -88,17 +88,12 @@ public class CustomerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
                 builder.setTitle(R.string.pick_sort);
-
-                final String[] options;
-                if(selected_category.length() == 0)  // were not in categorySort
-                    options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר", "לפי קטגוריה"};
-                else
-                    options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר"};
-
+                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר", "לפי קטגוריה"};
                 builder.setSingleChoiceItems(options, -1,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedItem = Arrays.asList(options).get(i);
                                 if(i == 0) sortByDate = true;
                                 else if(i == 1) sortByPrice = true;
                                 else categorySort();  // i == 2, sort by category
@@ -111,7 +106,8 @@ public class CustomerActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         sort_cards();
                         sortByPrice = sortByDate = false;  // reset
-                        // initRecyclerAdapter();
+                        selected_category = "";
+                       // initRecyclerAdapter();
                         cardsAdapter.notifyDataSetChanged();
                     }
                 });
@@ -227,7 +223,7 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setProductId(product.getValue(Products.class).getId());
                 card.setProductCategory(product.getValue(Products.class).getCategory());
                 card.setDateType(product.getValue(Products.class).getEndingDate());
-
+                card.setImgPath(product.getValue(Products.class).getImgPath());
                 cards.add(card);
             }
         }

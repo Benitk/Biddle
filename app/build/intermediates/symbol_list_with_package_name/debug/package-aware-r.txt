@@ -2285,6 +2285,7 @@ string DatePast
 string HasAccount
 string Login
 string Logout
+string MustUploadPic
 string ProductCategory
 string ProductDescription
 string ProductName

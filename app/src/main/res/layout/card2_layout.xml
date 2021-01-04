@@ -28,7 +28,7 @@
                 android:id="@+id/card_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/btn_back" />
+                app:srcCompat="@drawable/biddle_logo" />
 
             <TextView
                 android:id="@+id/card_name"
