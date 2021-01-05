@@ -1,5 +1,7 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,11 +29,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import Models.Cards;
 import Models.Products;
 import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 
 public class SellerActivity extends AppCompatActivity {
@@ -135,6 +145,20 @@ public class SellerActivity extends AppCompatActivity {
         Cards card = null;
 
         for(DataSnapshot product : ds.getChildren()){
+
+            String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCategory = product.getValue(Products.class).getCategory();
+            String productId = product.getValue(Products.class).getId();
+            Date currentDate = new Date(System.currentTimeMillis());
+            Date productDate = product.getValue(Products.class).getEndingDate();
+
+            // product timer is over
+            if(productDate != null && productDate.compareTo(currentDate) < 0){
+                DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                continue;
+            }
+
+
             card = new Cards();
 
             card.setProductName(product.getValue(Products.class).getName());
@@ -143,7 +167,7 @@ public class SellerActivity extends AppCompatActivity {
 
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
-            card.setProductId(product.getValue(Products.class).getId());
+            card.setProductId(productId);
             card.setImgPath(product.getValue(Products.class).getImgPath());
 
             cards.add(card);

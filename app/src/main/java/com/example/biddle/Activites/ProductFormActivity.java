@@ -290,88 +290,12 @@ public String imgPath2 = "";
                 } else {
                     progressb.setVisibility(View.GONE);
 
-                    Date productDate = product.getEndingDate();
-
                     Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
 
-                    // create timer to product ending time for deletion
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                DeleteOnTimer();
-                            }
-                        }, productDate);
                 }
             }
         });
     }
-
-
-    // delete product from db on each node
-    // this is working on backend not visable to user with toast
-    private void DeleteOnTimer() {
-
-                Map<String, Object> childUpdates = new HashMap<>();
-
-                // retrive all favorite products in each user that equal ProductID
-                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                        if (dataSnapshot.exists()){
-                            for(DataSnapshot ds : dataSnapshot.getChildren()){
-                                if(ds.getKey().equals("favoriteProducts")) {
-                                    for (DataSnapshot favorites : ds.getChildren()) {
-                                        if(favorites.getKey().equals(productID)) {
-                                            // sub string from index 35 because is prefix equal to getReference()
-                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
-                                        }
-                                    }
-                                }
-                            }
-                            DeleteProduct(childUpdates);
-                        }
-                    }
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("FaildReadDB",databaseError.toString());
-                    }
-                });
-    }
-
-
-    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
-    // this is working on backend not visable to user with toast
-
-    private void DeleteProduct(Map<String, Object> childUpdates){
-
-        childUpdates.put("/Products/" + productID, null);
-        childUpdates.put("/Categories/" + productCategory + "/" + productID, null);
-        childUpdates.put("/Users/" + userId + "/sellerProducts/" + productID, null);
-
-        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                childUpdates.clear(); // prevent array to cost alot of memory
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("UpdatePrice", "onFailure: " + e.toString());
-                childUpdates.clear(); //prevent array to cost alot of memory
-            }
-        });
-    }
-
 
     // fetch single product from firebase that equal productID
     private void ReadProductFromDB(){

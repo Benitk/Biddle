@@ -54,6 +54,7 @@ import java.util.Map;
 
 import Models.Products;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 import static com.example.biddle.R.*;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,8 +62,8 @@ import com.google.firebase.storage.UploadTask;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private TextView productName, productCategory, productDescrption, productPrice,
-            timer, tv_ProductEndingDate, star_tv;
+    private TextView productName_tv, productCategory_tv, productDescrption_tv, productPrice_tv,
+            timer, ProductEndingDate_tv, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
 
@@ -70,12 +71,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private RecyclerView Productimgs;
    private ImagAdapter imagAdapter;
 
+    private Products currentProduct;
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
     private Integer currentPrice;
     private String userId;
     private String ProductSellerId;
+    private String productCategory;
     private Date ProductEndingDate;
     private Integer newBid;
 
@@ -104,11 +107,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
         ProductID = getIntent().getStringExtra("productId");
-        productName = (TextView)findViewById(id.productName);
-        productCategory = (TextView)findViewById(id.productCategory);
-        productDescrption = (TextView)findViewById(id.productDescription);
-        productPrice = (TextView)findViewById(id.productPrice);
-        tv_ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
+        productName_tv = (TextView)findViewById(id.productName);
+        productCategory_tv = (TextView)findViewById(id.productCategory);
+        productDescrption_tv = (TextView)findViewById(id.productDescription);
+        productPrice_tv = (TextView)findViewById(id.productPrice);
+        ProductEndingDate_tv = (TextView)findViewById(id.Product_endingDate);
 
         typeBtn = (Button) findViewById(id.typeBtn);
 
@@ -193,27 +196,28 @@ public class ProductDetailsActivity extends AppCompatActivity {
         // will be only one product
         for(DataSnapshot product : ds.getChildren()){
 
-            productName.setText(product.getValue(Products.class).getName());
-            productCategory.setText(product.getValue(Products.class).getCategory());
-            productDescrption.setText(product.getValue(Products.class).getDescription());
+            String productName = product.getValue(Products.class).getName();
+            productName_tv.setText(productName);
+            productCategory = product.getValue(Products.class).getCategory();
+            productCategory_tv.setText(productCategory);
+            String productDescrption = product.getValue(Products.class).getDescription();
+            productDescrption_tv.setText(productDescrption);
             currentPrice = product.getValue(Products.class).getPrice();
-            productPrice.setText(Integer.toString(currentPrice)+" ₪");
-            tv_ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            productPrice_tv.setText(Integer.toString(currentPrice)+" ₪");
+            ProductEndingDate_tv.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
             ProductEndingDate = product.getValue(Products.class).getEndingDate();
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
             // used when customer bid on this product
             ProductSellerId = product.getValue(Products.class).getSellerID();
 
-            String imagPath = product.getValue(Products.class).getImgPath();;
-            UploadPic(imagPath);
-//        if(product.hasChild("gallery")){
-//            for (DataSnapshot ps   : product.child("gallery").getChildren() ){
-//                UplouadImg uplouadImg = ps.getValue(UplouadImg.class);
-//                uplouadImgs.add(uplouadImg);
-//            }
-//            imagAdapter = new ImagAdapter( ProductDetailsActivity.this,uplouadImgs);
-//            Productimgs.setAdapter(imagAdapter);
-//        }
+            String ProductCustomerId = product.getValue(Products.class).getCustomerID();
+
+
+            String imgPath = product.getValue(Products.class).getImgPath();
+
+
+            UploadPic(imgPath);
+
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -229,14 +233,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             // When the task is over it will print 00:00:00 there
             public void onFinish() {
                 timer.setText("00d:00h:00m:00s");
-
-
-                for(DataSnapshot product : ds.getChildren()){
-                    database.getReference().child("Users").child(userId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
-                    database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
-                    //WriteToDB(product,database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer"));
-                   // WriteToDB(product,database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller"));
-                }
             }
         }.start();
         processbar.setVisibility(View.GONE);
@@ -281,89 +277,16 @@ else {
 }
 }
 
-// delete product from db on each node
+// delete product from db on each relevant node
     private void SetDeleteBtn() {
         typeBtn.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
-                processbar.setVisibility(View.VISIBLE);
-
-                Map<String, Object> childUpdates = new HashMap<>();
-
-
-                // retrive all favorite products in each user that equal ProductID
-                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                        if (dataSnapshot.exists()){
-                            for(DataSnapshot ds : dataSnapshot.getChildren()){
-                                if(ds.getKey().equals("favoriteProducts")) {
-                                    for (DataSnapshot favorites : ds.getChildren()) {
-                                        if(favorites.getKey().equals(ProductID)) {
-
-                                            // sub string from index 35 because is prefix equal to getReference()
-                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
-                                        }
-                                    }
-                                }
-                            }
-                            DeleteProduct(childUpdates);
-                        }
-                        else {
-                            // quit method
-                            processbar.setVisibility(View.GONE);
-                            Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                    }
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("FaildReadDB",databaseError.toString());
-                        processbar.setVisibility(View.GONE);
-                        Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                });
-            }
-        });
-    }
-
-    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
-
-    private void DeleteProduct(Map<String, Object> childUpdates){
-
-        String Category = productCategory.getText().toString().trim();
-        childUpdates.put("/Products/" + ProductID, null);
-        childUpdates.put("/Categories/" + Category + "/" + ProductID, null);
-        childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID, null);
-
-        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(ProductDetailsActivity.this, string.deleteSucsses, Toast.LENGTH_LONG).show();
-                childUpdates.clear(); // prevent array to cost alot of memory
-                processbar.setVisibility(View.GONE);
+                DBmethods.DeleteProduct(ProductID, productCategory, ProductSellerId, database.getReference());
                 finish();
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                Log.d("UpdatePrice", "onFailure: " + e.toString());
-                childUpdates.clear(); //prevent array to cost alot of memory
-                processbar.setVisibility(View.GONE);
-            }
         });
     }
-
 
 
     private void starBtn(){
@@ -483,7 +406,7 @@ else {
 
             Map<String, Object> childUpdates = new HashMap<>();
 
-            String Category = productCategory.getText().toString().trim();
+            String Category = productCategory_tv.getText().toString().trim();
             childUpdates.put("/Products/" + ProductID + "/price", newBid);
             childUpdates.put("/Products/" + ProductID + "/customerID", userId);
             childUpdates.put("/Categories/" + Category + "/" + ProductID + "/price", newBid);
@@ -495,9 +418,13 @@ else {
             database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    productPrice.setText(Integer.toString(newBid) + " ₪");
+                    currentPrice = newBid;
+                    productPrice_tv.setText(Integer.toString(newBid) + " ₪");
                     Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
                     processbar.setVisibility(View.GONE);
+
+                    // this method adding new product to db in Users/userID/productsOnBid
+                    refCurrUser.child("ProductOnBid").child(ProductID).setValue(true);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -509,7 +436,6 @@ else {
             });
         }
     }
-
 
     private void TransactionDB(){
         refProduct.child(ProductID).runTransaction(new Transaction.Handler() {
@@ -537,7 +463,7 @@ else {
                                 Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
                             }
                         });
-                        productPrice.setText(Integer.toString(p.getPrice())+" ₪");
+                        productPrice_tv.setText(Integer.toString(p.getPrice())+" ₪");
                         return Transaction.abort();
                     }
 
@@ -563,7 +489,7 @@ else {
             public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
                 if(databaseError == null && comitted){
                     // update new Bid Price
-                    productPrice.setText(Integer.toString(newBid)+" ₪");
+                    productPrice_tv.setText(Integer.toString(newBid)+" ₪");
                     ProductDetailsActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();

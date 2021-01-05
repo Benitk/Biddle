@@ -1,5 +1,7 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -24,8 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +43,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import Models.Cards;
 import Models.Products;
 import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 
 public class CustomerActivity extends AppCompatActivity {
@@ -213,6 +223,18 @@ public class CustomerActivity extends AppCompatActivity {
         Cards card = null;
         for(DataSnapshot product : ds.getChildren()){
 
+            String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCategory = product.getValue(Products.class).getCategory();
+            String productId = product.getValue(Products.class).getId();
+            Date currentDate = new Date(System.currentTimeMillis());
+            Date productDate = product.getValue(Products.class).getEndingDate();
+
+            // product timer is over
+            if(productDate != null && productDate.compareTo(currentDate) < 0){
+                DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                continue;
+            }
+
             // user cant bid on his own product
             if(!userId.equals(product.getValue(Products.class).getSellerID())) {
                 card = new Cards();
@@ -220,8 +242,8 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setProductName(product.getValue(Products.class).getName());
                 card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
-                card.setProductId(product.getValue(Products.class).getId());
-                card.setProductCategory(product.getValue(Products.class).getCategory());
+                card.setProductId(productId);
+                card.setProductCategory(productCategory);
                 card.setDateType(product.getValue(Products.class).getEndingDate());
                 card.setImgPath(product.getValue(Products.class).getImgPath());
                 cards.add(card);
@@ -243,6 +265,7 @@ public class CustomerActivity extends AppCompatActivity {
         recyclerView.setAdapter(cardsAdapter);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -252,15 +275,20 @@ public class CustomerActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.homePage:
                 finish();
                 return true;
             case R.id.starProducts:
-                startActivity(new Intent(CustomerActivity.this, StarProductsCustomerActivity.class));
+                 intent = new Intent(CustomerActivity.this, StarProductsCustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
                 return true;
             case R.id.priceOfferedProducts:
-                startActivity(new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class));
+                 intent = new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
                 return true;
             case R.id.purchasedProducts:
                 startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));

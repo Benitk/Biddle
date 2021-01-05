@@ -99,6 +99,10 @@
 
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
     <string name="MustUploadPic">לא נבחר תמונה!</string>
+    <string name="favoriteProducts">מוצרים שסומנו כאהובים</string>
+    <string name="OnBidProducts">מוצרים הצעת עליהם מחיר</string>
+
+
 
     <!-- Notifications strings -->
 
