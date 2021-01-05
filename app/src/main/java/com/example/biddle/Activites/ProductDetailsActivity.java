@@ -203,11 +203,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                 for(DataSnapshot product : ds.getChildren()){
                     database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
-                    database.getReference().child("Users").child(ProductCustomerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
-                    DatabaseReference Customer = database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer");
-                    DatabaseReference Seller = database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller");
-                    WriteToDB(product ,Customer);
-                    WriteToDB(product,Seller);
+                    database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
+                    //WriteToDB(product,database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer"));
+                   // WriteToDB(product,database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller"));
                 }
             }
         }.start();
@@ -215,27 +213,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
     }
 
-    private void WriteToDB(DataSnapshot product , DatabaseReference ref) {
-        progressb.setVisibility(View.VISIBLE);
-    ref
-        .setValue(product, new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                if (databaseError != null) {
-                    progressb.setVisibility(View.GONE);
-                    Toast.makeText(ProductDetailsActivity.this, R.string.productFail, Toast.LENGTH_SHORT).show();
-                    Log.d("FaildReadDB","didnt find 1");
-                } else {
-                    Log.d("FaildReadDB","didnt find 2");
-                    progressb.setVisibility(View.GONE);
-                    Toast.makeText(ProductDetailsActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
-                    // create timer to product ending time for deletion
-                }
-            }
-        });
-
-    }
-
+ 
 
     // delete product from db on each node
     private void SetDeleteBtn() {
