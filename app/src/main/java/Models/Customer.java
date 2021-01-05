@@ -1,15 +1,17 @@
 package Models;
 
+import com.example.biddle.Activites.ExpireDate;
+
 import java.util.Date;
 
 public class Customer {
 
     private String UserId;
     private int CardNumber, Cvv;
-    private Date exipreDate;
+    private ExpireDate exipreDate;
 
     public  Customer(){}
-    public Customer(String userId, int cardNumber, int cvv, Date exipreDate) {
+    public Customer(String userId, int cardNumber, int cvv, ExpireDate exipreDate) {
         UserId = userId;
         CardNumber = cardNumber;
         Cvv = cvv;
@@ -40,11 +42,11 @@ public class Customer {
         Cvv = cvv;
     }
 
-    public Date getExipreDate() {
+    public ExpireDate getExipreDate() {
         return exipreDate;
     }
 
-    public void setExipreDate(Date exipreDate) {
+    public void setExipreDate(ExpireDate exipreDate) {
         this.exipreDate = exipreDate;
     }
 }

@@ -232,7 +232,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
                 for(DataSnapshot product : ds.getChildren()){
-                    database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
+                    database.getReference().child("Users").child(userId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
                     database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
                     //WriteToDB(product,database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer"));
                    // WriteToDB(product,database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller"));

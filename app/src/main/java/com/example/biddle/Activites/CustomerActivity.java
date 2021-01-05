@@ -266,6 +266,7 @@ public class CustomerActivity extends AppCompatActivity {
                 startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));
                 return true;
             case R.id.editProfile:
+                startActivity(new Intent(CustomerActivity.this, EditProfileCustomerActivity.class));
                 return true;
             case R.id.logOut:
                 firebaseAuth.signOut();
