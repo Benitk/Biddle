@@ -233,11 +233,6 @@ public String imgPath2 = "";
                     flag = false;
                 }
 
-                if(TextUtils.isEmpty(imgPath)){
-                    Toast.makeText(ProductFormActivity.this, R.string.MustUploadPic, Toast.LENGTH_SHORT).show();
-                    flag = false;
-                }
-
                 // should check for img too
 
                 if(flag){
@@ -270,6 +265,7 @@ public String imgPath2 = "";
                     WriteToDB(p, refUser.child(productID));
 
                   //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
+
                     uploadPicToDB();
 
 
@@ -290,12 +286,9 @@ public String imgPath2 = "";
                 } else {
                     progressb.setVisibility(View.GONE);
 
-
-                    Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
-
-
                     Date productDate = product.getEndingDate();
 
+                    Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
 
                     // create timer to product ending time for deletion
                     Timer timer = new Timer();
@@ -306,6 +299,7 @@ public String imgPath2 = "";
                             }
                         }, productDate);
 
+                    finish();
                 }
             }
         });
@@ -444,11 +438,9 @@ public String imgPath2 = "";
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
-            progressb.setVisibility(View.VISIBLE);
             imageUri = data.getData();
             Picasso.with(this).load(imageUri).into(productImg);
             imgPath = userId + "/" + productID + "/" +"gallery/"+ UUID.randomUUID().toString()+".jpg"; //getFileExtension(imageUri);
-            progressb.setVisibility(View.GONE);
 
         }
     }
@@ -464,7 +456,7 @@ public String imgPath2 = "";
 //                                        saveDatabase(uri.toString(), "");
 
     private void uploadPicToDB() {
-        ProgressDialog pd = new ProgressDialog(ProductFormActivity.this);
+        ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("העלאה מתבצעת...");
         pd.show();
         StorageReference Ref = storageref.child(imgPath) ;
@@ -483,8 +475,6 @@ public String imgPath2 = "";
 //                                        database.getReference().child("Products").child(productID).child("imgPath").setValue(imgPath2);
 //                                    }
 //                                }) ;
-                        finish();
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -505,5 +495,4 @@ public String imgPath2 = "";
 
 
     }
-
 }

@@ -229,12 +229,22 @@ public class ProductDetailsActivity extends AppCompatActivity {
             // When the task is over it will print 00:00:00 there
             public void onFinish() {
                 timer.setText("00d:00h:00m:00s");
+
+
+                for(DataSnapshot product : ds.getChildren()){
+                    database.getReference().child("Users").child(userId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
+                    database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
+                    //WriteToDB(product,database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer"));
+                   // WriteToDB(product,database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller"));
+                }
             }
         }.start();
         processbar.setVisibility(View.GONE);
     }
 
 public void  UploadPic(String imagPath){
+if (imagPath.isEmpty()){}
+else {
     final StorageReference mImageRef =
             FirebaseStorage.getInstance().getReference(imagPath);
     final long FIVE_MEGABYTE = 1024 * 1024 * 5;
@@ -261,14 +271,14 @@ public void  UploadPic(String imagPath){
                 public void onFailure(@NonNull Exception exception) {
                     // Handle any errors
 
-                    Toast.makeText(ProductDetailsActivity.this, "Error with image" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductDetailsActivity.this, "Error with image", Toast.LENGTH_LONG).show();
 
                 }
             });
 
         }
     });
-
+}
 }
 
 // delete product from db on each node

@@ -125,7 +125,10 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
         public ImageView getProductImg() {return productImg; }
     }
+
     public void  UploadPic(String imagPath, ImageView imView){
+         if (imagPath.isEmpty()){}
+         else{
         final StorageReference mImageRef =
                 FirebaseStorage.getInstance().getReference(imagPath);
         final long FIVE_MEGABYTE = 1024 * 1024 * 5;
@@ -160,4 +163,4 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
         });
 
     }
-}
+}}

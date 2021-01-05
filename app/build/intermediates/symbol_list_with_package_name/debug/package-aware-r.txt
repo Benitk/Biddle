@@ -1773,6 +1773,7 @@ id activity_chooser_view_content
 id add
 id adjust_height
 id adjust_width
+id adress
 id alertTitle
 id aligned
 id all
@@ -1785,6 +1786,8 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id bankAcount
+id bankName
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1794,6 +1797,7 @@ id bid_DialogUserInput
 id blocking
 id bottom
 id bounce
+id branch
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1820,6 +1824,7 @@ id chip2
 id chip3
 id chip_group
 id chronometer
+id cityname
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -2128,6 +2133,7 @@ id unchecked
 id uniform
 id unlabeled
 id up
+id update_btn
 id useLogo
 id view_offset_helper
 id visible
@@ -2139,6 +2145,7 @@ id withinBounds
 id wrap
 id wrap_content
 id zero_corner_chip
+id zipcode
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -2212,6 +2219,7 @@ layout activity_product_form
 layout activity_purchased_products_customer
 layout activity_purchased_products_seller
 layout activity_seller
+layout activity_seller_details
 layout activity_signup
 layout activity_star_products_customer
 layout bid_dialog

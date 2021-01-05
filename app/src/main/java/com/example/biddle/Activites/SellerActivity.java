@@ -181,6 +181,7 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, PurchasedProductsSellerActivity.class));
                 return true;
             case R.id.editProfile:
+                startActivity(new Intent(SellerActivity.this, EditProfileSellerActivity.class));
                 return true;
             case R.id.logOut:
                 firebaseAuth.signOut();
