@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_product_details">
 
-    tools:context=".Activites.ProductDetailsActivity">
+tools:context=".Activites.ProductDetailsActivity">
 
     <TextView
         android:id="@+id/Product_endingDate"
