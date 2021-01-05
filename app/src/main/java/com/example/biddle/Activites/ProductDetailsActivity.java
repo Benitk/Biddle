@@ -229,6 +229,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             // When the task is over it will print 00:00:00 there
             public void onFinish() {
                 timer.setText("00d:00h:00m:00s");
+
+
+                for(DataSnapshot product : ds.getChildren()){
+                    database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
+                    database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
+                    //WriteToDB(product,database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer"));
+                   // WriteToDB(product,database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller"));
+                }
             }
         }.start();
         processbar.setVisibility(View.GONE);
