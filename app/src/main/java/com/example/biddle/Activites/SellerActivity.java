@@ -144,6 +144,7 @@ public class SellerActivity extends AppCompatActivity {
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
             card.setProductId(product.getValue(Products.class).getId());
+            card.setImgPath(product.getValue(Products.class).getImgPath());
 
             cards.add(card);
 
@@ -180,6 +181,7 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, PurchasedProductsSellerActivity.class));
                 return true;
             case R.id.editProfile:
+                startActivity(new Intent(SellerActivity.this, SellerDetailsActivity.class));
                 return true;
             case R.id.logOut:
                 firebaseAuth.signOut();

@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            createChannels();
-        }
-
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         tv_signup_btn = (TextView)findViewById(R.id.signup_btn);
         tv_login_btn = (TextView)findViewById(R.id.login_btn);
@@ -130,39 +126,21 @@ public class MainActivity extends AppCompatActivity {
     // Notifications
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void createChannels() {
+    private void createChannel1() {
         NotificationManager mNotificationManager = getSystemService(NotificationManager.class);
-
-        String id1 = CHANNEL1;
-        String id2 = CHANNEL2;
-        String id3 = CHANNEL3;
-
-        CharSequence name1 = getString(R.string.higherPriceName);
-        CharSequence name2 = getString(R.string.productSoldToYouName);
-        CharSequence name3 = getString(R.string.yourProductName);
-
-        String description1 = getString(R.string.higherPriceChanel);
-        String description2 = getString(R.string.productSoldToYouChanel);
-        String description3 = getString(R.string.yourProductChanel);
-
+        String id = CHANNEL1;
+        CharSequence name = "notify when higher price is offered";
+        String description = "צליל וחלונות קופצים במסך כאשר הוצע מחיר גבוה משלך";  //R.string.higherPriceChanelWithSound;
         int importance = NotificationManager.IMPORTANCE_HIGH;
-        NotificationChannel mChannel1, mChannel2, mChannel3 = null;
+        NotificationChannel mChannel = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mChannel1 = new NotificationChannel(id1, name1, importance);
-            mChannel1.setDescription(description1);
-            mNotificationManager.createNotificationChannel(mChannel1);
-
-            mChannel2 = new NotificationChannel(id2, name2, importance);
-            mChannel2.setDescription(description2);
-            mNotificationManager.createNotificationChannel(mChannel2);
-
-            mChannel3 = new NotificationChannel(id3, name3, importance);
-            mChannel3.setDescription(description3);
-            mNotificationManager.createNotificationChannel(mChannel3);
+            mChannel = new NotificationChannel(id, name, importance);
+            mChannel.setDescription(description);
+            mNotificationManager.createNotificationChannel(mChannel);
         }
     }
 
-    public void addNotification(String channel) {
+    private void addNotification1(String channel) {
         Notification.Builder notificationBuilder;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -170,47 +148,15 @@ public class MainActivity extends AppCompatActivity {
         else  //noinspection deprecation
             notificationBuilder = new Notification.Builder(this);
 
-        Intent landingIntent = cIntent(channel);
+        Intent landingIntent = new Intent(this, PriceOfferedProductsCustomerActivity.class);
         PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0, landingIntent,0);
-
-        String title = cTitle(channel);
-        String text = cText(channel);
-
         Notification notification = notificationBuilder
-                .setContentTitle(title)
+                .setContentTitle("התראת מחיר גבוה")  // R.string.higherPriceTitle
                 .setSmallIcon(R.drawable.auction_icon)
-                .setContentText(text)
-                .setContentIntent(pendingLandingIntent)
-                .setAutoCancel(true).build();
+                .setContentText("מישהו הציע מחיר גבוה משלך! מהר/י לשמור על המוצר בידיים שלך")
+                .setContentIntent(pendingLandingIntent).build();
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify((int) System.currentTimeMillis(), notification);
-    }
-
-    private String cTitle(String channel) {
-        if(channel == CHANNEL1)
-            return getString(R.string.higherPriceTitle);
-        else if(channel == CHANNEL2)
-            return getString(R.string.productSoldToYouTitle);
-        else  // CHANNEL3
-            return getString(R.string.yourProductTitle);
-    }
-
-    private String cText(String channel) {
-        if(channel == CHANNEL1)
-            return getString(R.string.higherPriceText);
-        else if(channel == CHANNEL2)
-            return getString(R.string.productSoldToYouText);
-        else  // CHANNEL3
-            return getString(R.string.yourProductText);
-    }
-
-    private Intent cIntent(String channel) {
-        if(channel == CHANNEL1)
-            return new Intent(this, PriceOfferedProductsCustomerActivity.class);
-        else if(channel == CHANNEL2)
-            return new Intent(this, PurchasedProductsCustomerActivity.class);
-        else  // CHANNEL3
-            return new Intent(this, PurchasedProductsSellerActivity.class);
     }
 
     // add here remove notification function

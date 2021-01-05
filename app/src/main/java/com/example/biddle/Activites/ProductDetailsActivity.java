@@ -1,26 +1,11 @@
 package com.example.biddle.Activites;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,20 +20,44 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Models.Products;
 import Utils.AlgoLibrary;
 
-import static com.example.biddle.R.color;
-import static com.example.biddle.R.id;
-import static com.example.biddle.R.layout;
-import static com.example.biddle.R.string;
+import static com.example.biddle.R.*;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.UploadTask;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -56,6 +65,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
             timer, tv_ProductEndingDate, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
+
+    private List<UplouadImg> uplouadImgs;
+    private RecyclerView Productimgs;
+   private ImagAdapter imagAdapter;
+
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
@@ -64,8 +78,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String ProductSellerId;
     private Date ProductEndingDate;
     private Integer newBid;
-    private String ProductCustomerId;
-    private ProgressBar progressb;
+
     private long millisUntilFinished;
 
     private FirebaseAuth firebaseAuth;
@@ -104,8 +117,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         timer = (TextView)findViewById(id.timer);
 
-        progressb = (ProgressBar)findViewById(R.id.progressBar);
-
         if(user_type.equals("customer")) {
             typeBtn.setText(string.bidProduct);
             typeBtn.setBackgroundTintList(ProductDetailsActivity.this.getResources().getColorStateList(color.green));
@@ -117,10 +128,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             star_tv.setVisibility(View.INVISIBLE);
             SetDeleteBtn();
         }
-
+       // Productimg = (ImageView) findViewById(id.productpic);
+        //Productimgs.setHasFixedSize(true);
+        //Productimgs.setLayoutManager(new LinearLayoutManager(this));
         Productimg = (ImageView) findViewById(id.productpic);
+        uplouadImgs = new ArrayList<>();
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
+
+
+
+
 
         starBtn();
         ReadFromDB();
@@ -174,6 +192,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void setProductData(DataSnapshot ds){
         // will be only one product
         for(DataSnapshot product : ds.getChildren()){
+
             productName.setText(product.getValue(Products.class).getName());
             productCategory.setText(product.getValue(Products.class).getCategory());
             productDescrption.setText(product.getValue(Products.class).getDescription());
@@ -184,7 +203,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
             // used when customer bid on this product
             ProductSellerId = product.getValue(Products.class).getSellerID();
-            ProductCustomerId =product.getValue(Products.class).getCustomerID();
+
+            String imagPath = product.getValue(Products.class).getImgPath();;
+            UploadPic(imagPath);
+//        if(product.hasChild("gallery")){
+//            for (DataSnapshot ps   : product.child("gallery").getChildren() ){
+//                UplouadImg uplouadImg = ps.getValue(UplouadImg.class);
+//                uplouadImgs.add(uplouadImg);
+//            }
+//            imagAdapter = new ImagAdapter( ProductDetailsActivity.this,uplouadImgs);
+//            Productimgs.setAdapter(imagAdapter);
+//        }
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -201,6 +230,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onFinish() {
                 timer.setText("00d:00h:00m:00s");
 
+
                 for(DataSnapshot product : ds.getChildren()){
                     database.getReference().child("Users").child(ProductCustomerId).child("PurchasedByCustomer").setValue("PurchasedByCustomer");
                     database.getReference().child("Users").child(ProductSellerId).child("PurchasedBySeller").setValue("PurchasedBySeller");
@@ -209,13 +239,47 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 }
             }
         }.start();
-
         processbar.setVisibility(View.GONE);
     }
 
- 
+public void  UploadPic(String imagPath){
+    final StorageReference mImageRef =
+            FirebaseStorage.getInstance().getReference(imagPath);
+    final long FIVE_MEGABYTE = 1024 * 1024 * 5;
 
-    // delete product from db on each node
+    mImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+
+            mImageRef.getBytes(FIVE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+
+                    Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    DisplayMetrics dm = new DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                    Productimg.setMinimumHeight(dm.heightPixels);
+                    Productimg.setMinimumWidth(dm.widthPixels);
+                    Productimg.setImageBitmap(bm);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+
+                    Toast.makeText(ProductDetailsActivity.this, "Error with image" , Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+        }
+    });
+
+}
+
+// delete product from db on each node
     private void SetDeleteBtn() {
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -410,12 +474,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
             flag = false;
         }
 
+
         if(flag) {
             processbar.setVisibility(View.VISIBLE);
 
-            Map<String, Object> childUpdates = new HashMap<>();
 
-            // String prevCustomer = database.getReference().child("Products").child(ProductID).child("customerID");
+            Map<String, Object> childUpdates = new HashMap<>();
 
             String Category = productCategory.getText().toString().trim();
             childUpdates.put("/Products/" + ProductID + "/price", newBid);
@@ -425,15 +489,13 @@ public class ProductDetailsActivity extends AppCompatActivity {
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/price", newBid);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/customerID", userId);
 
+
             database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     productPrice.setText(Integer.toString(newBid) + " ₪");
                     Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
                     processbar.setVisibility(View.GONE);
-                    //call a function to write to DB with the same ref
-
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
