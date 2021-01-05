@@ -1811,6 +1811,7 @@ id card_image1
 id card_name
 id card_name1
 id card_view
+id cardnumber
 id center
 id center_horizontal
 id center_vertical
@@ -1840,6 +1841,7 @@ id custom
 id customPanel
 id customer_btn
 id cut
+id cvv1
 id dark
 id date_picker_actions
 id decelerate
@@ -1878,6 +1880,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id expireDate
 id fade
 id fill
 id fill_horizontal
@@ -2219,7 +2222,6 @@ layout activity_product_form
 layout activity_purchased_products_customer
 layout activity_purchased_products_seller
 layout activity_seller
-layout activity_seller_details
 layout activity_signup
 layout activity_star_products_customer
 layout bid_dialog

@@ -233,7 +233,11 @@ public String imgPath2 = "";
                     flag = false;
                 }
 
-                // should check for img too
+
+                if(TextUtils.isEmpty(imgPath)) {
+                    flag = false;
+                    Toast.makeText(ProductFormActivity.this, R.string.MustUploadPic, Toast.LENGTH_SHORT).show();
+                }
 
                 if(flag){
 
@@ -298,8 +302,6 @@ public String imgPath2 = "";
                                 DeleteOnTimer();
                             }
                         }, productDate);
-
-                    finish();
                 }
             }
         });
@@ -467,6 +469,8 @@ public String imgPath2 = "";
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
                         Toast.makeText( ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                        finish();
+
 
 //                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
 //                                    @Override

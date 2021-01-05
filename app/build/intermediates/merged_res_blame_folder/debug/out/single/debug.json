@@ -32,12 +32,12 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_customer.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\content_customer.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_profile_customer.xml.flat",
@@ -144,12 +144,12 @@
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\drawable\\back.png"
     },
     {
-        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_landing_page.xml.flat",
-        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_landing_page.xml"
-    },
-    {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_bid_dialog.xml.flat",
         "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\bid_dialog.xml"
+    },
+    {
+        "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_landing_page.xml.flat",
+        "source": "D:\\android projects\\Biddle\\app\\src\\main\\res\\layout\\activity_landing_page.xml"
     },
     {
         "merged": "D:\\android projects\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_purchased_products_customer.xml.flat",
