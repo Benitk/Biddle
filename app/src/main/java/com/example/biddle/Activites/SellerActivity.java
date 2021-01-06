@@ -85,6 +85,10 @@ public class SellerActivity extends AppCompatActivity {
         AddProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //validation if seller fill the necessery details
+
+                boolean flaf =true;
+
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
             }
         });
