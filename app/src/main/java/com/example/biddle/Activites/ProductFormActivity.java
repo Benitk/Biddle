@@ -4,11 +4,12 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import com.squareup.picasso.Picasso;
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,6 +38,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -74,19 +76,21 @@ public class ProductFormActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private String imgPath = "";
-
+    public Task<Uri> downloadUrl ;
     private ProgressBar progressb;
 
     private SetDate set_date;
     private SetYourTime set_time;
     private String productID;
-
+public String imgPath2 = "";
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private FirebaseStorage storage;
     private StorageReference storageref;
     private DatabaseReference refUser;
     private DatabaseReference refProduct;
+    private DatabaseReference refgallery;
+
     private DatabaseReference refCategory;
 
 
@@ -105,6 +109,7 @@ public class ProductFormActivity extends AppCompatActivity {
 
         refUser = database.getReference().child("Users").child(userId).child("sellerProducts");
         refProduct = database.getReference().child("Products");
+
         refCategory = database.getReference().child("Categories");
 
 
@@ -119,6 +124,8 @@ public class ProductFormActivity extends AppCompatActivity {
 
         set_date = new SetDate(et_productTTLDate);
         set_time = new SetYourTime(et_productTTLTime);
+
+
 
         productImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,7 +233,11 @@ public class ProductFormActivity extends AppCompatActivity {
                     flag = false;
                 }
 
-                // should check for img too
+
+                if(TextUtils.isEmpty(imgPath)) {
+                    flag = false;
+                    Toast.makeText(ProductFormActivity.this, R.string.MustUploadPic, Toast.LENGTH_SHORT).show();
+                }
 
                 if(flag){
 
@@ -242,6 +253,9 @@ public class ProductFormActivity extends AppCompatActivity {
                         return;
                     }
 
+                    //if(imgPath.length() > 0 && imageUri != null) {
+
+                    //}
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
@@ -254,9 +268,10 @@ public class ProductFormActivity extends AppCompatActivity {
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
 
-                    if(imgPath.length() > 0 && imageUri != null) {
-                        uploadPicToDB();
-                    }
+                  //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
+
+                    uploadPicToDB();
+
 
                 }
             }
@@ -275,90 +290,12 @@ public class ProductFormActivity extends AppCompatActivity {
                 } else {
                     progressb.setVisibility(View.GONE);
 
-                    Date productDate = product.getEndingDate();
-
                     Toast.makeText(ProductFormActivity.this, R.string.productSucsess, Toast.LENGTH_SHORT).show();
 
-                    // create timer to product ending time for deletion
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                DeleteOnTimer();
-                            }
-                        }, productDate);
-
-                    finish();
                 }
             }
         });
     }
-
-
-    // delete product from db on each node
-    // this is working on backend not visable to user with toast
-    private void DeleteOnTimer() {
-
-                Map<String, Object> childUpdates = new HashMap<>();
-
-                // retrive all favorite products in each user that equal ProductID
-                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                        if (dataSnapshot.exists()){
-                            for(DataSnapshot ds : dataSnapshot.getChildren()){
-                                if(ds.getKey().equals("favoriteProducts")) {
-                                    for (DataSnapshot favorites : ds.getChildren()) {
-                                        if(favorites.getKey().equals(productID)) {
-                                            // sub string from index 35 because is prefix equal to getReference()
-                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
-                                        }
-                                    }
-                                }
-                            }
-                            DeleteProduct(childUpdates);
-                        }
-                    }
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("FaildReadDB",databaseError.toString());
-                    }
-                });
-    }
-
-
-    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
-    // this is working on backend not visable to user with toast
-
-    private void DeleteProduct(Map<String, Object> childUpdates){
-
-        childUpdates.put("/Products/" + productID, null);
-        childUpdates.put("/Categories/" + productCategory + "/" + productID, null);
-        childUpdates.put("/Users/" + userId + "/sellerProducts/" + productID, null);
-
-        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                childUpdates.clear(); // prevent array to cost alot of memory
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("UpdatePrice", "onFailure: " + e.toString());
-                childUpdates.clear(); //prevent array to cost alot of memory
-            }
-        });
-    }
-
 
     // fetch single product from firebase that equal productID
     private void ReadProductFromDB(){
@@ -409,6 +346,11 @@ public class ProductFormActivity extends AppCompatActivity {
         }
     }
 
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return  mime.getExtensionFromMimeType(cR.getType(uri));
+    }
 
 
     private void ChoosePic() {
@@ -423,25 +365,44 @@ public class ProductFormActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageUri = data.getData();
+            Picasso.with(this).load(imageUri).into(productImg);
+            imgPath = userId + "/" + productID + "/" +"gallery/"+ UUID.randomUUID().toString()+".jpg"; //getFileExtension(imageUri);
 
         }
     }
+//databaseReference.setValue(registerInformationSend.getIdImageSend() + 1);
+//                riversRef.putFile(uriImage)
+//                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//
+//                                        saveDatabase(uri.toString(), "");
 
     private void uploadPicToDB() {
         ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("העלאה מתבצעת...");
         pd.show();
-
-        imgPath = userId + "/" + productID + "/" + UUID.randomUUID().toString();
-
-        StorageReference Ref = storageref.child(imgPath);
-
+        StorageReference Ref = storageref.child(imgPath) ;
+                //getFileExtension(imageUri));
         Ref.putFile(imageUri).
                 addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
-                        Toast.makeText(ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                        Toast.makeText( ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                        finish();
+
+
+//                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//                                         imgPath2 = uri.toString();
+//                                        database.getReference().child("Products").child(productID).child("imgPath").setValue(imgPath2);
+//                                    }
+//                                }) ;
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

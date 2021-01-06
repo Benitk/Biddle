@@ -1,5 +1,6 @@
 package com.example.biddle.Activites;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +12,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.biddle.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,17 +26,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import Models.Cards;
 import Models.Products;
 import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 
 public class SellerActivity extends AppCompatActivity {
 
 
-    private TextView AddProduct_tv;
+    private Button AddProduct_btn;
 
     private RecyclerView recyclerView;
     private ArrayList<Cards> cards;
@@ -43,15 +48,18 @@ public class SellerActivity extends AppCompatActivity {
 
     private DatabaseReference refProducts;
     private DatabaseReference refUser;
+    private   DatabaseReference refUserDetails;
+    private   DatabaseReference refUserDetailschild;
+
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
-
+     public   static boolean flag;
+    public static boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
-
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
 
@@ -59,7 +67,6 @@ public class SellerActivity extends AppCompatActivity {
 
         // root to user
         refUser = database.getReference().child("Users").child(userId).child("sellerProducts");
-
         cards = new ArrayList<Cards>();
 
         progressb = (ProgressBar)findViewById(R.id.progressBar);
@@ -69,17 +76,65 @@ public class SellerActivity extends AppCompatActivity {
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        AddProduct_tv = (TextView) findViewById(R.id.AddProduct_tv);
+        AddProduct_btn = (Button) findViewById(R.id.AddProduct_tv);
 
-        AddProduct_tv.setOnClickListener(new View.OnClickListener() {
+        AddProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
+                //validation if seller fill the necessery details
+                 flag = true;
+                refUserDetails = database.getReference().child("Users").child(userId).child("sellerDetails");
+                refUserDetails.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if( !snapshot.child("adress").exists() ) {
+                            flag = false;
+                        }
+                        if( !snapshot.child("city").exists() ) {
+                            flag = false;
+                        }
+                        if( !snapshot.child("bank").exists() ) {
+                            flag = false;
+                        }
+
+                        if (flag == false){
+                            Toast.makeText(SellerActivity.this, "דרוש למלא פרטי מוכר כדי להשלים את התהליך", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else {
+                            startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));
+                        }
+                     }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) { }
+                });
+
+
+
             }
+
         });
 
         initRecyclerAdapter();
         ReadFromDB();
+
+    }
+
+    private boolean checkChild(String ref) {
+         b = true ;
+        refUserDetailschild =refUserDetails.child(ref);
+        refUserDetailschild.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if( !snapshot.exists() ) {
+                    b = false ;
+                    flag = false;
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+        return b ;
 
     }
 
@@ -135,6 +190,20 @@ public class SellerActivity extends AppCompatActivity {
         Cards card = null;
 
         for(DataSnapshot product : ds.getChildren()){
+
+            String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCategory = product.getValue(Products.class).getCategory();
+            String productId = product.getValue(Products.class).getId();
+            Date currentDate = new Date(System.currentTimeMillis());
+            Date productDate = product.getValue(Products.class).getEndingDate();
+
+            // product timer is over
+            if(productDate != null && productDate.compareTo(currentDate) < 0){
+                DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                continue;
+            }
+
+
             card = new Cards();
 
             card.setProductName(product.getValue(Products.class).getName());
@@ -143,7 +212,8 @@ public class SellerActivity extends AppCompatActivity {
 
             card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
 
-            card.setProductId(product.getValue(Products.class).getId());
+            card.setProductId(productId);
+            card.setImgPath(product.getValue(Products.class).getImgPath());
 
             cards.add(card);
 
@@ -180,6 +250,7 @@ public class SellerActivity extends AppCompatActivity {
                 startActivity(new Intent(SellerActivity.this, PurchasedProductsSellerActivity.class));
                 return true;
             case R.id.editProfile:
+                startActivity(new Intent(SellerActivity.this, EditProfileSellerActivity.class));
                 return true;
             case R.id.logOut:
                 firebaseAuth.signOut();
@@ -190,3 +261,10 @@ public class SellerActivity extends AppCompatActivity {
         }
     }
 }
+//                if(checkChild("adress") == false) flag =false;
+//                if(checkChild("bank") == false)  flag = false;
+//                if(checkChild("city") == false) flag =false;
+//                if(checkChild("branch") == false) flag =false;
+//                if(checkChild("bankAcountNumber") == false) flag =false;
+//                if(checkChild("zip") == false) flag =false;
+//                if(checkChild("a") == false){flag =false;

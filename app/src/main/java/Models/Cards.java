@@ -1,8 +1,5 @@
 package Models;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 
 public class Cards {
@@ -13,17 +10,37 @@ public class Cards {
     private String endingDate;
     private Date dateType;
     private String productCategory;
+    private String imgPath;
+    private String CurCostumerID;
 
-    public Cards(String productName, String currentPrice, String endingDate, String id, Date date, String category) {
+    public Cards(String productName, String currentPrice, String endingDate, String id, Date date, String category, String imgPath , String CurCostumerID) {
         this.productName = productName;
         this.currentPrice = currentPrice;
         this.endingDate = endingDate;
         this.productId = id;
         this.dateType = date;
         this.productCategory = category;
+        this.imgPath = imgPath;
+        this.CurCostumerID = CurCostumerID;
     }
 
     public Cards(){}
+
+    public String getCurCostumerID() {
+        return CurCostumerID;
+    }
+
+    public void setCurCostumerID(String CurCostumerID) {
+        this.CurCostumerID = CurCostumerID;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
     public String getProductId() {return productId; }
 

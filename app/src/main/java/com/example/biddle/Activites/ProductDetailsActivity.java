@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -17,18 +20,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,27 +46,39 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Models.Products;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 import static com.example.biddle.R.*;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.UploadTask;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private TextView productName, productCategory, productDescrption, productPrice,
-            timer, tv_ProductEndingDate, star_tv;
+    private TextView productName_tv, productCategory_tv, productDescrption_tv, productPrice_tv,
+            timer, ProductEndingDate_tv, star_tv;
     private Button typeBtn;
     private ImageView Productimg;
+
+    private List<UplouadImg> uplouadImgs;
+    private RecyclerView Productimgs;
+   private ImagAdapter imagAdapter;
+
+    private Products currentProduct;
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
     private Integer currentPrice;
     private String userId;
     private String ProductSellerId;
+    private String productCategory;
     private Date ProductEndingDate;
     private Integer newBid;
 
@@ -90,11 +107,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
         // seller or customer
         user_type = getIntent().getStringExtra("user_type");
         ProductID = getIntent().getStringExtra("productId");
-        productName = (TextView)findViewById(id.productName);
-        productCategory = (TextView)findViewById(id.productCategory);
-        productDescrption = (TextView)findViewById(id.productDescription);
-        productPrice = (TextView)findViewById(id.productPrice);
-        tv_ProductEndingDate = (TextView)findViewById(id.Product_endingDate);
+        productName_tv = (TextView)findViewById(id.productName);
+        productCategory_tv = (TextView)findViewById(id.productCategory);
+        productDescrption_tv = (TextView)findViewById(id.productDescription);
+        productPrice_tv = (TextView)findViewById(id.productPrice);
+        ProductEndingDate_tv = (TextView)findViewById(id.Product_endingDate);
 
         typeBtn = (Button) findViewById(id.typeBtn);
 
@@ -114,10 +131,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             star_tv.setVisibility(View.INVISIBLE);
             SetDeleteBtn();
         }
-
+       // Productimg = (ImageView) findViewById(id.productpic);
+        //Productimgs.setHasFixedSize(true);
+        //Productimgs.setLayoutManager(new LinearLayoutManager(this));
         Productimg = (ImageView) findViewById(id.productpic);
+        uplouadImgs = new ArrayList<>();
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
+
+
+
+
 
         starBtn();
         ReadFromDB();
@@ -171,16 +195,29 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private void setProductData(DataSnapshot ds){
         // will be only one product
         for(DataSnapshot product : ds.getChildren()){
-            productName.setText(product.getValue(Products.class).getName());
-            productCategory.setText(product.getValue(Products.class).getCategory());
-            productDescrption.setText(product.getValue(Products.class).getDescription());
+
+            String productName = product.getValue(Products.class).getName();
+            productName_tv.setText(productName);
+            productCategory = product.getValue(Products.class).getCategory();
+            productCategory_tv.setText(productCategory);
+            String productDescrption = product.getValue(Products.class).getDescription();
+            productDescrption_tv.setText(productDescrption);
             currentPrice = product.getValue(Products.class).getPrice();
-            productPrice.setText(Integer.toString(currentPrice)+" ₪");
-            tv_ProductEndingDate.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
+            productPrice_tv.setText(Integer.toString(currentPrice)+" ₪");
+            ProductEndingDate_tv.setText(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
             ProductEndingDate = product.getValue(Products.class).getEndingDate();
             millisUntilFinished = product.getValue(Products.class).millisUntilFinished();
             // used when customer bid on this product
             ProductSellerId = product.getValue(Products.class).getSellerID();
+
+            String ProductCustomerId = product.getValue(Products.class).getCustomerID();
+
+
+            String imgPath = product.getValue(Products.class).getImgPath();
+
+
+            UploadPic(imgPath);
+
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -201,87 +238,56 @@ public class ProductDetailsActivity extends AppCompatActivity {
         processbar.setVisibility(View.GONE);
     }
 
-// delete product from db on each node
+public void  UploadPic(String imagPath){
+if (imagPath.isEmpty()){}
+else {
+    final StorageReference mImageRef =
+            FirebaseStorage.getInstance().getReference(imagPath);
+    final long FIVE_MEGABYTE = 1024 * 1024 * 5;
+
+    mImageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        @Override
+        public void onSuccess(Uri uri) {
+
+            mImageRef.getBytes(FIVE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+
+                    Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    DisplayMetrics dm = new DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                    Productimg.setMinimumHeight(dm.heightPixels);
+                    Productimg.setMinimumWidth(dm.widthPixels);
+                    Productimg.setImageBitmap(bm);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+
+                    Toast.makeText(ProductDetailsActivity.this, "Error with image", Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+        }
+    });
+}
+}
+
+// delete product from db on each relevant node
     private void SetDeleteBtn() {
         typeBtn.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
-                processbar.setVisibility(View.VISIBLE);
-
-                Map<String, Object> childUpdates = new HashMap<>();
-
-                // retrive all favorite products in each user that equal ProductID
-                database.getReference().child("Users").orderByChild("favoriteProducts").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                        if (dataSnapshot.exists()){
-                            for(DataSnapshot ds : dataSnapshot.getChildren()){
-                                if(ds.getKey().equals("favoriteProducts")) {
-                                    for (DataSnapshot favorites : ds.getChildren()) {
-                                        if(favorites.getKey().equals(ProductID)) {
-
-                                            // sub string from index 35 because is prefix equal to getReference()
-                                            childUpdates.put(favorites.getRef().toString().substring(35), null);
-                                        }
-                                    }
-                                }
-                            }
-                            DeleteProduct(childUpdates);
-                        }
-                        else {
-                            // quit method
-                            processbar.setVisibility(View.GONE);
-                            Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                            return;
-                        }
-                    }
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.d("FaildReadDB",databaseError.toString());
-                        processbar.setVisibility(View.GONE);
-                        Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                        return;
-                    }
-                });
-            }
-        });
-    }
-
-    // this method called by SetDeleteBtn after getting all childs in favoriteProducts node
-
-    private void DeleteProduct(Map<String, Object> childUpdates){
-
-        String Category = productCategory.getText().toString().trim();
-        childUpdates.put("/Products/" + ProductID, null);
-        childUpdates.put("/Categories/" + Category + "/" + ProductID, null);
-        childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID, null);
-
-        database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(ProductDetailsActivity.this, string.deleteSucsses, Toast.LENGTH_LONG).show();
-                childUpdates.clear(); // prevent array to cost alot of memory
-                processbar.setVisibility(View.GONE);
+                DBmethods.DeleteProduct(ProductID, productCategory, ProductSellerId, database.getReference());
                 finish();
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProductDetailsActivity.this, R.string.deleteFailed, Toast.LENGTH_LONG).show();
-                Log.d("UpdatePrice", "onFailure: " + e.toString());
-                childUpdates.clear(); //prevent array to cost alot of memory
-                processbar.setVisibility(View.GONE);
-            }
         });
     }
+
 
     private void starBtn(){
         star_tv.setOnClickListener(new View.OnClickListener() {
@@ -318,32 +324,52 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
-                View promptsView = li.inflate(layout.bid_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
-                // set dialog message
-                alertDialogBuilder.setCancelable(false)
-                        .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog ,int id) {
-                                String userBid = userInput.getText().toString().trim();
-                                Log.d("dialog",userBid);
-                                newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
 
-                                // set new bid
-                                voidFetchProduct(newBid);
+                DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CostumerDetails");
+                refUserDetails.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.child("adress").exists()) {
+                            flag = false;
+                        }
+                        if (!snapshot.child("city").exists()) {
+                            flag = false;
+                        }
+                        if(flag){
+                            LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
+                            View promptsView = li.inflate(layout.bid_dialog, null);
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
+                            alertDialogBuilder.setView(promptsView);
+                            final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
+                            // set dialog message
+                            alertDialogBuilder.setCancelable(false)
+                                    .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel(); }
+                                    }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            String userBid = userInput.getText().toString().trim();
+                                            Log.d("dialog", userBid);
+                                            newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
+                                                                         // set new bi
+                                            voidFetchProduct(newBid);
 
-                            }
-                        });
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                // show it
-                alertDialog.show();
+                                        }
+                                    });
+                            // create alert dialog
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            // show it
+                            alertDialog.show();
+                        }
+                        else {
+                            Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
             }
         });
     }
@@ -357,7 +383,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()){
-                    UpdatePrice(newBid, dataSnapshot);
+                    UpdatePrice(newBid);
                 }
                 else {
                     Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
@@ -378,7 +404,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     // update the price in all db roots
-    private void UpdatePrice(int newBid, DataSnapshot dataSnapshot){
+    private void UpdatePrice(int newBid){
         boolean flag = true;
         // input validation
         // bid too low
@@ -393,17 +419,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
             flag = false;
         }
 
+
         if(flag) {
             processbar.setVisibility(View.VISIBLE);
 
+
             Map<String, Object> childUpdates = new HashMap<>();
 
-            String prevCustomer = dataSnapshot.getValue(Products.class).getCustomerID();
-            if(prevCustomer != this.userId) {  // only if its not the same customer
-                higherPriceNotification();  // send higher price notification to prevCustomer only!!!
-            }
-
-            String Category = productCategory.getText().toString().trim();
+            String Category = productCategory_tv.getText().toString().trim();
             childUpdates.put("/Products/" + ProductID + "/price", newBid);
             childUpdates.put("/Products/" + ProductID + "/customerID", userId);
             childUpdates.put("/Categories/" + Category + "/" + ProductID + "/price", newBid);
@@ -411,12 +434,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/price", newBid);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/customerID", userId);
 
+
             database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    productPrice.setText(Integer.toString(newBid) + " ₪");
+                    currentPrice = newBid;
+                    productPrice_tv.setText(Integer.toString(newBid) + " ₪");
                     Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
                     processbar.setVisibility(View.GONE);
+
+                    // this method adding new product to db in Users/userID/productsOnBid
+                    refCurrUser.child("ProductOnBid").child(ProductID).setValue(true);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -428,27 +456,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
             });
         }
     }
-
-    private void higherPriceNotification() {
-        Notification.Builder notificationBuilder;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-            notificationBuilder = new Notification.Builder(this, MainActivity.CHANNEL1);
-        else  //noinspection deprecation
-            notificationBuilder = new Notification.Builder(this);
-
-        Intent landingIntent = new Intent(this, PriceOfferedProductsCustomerActivity.class);
-        PendingIntent pendingLandingIntent = PendingIntent.getActivity(this, 0, landingIntent,0);
-        Notification notification = notificationBuilder
-                .setContentTitle(getString(R.string.higherPriceTitle))
-                .setSmallIcon(R.drawable.auction_icon)
-                .setContentText(getString(R.string.higherPriceText))
-                .setContentIntent(pendingLandingIntent)
-                .setAutoCancel(true).build();
-        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify((int) System.currentTimeMillis(), notification);
-    }
-
 
     private void TransactionDB(){
         refProduct.child(ProductID).runTransaction(new Transaction.Handler() {
@@ -476,7 +483,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
                             }
                         });
-                        productPrice.setText(Integer.toString(p.getPrice())+" ₪");
+                        productPrice_tv.setText(Integer.toString(p.getPrice())+" ₪");
                         return Transaction.abort();
                     }
 
@@ -502,7 +509,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
                 if(databaseError == null && comitted){
                     // update new Bid Price
-                    productPrice.setText(Integer.toString(newBid)+" ₪");
+                    productPrice_tv.setText(Integer.toString(newBid)+" ₪");
                     ProductDetailsActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();

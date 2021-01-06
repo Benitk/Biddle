@@ -471,6 +471,7 @@
     <color name="green">#00cf7c</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
+    <color name="light_purple">#6c63ff</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -483,6 +484,7 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <color name="metalBlue">#76528BFF</color>
     <color name="mtrl_btn_text_color_disabled">#61000000</color>
     <color name="mtrl_btn_transparent_bg_color">#00ffffff</color>
     <color name="mtrl_scrim_color">#52000000</color>
@@ -494,6 +496,7 @@
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="offwhite">#5FFF</color>
+    <color name="pink">#CBCE91FF</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -512,6 +515,8 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="starGray">#9E9E9E</color>
+    <color name="starYellow">#FFD600</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
@@ -988,13 +993,15 @@
   </plurals>
     <string name="AddProduct">הוסף מוצר</string>
     <string name="Choose">בחר/י בתור מה את/ה רוצה להיכנס לאפליקציה</string>
-    <string name="DatePast">התאריך או השעה שהזנת כבר עברו</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
     <string name="HasAccount">כבר רשום/ה? לחץ/י כאן והתחבר/י</string>
     <string name="Login">התחברות</string>
     <string name="Logout">יציאה</string>
+    <string name="MustUploadPic">לא נבחר תמונה!</string>
+    <string name="OnBidProducts">מוצרים הצעת עליהם מחיר</string>
     <string name="ProductCategory">קטגוריה</string>
     <string name="ProductDescription">תיאור</string>
-    <string name="ProductName">שם</string>
+    <string name="ProductName">שם המוצר</string>
     <string name="ProductPrice">מחיר התחלתי</string>
     <string name="ProductTTL">סיום המכירה - יום/חודש/שנה</string>
     <string name="ProductTTLDate">תאריך סיום המכירה</string>
@@ -1032,7 +1039,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Biddle</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="bidDialogMsg">כמה את/ה מעוניין/ת להציע?</string>
+    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
     <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
     <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
     <string name="bidProduct">הצעת מחיר</string>
@@ -1065,15 +1072,18 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="confirmpassword">אימות סיסמה</string>
+    <string name="customer">לקוח/ה</string>
     <string name="default_web_client_id" translatable="false">420298979980-2pk25hbnpp66sjmjvnlg5c3c5hga62ee.apps.googleusercontent.com</string>
     <string name="deleteFailed">מחיקת המוצר נכשלה!, נסה/י שנית</string>
     <string name="deleteProduct">מחיקת מוצר</string>
     <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
     <string name="email">דואר אלקטרוני</string>
     <string name="error_icon_content_description">Error</string>
+    <string name="exit">יציאה</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="favoriteProducts">מוצרים שסומנו כאהובים</string>
     <string name="fillDetails">אנא מלא/י את פרטי המוצר</string>
     <string name="firebase_database_url" translatable="false">https://biddle-c5332.firebaseio.com</string>
     <string name="first_fragment_label">First Fragment</string>
@@ -1091,6 +1101,7 @@
     <string name="higherPriceTitle">התראת מחיר גבוה</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="landingpage_txt">Buy it Cheap, Watch Them Weep.</string>
     <string description="Content description for the thumb with the maximum value in a Range slider. [CHAR_LIMIT=NONE]" name="material_slider_range_end">Range end, </string>
     <string description="Content description for the thumb with the minimum value in a Range slider. [CHAR_LIMIT=NONE]" name="material_slider_range_start">Range start, </string>
     <string name="menu">תפריט</string>
@@ -1135,6 +1146,7 @@
     <string name="next">Next</string>
     <string name="noProduct">אין מוצרים</string>
     <string name="ok">בסדר</string>
+    <string name="or">או</string>
     <string name="password">סיסמה</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
@@ -1150,10 +1162,11 @@
     <string name="productSoldToYouName">notify when the product has sold to you</string>
     <string name="productSoldToYouText">ברכות! את/ה הצעת את המחיר הגבוה ביותר וזכית במוצר! לחצ/י כאן לפרטים</string>
     <string name="productSoldToYouTitle">התראת מוצר שנמכר לך</string>
-    <string name="productSucsess">המוצר התווסף בהצלחה</string>
+    <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
     <string name="project_id" translatable="false">biddle-c5332</string>
     <string name="search_menu_title">Search</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="seller">סוחר/ת</string>
     <string name="sorting">מיון מתבצע..</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_costumer">MainActivity</string>
@@ -1169,6 +1182,7 @@
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
     <string name="welcome_customer">ברוך/ה הבא/ה, לקוח/ה!</string>
     <string name="welcome_seller">ברוך/ה הבא/ה, סוחר/ת!</string>
+    <string name="welcome_txt">ברוכים הבאים </string>
     <string name="yourProductChanel">צליל וחלונות קופצים במסך כאשר מוצר שלך נמכר</string>
     <string name="yourProductName">notify when your product has sold</string>
     <string name="yourProductText">ברכות! הצלחת למכור את המוצר! לחצ/י כאן לפרטים</string>

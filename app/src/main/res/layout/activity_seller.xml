@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/seller_layout"
     android:showAsAction="ifRoom"
-    android:background="@drawable/background">
+    android:background="@drawable/background_img"><![CDATA[
 
-    <TextView
+    android:textSize="10sp" />
+
+
+
+
+
+    ]]>
+
+    <Button
         android:id="@+id/AddProduct_tv"
-        android:layout_width="160dp"
-        android:layout_height="31dp"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
         android:layout_gravity="right"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_back"
         android:text="פרסום מוצר חדש"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        app:backgroundTint="#0DB673"
+
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="380dp"
         android:layout_height="51dp"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_back"
         android:text="@string/welcome_seller"
-        android:textColor="@color/white"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+
         android:textSize="36dp" />
 
     <TextView

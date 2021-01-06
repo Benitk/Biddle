@@ -1,30 +1,27 @@
 package com.example.biddle.Activites;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.biddle.R;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,15 +31,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
+import java.util.Date;
 
 import Models.Cards;
 import Models.Products;
-import Utils.CardsAdapter;
 import Utils.AlgoLibrary;
+import Utils.CardsAdapter;
+import Utils.DBmethods;
 
 
 public class CustomerActivity extends AppCompatActivity {
@@ -55,7 +52,7 @@ public class CustomerActivity extends AppCompatActivity {
     private TextView tv_noProductText;
     private String userId;
     private ProgressBar progressb;
-    private TextView sort_tv;
+    private Button sort_btn;
     private ImageView cancelSort;
 
     private boolean sortByPrice = false;
@@ -78,27 +75,22 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        sort_tv = (TextView) findViewById(R.id.sort_tv);
+        sort_btn = (Button) findViewById(R.id.sort_tv);
 
         cancelSort = (ImageView) findViewById(R.id.cancel_sort);
         cancelSort.setVisibility(View.GONE);
 
-        sort_tv.setOnClickListener(new View.OnClickListener() {
+        sort_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
                 builder.setTitle(R.string.pick_sort);
-
-                final String[] options;
-                if(selected_category.length() == 0)  // were not in categorySort
-                    options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר", "לפי קטגוריה"};
-                else
-                    options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר"};
-
+                final String[] options = new String[]{"לפי זמן עד סיום המכירה", "לפי מחיר", "לפי קטגוריה"};
                 builder.setSingleChoiceItems(options, -1,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                String selectedItem = Arrays.asList(options).get(i);
                                 if(i == 0) sortByDate = true;
                                 else if(i == 1) sortByPrice = true;
                                 else categorySort();  // i == 2, sort by category
@@ -111,7 +103,8 @@ public class CustomerActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         sort_cards();
                         sortByPrice = sortByDate = false;  // reset
-                        // initRecyclerAdapter();
+                        selected_category = "";
+                       // initRecyclerAdapter();
                         cardsAdapter.notifyDataSetChanged();
                     }
                 });
@@ -217,6 +210,18 @@ public class CustomerActivity extends AppCompatActivity {
         Cards card = null;
         for(DataSnapshot product : ds.getChildren()){
 
+            String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCategory = product.getValue(Products.class).getCategory();
+            String productId = product.getValue(Products.class).getId();
+            Date currentDate = new Date(System.currentTimeMillis());
+            Date productDate = product.getValue(Products.class).getEndingDate();
+
+            // product timer is over
+            if(productDate != null && productDate.compareTo(currentDate) < 0){
+                DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                continue;
+            }
+
             // user cant bid on his own product
             if(!userId.equals(product.getValue(Products.class).getSellerID())) {
                 card = new Cards();
@@ -224,10 +229,11 @@ public class CustomerActivity extends AppCompatActivity {
                 card.setProductName(product.getValue(Products.class).getName());
                 card.setCurrentPrice(Integer.toString(product.getValue(Products.class).getPrice()));
                 card.setEndingDate(AlgoLibrary.DateFormating(product.getValue(Products.class).getEndingDate()));
-                card.setProductId(product.getValue(Products.class).getId());
-                card.setProductCategory(product.getValue(Products.class).getCategory());
+                card.setProductId(productId);
+                card.setProductCategory(productCategory);
                 card.setDateType(product.getValue(Products.class).getEndingDate());
-
+                card.setImgPath(product.getValue(Products.class).getImgPath());
+                card.setCurCostumerID(this.userId);
                 cards.add(card);
             }
         }
@@ -247,6 +253,7 @@ public class CustomerActivity extends AppCompatActivity {
         recyclerView.setAdapter(cardsAdapter);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -256,20 +263,26 @@ public class CustomerActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.homePage:
                 finish();
                 return true;
             case R.id.starProducts:
-                startActivity(new Intent(CustomerActivity.this, StarProductsCustomerActivity.class));
+                 intent = new Intent(CustomerActivity.this, StarProductsCustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
                 return true;
             case R.id.priceOfferedProducts:
-                startActivity(new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class));
+                 intent = new Intent(CustomerActivity.this, PriceOfferedProductsCustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
                 return true;
             case R.id.purchasedProducts:
                 startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));
                 return true;
             case R.id.editProfile:
+                startActivity(new Intent(CustomerActivity.this, EditProfileCustomerActivity.class));
                 return true;
             case R.id.logOut:
                 firebaseAuth.signOut();
