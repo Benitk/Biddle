@@ -324,6 +324,9 @@ else {
 
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+
                 LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
                 View promptsView = li.inflate(layout.bid_dialog, null);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
