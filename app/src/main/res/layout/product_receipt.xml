@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/recipit_backround">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="קבלה"
+        android:textColor="@color/material_on_background_emphasis_medium"
+        android:textSize="50dp"></TextView>
+
+
+    <LinearLayout
+        android:id="@+id/processBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="395dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="שם המוצר:  "
+                    android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/ProductPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="תשלום : "
+                    android:inputType="numberDecimal"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/ProductTTLDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="right"
+                    android:hint="תאריך"
+                    android:inputType="datetime"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <EditText
+                    android:id="@+id/costumerNane"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="right"
+                    android:hint="קונה:"
+                    android:inputType="datetime"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/costumerPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="right"
+                    android:hint="קונה פלאפון:: "
+                    android:inputType="textNoSuggestions"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+
+                <EditText
+                    android:id="@+id/SellerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint=" מוכר"
+                    android:inputType="textMultiLine"
+                    android:letterSpacing="0.1"
+                    android:lines="5"
+                    android:maxLength="20"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/sellerPhone"
+                    android:layout_width="256dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint=" מוכר פלאפון"
+                    android:inputType="textMultiLine"
+                    android:letterSpacing="0.1"
+                    android:lines="5"
+                    android:maxLength="20"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sellerAdress"
+                    android:layout_width="256dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint=" כתובת המוכר"
+                    android:inputType="textMultiLine"
+                    android:letterSpacing="0.1"
+                    android:lines="5"
+                    android:maxLength="20"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
+                    android:textSize="14dp" />
+                    android:text="TextView" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
