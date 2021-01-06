@@ -2,20 +2,21 @@ package Models;
 
 import com.example.biddle.Activites.ExpireDate;
 
-import java.util.Date;
-
 public class Customer {
 
-    private String UserId;
-    private int CardNumber, Cvv;
+    private String UserId ,Name;
+    private int CardNumber, Cvv , PhoneNumber , personalID;
     private ExpireDate exipreDate;
 
     public  Customer(){}
-    public Customer(String userId, int cardNumber, int cvv, ExpireDate exipreDate) {
+    public Customer(String userId, int cardNumber, int cvv, ExpireDate exipreDate, String name , int phoneNumber , int personaliD) {
         UserId = userId;
         CardNumber = cardNumber;
         Cvv = cvv;
         this.exipreDate = exipreDate;
+        Name= name;
+        PhoneNumber = phoneNumber;
+        personalID = personaliD;
     }
 
     public String getUserId() {
@@ -25,6 +26,27 @@ public class Customer {
     public void setUserId(String userId) {
         UserId = userId;
     }
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
+    public int getPersonalID() {
+        return personalID;
+    }
+
+    public void setPersonalID(int personaliD) {  personalID = personaliD; }
 
     public int getCardNumber() {
         return CardNumber;

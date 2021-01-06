@@ -326,53 +326,48 @@ else {
 
                 DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CostumerDetails");
                 refUserDetails.addValueEventListener(new ValueEventListener() {
-                                                         @Override
-                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                             if (!snapshot.child("adress").exists()) {
-                                                                 flag = false;
-                                                             }
-                                                             if (!snapshot.child("city").exists()) {
-                                                                 flag = false;
-                                                             }
-                                                             if(flag){
-                                                                 LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
-                                                                 View promptsView = li.inflate(layout.bid_dialog, null);
-                                                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
-                                                                 alertDialogBuilder.setView(promptsView);
-                                                                 final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
-                                                                 // set dialog message
-                                                                 alertDialogBuilder.setCancelable(false)
-                                                                         .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
-                                                                             public void onClick(DialogInterface dialog, int id) {
-                                                                                 dialog.cancel();
-                                                                             }
-                                                                         }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
-                                                                     public void onClick(DialogInterface dialog, int id) {
-                                                                         String userBid = userInput.getText().toString().trim();
-                                                                         Log.d("dialog", userBid);
-                                                                         newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.child("adress").exists()) {
+                            flag = false;
+                        }
+                        if (!snapshot.child("city").exists()) {
+                            flag = false;
+                        }
+                        if(flag){
+                            LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
+                            View promptsView = li.inflate(layout.bid_dialog, null);
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
+                            alertDialogBuilder.setView(promptsView);
+                            final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
+                            // set dialog message
+                            alertDialogBuilder.setCancelable(false)
+                                    .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.cancel(); }
+                                    }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            String userBid = userInput.getText().toString().trim();
+                                            Log.d("dialog", userBid);
+                                            newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
+                                                                         // set new bi
+                                            voidFetchProduct(newBid);
 
-                                                                         // set new bid
-                                                                         voidFetchProduct(newBid);
-
-                                                                     }
-                                                                 });
-                                                                 // create alert dialog
-                                                                 AlertDialog alertDialog = alertDialogBuilder.create();
-                                                                 // show it
-                                                                 alertDialog.show();
-                                                             }
-                                                             else {
-                                                                 Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
-                                                             }
-                                                         }
-
-                                                         @Override
-                                                         public void onCancelled(@NonNull DatabaseError error) {
-
-                                                         }
-                                                     });
-
+                                        }
+                                    });
+                            // create alert dialog
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            // show it
+                            alertDialog.show();
+                        }
+                        else {
+                            Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
             }
         });
     }

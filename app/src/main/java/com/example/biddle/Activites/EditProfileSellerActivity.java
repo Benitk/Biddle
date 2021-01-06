@@ -29,8 +29,8 @@ public class EditProfileSellerActivity extends AppCompatActivity {
 //private DatabaseReference refProduct;
     private DatabaseReference refUser;
 
-    private TextView City_tv,Adress_tv,zip_tv, Bank_tv, Branch_tv,Acount_tv,Update_btn;
-    private String City,Adress,zip, Bank, Branch,Acount;
+    private TextView City_tv,Adress_tv,zip_tv, Bank_tv, Branch_tv,Acount_tv,Update_btn,PhoneNumber_tv,personalID_tv,Name_tv;
+    private String City,Adress,zip, Bank, Branch,Acount,Name;
     private  int ZipNumber,AcountNumber;
     private String userId;
     private ProgressBar progressb;
@@ -56,6 +56,9 @@ public class EditProfileSellerActivity extends AppCompatActivity {
         Branch_tv  =(TextView)findViewById(R.id.branch);
         Acount_tv  =(TextView)findViewById(R.id.bankAcount);
         Update_btn  =(TextView)findViewById(R.id.update_btn);
+        PhoneNumber_tv = (TextView)findViewById(R.id.PhoneNumber);
+        personalID_tv = (TextView)findViewById(R.id.personalID);
+        Name_tv = (TextView)findViewById(R.id.Name);
 
         Update_btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,6 +69,7 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 Bank = Bank_tv.getText().toString().trim();
                 Branch = Branch_tv.getText().toString().trim();
                 Acount =  Acount_tv.getText().toString().trim();
+                Name = Name_tv.getText().toString().trim();
 
                 // validtate input
                 boolean flag = true;
@@ -97,12 +101,24 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.bankAcount)).setError(R.string.mustFill+"");
                     flag = false;
                 }
+                if(TextUtils.isEmpty(Acount)) {
+                    ((EditText) findViewById(R.id.PhoneNumber)).setError(R.string.mustFill+"");
+                    flag = false;
+                }
+                if(TextUtils.isEmpty(Acount)) {
+                    ((EditText) findViewById(R.id.personalID)).setError(R.string.mustFill+"");
+                    flag = false;
+                }
+                if(TextUtils.isEmpty(Acount)) {
+                    ((EditText) findViewById(R.id.Name)).setError(R.string.mustFill+"");
+                    flag = false;
+                }
                 else {
                     AcountNumber = Integer.parseInt(Acount);
                 }
 
                 if(flag) {
-                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber);
+                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber,Name,Integer.parseInt(PhoneNumber_tv.toString()),Integer.parseInt(personalID_tv.toString()));
                     WriteToDB(seller,refUser);
                 }
             }

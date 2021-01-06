@@ -1,16 +1,14 @@
 package Models;
 
-import java.util.Date;
-
 public class Seller {
-        private String UserId ,City,Adress, Bank, Branch;
-        private int zip, BankAcountNumber;
+        private String UserId ,City,Adress, Bank, Branch , Name;
+        private int zip, BankAcountNumber, PhoneNumber , personalID;
 
         public Seller(){
         }
 
 
-    public Seller(String userId, String city, String adress, String bank, String branch, int zipn, int bankAcountNumber) {
+    public Seller(String userId, String city, String adress, String bank, String branch, int zipn, int bankAcountNumber, String name , int phoneNumber , int personaliD) {
         UserId = userId;
         City = city;
         Adress = adress;
@@ -18,6 +16,9 @@ public class Seller {
         Branch = branch;
         zip = zipn;
         BankAcountNumber = bankAcountNumber;
+        Name= name;
+        PhoneNumber = phoneNumber;
+        personalID = personaliD;
     }
 
     public String getUserId() {
@@ -27,6 +28,28 @@ public class Seller {
     public void setUserId(String userId) {
         UserId = userId;
     }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
+    public int getPersonalID() {
+        return personalID;
+    }
+
+    public void setPersonalID(int personaliD) {  personalID = personaliD; }
 
     public String getCity() {
         return City;
