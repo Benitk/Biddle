@@ -1,28 +1,5 @@
 package com.example.biddle.Activites;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.biddle.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -44,6 +21,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -56,9 +54,10 @@ import Models.Products;
 import Utils.AlgoLibrary;
 import Utils.DBmethods;
 
-import static com.example.biddle.R.*;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.UploadTask;
+import static com.example.biddle.R.color;
+import static com.example.biddle.R.id;
+import static com.example.biddle.R.layout;
+import static com.example.biddle.R.string;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -88,7 +87,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference refProduct;
     private DatabaseReference refCurrUser;
-
+    private boolean flag;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ResourceAsColor")
@@ -321,35 +320,59 @@ else {
 
 
     private void SetbidBtn() {
-
+        flag = true;
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
-                View promptsView = li.inflate(layout.bid_dialog, null);
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
-                alertDialogBuilder.setView(promptsView);
-                final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
-                // set dialog message
-                alertDialogBuilder.setCancelable(false)
-                        .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog ,int id) {
-                                String userBid = userInput.getText().toString().trim();
-                                Log.d("dialog",userBid);
-                                newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
 
-                                // set new bid
-                                voidFetchProduct(newBid);
+                DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CostumerDetails");
+                refUserDetails.addValueEventListener(new ValueEventListener() {
+                                                         @Override
+                                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                             if (!snapshot.child("adress").exists()) {
+                                                                 flag = false;
+                                                             }
+                                                             if (!snapshot.child("city").exists()) {
+                                                                 flag = false;
+                                                             }
+                                                             if(flag){
+                                                                 LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
+                                                                 View promptsView = li.inflate(layout.bid_dialog, null);
+                                                                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
+                                                                 alertDialogBuilder.setView(promptsView);
+                                                                 final EditText userInput = (EditText) promptsView.findViewById(R.id.bid_DialogUserInput);
+                                                                 // set dialog message
+                                                                 alertDialogBuilder.setCancelable(false)
+                                                                         .setNegativeButton(string.cancel, new DialogInterface.OnClickListener() {
+                                                                             public void onClick(DialogInterface dialog, int id) {
+                                                                                 dialog.cancel();
+                                                                             }
+                                                                         }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
+                                                                     public void onClick(DialogInterface dialog, int id) {
+                                                                         String userBid = userInput.getText().toString().trim();
+                                                                         Log.d("dialog", userBid);
+                                                                         newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
 
-                            }
-                        });
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                // show it
-                alertDialog.show();
+                                                                         // set new bid
+                                                                         voidFetchProduct(newBid);
+
+                                                                     }
+                                                                 });
+                                                                 // create alert dialog
+                                                                 AlertDialog alertDialog = alertDialogBuilder.create();
+                                                                 // show it
+                                                                 alertDialog.show();
+                                                             }
+                                                             else {
+                                                                 Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+                                                             }
+                                                         }
+
+                                                         @Override
+                                                         public void onCancelled(@NonNull DatabaseError error) {
+
+                                                         }
+                                                     });
+
             }
         });
     }

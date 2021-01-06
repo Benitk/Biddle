@@ -2,7 +2,6 @@ package Utils;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,12 +18,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.biddle.Activites.CustomerActivity;
-import com.example.biddle.Activites.LandingPageActivity;
 import com.example.biddle.Activites.ProductDetailsActivity;
 import com.example.biddle.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -38,13 +36,14 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
     private Context currentActivity;
     private List<Cards> data;
     private String user_type;
-
+    private FirebaseDatabase database;
 
     public CardsAdapter(Context context, List<Cards> data, String type){
         this.layoutInflater = LayoutInflater.from(context);
         this.currentActivity = context;
         this.data = data;
         this.user_type = type;
+        this.database = FirebaseDatabase.getInstance();
     }
 
     @NonNull
@@ -81,12 +80,17 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
         viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentActivity, ProductDetailsActivity.class);
-                intent.putExtra("user_type", user_type);
-                intent.putExtra("productId", productid);
-                currentActivity.startActivity(intent);
-                Log.d("check",user_type);
-                Log.d("check",productid);
+               // if (!database.getReference().child("Users").child(data.get(i).getCurCostumerID().toString()).child("CostumerDetails").child("cvv").toString().equals(null)) {
+                    Intent intent = new Intent(currentActivity, ProductDetailsActivity.class);
+                    intent.putExtra("user_type", user_type);
+                    intent.putExtra("productId", productid);
+                    currentActivity.startActivity(intent);
+                    Log.d("check", user_type);
+                    Log.d("check", productid);
+           //     }
+            //    else{
+            //       Toa st.makeText( ((Activity)currentActivity), "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+           //     }
             }
             });
 
