@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ import Utils.DBmethods;
 public class SellerActivity extends AppCompatActivity {
 
 
-    private TextView AddProduct_tv;
+    private Button AddProduct_btn;
 
     private RecyclerView recyclerView;
     private ArrayList<Cards> cards;
@@ -79,9 +80,9 @@ public class SellerActivity extends AppCompatActivity {
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        AddProduct_tv = (TextView) findViewById(R.id.AddProduct_tv);
+        AddProduct_btn = (Button) findViewById(R.id.AddProduct_tv);
 
-        AddProduct_tv.setOnClickListener(new View.OnClickListener() {
+        AddProduct_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SellerActivity.this, ProductFormActivity.class));

@@ -53,7 +53,6 @@ tools:context=".Activites.ProductDetailsActivity">
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?android:attr/detailsElementBackground"
         android:text="TextView"
         android:textColor="@color/purple_500"
         android:textSize="24sp"

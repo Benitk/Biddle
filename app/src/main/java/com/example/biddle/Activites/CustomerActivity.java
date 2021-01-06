@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -65,7 +66,7 @@ public class CustomerActivity extends AppCompatActivity {
     private TextView tv_noProductText;
     private String userId;
     private ProgressBar progressb;
-    private TextView sort_tv;
+    private Button sort_btn;
     private ImageView cancelSort;
 
     private boolean sortByPrice = false;
@@ -88,12 +89,12 @@ public class CustomerActivity extends AppCompatActivity {
         progressb.setVisibility(View.GONE);
         tv_noProductText = (TextView) findViewById(R.id.noProducts);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        sort_tv = (TextView) findViewById(R.id.sort_tv);
+        sort_btn = (Button) findViewById(R.id.sort_tv);
 
         cancelSort = (ImageView) findViewById(R.id.cancel_sort);
         cancelSort.setVisibility(View.GONE);
 
-        sort_tv.setOnClickListener(new View.OnClickListener() {
+        sort_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(CustomerActivity.this);
