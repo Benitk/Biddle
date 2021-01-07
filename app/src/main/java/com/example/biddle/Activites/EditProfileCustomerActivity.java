@@ -52,9 +52,9 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
         date_tv  =(EditText) findViewById(R.id.expireDate);
         edit_btn  =(TextView)findViewById(R.id.update_btn);
         setDate = new SetDate(date_tv);//need to check
-        PhoneNumber_tv = (TextView)findViewById(R.id.PhoneNumber);
-        personalID_tv = (TextView)findViewById(R.id.personalID);
-        Name_tv = (TextView)findViewById(R.id.Name);
+        PhoneNumber_tv = (TextView)findViewById(R.id.PhoneNumberC);
+        personalID_tv = (TextView)findViewById(R.id.personalIDC);
+        Name_tv = (TextView)findViewById(R.id.NameC);
 
         date_tv.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -74,13 +74,20 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 card = card_tv.getText().toString().trim();
-              String  cvV = cvv_tv.getText().toString().trim();
+                String cvV = cvv_tv.getText().toString().trim();
+                Name = Name_tv.getText().toString().trim();
+                personalID = personalID_tv.getText().toString().trim();
+                PhoneNumber = PhoneNumber_tv.getText().toString().trim();
+
 
                //validation
                 boolean flag = true;
+
                 if (TextUtils.isEmpty(card)) {
                     ((EditText) findViewById(R.id.cardnumber)).setError(R.string.mustFill + "");
                     flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל1", Toast.LENGTH_SHORT).show();
+
                 } else {
                     CardNumber = Integer.parseInt(card);
                 }
@@ -88,33 +95,37 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(cvV)  ) {
                     ((EditText) findViewById(R.id.cvv1)).setError(R.string.mustFill + "");
                     flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל2", Toast.LENGTH_SHORT).show();
                 }
 
                 if(TextUtils.isEmpty(PhoneNumber)) {
-                ((EditText) findViewById(R.id.PhoneNumber)).setError(R.string.mustFill+"");
+                ((EditText) findViewById(R.id.PhoneNumberC)).setError("חובה למלא" + "");
                 flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל3", Toast.LENGTH_SHORT).show();
             }
                 if(TextUtils.isEmpty(personalID)) {
-                ((EditText) findViewById(R.id.personalID)).setError(R.string.mustFill+"");
+                ((EditText) findViewById(R.id.personalIDC)).setError("חובה למלא" + "");
                 flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל4", Toast.LENGTH_SHORT).show();
             }
                 if(TextUtils.isEmpty(Name)) {
-                ((EditText) findViewById(R.id.Name)).setError(R.string.mustFill+"");
+                ((EditText) findViewById(R.id.NameC)).setError(R.string.mustFill+"");
                 flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל5", Toast.LENGTH_SHORT).show();
             }
                 if(cvV.length()!=3){
                     ((EditText) findViewById(R.id.cvv1)).setError("הכנס שלוש ספרות");
                     flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל6", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     cvvNumber = Integer.parseInt(cvV);
                 }
 
-
-
                 if (TextUtils.isEmpty(date_tv.getText().toString().trim())) {
                     ((EditText) findViewById(R.id.cardnumber)).setError(R.string.mustFill + "");
                     flag = false;
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל7", Toast.LENGTH_SHORT).show();
                 }
 
                 if(flag) {
@@ -122,13 +133,17 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                    int year = setDate.getYear();// dateTime.getYear();
                    int month =setDate.getMonth();            //dateTime.getMonth();
                    ExpireDate ex = new ExpireDate(year,month);
-                    EditText t=(EditText) findViewById(R.id.Name);
+                    EditText t=(EditText) findViewById(R.id.NameC);
                     String name = t.toString();
-                    t = (EditText) findViewById(R.id.PhoneNUmber);
-                    int phone = Integer.parseInt(t.toString());
-                    t = (EditText) findViewById(R.id.personalID);
-                    int id = Integer.parseInt(t.toString());
+                    t = (EditText) findViewById(R.id.PhoneNumberC);
+                    int phone = Integer.parseInt(t.getText().toString().trim());
+                    t = (EditText) findViewById(R.id.personalIDC);
+                    int id = Integer.parseInt(t.getText().toString().trim());
                     Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex,name,phone,id);
+                    WriteToDB(costomer,refUser);
+                }
+                else{
+                    Toast.makeText(EditProfileCustomerActivity.this, "נכשל7", Toast.LENGTH_SHORT).show();
                 }
                 }
             });

@@ -68,6 +68,8 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 Branch = Branch_tv.getText().toString().trim();
                 Acount =  Acount_tv.getText().toString().trim();
                 Name = Name_tv.getText().toString().trim();
+                personalID = personalID_tv.getText().toString().trim();
+                PhoneNumber = PhoneNumber_tv.getText().toString().trim();
 
                 // validtate input
                 boolean flag = true;
@@ -75,25 +77,29 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(City)) {
                     ((EditText) findViewById(R.id.cityname)).setError(R.string.mustFill+"");
                     flag = false;
+
                 }
                 if(TextUtils.isEmpty(Adress)) {
                     ((EditText) findViewById(R.id.adress)).setError(R.string.mustFill+"");
                     flag = false;
+
                 }
                 if(TextUtils.isEmpty(zip)) {
                     ((EditText) findViewById(R.id.zipcode)).setError(R.string.mustFill+"");
                     flag = false;
+
                 }
                 else {
                     ZipNumber = Integer.parseInt(zip);
                 }
                 if(TextUtils.isEmpty(Bank)) {
-                    ((EditText) findViewById(R.id.bankName)).setError(R.string.mustFill+"");
+                    ((EditText) findViewById(R.id.bankName)).setError(R.string.mustFill + "");
                     flag = false;
                 }
                 if(TextUtils.isEmpty(Branch)) {
                     ((EditText) findViewById(R.id.branch)).setError(R.string.mustFill+"");
                     flag = false;
+
                 }
                 if(TextUtils.isEmpty(PhoneNumber)) {
                     ((EditText) findViewById(R.id.PhoneNumber)).setError(R.string.mustFill+"");
@@ -116,8 +122,11 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 }
 
                 if(flag) {
-                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber,Name,Integer.parseInt(PhoneNumber_tv.toString()),Integer.parseInt(personalID_tv.toString()));
+                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber,Name,Integer.parseInt(PhoneNumber_tv.getText().toString().trim()),Integer.parseInt(personalID_tv.getText().toString().trim()));
                     WriteToDB(seller,refUser);
+                }
+                else{
+                    Toast.makeText(EditProfileSellerActivity.this, "נכשל", Toast.LENGTH_SHORT).show();
                 }
             }
         });

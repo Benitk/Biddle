@@ -37,6 +37,28 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
+                <EditText
+                    android:id="@+id/NameC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="#00000000"
+                    android:gravity="right"
+                    android:hint="שם מלא"
+                    android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
 
                 <EditText
                     android:id="@+id/cardnumber"
@@ -110,7 +132,7 @@
 
 
                 <EditText
-                    android:id="@+id/PhoneNUmber"
+                    android:id="@+id/PhoneNumberC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -132,31 +154,9 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-                <EditText
-                    android:id="@+id/Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:background="#00000000"
-                    android:gravity="right"
-                    android:hint="שם מלא"
-                    android:inputType="numberDecimal"
-                    android:letterSpacing="0.1"
-                    android:textAlignment="gravity"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textSize="14dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
 
                 <EditText
-                    android:id="@+id/personalID"
+                    android:id="@+id/personalIDC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"

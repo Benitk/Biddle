@@ -328,12 +328,11 @@ else {
                 refUserDetails.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (!snapshot.child("adress").exists()) {
-                            flag = false;
+                        flag = true;
+                        if (!snapshot.exists()) {
+                         flag = false;
                         }
-                        if (!snapshot.child("city").exists()) {
-                            flag = false;
-                        }
+
                         if(flag){
                             LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
                             View promptsView = li.inflate(layout.bid_dialog, null);
