@@ -211,6 +211,8 @@ public class CustomerActivity extends AppCompatActivity {
         for(DataSnapshot product : ds.getChildren()){
 
             String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCustomerID = product.getValue(Products.class).getCustomerID();
+
             String productCategory = product.getValue(Products.class).getCategory();
             String productId = product.getValue(Products.class).getId();
             Date currentDate = new Date(System.currentTimeMillis());
@@ -219,6 +221,7 @@ public class CustomerActivity extends AppCompatActivity {
             // product timer is over
             if(productDate != null && productDate.compareTo(currentDate) < 0){
                 DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                DBmethods.CreateReceipt(productSellerID, productCustomerID, product, database.getReference().child("Users"));
                 continue;
             }
 

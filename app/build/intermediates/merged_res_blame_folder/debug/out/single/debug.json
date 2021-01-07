@@ -148,8 +148,8 @@
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\product_receipt.xml"
     },
     {
-        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_layout.xml.flat",
-        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\card_layout.xml"
+        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_receipt_layout.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\receipt_layout.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_password.png.flat",

@@ -361,7 +361,7 @@ else {
                             alertDialog.show();
                         }
                         else {
-                            Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProductDetailsActivity.this , R.string.PesonalDetailsfill , Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override

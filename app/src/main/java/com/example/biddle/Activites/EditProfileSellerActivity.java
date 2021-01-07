@@ -69,6 +69,7 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 Acount =  Acount_tv.getText().toString().trim();
                 Name = Name_tv.getText().toString().trim();
 
+
                 // validtate input
                 boolean flag = true;
 

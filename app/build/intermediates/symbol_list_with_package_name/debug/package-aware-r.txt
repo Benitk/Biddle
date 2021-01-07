@@ -1814,13 +1814,8 @@ id cancel_button
 id cancel_sort
 id cardView
 id card_currentPrice
-id card_currentPrice1
-id card_endingDate
 id card_image
-id card_image1
 id card_name
-id card_name1
-id card_view
 id cardnumber
 id center
 id center_horizontal
@@ -2023,6 +2018,7 @@ id productDescription
 id productImg
 id productName
 id productPrice
+id product_name
 id productpic
 id progressBar
 id progress_circular
@@ -2030,6 +2026,9 @@ id progress_horizontal
 id purchasedProducts
 id radio
 id ratio
+id recepitText
+id reciptID
+id reciptView
 id rectangles
 id recyclerView
 id reverseSawtooth
@@ -2120,6 +2119,7 @@ id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id text_input_end_icon
 id text_input_start_icon
 id textinput_counter
@@ -2241,7 +2241,6 @@ layout activity_signup
 layout activity_star_products_customer
 layout bid_dialog
 layout card2_layout
-layout card_layout
 layout content_customer
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -2295,6 +2294,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout processbar
 layout product_receipt
+layout receipt_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -2328,6 +2328,7 @@ string Login
 string Logout
 string MustUploadPic
 string OnBidProducts
+string PesonalDetailsfill
 string ProductCategory
 string ProductDescription
 string ProductName

@@ -42,7 +42,7 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         userId = firebaseAuth.getCurrentUser().getUid();
-        refUser = database.getReference().child("Users").child(userId).child("CostumerDetails");
+        refUser = database.getReference().child("Users").child(userId).child("CustomerDetails");
 
         progressb = (ProgressBar)findViewById(R.id.progressBar);
         progressb.setVisibility(View.GONE);

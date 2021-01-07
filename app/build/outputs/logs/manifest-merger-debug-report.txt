@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
+ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\d6d7faab3157ed9eecbf2681e548470e\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.navigation:navigation-ui:2.3.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\3d4510e059f78d671f03cee612b3d655\navigation-ui-2.3.1\AndroidManifest.xml:17:1-24:12
@@ -71,20 +71,20 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\user\.gradle\cac
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\0b05226724115b16f3d07c8234c42488\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\d024aebceca4f3b4a1a405307c3c8d80\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\fac48056d11ea2d220eb63709cfa492d\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
 	package
 		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
+		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-53:12
+		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:1-47:12
 		INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:2:11-69
@@ -109,7 +109,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.0] C:
 	android:name
 		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:7:5-51:19
+ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:7:5-45:19
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:18.0.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\e69f08ea1526ed69d7c762011e94414d\jetified-firebase-analytics-18.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.2.1] C:\Users\user\.gradle\caches\transforms-2\files-2.1\59556ad8b9d4e87f44c01d9cded7d96d\material-1.2.1\AndroidManifest.xml:22:5-20
@@ -248,16 +248,6 @@ action#android.intent.action.MAIN
 ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:42:17-69
 	android:name
 		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:42:25-66
-service#com.example.biddle.MyFirebaseInstanceIDService
-ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:45:9-50:19
-	android:name
-		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:46:13-56
-intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
-ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:47:13-49:29
-action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:48:17-79
-	android:name
-		ADDED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml:48:25-77
 uses-sdk
 INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\user\Documents\GitHub\Biddle\app\src\main\AndroidManifest.xml
