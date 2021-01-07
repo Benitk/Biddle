@@ -16,18 +16,10 @@
         android:layout_gravity="center"
         android:layout_marginBottom="0dp"
         android:text="@string/favoriteProducts"
-        android:textColor="@color/material_on_background_emphasis_high_type"
+        android:textColor="@color/material_on_background_emphasis_medium"
         android:textSize="36dp" />
 
     /
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="242dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/yellowstar"/>
 
     <TextView
         android:id="@+id/noProducts"

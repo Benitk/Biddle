@@ -7,16 +7,18 @@
     android:background="@drawable/background_img">
 
     <TextView
+        android:id="@+id/update_txt"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="45dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="3dp"
         android:text="עדכן את פרטי המוכר"
         android:gravity="center"
-
+        android:textColor="@color/material_on_background_emphasis_high_type"
         android:textSize="20dp">
     </TextView>
 
     <ScrollView
+        android:layout_toEndOf="@+id/update_btn"
         android:id="@+id/processBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
