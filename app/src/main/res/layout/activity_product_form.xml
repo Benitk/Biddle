@@ -13,7 +13,7 @@
         android:layout_marginTop="45dp"
         android:gravity="center"
         android:text="@string/fillDetails"
-        android:textColor="@color/white"
+        android:textColorHint="@color/metalBlue"
         android:textSize="20dp"></TextView>
 
 
@@ -54,7 +54,7 @@
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -77,7 +77,7 @@
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -100,7 +100,7 @@
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -123,7 +123,7 @@
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -147,7 +147,7 @@
                     android:letterSpacing="0.1"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -172,7 +172,7 @@
                     android:lines="5"
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:maxLength="20"
                     android:textSize="14dp" />
 
@@ -201,8 +201,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/AddProduct"
-            android:textColor="@color/white"
-
+            android:textColorHint="@color/material_on_primary_emphasis_high_type"
             android:background="@drawable/border"
             android:padding="15dp"
             android:layout_weight="1"
