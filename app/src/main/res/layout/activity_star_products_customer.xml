@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/seller_layout"
     android:showAsAction="ifRoom"
-    android:background="@drawable/background">
+    android:background="@drawable/offered_products">
 
 
     <TextView
         android:layout_width="380dp"
         android:layout_height="51dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_back"
+        android:layout_marginBottom="0dp"
         android:text="@string/favoriteProducts"
-        android:textColor="@color/white"
+        android:textColor="@color/material_on_background_emphasis_high_type"
         android:textSize="36dp" />
+
+    /
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="242dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/yellowstar"/>
 
     <TextView
         android:id="@+id/noProducts"
