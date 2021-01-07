@@ -134,12 +134,12 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                    int month =setDate.getMonth();            //dateTime.getMonth();
                    ExpireDate ex = new ExpireDate(year,month);
                     EditText t=(EditText) findViewById(R.id.NameC);
-                    String name = t.toString();
+                    String name = t.getText().toString().trim();
                     t = (EditText) findViewById(R.id.PhoneNumberC);
                     int phone = Integer.parseInt(t.getText().toString().trim());
                     t = (EditText) findViewById(R.id.personalIDC);
                     int id = Integer.parseInt(t.getText().toString().trim());
-                    Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex,name,phone,id);
+                    Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex,Name,phone,id);
                     WriteToDB(costomer,refUser);
                 }
                 else{
@@ -158,10 +158,14 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
-                    progressb.setVisibility(View.GONE);
                     Toast.makeText(EditProfileCustomerActivity.this, "עדכון נכשל", Toast.LENGTH_SHORT).show();
                 }
-                else finish();
+                else {
+                    finish();
+                    Toast.makeText(EditProfileCustomerActivity.this, "פרטים עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                }
+                progressb.setVisibility(View.GONE);
+
             }
         });
     }

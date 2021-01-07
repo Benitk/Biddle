@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.biddle.Activites.ProductDetailsActivity;
+import com.example.biddle.Activites.ReceiptDetails;
 import com.example.biddle.R;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -64,13 +65,10 @@ public class ReciptsAdapter extends RecyclerView.Adapter<ReciptsAdapter.ViewHold
         viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // if (!database.getReference().child("Users").child(data.get(i).getCurCostumerID().toString()).child("CostumerDetails").child("cvv").toString().equals(null)) {
-                Intent intent = new Intent(currentActivity, ProductDetailsActivity.class);
+                Intent intent = new Intent(currentActivity, ReceiptDetails.class);
                 intent.putExtra("user_type", user_type);
                 intent.putExtra("receiptID", receiptID);
                 currentActivity.startActivity(intent);
-                Log.d("check", user_type);
-                Log.d("check", receiptID);
             }
         });
     }

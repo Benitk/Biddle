@@ -116,6 +116,14 @@
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\menu\\customer_menu.xml"
     },
     {
+        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_offered_products.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\offered_products.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cart.jpg.flat",
+        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\cart.jpg"
+    },
+    {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_search_icon.png.flat",
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\search_icon.png"
     },
@@ -142,10 +150,6 @@
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_product_receipt.xml.flat",
-        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\product_receipt.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_receipt_layout.xml.flat",
@@ -194,6 +198,10 @@
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_receipt_details.xml.flat",
+        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\activity_receipt_details.xml"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo_removebg.png.flat",
@@ -246,6 +254,10 @@
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_product_form.xml.flat",
         "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\layout\\activity_product_form.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_yellowstar.png.flat",
+        "source": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\src\\main\\res\\drawable\\yellowstar.png"
     },
     {
         "merged": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\res\\merged\\debug\\drawable_star_pressed.png.flat",

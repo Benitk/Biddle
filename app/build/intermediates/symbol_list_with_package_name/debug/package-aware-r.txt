@@ -1617,6 +1617,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button
+drawable cart
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1689,6 +1690,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable offered_products
 drawable password
 drawable recipit_backround
 drawable search_icon
@@ -1700,6 +1702,7 @@ drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable user
+drawable yellowstar
 id ALT
 id AddProduct_tv
 id BOTTOM_END
@@ -1709,8 +1712,9 @@ id FUNCTION
 id META
 id NO_DEBUG
 id Name
-id PhoneNUmber
+id NameC
 id PhoneNumber
+id PhoneNumberC
 id ProductCategory
 id ProductDescription
 id ProductName
@@ -1723,7 +1727,7 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
-id SellerName
+id SaleDate
 id TOP_END
 id TOP_START
 id TimeLeft
@@ -1842,10 +1846,10 @@ id content
 id contentPanel
 id coordinator
 id cos
-id costumerNane
-id costumerPhone
 id custom
 id customPanel
+id customerName
+id customerPhone
 id customer_btn
 id cut
 id cvv1
@@ -1919,6 +1923,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
 id img_logo
 id info
 id invisible
@@ -2007,6 +2012,7 @@ id pathRelative
 id peekHeight
 id percent
 id personalID
+id personalIDC
 id pin
 id position
 id postLayout
@@ -2061,7 +2067,8 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id selected
-id sellerAdress
+id sellerAddress
+id sellerName
 id sellerPhone
 id seller_btn
 id seller_layout
@@ -2236,6 +2243,7 @@ layout activity_product_details
 layout activity_product_form
 layout activity_purchased_products_customer
 layout activity_purchased_products_seller
+layout activity_receipt_details
 layout activity_seller
 layout activity_signup
 layout activity_star_products_customer
@@ -2293,7 +2301,6 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout processbar
-layout product_receipt
 layout receipt_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -2475,6 +2482,8 @@ string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string next
 string noProduct
+string noReceiptFound
+string noReceipts
 string ok
 string or
 string password
@@ -2488,6 +2497,8 @@ string pick_sort
 string previous
 string productFail
 string productNotExist
+string productPurchasedbyUser
+string productPurchasedbyYou
 string productSoldToYouChanel
 string productSoldToYouName
 string productSoldToYouText

@@ -162,14 +162,12 @@ public class DBmethods {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()){
-                    for(DataSnapshot details : dataSnapshot.getChildren()){
-                            receipt.setAddress(details.getValue(Seller.class).getAdress());
-                            receipt.setCity(details.getValue(Seller.class).getCity());
-                            receipt.setSellerName(details.getValue(Seller.class).getName());
-                            receipt.setSellerPhoneNumber(details.getValue(Seller.class).getPhoneNumber());
-                            receipt.setZipCode(details.getValue(Seller.class).getZip());
+                            receipt.setAddress(dataSnapshot.getValue(Seller.class).getAdress());
+                            receipt.setCity(dataSnapshot.getValue(Seller.class).getCity());
+                            receipt.setSellerName(dataSnapshot.getValue(Seller.class).getName());
+                            receipt.setSellerPhoneNumber(dataSnapshot.getValue(Seller.class).getPhoneNumber());
+                            receipt.setZipCode(dataSnapshot.getValue(Seller.class).getZip());
                             readCustomerDetails(productSellerID, productCustomerID,reference, receipt);
-                        }
 
                     }
                 else {
@@ -191,13 +189,12 @@ public class DBmethods {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()){
-                    for(DataSnapshot details : dataSnapshot.getChildren()) {
-                        receipt.setCustomerName(details.getValue(Customer.class).getName());
-                        receipt.setCustomerPhoneNumber(details.getValue(Customer.class).getPhoneNumber());
+                        receipt.setCustomerName(dataSnapshot.getValue(Customer.class).getName());
+                        receipt.setCustomerPhoneNumber(dataSnapshot.getValue(Customer.class).getPhoneNumber());
 
 
                         // write to db - set new receipt
-                        reference.child("ReceiptsDetails").child(receipt.getReceiptID()).setValue(receipt, new DatabaseReference.CompletionListener() {
+                        reference.getParent().child("ReceiptsDetails").child(receipt.getReceiptID()).setValue(receipt, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                 if (databaseError != null) {
@@ -209,7 +206,7 @@ public class DBmethods {
                                 }
                             }
                         });
-                    }
+
                 }
                 else {
                     Log.d("FaildReadDB","didnt find product");

@@ -80,7 +80,6 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
         viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // if (!database.getReference().child("Users").child(data.get(i).getCurCostumerID().toString()).child("CostumerDetails").child("cvv").toString().equals(null)) {
                     Intent intent = new Intent(currentActivity, ProductDetailsActivity.class);
                     intent.putExtra("user_type", user_type);
                     intent.putExtra("productId", productid);
