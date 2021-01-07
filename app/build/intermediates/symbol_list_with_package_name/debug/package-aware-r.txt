@@ -1604,6 +1604,7 @@ drawable back
 drawable background
 drawable background_img
 drawable background_landingpage
+drawable background_product_details
 drawable biddle_logo
 drawable border
 drawable btn_back
@@ -1615,6 +1616,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1674,6 +1676,7 @@ drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable new_product_btn3
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1687,6 +1690,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable password
+drawable recipit_backround
 drawable search_icon
 drawable sell_hand
 drawable star
@@ -1704,6 +1708,9 @@ id CTRL
 id FUNCTION
 id META
 id NO_DEBUG
+id Name
+id PhoneNUmber
+id PhoneNumber
 id ProductCategory
 id ProductDescription
 id ProductName
@@ -1716,6 +1723,7 @@ id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id SellerName
 id TOP_END
 id TOP_START
 id TimeLeft
@@ -1839,6 +1847,8 @@ id content
 id contentPanel
 id coordinator
 id cos
+id costumerNane
+id costumerPhone
 id custom
 id customPanel
 id customer_btn
@@ -2001,6 +2011,7 @@ id path
 id pathRelative
 id peekHeight
 id percent
+id personalID
 id pin
 id position
 id postLayout
@@ -2051,6 +2062,8 @@ id search_src_text
 id search_voice_btn
 id select_dialog_listview
 id selected
+id sellerAdress
+id sellerPhone
 id seller_btn
 id seller_layout
 id shortcut
@@ -2281,6 +2294,7 @@ layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout processbar
+layout product_receipt
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
