@@ -1,7 +1,5 @@
 package com.example.biddle.Activites;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +8,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.biddle.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +21,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import Models.Customer;
-import Models.Seller;
 import Utils.SetDate;
 
 public class EditProfileCustomerActivity extends AppCompatActivity {
@@ -29,10 +28,10 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference refUser;
     private ProgressBar progressb;
-   private TextView  card_tv, cvv_tv,edit_btn;
+   private TextView  card_tv, cvv_tv,edit_btn,PhoneNumber_tv,personalID_tv,Name_tv;
    private EditText  date_tv;
    private int CardNumber,cvvNumber;
-    private String card;
+    private String card,Name,PhoneNumber,personalID;
     private String userId;
     private SetDate setDate;
     @Override
@@ -53,6 +52,9 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
         date_tv  =(EditText) findViewById(R.id.expireDate);
         edit_btn  =(TextView)findViewById(R.id.update_btn);
         setDate = new SetDate(date_tv);//need to check
+        PhoneNumber_tv = (TextView)findViewById(R.id.PhoneNumber);
+        personalID_tv = (TextView)findViewById(R.id.personalID);
+        Name_tv = (TextView)findViewById(R.id.Name);
 
         date_tv.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -88,6 +90,18 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                     flag = false;
                 }
 
+                if(TextUtils.isEmpty(PhoneNumber)) {
+                ((EditText) findViewById(R.id.PhoneNumber)).setError(R.string.mustFill+"");
+                flag = false;
+            }
+                if(TextUtils.isEmpty(personalID)) {
+                ((EditText) findViewById(R.id.personalID)).setError(R.string.mustFill+"");
+                flag = false;
+            }
+                if(TextUtils.isEmpty(Name)) {
+                ((EditText) findViewById(R.id.Name)).setError(R.string.mustFill+"");
+                flag = false;
+            }
                 if(cvV.length()!=3){
                     ((EditText) findViewById(R.id.cvv1)).setError("הכנס שלוש ספרות");
                     flag = false;
@@ -108,9 +122,13 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                    int year = setDate.getYear();// dateTime.getYear();
                    int month =setDate.getMonth();            //dateTime.getMonth();
                    ExpireDate ex = new ExpireDate(year,month);
-                    Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex) ;
-                    WriteToDB(costomer,refUser);
-
+                    EditText t=(EditText) findViewById(R.id.Name);
+                    String name = t.toString();
+                    t = (EditText) findViewById(R.id.PhoneNUmber);
+                    int phone = Integer.parseInt(t.toString());
+                    t = (EditText) findViewById(R.id.personalID);
+                    int id = Integer.parseInt(t.toString());
+                    Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex,name,phone,id);
                 }
                 }
             });

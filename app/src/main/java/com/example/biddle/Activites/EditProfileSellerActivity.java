@@ -15,8 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import Models.Seller;
 
@@ -30,7 +28,7 @@ public class EditProfileSellerActivity extends AppCompatActivity {
     private DatabaseReference refUser;
 
     private TextView City_tv,Adress_tv,zip_tv, Bank_tv, Branch_tv,Acount_tv,Update_btn,PhoneNumber_tv,personalID_tv,Name_tv;
-    private String City,Adress,zip, Bank, Branch,Acount,Name;
+    private String City,Adress,zip, Bank, Branch,Acount,Name,PhoneNumber,personalID;
     private  int ZipNumber,AcountNumber;
     private String userId;
     private ProgressBar progressb;
@@ -97,20 +95,20 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.branch)).setError(R.string.mustFill+"");
                     flag = false;
                 }
-                if(TextUtils.isEmpty(Acount)) {
-                    ((EditText) findViewById(R.id.bankAcount)).setError(R.string.mustFill+"");
-                    flag = false;
-                }
-                if(TextUtils.isEmpty(Acount)) {
+                if(TextUtils.isEmpty(PhoneNumber)) {
                     ((EditText) findViewById(R.id.PhoneNumber)).setError(R.string.mustFill+"");
                     flag = false;
                 }
-                if(TextUtils.isEmpty(Acount)) {
+                if(TextUtils.isEmpty(personalID)) {
                     ((EditText) findViewById(R.id.personalID)).setError(R.string.mustFill+"");
                     flag = false;
                 }
-                if(TextUtils.isEmpty(Acount)) {
+                if(TextUtils.isEmpty(Name)) {
                     ((EditText) findViewById(R.id.Name)).setError(R.string.mustFill+"");
+                    flag = false;
+                }
+                if(TextUtils.isEmpty(Acount)) {
+                    ((EditText) findViewById(R.id.bankAcount)).setError(R.string.mustFill+"");
                     flag = false;
                 }
                 else {

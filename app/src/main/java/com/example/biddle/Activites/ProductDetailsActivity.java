@@ -1,28 +1,5 @@
 package com.example.biddle.Activites;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.biddle.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -44,6 +21,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.biddle.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -56,9 +54,10 @@ import Models.Products;
 import Utils.AlgoLibrary;
 import Utils.DBmethods;
 
-import static com.example.biddle.R.*;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.UploadTask;
+import static com.example.biddle.R.color;
+import static com.example.biddle.R.id;
+import static com.example.biddle.R.layout;
+import static com.example.biddle.R.string;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -82,6 +81,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Date ProductEndingDate;
     private Integer newBid;
 
+    private boolean flag;
     private long millisUntilFinished;
 
     private FirebaseAuth firebaseAuth;
@@ -324,7 +324,6 @@ else {
 
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CostumerDetails");
                 refUserDetails.addValueEventListener(new ValueEventListener() {
                     @Override
