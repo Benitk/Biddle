@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:id="@+id/seller_layout"
     android:showAsAction="ifRoom"
-    android:background="@drawable/background">
+    android:background="@drawable/cart">
 
 
     <TextView
@@ -14,9 +14,8 @@
         android:layout_height="51dp"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_back"
         android:text="@string/OnBidProducts"
-        android:textColor="@color/white"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="32dp" />
 
     <TextView
@@ -33,7 +32,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <include
         android:layout_width="match_parent"
