@@ -253,9 +253,7 @@ public String imgPath2 = "";
                         return;
                     }
 
-                    //if(imgPath.length() > 0 && imageUri != null) {
 
-                    //}
                     // there is no bidder so customerID set to userId from start at the start
                     Products p = new Products(productID,userId,userId, productName, productPrice, productCategory, dateTime, productDescription, imgPath);
 
@@ -370,16 +368,7 @@ public String imgPath2 = "";
 
         }
     }
-//databaseReference.setValue(registerInformationSend.getIdImageSend() + 1);
-//                riversRef.putFile(uriImage)
-//                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                            @Override
-//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                                    @Override
-//                                    public void onSuccess(Uri uri) {
-//
-//                                        saveDatabase(uri.toString(), "");
+
 
     private void uploadPicToDB() {
         ProgressDialog pd = new ProgressDialog(this);
@@ -396,13 +385,7 @@ public String imgPath2 = "";
                         finish();
 
 
-//                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                                    @Override
-//                                    public void onSuccess(Uri uri) {
-//                                         imgPath2 = uri.toString();
-//                                        database.getReference().child("Products").child(productID).child("imgPath").setValue(imgPath2);
-//                                    }
-//                                }) ;
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

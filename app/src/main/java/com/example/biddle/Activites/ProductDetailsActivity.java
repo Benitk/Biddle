@@ -66,9 +66,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button typeBtn;
     private ImageView Productimg;
 
-    private List<UplouadImg> uplouadImgs;
     private RecyclerView Productimgs;
-   private ImagAdapter imagAdapter;
 
     private Products currentProduct;
     private ProgressBar processbar;
@@ -131,11 +129,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             star_tv.setVisibility(View.INVISIBLE);
             SetDeleteBtn();
         }
-       // Productimg = (ImageView) findViewById(id.productpic);
-        //Productimgs.setHasFixedSize(true);
-        //Productimgs.setLayoutManager(new LinearLayoutManager(this));
+
         Productimg = (ImageView) findViewById(id.productpic);
-        uplouadImgs = new ArrayList<>();
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
 
