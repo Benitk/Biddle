@@ -48,7 +48,9 @@
     <string name="welcome_txt">ברוכים הבאים </string>
     <string name="landingpage_txt">Buy it Cheap, Watch Them Weep.</string>
     <string name="exit">יציאה</string>
-
+    <string name="PesonalDetailsfill">    יש למלא פרטי הפרופיל דרך התפריט למעלה כדי להמשיך בתהליך</string>
+    <string name="productPurchasedbyYou">מוצרים שרכשת</string>
+    <string name="productPurchasedbyUser">מוצרים שנרכשו ממך</string>
 
 
     <string name="or">או</string>
@@ -56,8 +58,8 @@
     <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
-
-
+    <string name="noReceipts">אין קבלות</string>
+    <string name="noReceiptFound">לא נמצא הקבלה</string>
 
 
 
@@ -107,7 +109,6 @@
     <string name="updateDetails">עדכון פרטים</string>
     <string name="mustFillCustomerDetails">עלייך לערוך את פרופיל הלקוח, דרך התפריט בצד שמאל, טרם ביצוע הפעולה</string>
     <string name="editCustomerDetails">עריכת פרופיל הלקוח/ה (פרטי כרטיס אשראי)</string>
-
 
     <!-- Notifications strings -->
 

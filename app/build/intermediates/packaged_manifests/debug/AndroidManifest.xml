@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
+        <activity android:name="com.example.biddle.Activites.ReceiptDetails" />
         <activity android:name="com.example.biddle.Activites.EditProfileCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.EditProfileSellerActivity" />
         <activity android:name="com.example.biddle.Activites.PurchasedProductsSellerActivity" />

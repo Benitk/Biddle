@@ -71,6 +71,7 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 personalID = personalID_tv.getText().toString().trim();
                 PhoneNumber = PhoneNumber_tv.getText().toString().trim();
 
+
                 // validtate input
                 boolean flag = true;
 
@@ -141,10 +142,15 @@ public class EditProfileSellerActivity extends AppCompatActivity {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
-                    progressb.setVisibility(View.GONE);
                     Toast.makeText(EditProfileSellerActivity.this, "עדכון נכשל", Toast.LENGTH_SHORT).show();
                 }
-                else finish();
+                else {
+                    finish();
+                    Toast.makeText(EditProfileSellerActivity.this, "פרטים עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                }
+                progressb.setVisibility(View.GONE);
+
+
             }
         });
     }

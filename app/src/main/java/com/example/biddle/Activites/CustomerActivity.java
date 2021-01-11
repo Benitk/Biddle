@@ -211,6 +211,8 @@ public class CustomerActivity extends AppCompatActivity {
         for(DataSnapshot product : ds.getChildren()){
 
             String productSellerID = product.getValue(Products.class).getSellerID();
+            String productCustomerID = product.getValue(Products.class).getCustomerID();
+
             String productCategory = product.getValue(Products.class).getCategory();
             String productId = product.getValue(Products.class).getId();
             Date currentDate = new Date(System.currentTimeMillis());
@@ -219,6 +221,14 @@ public class CustomerActivity extends AppCompatActivity {
             // product timer is over
             if(productDate != null && productDate.compareTo(currentDate) < 0){
                 DBmethods.DeleteProduct(productId, productCategory, productSellerID, database.getReference());
+                // check if any customer bid on the product
+                if(!productCustomerID.equals(productSellerID)) {
+                    DBmethods.CreateReceipt(productSellerID, productCustomerID, product, database.getReference().child("Users"));
+                }
+                else{
+                    // send mail to seller that no one bought product
+                }
+
                 continue;
             }
 
@@ -279,7 +289,9 @@ public class CustomerActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.purchasedProducts:
-                startActivity(new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class));
+                intent = new Intent(CustomerActivity.this, PurchasedProductsCustomerActivity.class);
+                intent.putExtra("user_type", "customer");
+                startActivity(intent);
                 return true;
             case R.id.editProfile:
                 startActivity(new Intent(CustomerActivity.this, EditProfileCustomerActivity.class));

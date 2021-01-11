@@ -319,16 +319,11 @@ else {
 
         typeBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CostumerDetails");
+                DatabaseReference refUserDetails = database.getReference().child("Users").child(userId).child("CustomerDetails");
                 refUserDetails.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        flag = true;
-                        if (!snapshot.exists()) {
-                         flag = false;
-                        }
-
-                        if(flag){
+                        if (snapshot.exists()) {
                             LayoutInflater li = LayoutInflater.from(ProductDetailsActivity.this);
                             View promptsView = li.inflate(layout.bid_dialog, null);
                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProductDetailsActivity.this);
@@ -340,22 +335,22 @@ else {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.cancel(); }
                                     }).setPositiveButton(string.accpet, new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int id) {
-                                            String userBid = userInput.getText().toString().trim();
-                                            Log.d("dialog", userBid);
-                                            newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
-                                                                         // set new bi
-                                            voidFetchProduct(newBid);
+                                public void onClick(DialogInterface dialog, int id) {
+                                    String userBid = userInput.getText().toString().trim();
+                                    Log.d("dialog", userBid);
+                                    newBid = userBid.length() > 0 ? Integer.parseInt(userBid) : -1;
+                                    // set new bi
+                                    voidFetchProduct(newBid);
 
-                                        }
-                                    });
+                                }
+                            });
                             // create alert dialog
                             AlertDialog alertDialog = alertDialogBuilder.create();
                             // show it
                             alertDialog.show();
                         }
                         else {
-                            Toast.makeText(ProductDetailsActivity.this , "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProductDetailsActivity.this , R.string.PesonalDetailsfill , Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override

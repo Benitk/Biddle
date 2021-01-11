@@ -80,19 +80,13 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
         viewHolder.getmyView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // if (!database.getReference().child("Users").child(data.get(i).getCurCostumerID().toString()).child("CostumerDetails").child("cvv").toString().equals(null)) {
                     Intent intent = new Intent(currentActivity, ProductDetailsActivity.class);
                     intent.putExtra("user_type", user_type);
                     intent.putExtra("productId", productid);
                     currentActivity.startActivity(intent);
-                    Log.d("check", user_type);
-                    Log.d("check", productid);
-           //     }
-            //    else{
-            //       Toa st.makeText( ((Activity)currentActivity), "יש לעדכן פרטי לקוח!" , Toast.LENGTH_SHORT).show();
-           //     }
+
             }
-            });
+        });
 
 
         // similarly you can set new image for each card and descriptions
