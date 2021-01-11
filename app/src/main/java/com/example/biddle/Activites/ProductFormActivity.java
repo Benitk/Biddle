@@ -82,7 +82,7 @@ public class ProductFormActivity extends AppCompatActivity {
     private SetDate set_date;
     private SetYourTime set_time;
     private String productID;
-public String imgPath2 = "";
+    public String imgPath2 = "";
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
     private FirebaseStorage storage;
@@ -369,7 +369,6 @@ public String imgPath2 = "";
         }
     }
 
-
     private void uploadPicToDB() {
         ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("העלאה מתבצעת...");
@@ -381,11 +380,8 @@ public String imgPath2 = "";
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
-                        Toast.makeText( ProductFormActivity.this, "העלאת התמונה הצליחה", Toast.LENGTH_LONG).show();
+                        Toast.makeText( ProductFormActivity.this, "התמונה הועלתה בהצלחה", Toast.LENGTH_LONG).show();
                         finish();
-
-
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -401,9 +397,5 @@ public String imgPath2 = "";
                 pd.setMessage((int) progressPrecent + "%" );
             }
         });
-
-
-
-
     }
 }

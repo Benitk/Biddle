@@ -350,7 +350,7 @@ else {
                             alertDialog.show();
                         }
                         else {
-                            Toast.makeText(ProductDetailsActivity.this , R.string.PesonalDetailsfill , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProductDetailsActivity.this ,getString(string.mustFillCustomerDetails) , Toast.LENGTH_SHORT).show();
                         }
                     }
                     @Override

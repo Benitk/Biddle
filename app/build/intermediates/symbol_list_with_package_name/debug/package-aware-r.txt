@@ -1923,7 +1923,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
 id img_logo
 id info
 id invisible

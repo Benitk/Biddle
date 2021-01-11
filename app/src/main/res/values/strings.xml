@@ -20,7 +20,7 @@
     <string name="ProductName">שם המוצר</string>
     <string name="ProductPrice">מחיר התחלתי</string>
     <string name="ProductDescription">תיאור</string>
-    <string name="AddProduct">הוסף מוצר</string>
+    <string name="AddProduct">הוספת מוצר</string>
     <string name="ProductTTL">סיום המכירה - יום/חודש/שנה</string>
     <string name="ProductTTLDate">תאריך סיום המכירה</string>
     <string name="ProductTTLTime">שעת סיום המכירה</string>
@@ -29,7 +29,7 @@
     <string name="bidProduct">הצעת מחיר</string>
     <string name="deleteProduct">מחיקת מוצר</string>
     <string name="TimeLeft">המכירה תסתיים ב..</string>
-    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
+    <string name="bidDialogMsg">כמה את/ה מעוניין/ת להציע?</string>
     <string name="accpet">אישור</string>
     <string name="cancel">ביטול</string>
     <string name="ok">בסדר</string>
@@ -41,25 +41,25 @@
     <string name="deleteFailed">מחיקת המוצר נכשלה!, נסה/י שנית</string>
     <string name="deleteSucsses">המוצר נמחק בהצלחה</string>
     <string name="sorting">מיון מתבצע..</string>
-    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עברו!</string>
 
     <string name="customer">לקוח/ה</string>
     <string name="seller">סוחר/ת</string>
     <string name="welcome_txt">ברוכים הבאים </string>
     <string name="landingpage_txt">Buy it Cheap, Watch Them Weep.</string>
     <string name="exit">יציאה</string>
-    <string name="PesonalDetailsfill">    יש למלא פרטי הפרופיל דרך התפריט למעלה כדי להמשיך בתהליך</string>
+    <string name="PesonalDetailsfill">יש למלא את פרטי הפרופיל דרך התפריט למעלה כדי להמשיך בתהליך</string>
     <string name="productPurchasedbyYou">מוצרים שרכשת</string>
     <string name="productPurchasedbyUser">מוצרים שנרכשו ממך</string>
 
 
     <string name="or">או</string>
 
-    <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
+    <string name="productSucsess">המוצר הוגדר בהצלחה</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
     <string name="noReceipts">אין קבלות</string>
-    <string name="noReceiptFound">לא נמצא הקבלה</string>
+    <string name="noReceiptFound">הקבלה לא נמצאה</string>
 
 
 
@@ -100,7 +100,7 @@
     <string name="category_sort">רוצה לראות מוצרים מקטגוריית ...</string>
 
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
-    <string name="MustUploadPic">לא נבחר תמונה!</string>
+    <string name="MustUploadPic">לא נבחרה תמונה!</string>
     <string name="favoriteProducts">מוצרים שסומנו כאהובים</string>
     <string name="OnBidProducts">מוצרים שהצעת עליהם מחיר</string>
 

@@ -991,14 +991,15 @@
     <item quantity="one"><ns1:g id="count">%d</ns1:g> new notification</item>
     <item quantity="other"><ns1:g id="count">%d</ns1:g> new notifications</item>
   </plurals>
-    <string name="AddProduct">הוסף מוצר</string>
+    <string name="AddProduct">הוספת מוצר</string>
     <string name="Choose">בחר/י בתור מה את/ה רוצה להיכנס לאפליקציה</string>
-    <string name="DatePast">התאריך או השעה שהזנת כבר עבר!</string>
+    <string name="DatePast">התאריך או השעה שהזנת כבר עברו!</string>
     <string name="HasAccount">כבר רשום/ה? לחץ/י כאן והתחבר/י</string>
     <string name="Login">התחברות</string>
     <string name="Logout">יציאה</string>
-    <string name="MustUploadPic">לא נבחר תמונה!</string>
+    <string name="MustUploadPic">לא נבחרה תמונה!</string>
     <string name="OnBidProducts">מוצרים שהצעת עליהם מחיר</string>
+    <string name="PesonalDetailsfill">יש למלא את פרטי הפרופיל דרך התפריט למעלה כדי להמשיך בתהליך</string>
     <string name="ProductCategory">קטגוריה</string>
     <string name="ProductDescription">תיאור</string>
     <string name="ProductName">שם המוצר</string>
@@ -1039,7 +1040,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Biddle</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
-    <string name="bidDialogMsg">כמה אתה מעוניין להציע?</string>
+    <string name="bidDialogMsg">כמה את/ה מעוניין/ת להציע?</string>
     <string name="bidFailed">ההצעה לא התעדכנה במערכת, נסה/י מחיר גדול יותר מהמחיר העדכני</string>
     <string name="bidNoExist">המוצר כבר אינו למכירה!</string>
     <string name="bidProduct">הצעת מחיר</string>
@@ -1149,6 +1150,8 @@
     <string name="nav_app_bar_open_drawer_description">Open navigation drawer</string>
     <string name="next">Next</string>
     <string name="noProduct">אין מוצרים</string>
+    <string name="noReceiptFound">הקבלה לא נמצאה</string>
+    <string name="noReceipts">אין קבלות</string>
     <string name="ok">בסדר</string>
     <string name="or">או</string>
     <string name="password">סיסמה</string>
@@ -1162,11 +1165,13 @@
     <string name="previous">Previous</string>
     <string name="productFail">המוצר לא התווסף</string>
     <string name="productNotExist">המוצר כבר לא קיים</string>
+    <string name="productPurchasedbyUser">מוצרים שנרכשו ממך</string>
+    <string name="productPurchasedbyYou">מוצרים שרכשת</string>
     <string name="productSoldToYouChanel">צליל וחלונות קופצים במסך כאשר מוצר נמכר לך</string>
     <string name="productSoldToYouName">notify when the product has sold to you</string>
     <string name="productSoldToYouText">ברכות! את/ה הצעת את המחיר הגבוה ביותר וזכית במוצר! לחצ/י כאן לפרטים</string>
     <string name="productSoldToYouTitle">התראת מוצר שנמכר לך</string>
-    <string name="productSucsess">המוצר הוגדר כמו שצריך</string>
+    <string name="productSucsess">המוצר הוגדר בהצלחה</string>
     <string name="project_id" translatable="false">biddle-c5332</string>
     <string name="search_menu_title">Search</string>
     <string name="second_fragment_label">Second Fragment</string>
