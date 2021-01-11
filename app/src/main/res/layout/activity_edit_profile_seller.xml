@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="3dp"
-        android:text="עדכן את פרטי המוכר"
+        android:text="@string/editSellerDetails"
         android:gravity="center"
         android:textColor="@color/material_on_background_emphasis_high_type"
         android:textSize="20dp">
@@ -22,7 +22,7 @@
         android:id="@+id/processBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:paddingLeft="60dp"
         android:paddingRight="60dp">
@@ -268,7 +268,7 @@
             android:id="@+id/update_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="עדכן פרטים"
+            android:text="@string/updateDetails"
             android:textColor="@color/common_google_signin_btn_text_light_default"
 
             android:background="@drawable/border"

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\user\\Documents\\GitHub\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
+            "outputFile": "C:\\Users\\user\\Documents\\סמסטר א שנה ג - מקוון\\הנדסת תוכנה\\Biddle\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\user\\.gradle\\caches\\transforms-2\\files-2.1\\61c884a7f74cc0f598291471a70ba823\\jetified-play-services-base-17.1.0\\res\\values-en-rGB\\values.xml",

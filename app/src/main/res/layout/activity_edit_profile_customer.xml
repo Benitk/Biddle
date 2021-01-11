@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="45dp"
-        android:text="עדכן את פרטי כרטיס האשראי"
+        android:text="@string/editCustomerDetails"
         android:gravity="center"
 
         android:textSize="20dp">
@@ -207,7 +207,7 @@
             android:id="@+id/update_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="עדכן פרטים"
+            android:text="@string/updateDetails"
             android:textColor="@color/common_google_signin_btn_text_light_default"
 
             android:background="@drawable/border"

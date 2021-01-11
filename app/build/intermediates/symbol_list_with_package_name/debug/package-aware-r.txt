@@ -1617,6 +1617,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button
+drawable cart
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1689,6 +1690,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable offered_products
 drawable password
 drawable recipit_backround
 drawable search_icon
@@ -1700,6 +1702,7 @@ drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable user
+drawable yellowstar
 id ALT
 id AddProduct_tv
 id BOTTOM_END
@@ -1709,8 +1712,9 @@ id FUNCTION
 id META
 id NO_DEBUG
 id Name
-id PhoneNUmber
+id NameC
 id PhoneNumber
+id PhoneNumberC
 id ProductCategory
 id ProductDescription
 id ProductName
@@ -2012,6 +2016,7 @@ id pathRelative
 id peekHeight
 id percent
 id personalID
+id personalIDC
 id pin
 id position
 id postLayout
@@ -2152,6 +2157,7 @@ id uniform
 id unlabeled
 id up
 id update_btn
+id update_txt
 id useLogo
 id view_offset_helper
 id visible
@@ -2406,6 +2412,8 @@ string default_web_client_id
 string deleteFailed
 string deleteProduct
 string deleteSucsses
+string editCustomerDetails
+string editSellerDetails
 string email
 string error_icon_content_description
 string exit
@@ -2470,6 +2478,8 @@ string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string mustFill
+string mustFillCustomerDetails
+string mustFillSellerDetails
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string next
@@ -2509,6 +2519,7 @@ string title_dashboard
 string title_home
 string title_notifications
 string tryAgain
+string updateDetails
 string welcome_customer
 string welcome_seller
 string welcome_txt

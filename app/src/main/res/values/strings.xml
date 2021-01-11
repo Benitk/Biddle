@@ -100,8 +100,13 @@
     <string name="tryAgain">התרחשה בעיה, אנא נסה/י שנית</string>
     <string name="MustUploadPic">לא נבחר תמונה!</string>
     <string name="favoriteProducts">מוצרים שסומנו כאהובים</string>
-    <string name="OnBidProducts">מוצרים הצעת עליהם מחיר</string>
+    <string name="OnBidProducts">מוצרים שהצעת עליהם מחיר</string>
 
+    <string name="mustFillSellerDetails">עלייך לערוך את פרופיל הסוחר, דרך התפריט בצד שמאל, טרם ביצוע הפעולה</string>
+    <string name="editSellerDetails">עריכת פרופיל הסוחר/ת</string>
+    <string name="updateDetails">עדכון פרטים</string>
+    <string name="mustFillCustomerDetails">עלייך לערוך את פרופיל הלקוח, דרך התפריט בצד שמאל, טרם ביצוע הפעולה</string>
+    <string name="editCustomerDetails">עריכת פרופיל הלקוח/ה (פרטי כרטיס אשראי)</string>
 
 
     <!-- Notifications strings -->

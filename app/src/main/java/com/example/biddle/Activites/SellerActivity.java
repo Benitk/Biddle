@@ -98,7 +98,7 @@ public class SellerActivity extends AppCompatActivity {
                         }
 
                         if (flag == false){
-                            Toast.makeText(SellerActivity.this, "דרוש למלא פרטי מוכר כדי להשלים את התהליך", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SellerActivity.this, getString(R.string.mustFillSellerDetails), Toast.LENGTH_SHORT).show();
                         }
 
                         else {
