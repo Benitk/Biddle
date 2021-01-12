@@ -50,7 +50,7 @@ public class PurchasedProductsCustomerActivity extends AppCompatActivity {
 
         String userId = firebaseAuth.getCurrentUser().getUid();
 
-        refOnUserReceipts = database.getReference().child("Users").child(userId).child("Receipts");
+        refOnUserReceipts = database.getReference().child("Users").child(userId).child("ReceiptsAsCustomer");
 
         receipts = new ArrayList<Receipt>();
 

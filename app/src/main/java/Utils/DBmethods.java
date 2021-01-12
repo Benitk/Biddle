@@ -230,8 +230,8 @@ public class DBmethods {
                                     Log.d("faildtoWriteDB", "didnt find product");
                                 } else {
                                     // write to db - set new reference to receipt on both seller anc customer with a refrence name
-                                    reference.child(productCustomerID).child("Receipts").child(receipt.getReceiptID()).setValue(receipt.getProductName());
-                                    reference.child(productSellerID).child("Receipts").child(receipt.getReceiptID()).setValue(receipt.getProductName());
+                                    reference.child(productCustomerID).child("ReceiptsAsCustomer").child(receipt.getReceiptID()).setValue(receipt.getProductName());
+                                    reference.child(productSellerID).child("ReceiptsAsSeller").child(receipt.getReceiptID()).setValue(receipt.getProductName());
                                 }
                             }
                         });
