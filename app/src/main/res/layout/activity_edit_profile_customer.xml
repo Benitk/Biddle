@@ -23,7 +23,8 @@
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:paddingLeft="60dp"
-        android:paddingRight="60dp">
+        android:paddingRight="60dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,6 +121,7 @@
                 android:textAlignment="gravity"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
+                android:maxLength="3"
                 android:textSize="14dp" />
 
             </LinearLayout>
@@ -144,6 +146,7 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:maxLength="10"
                     android:textSize="14dp" />
 
             </LinearLayout>
@@ -168,10 +171,10 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:maxLength="9"
                     android:textSize="14dp" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

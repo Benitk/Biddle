@@ -3,6 +3,7 @@ package com.example.biddle.Activites;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,7 +89,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private DatabaseReference refProduct;
     private DatabaseReference refCurrUser;
 
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ResourceAsColor")
     @Override
@@ -98,7 +99,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         refProduct = database.getReference().child("Products");
-
         userId = firebaseAuth.getCurrentUser().getUid();
         refCurrUser = database.getReference().child("Users").child(userId);
 
@@ -133,10 +133,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Productimg = (ImageView) findViewById(id.productpic);
         processbar = (ProgressBar)findViewById(id.progressBar);
         processbar.setVisibility(View.GONE);
-
-
-
-
 
         starBtn();
         ReadFromDB();
@@ -206,13 +202,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             ProductSellerId = product.getValue(Products.class).getSellerID();
 
             String ProductCustomerId = product.getValue(Products.class).getCustomerID();
-
-
             String imgPath = product.getValue(Products.class).getImgPath();
-
-
             UploadPic(imgPath);
-
         }
         // each second has 1000 millisecond
         // countdown Interveal is 1sec = 1000 I have used
@@ -371,7 +362,7 @@ else {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()){
-                    UpdatePrice(newBid);
+                    UpdatePrice(newBid, dataSnapshot);
                 }
                 else {
                     Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
@@ -392,7 +383,7 @@ else {
     }
 
     // update the price in all db roots
-    private void UpdatePrice(int newBid){
+    private void UpdatePrice(int newBid, DataSnapshot dataSnapshot) {
         boolean flag = true;
         // input validation
         // bid too low
@@ -407,10 +398,8 @@ else {
             flag = false;
         }
 
-
         if(flag) {
             processbar.setVisibility(View.VISIBLE);
-
 
             Map<String, Object> childUpdates = new HashMap<>();
 
@@ -421,7 +410,6 @@ else {
             childUpdates.put("/Categories/" + Category + "/" + ProductID + "/customerID", userId);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/price", newBid);
             childUpdates.put("/Users/" + ProductSellerId + "/sellerProducts/" + ProductID + "/customerID", userId);
-
 
             database.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

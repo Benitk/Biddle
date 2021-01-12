@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,6 @@ import Utils.InputValidator;
 
 public class SignupActivity extends AppCompatActivity {
 
-
     private ProgressBar progressb;
     private TextView tv_login_btn;
     private TextView tv_signup_btn;
@@ -31,13 +31,15 @@ public class SignupActivity extends AppCompatActivity {
     private EditText et_password;
     private EditText et_confirmPassword;
     private FirebaseAuth firebaseAuth;
-
+    private FirebaseDatabase database;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
 
         // if already logged in
         if(firebaseAuth.getCurrentUser() != null)
@@ -108,6 +110,8 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    userID = firebaseAuth.getCurrentUser().getUid();
+                    database.getReference().child("Users").child(userID).child("email").setValue(user_email);
                     Toast.makeText(SignupActivity.this, "ההרשמה בוצעה בהצלחה!", Toast.LENGTH_LONG).show();
                     progressb.setVisibility(View.GONE);
 

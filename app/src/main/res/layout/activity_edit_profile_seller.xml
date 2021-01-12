@@ -224,6 +224,7 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:maxLength="10"
                     android:textSize="14dp" />
 
             </LinearLayout>
@@ -248,10 +249,10 @@
                     android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
+                    android:maxLength="9"
                     android:textSize="14dp" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

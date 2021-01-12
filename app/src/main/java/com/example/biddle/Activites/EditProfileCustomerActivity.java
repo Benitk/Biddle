@@ -28,9 +28,9 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference refUser;
     private ProgressBar progressb;
-   private TextView  card_tv, cvv_tv,edit_btn,PhoneNumber_tv,personalID_tv,Name_tv;
-   private EditText  date_tv;
-   private int CardNumber,cvvNumber;
+    private TextView card_tv, cvv_tv,edit_btn,PhoneNumber_tv,personalID_tv,Name_tv,email_tv;
+    private EditText date_tv;
+    private int CardNumber,cvvNumber;
     private String card,Name,PhoneNumber,personalID;
     private String userId;
     private SetDate setDate;
@@ -55,6 +55,7 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
         PhoneNumber_tv = (TextView)findViewById(R.id.PhoneNumberC);
         personalID_tv = (TextView)findViewById(R.id.personalIDC);
         Name_tv = (TextView)findViewById(R.id.NameC);
+        email_tv = (TextView) findViewById(R.id.email);
 
         date_tv.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -79,46 +80,43 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                 personalID = personalID_tv.getText().toString().trim();
                 PhoneNumber = PhoneNumber_tv.getText().toString().trim();
 
-
-               //validation
+                //validation
                 boolean flag = true;
 
                 if (TextUtils.isEmpty(card)) {
                     ((EditText) findViewById(R.id.cardnumber)).setError(R.string.mustFill + "");
                     flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל1", Toast.LENGTH_SHORT).show();
-
                 } else {
                     CardNumber = Integer.parseInt(card);
                 }
 
-                if (TextUtils.isEmpty(cvV)  ) {
+                if (TextUtils.isEmpty(cvV)) {
                     ((EditText) findViewById(R.id.cvv1)).setError(R.string.mustFill + "");
                     flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל2", Toast.LENGTH_SHORT).show();
                 }
 
-                if(TextUtils.isEmpty(PhoneNumber)) {
-                ((EditText) findViewById(R.id.PhoneNumberC)).setError("חובה למלא" + "");
-                flag = false;
+                if (TextUtils.isEmpty(PhoneNumber)) {
+                    ((EditText) findViewById(R.id.PhoneNumberC)).setError("חובה למלא" + "");
+                    flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל3", Toast.LENGTH_SHORT).show();
-            }
-                if(TextUtils.isEmpty(personalID)) {
-                ((EditText) findViewById(R.id.personalIDC)).setError("חובה למלא" + "");
-                flag = false;
+                }
+                if (TextUtils.isEmpty(personalID)) {
+                    ((EditText) findViewById(R.id.personalIDC)).setError("חובה למלא" + "");
+                    flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל4", Toast.LENGTH_SHORT).show();
-            }
-                if(TextUtils.isEmpty(Name)) {
-                ((EditText) findViewById(R.id.NameC)).setError(R.string.mustFill+"");
-                flag = false;
+                }
+                if (TextUtils.isEmpty(Name)) {
+                    ((EditText) findViewById(R.id.NameC)).setError(R.string.mustFill + "");
+                    flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל5", Toast.LENGTH_SHORT).show();
-            }
-                if(cvV.length()!=3){
+                }
+                if (cvV.length() != 3) {
                     ((EditText) findViewById(R.id.cvv1)).setError("הכנס שלוש ספרות");
                     flag = false;
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל6", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     cvvNumber = Integer.parseInt(cvV);
                 }
 
@@ -128,26 +126,24 @@ public class EditProfileCustomerActivity extends AppCompatActivity {
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל7", Toast.LENGTH_SHORT).show();
                 }
 
-                if(flag) {
-                    Date dateTime = new Date(setDate.getYear() ,setDate.getMonth()-1,setDate.getDay());
-                   int year = setDate.getYear();// dateTime.getYear();
-                   int month =setDate.getMonth();            //dateTime.getMonth();
-                   ExpireDate ex = new ExpireDate(year,month);
-                    EditText t=(EditText) findViewById(R.id.NameC);
+                if (flag) {
+                    Date dateTime = new Date(setDate.getYear(), setDate.getMonth() - 1, setDate.getDay());
+                    int year = setDate.getYear();// dateTime.getYear();
+                    int month = setDate.getMonth();            //dateTime.getMonth();
+                    ExpireDate ex = new ExpireDate(year, month);
+                    EditText t = (EditText) findViewById(R.id.NameC);
                     String name = t.getText().toString().trim();
                     t = (EditText) findViewById(R.id.PhoneNumberC);
                     int phone = Integer.parseInt(t.getText().toString().trim());
                     t = (EditText) findViewById(R.id.personalIDC);
                     int id = Integer.parseInt(t.getText().toString().trim());
-                    Customer costomer = new Customer( userId,CardNumber, cvvNumber,ex,Name,phone,id);
-                    WriteToDB(costomer,refUser);
-                }
-                else{
+                    Customer costomer = new Customer(userId, CardNumber, cvvNumber, ex, Name, phone, id);
+                    WriteToDB(costomer, refUser);
+                } else {
                     Toast.makeText(EditProfileCustomerActivity.this, "נכשל7", Toast.LENGTH_SHORT).show();
                 }
-                }
+            }
             });
-
         }
 
     private void WriteToDB(Customer customer, DatabaseReference ref) {

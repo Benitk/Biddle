@@ -1,14 +1,12 @@
 package Models;
 
 public class Seller {
-        private String UserId ,City,Adress, Bank, Branch , Name;
-        private int zip, BankAcountNumber, PhoneNumber , personalID;
+    private String UserId ,City,Adress, Bank, Branch , Name;
+    private int zip, BankAcountNumber, PhoneNumber , personalID;
 
-        public Seller(){
-        }
+    public Seller() {}
 
-
-    public Seller(String userId, String city, String adress, String bank, String branch, int zipn, int bankAcountNumber, String name , int phoneNumber , int personaliD) {
+    public Seller(String userId, String city, String adress, String bank, String branch, int zipn, int bankAcountNumber, String name, int phoneNumber , int personaliD) {
         UserId = userId;
         City = city;
         Adress = adress;

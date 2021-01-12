@@ -2,10 +2,13 @@ package com.example.biddle.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -24,15 +27,19 @@ import java.text.NumberFormat;
 import Models.Products;
 import Models.Receipt;
 import Utils.AlgoLibrary;
+import Utils.DBmethods;
 
 public class ReceiptDetails extends AppCompatActivity {
     private EditText productName_et, productPrice_et, sellerPhone_et, sellerName_et, customerPhone_et, customerName_et, fullAddress_et, SaleDate_et;
     private FirebaseDatabase database;
     private DatabaseReference refReceiptDetails;
     private ProgressBar processbar;
+    private Button mail_btn;
 
     private String user_type;
     private String receiptID;
+
+    private String seller_mail, customer_mail;
 
 
     @Override
@@ -55,11 +62,47 @@ public class ReceiptDetails extends AppCompatActivity {
         customerName_et = (EditText)findViewById(R.id.customerName);
         fullAddress_et = (EditText)findViewById(R.id.sellerAddress);
         SaleDate_et = (EditText)findViewById(R.id.SaleDate);
+        mail_btn = (Button)findViewById(R.id.emailBtn);
 
         processbar = (ProgressBar)findViewById(R.id.progressBar);
         processbar.setVisibility(View.GONE);
 
         ReadFromDB();
+
+        if(user_type.equals("customer")) {
+            mail_btn.setText("שליחת מייל לסוחר/ת");
+            sendMailToSeller();
+        }
+        else {
+            mail_btn.setText("שליחת מייל ללקוח/ה");
+            sendMailToCustomer();
+        }
+    }
+
+    private void sendMailToCustomer() {
+        mail_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {seller_mail, customer_mail});
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.customerMailTitle));
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.customerMailText));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void sendMailToSeller() {
+        mail_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] {customer_mail, seller_mail});
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.sellerMailTitle));
+                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.sellerMailText));
+                startActivity(intent);
+            }
+        });
     }
 
     // fetch single receipt from firebase that equal receiptID
@@ -103,6 +146,9 @@ public class ReceiptDetails extends AppCompatActivity {
             sellerName_et.setText(receipt.getValue(Receipt.class).getSellerName());
             customerPhone_et.setText(Integer.toString(receipt.getValue(Receipt.class).getCustomerPhoneNumber()));
             customerName_et.setText(receipt.getValue(Receipt.class).getCustomerName());
+
+            seller_mail = receipt.getValue(Receipt.class).getSeller_mail();
+            customer_mail = receipt.getValue(Receipt.class).getCustomer_mail();
 
             String address = receipt.getValue(Receipt.class).getAddress();
             String city = receipt.getValue(Receipt.class).getCity();

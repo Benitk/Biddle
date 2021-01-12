@@ -127,4 +127,12 @@
     <string name="yourProductTitle">התראת מוצר שלך שנמכר</string>
     <string name="yourProductText">ברכות! הצלחת למכור את המוצר! לחצ/י כאן לפרטים</string>
 
+    <!-- mail sender strings -->
+
+    <string name="sellerMailTitle">שלום! קניתי את המוצר שלך באפליקציית BIDDLE</string>
+    <string name="sellerMailText">הצעת המחיר שלי על המוצר שלך הייתה הגבוהה ביותר. אשמח שנתאם זמן לאיסוף המוצר.</string>
+
+    <string name="customerMailTitle">שלום! קנית ממני את המוצר שפרסמתי באפליקציית BIDDLE</string>
+    <string name="customerMailText">את/ה מי שהציע/ה את המחיר הגבוה ביותר. אשמח שנתאם זמן לאיסוף המוצר.</string>
+
 </resources>

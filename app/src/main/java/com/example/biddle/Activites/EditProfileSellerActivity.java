@@ -71,7 +71,6 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 personalID = personalID_tv.getText().toString().trim();
                 PhoneNumber = PhoneNumber_tv.getText().toString().trim();
 
-
                 // validtate input
                 boolean flag = true;
 
@@ -123,7 +122,8 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 }
 
                 if(flag) {
-                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber,Name,Integer.parseInt(PhoneNumber_tv.getText().toString().trim()),Integer.parseInt(personalID_tv.getText().toString().trim()));
+                    Seller seller = new Seller( userId,  City,  Adress, Bank, Branch, ZipNumber, AcountNumber,Name,
+                            Integer.parseInt(PhoneNumber_tv.getText().toString().trim()),Integer.parseInt(personalID_tv.getText().toString().trim()));
                     WriteToDB(seller,refUser);
                 }
                 else{
@@ -131,7 +131,6 @@ public class EditProfileSellerActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void WriteToDB(Seller seller,DatabaseReference ref) {
@@ -142,18 +141,14 @@ public class EditProfileSellerActivity extends AppCompatActivity {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 if (databaseError != null) {
-                    Toast.makeText(EditProfileSellerActivity.this, "עדכון נכשל", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileSellerActivity.this, "העדכון נכשל", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     finish();
-                    Toast.makeText(EditProfileSellerActivity.this, "פרטים עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditProfileSellerActivity.this, "הפרטים עודכנו בהצלחה", Toast.LENGTH_SHORT).show();
                 }
                 progressb.setVisibility(View.GONE);
-
-
             }
         });
     }
-
-
 }

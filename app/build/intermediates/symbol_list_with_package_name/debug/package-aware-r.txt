@@ -1885,6 +1885,7 @@ id easeOut
 id editProfile
 id edit_query
 id email
+id emailBtn
 id end
 id enterAlways
 id enterAlwaysCollapsed
@@ -2410,6 +2411,8 @@ string common_signin_button_text
 string common_signin_button_text_long
 string confirmpassword
 string customer
+string customerMailText
+string customerMailTitle
 string default_web_client_id
 string deleteFailed
 string deleteProduct
@@ -2512,6 +2515,8 @@ string project_id
 string search_menu_title
 string second_fragment_label
 string seller
+string sellerMailText
+string sellerMailTitle
 string sorting
 string status_bar_notification_info_overflow
 string title_activity_costumer

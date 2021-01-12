@@ -143,15 +143,44 @@ public class DBmethods {
 
         String receiptID = UUID.randomUUID().toString(); // generate unique  id
 
-
         receipt.setSellDate(product.getValue(Products.class).getEndingDate());
         receipt.setProductName(product.getValue(Products.class).getName());
         receipt.setPrice(product.getValue(Products.class).getPrice());
         receipt.setReceiptID(receiptID);
 
+        reference.child(productSellerID).child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    receipt.setSeller_mail((String) dataSnapshot.getValue());
+                }
+                else {
+                    Log.d("FaildReadDB","didnt find");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("FaildReadDB",databaseError.toString());
+            }
+        });
+
+        reference.child(productCustomerID).child("email").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    receipt.setCustomer_mail((String) dataSnapshot.getValue());
+                }
+                else {
+                    Log.d("FaildReadDB","didnt find");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("FaildReadDB",databaseError.toString());
+            }
+        });
 
         readSellerDetails(productSellerID,productCustomerID,reference, receipt);
-
     }
 
     // fetch seller Details from firebase

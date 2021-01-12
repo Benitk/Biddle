@@ -16,10 +16,12 @@ public class Receipt {
     private String city;
     private String receiptID;
 
+    private String seller_mail, customer_mail;
+
     public Receipt() {
     }
 
-    public Receipt(String receiptID , int price, int sellerPhoneNumber, int customerPhoneNumber, int zipCode, String productName, String sellerName, String customerName, Date sellDate, String address, String city) {
+    public Receipt(String receiptID , int price, int sellerPhoneNumber, int customerPhoneNumber, int zipCode, String productName, String sellerName, String customerName, Date sellDate, String address, String city, String seller_mail, String customer_mail) {
         this.price = price;
         this.sellerPhoneNumber = sellerPhoneNumber;
         this.customerPhoneNumber = customerPhoneNumber;
@@ -31,6 +33,8 @@ public class Receipt {
         this.address = address;
         this.city = city;
         this.receiptID = receiptID;
+        this.seller_mail = seller_mail;
+        this.customer_mail = customer_mail;
     }
 
     public String getReceiptID() {
@@ -119,5 +123,21 @@ public class Receipt {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getSeller_mail() {
+        return seller_mail;
+    }
+
+    public void setSeller_mail(String seller_mail) {
+        this.seller_mail = seller_mail;
+    }
+
+    public String getCustomer_mail() {
+        return customer_mail;
+    }
+
+    public void setCustomer_mail(String customer_mail) {
+        this.customer_mail = customer_mail;
     }
 }
