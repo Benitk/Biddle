@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_product_details">
 
-tools:context=".Activites.ProductDetailsActivity">
-
     <TextView
         android:id="@+id/Product_endingDate"
         android:layout_width="wrap_content"
@@ -15,11 +13,11 @@ tools:context=".Activites.ProductDetailsActivity">
         android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/timer"
-        app:layout_constraintEnd_toStartOf="@+id/TimeLeft"
-        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productDescription"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <TextView
         android:id="@+id/TimeLeft"
@@ -29,10 +27,10 @@ tools:context=".Activites.ProductDetailsActivity">
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/productDescription"
-        app:layout_constraintVertical_bias="0.286" />
+        app:layout_constraintVertical_bias="0.418" />
 
     <Button
         android:id="@+id/typeBtn"
@@ -59,10 +57,10 @@ tools:context=".Activites.ProductDetailsActivity">
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/typeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TimeLeft"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.561" />
 
     <include
         layout="@layout/processbar"

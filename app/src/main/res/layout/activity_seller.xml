@@ -6,15 +6,8 @@
     android:orientation="vertical"
     android:id="@+id/seller_layout"
     android:showAsAction="ifRoom"
-    android:background="@drawable/background_img"><![CDATA[
-
+    android:background="@drawable/background_img">
     android:textSize="10sp" />
-
-
-
-
-
-    ]]>
 
     <Button
         android:id="@+id/AddProduct_tv"
@@ -32,13 +25,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:layout_width="380dp"
-        android:layout_height="51dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/welcome_seller"
         android:textColor="@color/common_google_signin_btn_text_light_default"
-
         android:textSize="36dp" />
 
     <TextView
