@@ -20,8 +20,7 @@
         <activity android:name=".Activites.StarProductsCustomerActivity" />
         <activity android:name=".Activites.ProductDetailsActivity" />
         <activity
-            android:name=".Activites.CustomerActivity"
-            android:label="@string/title_activity_customer" />
+            android:name=".Activites.CustomerActivity"/>
         <activity
             android:name=".Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"
