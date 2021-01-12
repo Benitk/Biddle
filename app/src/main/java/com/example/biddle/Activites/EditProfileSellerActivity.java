@@ -22,9 +22,6 @@ public class EditProfileSellerActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase database;
-    //    private FirebaseStorage storage;
-//    private StorageReference storageref;
-//private DatabaseReference refProduct;
     private DatabaseReference refUser;
 
     private TextView City_tv,Adress_tv,zip_tv, Bank_tv, Branch_tv,Acount_tv,Update_btn,PhoneNumber_tv,personalID_tv,Name_tv;

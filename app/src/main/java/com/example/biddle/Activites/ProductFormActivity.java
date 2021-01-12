@@ -266,11 +266,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     // insert new product id refrence to user root
                     WriteToDB(p, refUser.child(productID));
 
-                  //  database.getReference().child("Products").child(productID).child("imgPath").setValue("old link");
-
                     uploadPicToDB();
-
-
                 }
             }
         });
@@ -293,61 +289,6 @@ public class ProductFormActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    // fetch single product from firebase that equal productID
-    private void ReadProductFromDB(){
-
-        progressb.setVisibility(View.VISIBLE);
-
-        refProduct.orderByKey().equalTo(productID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // should be only once child
-                if (dataSnapshot.exists()){
-                    sendMail(dataSnapshot);
-                }
-
-                else {
-                    Toast.makeText(ProductFormActivity.this, "המוצר לא קיים", Toast.LENGTH_LONG).show();
-                    Log.d("FaildReadDB","didnt find product");
-                    // back one page
-                    progressb.setVisibility(View.GONE);
-                    finish();
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-                // would change to toast
-                Log.d("FaildReadDB","databaseError.getCode()");
-                progressb.setVisibility(View.GONE);
-            }
-        });
-    }
-
-    private void sendMail(DataSnapshot dataSnapshot){
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
-            String sellerID_To_Mail = ds.getValue(Products.class).getSellerID();
-            String customerID_To_Mail = ds.getValue(Products.class).getCustomerID();
-
-            // send only to seller because no one bid on this product
-            if(sellerID_To_Mail.equals(customerID_To_Mail)){
-
-            }
-            // send both of them
-            else{
-
-
-            }
-
-        }
-    }
-
-    private String getFileExtension(Uri uri){
-        ContentResolver cR = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return  mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
 

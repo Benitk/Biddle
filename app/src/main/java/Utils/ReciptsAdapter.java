@@ -53,12 +53,10 @@ public class ReciptsAdapter extends RecyclerView.Adapter<ReciptsAdapter.ViewHold
 
         Receipt r = data.get(i);
         String product_name = r.getProductName();
-        // String product_endingDate = c.getEndingDate();
         String receiptID = r.getReceiptID();
 
 
         viewHolder.getProductName_tv().setText(product_name);
-        // viewHolder.getProduct_endingDate().setText(product_endingDate);
         viewHolder.getReceiptID_tv().setText(receiptID);
 
 

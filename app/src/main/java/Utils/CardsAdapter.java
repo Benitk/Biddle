@@ -68,12 +68,10 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
 
         viewHolder.getProductName().setText(product_name);
-       // viewHolder.getProduct_endingDate().setText(product_endingDate);
         viewHolder.getProductPrice().setText("₪ "+productPrice);
 
         UploadPic(ImgPath, viewHolder.getProductImg());
 
-        // urial ha m ref ImgPath
 
 
 
@@ -99,7 +97,7 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView productPrice,  productName;//product_endingDate,
+        private TextView productPrice,  productName;
 
         private ImageView productImg;
 
@@ -114,11 +112,9 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.ViewHolder> 
 
             productName = itemView.findViewById(R.id.card_name);
             productImg = itemView.findViewById(R.id.card_image);
-          //  product_endingDate = itemView.findViewById(R.id.card_endingDate);
             productPrice = itemView.findViewById(R.id.card_currentPrice);
         }
         public TextView getProductPrice() { return productPrice; }
-        //public TextView getProduct_endingDate() { return product_endingDate; }
         public TextView getProductName() { return productName;}
 
         public ImageView getProductImg() {return productImg; }

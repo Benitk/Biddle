@@ -68,9 +68,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button typeBtn;
     private ImageView Productimg;
 
-    private RecyclerView Productimgs;
-
-    private Products currentProduct;
     private ProgressBar processbar;
     private String user_type;
     private String ProductID;
@@ -80,8 +77,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String productCategory;
     private Date ProductEndingDate;
     private Integer newBid;
-
-    private boolean flag;
     private long millisUntilFinished;
 
     private FirebaseAuth firebaseAuth;
@@ -225,8 +220,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
 public void  UploadPic(String imagPath){
-if (imagPath.isEmpty()){}
-else {
+if (!imagPath.isEmpty()){
     final StorageReference mImageRef =
             FirebaseStorage.getInstance().getReference(imagPath);
     final long FIVE_MEGABYTE = 1024 * 1024 * 5;
@@ -432,68 +426,4 @@ else {
             });
         }
     }
-
-    private void TransactionDB(){
-        refProduct.child(ProductID).runTransaction(new Transaction.Handler() {
-            @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
-                Products p = mutableData.getValue(Products.class);
-                if (p == null) {
-                    // change nothing
-                    ProductDetailsActivity.this.runOnUiThread(new Runnable() {
-                        public void run() {
-                            Toast.makeText(ProductDetailsActivity.this, R.string.bidNoExist, Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    return Transaction.success(mutableData);
-                }
-                else {
-                    // time of bid
-                    Date currentDate = new Date(System.currentTimeMillis());
-
-                    // bid is too low, will not set
-                    if(newBid <= p.getPrice()) {
-                        // update current price from DB
-                        ProductDetailsActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(ProductDetailsActivity.this, R.string.bidFailed, Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        productPrice_tv.setText(Integer.toString(p.getPrice())+" ₪");
-                        return Transaction.abort();
-                    }
-
-                    // product time already ended
-                   else if(p.getEndingDate().compareTo(currentDate) < 0){
-                        ProductDetailsActivity.this.runOnUiThread(new Runnable() {
-                            public void run() {
-                                Toast.makeText(ProductDetailsActivity.this, string.bidTimeEnded, Toast.LENGTH_LONG).show();
-                            }
-                        });
-                        return Transaction.abort();
-                    }
-                    else {
-                        p.setCustomerID(userId);
-                        p.setPrice(newBid);
-                        mutableData.setValue(p);
-                        return Transaction.success(mutableData);
-                    }
-                }
-            }
-
-            @Override
-            public void onComplete(DatabaseError databaseError, boolean comitted, DataSnapshot dataSnapshot) {
-                if(databaseError == null && comitted){
-                    // update new Bid Price
-                    productPrice_tv.setText(Integer.toString(newBid)+" ₪");
-                    ProductDetailsActivity.this.runOnUiThread(new Runnable() {
-                        public void run() {
-                            Toast.makeText(ProductDetailsActivity.this, string.bidSucsses, Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-            }
-        });
-    }
-
 }

@@ -46,7 +46,6 @@ public class SellerActivity extends AppCompatActivity {
     private TextView tv_noProductText;
     private ProgressBar progressb;
 
-    private DatabaseReference refProducts;
     private DatabaseReference refUser;
     private   DatabaseReference refUserDetails;
     private   DatabaseReference refUserDetailschild;
@@ -108,9 +107,6 @@ public class SellerActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) { }
                 });
-
-
-
             }
 
         });
@@ -120,23 +116,6 @@ public class SellerActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkChild(String ref) {
-         b = true ;
-        refUserDetailschild =refUserDetails.child(ref);
-        refUserDetailschild.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if( !snapshot.exists() ) {
-                    b = false ;
-                    flag = false;
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
-        });
-        return b ;
-
-    }
 
     @Override
     protected void onRestart() {

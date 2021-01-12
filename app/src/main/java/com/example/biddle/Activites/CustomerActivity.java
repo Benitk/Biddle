@@ -229,10 +229,6 @@ public class CustomerActivity extends AppCompatActivity {
                 if(!productCustomerID.equals(productSellerID)) {
                     DBmethods.CreateReceipt(productSellerID, productCustomerID, product, database.getReference().child("Users"));
                 }
-                else{
-                    // send mail to seller that no one bought product
-                }
-
                 continue;
             }
 

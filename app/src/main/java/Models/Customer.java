@@ -1,7 +1,5 @@
 package Models;
 
-import com.example.biddle.Activites.ExpireDate;
-
 public class Customer {
 
     private String UserId ,Name;
