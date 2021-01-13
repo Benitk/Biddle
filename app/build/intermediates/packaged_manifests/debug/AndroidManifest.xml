@@ -22,6 +22,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.Biddle" >
         <activity android:name="com.example.biddle.Activites.ReceiptDetails" />
         <activity android:name="com.example.biddle.Activites.EditProfileCustomerActivity" />
@@ -31,9 +32,7 @@
         <activity android:name="com.example.biddle.Activites.PriceOfferedProductsCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.StarProductsCustomerActivity" />
         <activity android:name="com.example.biddle.Activites.ProductDetailsActivity" />
-        <activity
-            android:name="com.example.biddle.Activites.CustomerActivity"
-            android:label="@string/title_activity_customer" />
+        <activity android:name="com.example.biddle.Activites.CustomerActivity" />
         <activity
             android:name="com.example.biddle.Activites.ProductFormActivity"
             android:label="@string/title_activity_product_form"

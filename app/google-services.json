@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "420298979980",
-    "firebase_url": "https://biddle-c5332.firebaseio.com",
-    "project_id": "biddle-c5332",
-    "storage_bucket": "biddle-c5332.appspot.com"
+    "project_number": "90779853603",
+    "project_id": "biddle-465b1",
+    "storage_bucket": "biddle-465b1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:420298979980:android:6af9de2f3e0410fc3899a9",
+        "mobilesdk_app_id": "1:90779853603:android:b874aa38335d48d2766296",
         "android_client_info": {
           "package_name": "com.example.biddle"
         }
       },
       "oauth_client": [
         {
-          "client_id": "420298979980-2pk25hbnpp66sjmjvnlg5c3c5hga62ee.apps.googleusercontent.com",
+          "client_id": "90779853603-grk75oiu6ul7vt0t57r3vqsvhl6iee1r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCgzFWWm4ekGG1nynuPbBi8yxCPOWKj2sU"
+          "current_key": "AIzaSyAHxU_noMLDdciG1pOhBW-6k8R6vd8Mtwo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "420298979980-2pk25hbnpp66sjmjvnlg5c3c5hga62ee.apps.googleusercontent.com",
+              "client_id": "90779853603-grk75oiu6ul7vt0t57r3vqsvhl6iee1r.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
